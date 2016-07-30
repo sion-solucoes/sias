@@ -48,6 +48,8 @@ public class UnidadeAtendimentoController {
         modelAndView.setViewName("unidadeAtendimentoList");
         try {
             modelAndView.addObject("unidadeAtendimentoList", unidadeAtendimentoService.readAll());
+            modelAndView.addObject("controleAmbiente", "active toggled");
+            modelAndView.addObject("unidadeAtendimento", "active");
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -62,6 +64,7 @@ public class UnidadeAtendimentoController {
         modelAndView.setViewName("unidadeAtendimentoForm");
         try {
             modelAndView.addObject("cepList", cepService.readAll());
+            
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
         }
