@@ -73,6 +73,19 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Unidade de Atendimento</label>
+                        <div class="col-md-6">
+                            <select class="selectpicker" data-live-search="true" id="unidadeAtendimento">
+                                <option>Selecione...</option>
+                                <c:if test="${not empty unidadeAtendimentoList}">
+                                    <c:forEach var="unidadeAtendimento" items="${unidadeAtendimentoList}">
+                                        <option value="${unidadeAtendimento.codigo}">${unidadeAtendimento.descricao}</option>
+                                    </c:forEach>
+                                </c:if>
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <label for="txtEmail" class="control-label col-sm-2">Email</label>
@@ -147,12 +160,10 @@
                     </div>
                     <div class="card-body card-padding">
                         <div class="form-group">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <button id="btnGerarCodigos" type="button" class="btn bgm-blue">Gerar Códigos</button>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <button type="button" id="btnImprimirCodigos" target="_blank" class="btn bgm-blue">Imprimir</button>
                             </div>
                         </div>
