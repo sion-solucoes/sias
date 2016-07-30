@@ -1,0 +1,8 @@
+#surefire
+#Thu Jul 28 22:04:39 BRT 2016
+maven.ext.class.path=C\:\\Program Files\\NetBeans 8.0.2\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=D\:\\SIAS\\PROJETO\\sias_v3
+file.encoding=UTF-8
+localRepository=C\:\\Users\\Fernando\\.m2\\repository
+java.net.useSystemProxies=true
+basedir=D\:\\SIAS\\PROJETO\\sias_v3
