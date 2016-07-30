@@ -97,14 +97,14 @@
             <li>
                 <a href="#"><i class="zmdi zmdi-print"></i> Relatórios</a>
             </li>
-            <li class="sub-menu">
+            <li class="sub-menu ${controleAmbiente}">
                 <a href="#" data-ma-action="submenu-toggle"><i class="zmdi zmdi-settings"></i> Controle de Ambiente</a>
                 <ul>
                     <li>
-                        <a href="<c:url value="/controleAmbiente/unidadeAtendimento"/>"> Cadastro de Unidade de Atendimento</a>
+                        <a class="${unidadeAtendimento}" href="<c:url value="/controleAmbiente/unidadeAtendimento"/>"> Cadastro de Unidade de Atendimento</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleAmbiente/usuario"/>"> Cadastro de Usuário</a>
+                        <a class="${usuario}" href="<c:url value="/controleAmbiente/usuario"/>"> Cadastro de Usuário</a>
                     </li>
                 </ul>
             </li>
