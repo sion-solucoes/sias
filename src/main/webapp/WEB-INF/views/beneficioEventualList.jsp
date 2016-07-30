@@ -32,7 +32,7 @@
     <body class="background-color title-margin">
         <%@include file="header.jsp" %>
         <div class="container">
-            <h2>Listagem de Beneficios Eventuais</h2>
+            <h2>Listagem de Beneficio Eventual</h2>
             <hr>
             <div class="row clearfix">
                 <div class="col-md-2 column margem">
