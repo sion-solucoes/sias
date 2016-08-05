@@ -43,6 +43,19 @@ public class DeficienciaController {
 
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/deficiencia/novo", method = RequestMethod.GET)
+    public ModelAndView novo() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("deficienciaForm");
+        try {
+        } catch (Exception ex) {
+            Logger.getLogger(DocumentoProvidenciavelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/deficiencia/novo", method = RequestMethod.POST)
     public ModelAndView novo(@ModelAttribute Deficiencia deficiencia) {

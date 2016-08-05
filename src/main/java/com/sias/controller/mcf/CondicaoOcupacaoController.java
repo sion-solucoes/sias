@@ -43,6 +43,19 @@ public class CondicaoOcupacaoController {
 
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/condicaoOcupacao/novo", method = RequestMethod.GET)
+    public ModelAndView novo() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("condicaoOcupacaoForm");
+        try {
+        } catch (Exception ex) {
+            Logger.getLogger(DocumentoProvidenciavelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/condicaoOcupacao/novo", method = RequestMethod.POST)
     public ModelAndView novo(@ModelAttribute CondicaoOcupacao condicaoOcupacao) {

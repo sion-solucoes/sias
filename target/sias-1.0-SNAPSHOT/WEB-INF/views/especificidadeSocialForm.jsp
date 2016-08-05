@@ -1,0 +1,105 @@
+<%-- 
+    Document   : especificidadeSocialForm
+    Created on : 29/08/2015, 12:16:50
+    Author     : Fernando Laranjo
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Cadastro de Especificidade Social</h2>
+                </div>
+                <div class="pull-right">
+                    <a href="<c:url value="/controleFamiliar/especificidadeSocial"/>" type="button" class="btn bgm-blue">Voltar</a>
+                </div>
+            </div>
+            <div class="card-header card-padding">
+                <form class="form-horizontal" role="form" method="POST">
+                    <div class="card-header">
+                        <h4>Dados Básicos</h4>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescricao" class="col-sm-2 control-label">Descrição</label>
+                        <div class="col-md-6">
+                            <div class="fg-line">
+                                <input placeholder="Descrição" maxlength="50" name="descricao" class="form-control input-sm" id="txtDescricao" value="${especificidadeSocial.descricao}"/>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkIndigena" class="col-sm-2 control-label">Indígena</label>
+                        <div class="col-md-6">
+                            <label class="checkbox checkbox-inline m-r-20">
+                                <c:if test="${especificidadeSocial.indigena}">
+                                    <input type="checkbox" name="indigena" id="checkIndigena" checked/>    
+                                </c:if>
+                                <c:if test="${!especificidadeSocial.indigena}">
+                                    <input type="checkbox" name="indigena" id="checkIndigena"/>    
+                                </c:if>
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPovoEtnia" class="col-sm-2 control-label">Povo/Etnia</label>
+                        <div class="col-md-6">
+                            <div class="fg-line">
+                                <input placeholder="Povo/Etnia" maxlength="50" name="povoEtnia" class="form-control" id="txtPovoEtnia"/>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"></label>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                        </div>
+                    </div>        
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
+
+        <!--<div class="container">
+            <h2>Cadastro de Especificidade Social</h2>
+            <hr>
+            <div class="row clearfix">
+                <form method="post" role="form">
+                    
+                   
+                    
+                    <div class="row clearfix">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary sias-default buttons hvr-bob margem">
+                                <img alt="" src="<c:url value="/img/icon-confirm.png"/>" class="img-rounded" />
+                                Confirmar
+                            </button>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="<c:url value = "/controleFamiliar/especificidadeSocial"/>" class="btn btn-primary sias-default buttons hvr-bob">
+                                <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
+                                Voltar
+                            </a>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+        
+    </body>
+</html>-->
