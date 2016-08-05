@@ -12,7 +12,7 @@
             <a href="" data-ma-action="profile-menu-toggle">
                 <div class="sp-pic">
                     <c:if test="${empty usuarioSessao.foto}">
-                        <img src="<c:url value="/img/profile-pic.jpg"/>" alt="">
+                        <img src="<c:url value="/img/icon-user.png"/>" alt="">
                     </c:if>
                     <c:if test="${not empty usuarioSessao.foto}">
                         <img alt="" src="<c:url value="${usuarioSessao.foto}"/>" class="margem photo-user" />
