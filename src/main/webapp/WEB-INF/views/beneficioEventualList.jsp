@@ -15,7 +15,7 @@
                     <h2>Listagem de Benefícios Eventuais</h2>
                 </div>
                 <div class="pull-right">
-                    <a href="<c:url value="/controleFamiliar/especificidadeSocial/novo"/>" type="button" class="btn bgm-blue">Novo</a>
+                    <a href="<c:url value="/controleFamiliar/beneficioEventual/novo"/>" type="button" class="btn bgm-blue">Novo</a>
                 </div>
             </div>
             <div class="table-responsive">
