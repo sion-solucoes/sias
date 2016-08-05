@@ -5,48 +5,60 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>SIASWeb</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-        <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Cadastro de Grau de Parentesco</h2>
+                </div>
+                <div class="pull-right">
+                    <a href="<c:url value = "/controleFamiliar/grauParentesco"/>" type="button" class="btn bgm-blue">Voltar</a>
+                </div>
+            </div>
+            <div class="card-body card-padding">
+                <form class="form-horizontal" role="form" method="POST">
+                    <div class="card-header">
+                        <h4>Dados Básicos</h4>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCodigo" class="col-sm-2 control-label">Código</label>
+                        <div class="col-md-4">
+                            <div class="fg-line">
+                                <input type="text" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${grauParentesco.codigo}"/>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescricao" class="col-sm-2 control-label">Descrição</label>
+                        <div class="col-md-6">
+                            <div class="fg-line">
+                                <input placeholder="Descrição" maxlength="50" name="descricao" class="form-control input-sm" id="txtDescricao" value="${grauParentesco.descricao}"/>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"></label>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-    </head>
-
-    <body class="background-color title-margin">
-        <%@include file="header.jsp" %>
-        <div class="container">
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
+        <!--<div class="container">
             <h2>Cadastro de Grau de Parentesco</h2>
             <hr>
             <div class="row clearfix">
                 <form method="post" role="form">
-                    <div class="row clearfix">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="txtCodigo">CÃ³digo</label>
-                                <input type="number" placeholder="CÃ³digo" max="100" min="0" name="codigo" class="form-control sias-default" id="txtCodigo" value="${grauParentesco.codigo}"/>    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label for="txtDescricao">DescriÃ§Ã£o</label>
-                                <input placeholder="DescriÃ§Ã£o" maxlength="50" name="descricao" class="form-control sias-default" id="txtDescricao" value="${grauParentesco.descricao}"/>    
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
                     <div class="row clearfix">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
@@ -74,4 +86,4 @@
         
         
     </body>
-</html>
+</html>-->

@@ -5,96 +5,62 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>SIASWeb</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-        <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/jquery.dataTables.min.css"/>" rel="stylesheet">
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
-
-    </head>
-
-    <body class="background-color title-margin">
-        <%@include file="header.jsp" %>
-        <div class="container">
-            <h2>Listagem de Documento ProvidenciÃ¡vel</h2>
-            <hr>
-            <div class="row clearfix">
-                <div class="col-md-2 column margem">
-                    <a type="button" class="btn btn-primary buttons hvr-bob sias-default" href="<c:url value="/controleFamiliar/documentoProvidenciavel/novo"/>">
-                        <img alt="" src="<c:url value="/img/icon-add.png"/>" class="img-rounded" />
-                        Novo
-                    </a>
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Listagem de Documentos Providenciáveis</h2>
                 </div>
-                <div class="col-md-2 column margem">
-                    <a type="button" class="btn btn-primary buttons hvr-bob sias-default" href="<c:url value="/controleFamiliar"/>">
-                        <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
-                        Voltar
-                    </a>
+                <div class="pull-right">
+                    <a type="button" class="btn bgm-blue" href="<c:url value="/controleFamiliar/documentoProvidenciavel/novo"/>">Novo</a>
                 </div>
             </div>
-            <div class="row clearfix">
-                <div class="col-md-12">
-                    <table class="table table-striped" id="tabela">
-                        <thead>
-                            <tr>
-                                <th>CÃ³digo</th>
-                                <th>DescriÃ§Ã£o</th>
-                                <th><span class="glyphicon glyphicon-trash"></span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:if test="${not empty documentoProvidenciavelList}">
-                                <c:forEach var="documentoProvidenciavel" items="${documentoProvidenciavelList}">
-                                    <tr>
-                                        <td>
-                                            <a href="<c:url value="/controleFamiliar/documentoProvidenciavel/${documentoProvidenciavel.id}/editar"/>">
-                                                ${documentoProvidenciavel.codigo}
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<c:url value="/controleFamiliar/documentoProvidenciavel/${documentoProvidenciavel.id}/editar"/>">
-                                                ${documentoProvidenciavel.descricao}
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<c:url value="/controleFamiliar/documentoProvidenciavel/${documentoProvidenciavel.id}/excluir"/>">
-                                                <span class="glyphicon glyphicon-remove"></span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </c:if>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table id="data-table-command" class="table table-striped table-vmiddle">
+                    <thead>
+                        <tr>
+                            <th data-column-id="codigo">Código</th>
+                            <th data-column-id="descricao">Descrição</th>
+                            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:if test="${not empty documentoProvidenciavelList}">
+                            <c:forEach var="documentoProvidenciavel" items="${documentoProvidenciavelList}">
+                                <tr>
+                                    <td>
+                                        ${documentoProvidenciavel.codigo}
+                                    </td>
+                                    <td>
+                                        ${documentoProvidenciavel.descricao}
+                                    </td>
+                                    <!--<td>
+                                        <a href="<c:url value="/controleFamiliar/documentoProvidenciavel/${documentoProvidenciavel.id}/excluir"/>">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </a>
+                                    </td>-->
+                                </tr>
+                            </c:forEach>
+                        </c:if>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#tabela').DataTable(DataTableConfig);
-            });
-        </script>
+    </div>
+</section>
 
-        <script type="text/javascript" src="<c:url value="/js/DataTableConfig.js"/>"></script>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Command Buttons
+        $("#data-table-command").bootgrid(bootgridConfig);
+    });
+
+    
+</script>
         
-        
-        <script type="text/javascript" src="<c:url value="/js/jquery.dataTables.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/dataTables.bootstrap.min.js"/>"></script>
-    </body>
-</html>

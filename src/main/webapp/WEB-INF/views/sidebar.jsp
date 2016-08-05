@@ -72,9 +72,6 @@
                         <a href="<c:url value="/controleFamiliar/beneficioEventual"/>"> Cadastro de Benefício Eventual</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/especificidadeSocial"/>"> Cadastro de Benefício Eventual</a>
-                    </li>
-                    <li>
                         <a href="<c:url value="/controleFamiliar/especificidadeSocial"/>"> Cadastro de Especificidade Social</a>
                     </li>
                     <li>
