@@ -20,6 +20,10 @@ public class Usuario extends BaseEntity {
 
     public static final Short TIPO_ADMINISTRATIVO = 3;
 
+    private UnidadeAtendimento unidadeAtendimento;
+    
+    private Short tipo;
+    
     private String email;
 
     private String senha;
@@ -28,13 +32,25 @@ public class Usuario extends BaseEntity {
 
     private String sobrenome;
 
-    private Short tipo;
-
     private String foto;
 
-    private List<UsuarioUnidadeAtendimento> usuarioUnidadeAtendimentoList;
-
     private List<UsuarioSeguranca> usuarioSegurancaList;
+
+    public UnidadeAtendimento getUnidadeAtendimento() {
+        return unidadeAtendimento;
+    }
+
+    public void setUnidadeAtendimento(UnidadeAtendimento unidadeAtendimento) {
+        this.unidadeAtendimento = unidadeAtendimento;
+    }
+
+    public Short getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Short tipo) {
+        this.tipo = tipo;
+    }
 
     public String getEmail() {
         return email;
@@ -60,28 +76,12 @@ public class Usuario extends BaseEntity {
         this.nome = nome;
     }
 
-    public Short getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Short tipo) {
-        this.tipo = tipo;
-    }
-
     public String getFoto() {
         return foto;
     }
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public List<UsuarioUnidadeAtendimento> getUsuarioUnidadeAtendimentoList() {
-        return usuarioUnidadeAtendimentoList;
-    }
-
-    public void setUsuarioUnidadeAtendimentoList(List<UsuarioUnidadeAtendimento> usuarioUnidadeAtendimentoList) {
-        this.usuarioUnidadeAtendimentoList = usuarioUnidadeAtendimentoList;
     }
 
     public List<UsuarioSeguranca> getUsuarioSegurancaList() {

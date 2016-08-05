@@ -50,7 +50,7 @@ $('#btnConfirmar').click(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleFamiliar/familia/save',
+        url: 'controleFamiliar/familia/save',
         data: data,
         success: function (data) {
             if (data != null) {

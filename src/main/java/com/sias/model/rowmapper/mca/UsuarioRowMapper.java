@@ -5,10 +5,12 @@
  */
 package com.sias.model.rowmapper.mca;
 
+import com.sias.model.constants.mca.UnidadeAtendimentoConstants;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.sias.model.constants.mca.UsuarioConstants;
+import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mca.Usuario;
 
 /**
@@ -27,6 +29,16 @@ public class UsuarioRowMapper implements RowMapper<Usuario> {
         usuario.setNome(rs.getString(UsuarioConstants.NOME));
         usuario.setTipo(rs.getShort(UsuarioConstants.TIPO));
         usuario.setFoto(rs.getString(UsuarioConstants.FOTO));
+
+        if (rs.getObject(UsuarioConstants.UNIDADE_ATENDIMENTO_ID) != null) {
+            UnidadeAtendimento unidadeAtendimento = new UnidadeAtendimento();
+            unidadeAtendimento.setId(rs.getLong(UsuarioConstants.UNIDADE_ATENDIMENTO_ID));
+            try {
+                unidadeAtendimento = new UnidadeAtendimentoRowMapper().mapRow(rs, i);
+            } catch (Exception e) {
+            }
+            usuario.setUnidadeAtendimento(unidadeAtendimento);
+        }
 
         return usuario;
     }

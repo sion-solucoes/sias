@@ -14,7 +14,7 @@ $('#formLogin').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/home',
+        url: 'home',
         data: data,
         success: function (data) {
             if (data != null) {

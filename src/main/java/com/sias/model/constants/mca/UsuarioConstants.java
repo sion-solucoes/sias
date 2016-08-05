@@ -17,13 +17,15 @@ public class UsuarioConstants {
 
     public static final String ID = PREFIXO + "id";
 
+    public static final String UNIDADE_ATENDIMENTO_ID = PREFIXO + "unidade_atendimento_id";
+    
+    public static final String TIPO = PREFIXO + "tipo";
+    
     public static final String EMAIL = PREFIXO + "email";
 
     public static final String SENHA = PREFIXO + "senha";
 
     public static final String NOME = PREFIXO + "nome";
-
-    public static final String TIPO = PREFIXO + "tipo";
     
     public static final String FOTO = PREFIXO + "foto";
     

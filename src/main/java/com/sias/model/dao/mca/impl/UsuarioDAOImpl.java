@@ -5,6 +5,7 @@
  */
 package com.sias.model.dao.mca.impl;
 
+import com.sias.model.constants.mca.UnidadeAtendimentoConstants;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.sias.model.constants.mca.UsuarioConstants;
@@ -13,6 +14,7 @@ import com.sias.model.entity.mca.Usuario;
 import com.sias.model.rowmapper.mca.UsuarioRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,16 +50,16 @@ public class UsuarioDAOImpl extends JDBCBaseDAO implements UsuarioDAO {
         String query = "SELECT * FROM " + UsuarioConstants.TABELA;
         query += " WHERE TRUE ";
 
-        Object args[] = new Object[criteriaList.size()];
-        int index = 0;
+        List<Object> args = new ArrayList<Object>();
+        
         for (Criteria criteria : criteriaList) {
             query += " AND ";
             query += criteria.getAttribute() + " ";
             query += criteria.getOperation() + " ? ";
-            args[index] = criteria.getValue();
+            args.add(criteria.getValue());
         }
 
-        return getTemplate().query(query, args, new UsuarioRowMapper());
+        return getTemplate().query(query, args.toArray(), new UsuarioRowMapper());
     }
 
     @Override
@@ -117,6 +119,8 @@ public class UsuarioDAOImpl extends JDBCBaseDAO implements UsuarioDAO {
 
         String query = "SELECT * FROM ";
         query += UsuarioConstants.TABELA;
+        query += " LEFT JOIN " + UnidadeAtendimentoConstants.TABELA;
+        query += " ON " + UsuarioConstants.UNIDADE_ATENDIMENTO_ID + " = " + UnidadeAtendimentoConstants.ID;
         query += " WHERE ";
         query += UsuarioConstants.EMAIL + "=? ";
         query += " AND ";

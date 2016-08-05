@@ -16,17 +16,32 @@ public class GSONConverter {
 
     private static Gson gson;
 
+    private static Gson gsonWithHour;
+
     private static Gson getGSON() {
         if (gson == null) {
             GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.setDateFormat("yyyy-MM-dd");
+            gsonBuilder.setDateFormat("dd/MM/yyyy");
             gson = gsonBuilder.create();
         }
         return gson;
     }
-    
-    public static Object convert(String jsonData, Class clazz){
-        return getGSON().fromJson(jsonData, clazz);
+
+    private static Gson getGSONWithHour() {
+        if (gsonWithHour == null) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.setDateFormat("dd/MM/yyyy HH:mm:ss");
+            gsonWithHour = gsonBuilder.create();
+        }
+        return gsonWithHour;
+    }
+
+    public static Object convert(String jsonData, Class clazz) {
+        try {
+            return getGSON().fromJson(jsonData, clazz);
+        } catch (Exception e) {
+            return getGSONWithHour().fromJson(jsonData, clazz);
+        }
     }
 
 }

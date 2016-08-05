@@ -22,13 +22,9 @@
         <link href="<c:url value="/css/jquery.dataTables.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/animate.min.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/hover.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/select2.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/select2-bootstrap.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/bootstrap-colorpicker.min.css"/>" rel="stylesheet" />
-        <link href="<c:url value="/css/bootstrap-timepicker.min.css"/>" rel="stylesheet" />
-        <link href="<c:url value="/css/bootstrap-datepicker.css"/>" rel="stylesheet" />
 
         <!-- css template -->
         <link href="<c:url value="/css/sweetalert.css"/>" rel="stylesheet" type="text/css"/>
@@ -36,17 +32,22 @@
         <link href="<c:url value="/css/jquery.mCustomScrollbar.min.css"/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value="/css/jquery.bootgrid.min.css"/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value="/css/bootstrap-select.min.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="/css/bootstrap-datetimepicker-standalone.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="/css/bootstrap-datetimepicker.min.css"/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value="/css/app_1.css"/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value="/css/app_2.css"/>" rel="stylesheet" type="text/css"/>
-        
+
+        <!-- css implemented -->
+        <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
+
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
 
         <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
 
-        
+
     </head>
 
     <body>
@@ -74,9 +75,9 @@
                         </li>
                     </ul>
                 </li>
-                
+
             </ul>
-                
+
             <!-- Top Search Content -->
             <div class="h-search-wrap">
                 <div class="hsw-inner" id="panComboBusca">
@@ -85,6 +86,6 @@
                 </div>
             </div>
         </header>
-              
-<section id="main">
-<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+
+        <section id="main">
+            <jsp:include page="/WEB-INF/views/sidebar.jsp"/>

@@ -53,90 +53,6 @@ $('#fileFoto').change(function (event) {
 
 });
 
-$('#tabelaUnidadeAtendimento').ready(function (event) {
-
-    var txtId = document.getElementById("txtId");
-    var usuarioId = txtId.value;
-    var tabelaUnidadeAtendimento = document.getElementById("tabelaUnidadeAtendimento");
-
-    var data = {
-        usuarioId: usuarioId
-    };
-
-    var body = document.createElement("tbody");
-
-    $.ajax({
-        method: 'POST',
-        url: '/sias/controleAmbiente/unidadeAtendimento/readAll',
-        success: function (unidadeAtendimentoList) {
-            if (usuarioId != null && usuarioId != "") {
-                $.ajax({
-                    method: 'POST',
-                    data: data,
-                    url: '/sias/controleAmbiente/usuarioUnidadeAtendimento/readUnidadeAtendimentoByUsuario',
-                    success: function (usuarioUnidadeAtendimentoList) {
-                        if (unidadeAtendimentoList !== null) {
-                            for (var indexUnidadeAtendimento = 0; indexUnidadeAtendimento < unidadeAtendimentoList.length; indexUnidadeAtendimento++) {
-                                var row = document.createElement("tr");
-                                var cellCheck = document.createElement("td");
-                                var unidadeAtendimento = unidadeAtendimentoList[indexUnidadeAtendimento];
-                                var input = document.createElement("input");
-                                input.type = "checkbox";
-                                input.value = unidadeAtendimento.id;
-                                if (usuarioUnidadeAtendimentoList != null) {
-                                    var check = false;
-                                    for (var indexUsuarioUnidadeAtendimento = 0; indexUsuarioUnidadeAtendimento < usuarioUnidadeAtendimentoList.length; indexUsuarioUnidadeAtendimento++) {
-                                        var usuarioUnidadeAtendimento = usuarioUnidadeAtendimentoList[indexUsuarioUnidadeAtendimento];
-                                        if (unidadeAtendimento.id == usuarioUnidadeAtendimento.id) {
-                                            check = true;
-                                        }
-                                    }
-                                    input.checked = check;
-                                }
-                                cellCheck.appendChild(input);
-                                row.appendChild(cellCheck);
-                                var cellCodigo = document.createElement("td");
-                                var codigo = document.createTextNode(unidadeAtendimento.codigo);
-                                cellCodigo.appendChild(codigo);
-                                row.appendChild(cellCodigo);
-                                var cellDescricao = document.createElement("td");
-                                var descricao = document.createTextNode(unidadeAtendimento.descricao);
-                                cellDescricao.appendChild(descricao);
-                                row.appendChild(cellDescricao);
-                                body.appendChild(row);
-                            }
-                            tabelaUnidadeAtendimento.appendChild(body);
-                        }
-                    }
-                });
-            } else {
-                if (unidadeAtendimentoList !== null) {
-                    for (var indexUnidadeAtendimento = 0; indexUnidadeAtendimento < unidadeAtendimentoList.length; indexUnidadeAtendimento++) {
-                        var row = document.createElement("tr");
-                        var cellCheck = document.createElement("td");
-                        var unidadeAtendimento = unidadeAtendimentoList[indexUnidadeAtendimento];
-                        var input = document.createElement("input");
-                        input.type = "checkbox";
-                        input.value = unidadeAtendimento.id;
-                        cellCheck.appendChild(input);
-                        row.appendChild(cellCheck);
-                        var cellCodigo = document.createElement("td");
-                        var codigo = document.createTextNode(unidadeAtendimento.codigo);
-                        cellCodigo.appendChild(codigo);
-                        row.appendChild(cellCodigo);
-                        var cellDescricao = document.createElement("td");
-                        var descricao = document.createTextNode(unidadeAtendimento.descricao);
-                        cellDescricao.appendChild(descricao);
-                        row.appendChild(cellDescricao);
-                        body.appendChild(row);
-                    }
-                    tabelaUnidadeAtendimento.appendChild(body);
-                }
-            }
-        }
-    });
-});
-
 $('#btnGerarCodigos').click(function (event) {
 
     var tabelaCodigos1 = document.getElementById("tabelaCodigosSeguranca1-5");
@@ -240,23 +156,7 @@ $('#btnConfirmar').click(function (event) {
         }, 3000);
         return;
     }
-    var usuarioUnidadeAtendimentoList = new Array();
-    var tabelaUnidadeAtendimento = document.getElementById("tabelaUnidadeAtendimento");
-    for (var indexUnidadeAtendimento = 1; indexUnidadeAtendimento < tabelaUnidadeAtendimento.rows.length; indexUnidadeAtendimento++) {
-        var row = tabelaUnidadeAtendimento.rows[indexUnidadeAtendimento];
-        var data = row.cells[0];
-        var check = data.children[0];
-        if (check.checked) {
-            var unidadeAtendimento = {
-                id: check.value
-            };
-            var usuarioUnidadeAtendimento = {
-                unidadeAtendimento: unidadeAtendimento
-            };
-            usuarioUnidadeAtendimentoList.push(usuarioUnidadeAtendimento);
-        }
-    }
-
+   
     var usuarioSegurancaList = new Array();
     var tabelaCodigosSeguranca1 = document.getElementById("tabelaCodigosSeguranca1-5");
     for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.rows.length; tabelaUsuarioSeguranca++) {

@@ -10049,7 +10049,7 @@ a {
 }
 
 html {
-    overflow-x: hidden\0/;
+    overflow-x: hidden;
     -ms-overflow-style: none;
 }
 
@@ -10651,7 +10651,7 @@ h6 small,
     height: 129px;
     margin-bottom: 5px;
     width: 100%;
-    background: url(../img/profile-menu.png) no-repeat left top;
+    background: url(../img/bg5.jpg) no-repeat left top;
     background-size: 100%;
 }
 

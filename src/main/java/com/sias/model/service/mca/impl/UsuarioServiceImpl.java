@@ -12,10 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sias.model.dao.mca.interfaces.UsuarioDAO;
 import com.sias.model.entity.mca.Usuario;
 import com.sias.model.entity.mca.UsuarioSeguranca;
-import com.sias.model.entity.mca.UsuarioUnidadeAtendimento;
 import com.sias.model.service.mca.interfaces.UsuarioSegurancaService;
 import com.sias.model.service.mca.interfaces.UsuarioService;
-import com.sias.model.service.mca.interfaces.UsuarioUnidadeAtendimentoService;
 import com.sias.util.Criteria;
 import com.sias.util.ValidateException;
 
@@ -32,9 +30,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioSegurancaService usuarioSegurancaService;
 
-    @Autowired
-    private UsuarioUnidadeAtendimentoService usuarioUnidadeAtendimentoService;
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Usuario usuario) throws Exception {
@@ -44,11 +39,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         for (UsuarioSeguranca usuarioSeguranca : usuario.getUsuarioSegurancaList()) {
             usuarioSeguranca.setUsuario(usuario);
             usuarioSegurancaService.create(usuarioSeguranca);
-        }
-        usuarioUnidadeAtendimentoService.deleteByUsuario(usuario.getId());
-        for (UsuarioUnidadeAtendimento usuarioUnidadeAtendimento : usuario.getUsuarioUnidadeAtendimentoList()) {
-            usuarioUnidadeAtendimento.setUsuario(usuario);
-            usuarioUnidadeAtendimentoService.create(usuarioUnidadeAtendimento);
         }
     }
 
@@ -77,11 +67,6 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioSeguranca.setUsuario(usuario);
             usuarioSegurancaService.create(usuarioSeguranca);
         }
-        usuarioUnidadeAtendimentoService.deleteByUsuario(usuario.getId());
-        for (UsuarioUnidadeAtendimento usuarioUnidadeAtendimento : usuario.getUsuarioUnidadeAtendimentoList()) {
-            usuarioUnidadeAtendimento.setUsuario(usuario);
-            usuarioUnidadeAtendimentoService.create(usuarioUnidadeAtendimento);
-        }
     }
 
     @Override
@@ -92,6 +77,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void validate(Usuario usuario) throws Exception {
 
+        if (usuario.getUnidadeAtendimento() == null || usuario.getUnidadeAtendimento().getId() == null) {
+            throw new ValidateException("\"Unidade de Atendimento\" é um campo obrigatório");
+        }
         if (usuario.getTipo() == null || usuario.getTipo() == 0) {
             throw new ValidateException("\"Tipo\" é um campo obrigatório");
         }
@@ -100,9 +88,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         if (usuario.getNome() == null || usuario.getNome().trim().isEmpty()) {
             throw new ValidateException("\"Nome\" é um campo obrigatório");
-        }
-        if (usuario.getUsuarioUnidadeAtendimentoList() == null || usuario.getUsuarioUnidadeAtendimentoList().isEmpty()) {
-            throw new ValidateException("\"Unidade de Atendimento\" é um campo obrigatório");
         }
         if (usuario.getUsuarioSegurancaList() == null || usuario.getUsuarioSegurancaList().isEmpty()) {
             throw new ValidateException("\"Códigos de Segurança\" é um campo obrigatório!");

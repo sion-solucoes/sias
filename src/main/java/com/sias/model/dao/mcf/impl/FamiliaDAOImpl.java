@@ -16,6 +16,7 @@ import com.sias.model.entity.mcf.Familia;
 import com.sias.model.rowmapper.mcf.FamiliaRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
+import java.util.ArrayList;
 
 /**
  *
@@ -63,7 +64,26 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
 
     @Override
     public List<Familia> readByCriteria(List<Criteria> criteriaList) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String query = "SELECT * FROM " + FamiliaConstants.TABELA;
+        query += " LEFT JOIN " + FormaIngressoConstants.TABELA;
+        query += " ON " + FamiliaConstants.FORMA_INGRESSO_ID + " = " + FormaIngressoConstants.ID;
+        query += " LEFT JOIN " + CEPConstants.TABELA;
+        query += " ON " + FamiliaConstants.CEP_ENDERECO_ID + " = " + CEPConstants.ID;
+        query += " WHERE TRUE ";
+
+        List<Object> args = new ArrayList<Object>();
+
+        if (criteriaList != null) {
+            for (Criteria criteria : criteriaList) {
+                query += " AND ";
+                query += criteria.getAttribute() + " ";
+                query += criteria.getOperation() + " ? ";
+                args.add(criteria.getValue());
+            }
+        }
+
+        return getTemplate().query(query, args.toArray(), new FamiliaRowMapper());
     }
 
     @Override

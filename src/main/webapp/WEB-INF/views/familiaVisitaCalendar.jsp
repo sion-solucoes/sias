@@ -5,16 +5,17 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h2>Listagem de Unidade de Atendimento</h2>
+                <h2>Agendamento de Visitas</h2>
             </div>
-            <div id="calendar" class="card"></div>
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
         </div>
     </div>
-</div>
 </section>
 
-<%@include file="visitaModal.jsp" %>
+<%@include file="familiaVisitaModal.jsp" %>
 
 <%@include file="/WEB-INF/views/footer.jsp" %>
 
-<script type="text/javascript" src="<c:url value="/js/visitaCalendarController.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/familiaVisitaController.js"/>"></script>

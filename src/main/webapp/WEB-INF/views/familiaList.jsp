@@ -49,7 +49,7 @@
                     <thead>
                         <tr>
                             <th>Nome(pessoa de referência)</th>
-                            <th>NIS(pessoa de referência)</th>
+                            <th>Endereço</th>
                             <th><span class="glyphicon glyphicon-trash"></span></th>
                         </tr>
                     </thead>
@@ -59,12 +59,12 @@
                                 <tr>
                                     <td>
                                         <a href="<c:url value="/controleFamiliar/familia/${familia.id}/editar"/>">
-                                            ${familia.familiaMembroList[0].nome}
+                                            ${familia.nomePessoaReferencia}
                                         </a>
                                     </td>
                                     <td>
                                         <a href="<c:url value="/controleFamiliar/familia/${familia.id}/editar"/>">
-                                            ${familia.familiaMembroList[0].nis}
+                                            ${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}
                                         </a>
                                     </td>
                                     <td>

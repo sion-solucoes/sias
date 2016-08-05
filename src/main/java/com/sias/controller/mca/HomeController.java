@@ -79,6 +79,7 @@ public class HomeController {
             if (usuarioSeguranca.getCodigo().equals(codigoSeguranca)) {
                 response.put("success", true);
                 httpSession.setAttribute("usuarioSessao", usuario);
+                httpSession.setAttribute("unidadeAtendimentoSessao", usuario.getUnidadeAtendimento());
             } else {
                 response.put("success", false);
             }

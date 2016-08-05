@@ -38,6 +38,8 @@ public class FamiliaRowMapper implements RowMapper<Familia> {
             familia.setUnidadeAtendimento(unidadeAtendimento);
         }
 
+        familia.setNomePessoaReferencia(rs.getString(FamiliaConstants.NOME_PESSOA_REFERENCIA));
+        
         if (rs.getObject(FamiliaConstants.FORMA_INGRESSO_ID) != null) {
             FormaIngresso formaIngresso = new FormaIngresso();
             formaIngresso.setId(rs.getLong(FamiliaConstants.FORMA_INGRESSO_ID));

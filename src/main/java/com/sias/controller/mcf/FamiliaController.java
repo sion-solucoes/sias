@@ -5,6 +5,7 @@
  */
 package com.sias.controller.mcf;
 
+import com.sias.model.constants.mcf.FamiliaConstants;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -22,8 +23,11 @@ import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.service.mcf.interfaces.FamiliaService;
 import com.sias.util.Constants;
+import com.sias.util.Criteria;
 import com.sias.util.GSONConverter;
 import com.sias.util.ValidateException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -37,12 +41,18 @@ public class FamiliaController {
     private FamiliaService familiaService;
 
     @RequestMapping(value = "/familia", method = RequestMethod.GET)
-    public ModelAndView familia() {
+    public ModelAndView familia(HttpSession httpSession) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("familiaList");
         try {
-            modelAndView.addObject("familiaList", familiaService.readAll());
+            UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
+            List<Criteria> familiaCriteriaList = new ArrayList<Criteria>();
+            Criteria unidadeAtendimentoFamilia = new Criteria();
+            unidadeAtendimentoFamilia.setAttribute(FamiliaConstants.UNIDADE_ATENDIMENTO_ID);
+            unidadeAtendimentoFamilia.setOperation(Criteria.EQUALS);
+            unidadeAtendimentoFamilia.setValue(unidadeAtendimento.getId());
+            modelAndView.addObject("familiaList", familiaService.readByCriteria(familiaCriteriaList));
         } catch (Exception ex) {
             Logger.getLogger(FamiliaController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,7 +65,7 @@ public class FamiliaController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("familiaForm");
-        
+
         return modelAndView;
     }
 
@@ -76,18 +86,16 @@ public class FamiliaController {
 
     @RequestMapping(value = "/familia/save", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, Object> save(@RequestParam("json") String json, HttpSession session) {
+    Map<String, Object> save(@RequestParam("json") String json, HttpSession httpSession) {
 
         Map<String, Object> response = new HashMap<String, Object>();
 
         try {
+            UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
             Familia familia = (Familia) GSONConverter.convert(json, Familia.class);
-            
-            UnidadeAtendimento unidadeAtendimento = new UnidadeAtendimento();
-            unidadeAtendimento.setId(1L);
-            
+
             familia.setUnidadeAtendimento(unidadeAtendimento);
-            
+
             if (familia.getId() == null) {
                 familiaService.create(familia);
             } else {

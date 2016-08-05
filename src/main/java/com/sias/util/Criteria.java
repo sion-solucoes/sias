@@ -10,11 +10,23 @@ package com.sias.util;
  * @author Fernando Laranjo
  */
 public class Criteria {
-    
+
+    public static final String EQUALS = "=";
+
+    public static final String ILIKE = "ILIKE";
+
+    public static final String BIGGER_THEN = ">";
+
+    public static final String BIGGER_OR_EQUALS_THEN = ">=";
+
+    public static final String LESS_THEN = ">";
+
+    public static final String LESS_OR_EQUALS_THEN = ">";
+
     private String attribute;
-    
+
     private String operation;
-    
+
     private Object value;
 
     public String getAttribute() {

@@ -22,6 +22,8 @@ public class Familia extends BaseEntity {
 
     private UnidadeAtendimento unidadeAtendimento;
 
+    private String nomePessoaReferencia;
+
     private FormaIngresso formaIngresso;
 
     private String detalheFormaIngressoEncaminhamento;
@@ -35,7 +37,7 @@ public class Familia extends BaseEntity {
     private Short localizacaoEndereco;
 
     private Boolean enderecoAbrigo;
-    
+
     private CEP cepEndereco;
 
     private String logradouroEndereco;
@@ -52,6 +54,14 @@ public class Familia extends BaseEntity {
 
     public void setUnidadeAtendimento(UnidadeAtendimento unidadeAtendimento) {
         this.unidadeAtendimento = unidadeAtendimento;
+    }
+
+    public String getNomePessoaReferencia() {
+        return nomePessoaReferencia;
+    }
+
+    public void setNomePessoaReferencia(String nomePessoaReferencia) {
+        this.nomePessoaReferencia = nomePessoaReferencia;
     }
 
     public FormaIngresso getFormaIngresso() {
