@@ -43,7 +43,7 @@
                         <a href="<c:url value="/controleFamiliar/familia"/>">Cadastro de Família</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/visita"/>">Agendamento de Visitas</a>
+                        <a href="<c:url value="/controleFamiliar/familiaVisita"/>">Agendamento de Visitas</a>
                     </li>
                     <li>
                         <a href="<c:url value="/controleFamiliar/acompanhamento"/>">Acompanhamento</a>
