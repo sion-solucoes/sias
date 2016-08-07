@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.Pais;
 import com.sias.model.service.mcb.interfaces.PaisService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -53,16 +57,23 @@ public class PaisController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/pais/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute Pais pais) {
+    @RequestMapping(value = "/pais/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
+        
+        Map<String, Object> response = new HashMap<String, Object>();
 
         try {
+            Pais pais = (Pais) GSONConverter.convert(json, Pais.class);
             paisService.create(pais);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(PaisController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/cadastrosBasicos/pais");
+        return response;
     }
 
     @RequestMapping(value = "/pais/{id}/editar", method = RequestMethod.GET)

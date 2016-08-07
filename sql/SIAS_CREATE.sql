@@ -67,6 +67,7 @@
 	  especificidade_social_id         BIGSERIAL NOT NULL, 
 	  especificidade_social_descricao varchar(50) NOT NULL, 
 	  especificidade_social_indigena  boolean NOT NULL, 
+	  especificidade_social_povo_etnia varchar(50) NOT NULL,
 	  PRIMARY KEY (especificidade_social_id)
 	);
 
@@ -88,6 +89,13 @@
 	  documento_providenciavel_codigo    varchar(10) NOT NULL UNIQUE, 
 	  documento_providenciavel_descricao varchar(50) NOT NULL, 
 	  PRIMARY KEY (documento_providenciavel_id)
+	);
+
+	CREATE TABLE beneficio_eventual (
+		beneficio_eventual_id 			BIGSERIAL NOT NULL,
+		beneficio_eventual_codigo 		varchar(10) NOT NULL UNIQUE,
+		beneficio_eventual_descricao 	varchar(50) NOT NULL,
+		PRIMARY KEY (beneficio_eventual_id)
 	);
 
 	CREATE TABLE escolaridade (
@@ -191,6 +199,15 @@
 		UNIQUE (familia_membro_documento_providenciavel_familia_membro_id, familia_membro_documento_providenciavel_documento_providenciavel_id)
 	);
 
+	CREATE TABLE familia_beneficio_eventual (
+		familia_beneficio_eventual_id 		BIGSERIAL NOT NULL,
+		familia_beneficio_eventual_beneficio_eventual_id	bigint NOT NULL,
+		familia_beneficio_eventual_familia_id bigint NOT NULL,
+		PRIMARY KEY (familia_beneficio_eventual_id),
+		CONSTRAINT familia_beneficio_eventual_uk
+			UNIQUE (familia_beneficio_eventual_familia_id, familia_beneficio_eventual_beneficio_eventual_id)
+	);
+
 	CREATE TABLE familia_membro_contato (
 	  familia_membro_contato_id                        BIGSERIAL NOT NULL, 
 	  familia_membro_contato_familia_membro_id 	   bigint NOT NULL, 
@@ -220,6 +237,10 @@
 	ALTER TABLE familia ADD CONSTRAINT familia_forma_ingresso_fk FOREIGN KEY (familia_forma_ingresso_id) REFERENCES forma_ingresso (forma_ingresso_id);
 	ALTER TABLE familia ADD CONSTRAINT familia_cep_fk FOREIGN KEY (familia_cep_endereco_id) REFERENCES cep (cep_id);
 	ALTER TABLE familia ADD CONSTRAINT familia_especificidade_social_fk FOREIGN KEY (familia_especificidade_social_id) REFERENCES especificidade_social (especificidade_social_id);
+	
+	ALTER TABLE familia_beneficio_eventual ADD CONSTRAINT familia_beneficio_eventual_familia_fk FOREIGN KEY (familia_beneficio_eventual_familia_id) REFERENCES familia (familia_id) ON DELETE CASCADE;
+	ALTER TABLE familia_beneficio_eventual ADD CONSTRAINT familia_beneficio_eventual_beneficio_eventual_fk FOREIGN KEY (familia_beneficio_eventual_beneficio_eventual_id) REFERENCES beneficio_eventual (beneficio_eventual_id) ON DELETE CASCADE;
+
 	ALTER TABLE familia_membro ADD CONSTRAINT familia_membro_familia_fk FOREIGN KEY (familia_membro_familia_id) REFERENCES familia (familia_id);
 	ALTER TABLE familia_membro ADD CONSTRAINT familia_membro_grau_parentesco_fk FOREIGN KEY (familia_membro_grau_parentesco_id) REFERENCES grau_parentesco (grau_parentesco_id);
 	ALTER TABLE familia_membro ADD CONSTRAINT familia_membro_escolaridade_fk FOREIGN KEY (familia_membro_escolaridade_id) REFERENCES escolaridade (escolaridade_id);

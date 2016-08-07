@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcf.DocumentoProvidenciavel;
 import com.sias.model.service.mcf.interfaces.DocumentoProvidenciavelService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -58,16 +60,23 @@ public class DocumentoProvidenciavelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/documentoProvidenciavel/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute DocumentoProvidenciavel documentoProvidenciavel) {
+    @RequestMapping(value = "/documentoProvidenciavel/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            DocumentoProvidenciavel documentoProvidenciavel = (DocumentoProvidenciavel) GSONConverter.convert(json, DocumentoProvidenciavel.class);
             documentoProvidenciavelService.create(documentoProvidenciavel);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(DocumentoProvidenciavelController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/documentoProvidenciavel");
+        return response;
     }
 
     @RequestMapping(value = "/documentoProvidenciavel/{id}/editar", method = RequestMethod.GET)

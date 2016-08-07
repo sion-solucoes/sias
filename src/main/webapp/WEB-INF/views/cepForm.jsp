@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="card-body card-padding">
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="cepForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
@@ -79,4 +79,5 @@
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 <script type="text/javascript" src="<c:url value="/js/Formatter.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/cepController.js"/>"></script>
         

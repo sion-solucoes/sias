@@ -23,7 +23,7 @@ public class CondicaoOcupacaoRowMapper implements RowMapper<CondicaoOcupacao> {
         CondicaoOcupacao condicaoOcupacao = new CondicaoOcupacao();
 
         condicaoOcupacao.setId(rs.getLong(CondicaoOcupacaoConstants.ID));
-        condicaoOcupacao.setCodigo(rs.getString(CondicaoOcupacaoConstants.CODIGO));
+        condicaoOcupacao.setCodigo(rs.getShort(CondicaoOcupacaoConstants.CODIGO));
         condicaoOcupacao.setDescricao(rs.getString(CondicaoOcupacaoConstants.DESCRICAO));
 
         return condicaoOcupacao;

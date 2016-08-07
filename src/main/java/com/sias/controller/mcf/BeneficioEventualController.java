@@ -7,7 +7,10 @@ package com.sias.controller.mcf;
 
 import com.sias.model.entity.mcf.BeneficioEventual;
 import com.sias.model.service.mcf.interfaces.BeneficioEventualService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,16 +61,23 @@ public class BeneficioEventualController {
         return modelAndView;
     }
     
-    @RequestMapping(value = "/beneficioEventual/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute BeneficioEventual beneficioEventual) {
+    @RequestMapping(value = "/beneficioEventual/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            BeneficioEventual beneficioEventual = (BeneficioEventual) GSONConverter.convert(json, BeneficioEventual.class);
             beneficioEventualService.create(beneficioEventual);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(BeneficioEventualController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/beneficioEventual");
+        return response;
     }
     
     @RequestMapping(value = "/beneficioEventual/{id}/editar", method = RequestMethod.GET)

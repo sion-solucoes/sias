@@ -13,15 +13,15 @@ import com.sias.model.base.entity.BaseEntity;
  */
 public class Deficiencia extends BaseEntity {
 
-    private String codigo;
+    private short codigo;
 
     private String descricao;
 
-    public String getCodigo() {
+    public short getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(short codigo) {
         this.codigo = codigo;
     }
 

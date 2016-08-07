@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="card-body card-padding">
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="grauParentescoForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
@@ -27,7 +27,7 @@
                         <label for="txtCodigo" class="col-sm-2 control-label">Código</label>
                         <div class="col-md-4">
                             <div class="fg-line">
-                                <input type="text" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${grauParentesco.codigo}"/>    
+                                <input type="number" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${grauParentesco.codigo}"/>    
                             </div>
                         </div>
                     </div>
@@ -52,38 +52,4 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
-        <!--<div class="container">
-            <h2>Cadastro de Grau de Parentesco</h2>
-            <hr>
-            <div class="row clearfix">
-                <form method="post" role="form">
-                    
-                    
-                    <div class="row clearfix">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary sias-default buttons hvr-bob margem">
-                                <img alt="" src="<c:url value="/img/icon-confirm.png"/>" class="img-rounded" />
-                                Confirmar
-                            </button>
-                        </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <a href="<c:url value = "/controleFamiliar/grauParentesco"/>" class="btn btn-primary sias-default buttons hvr-bob">
-                                <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
-                                Voltar
-                            </a>
-                        </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        
-        
-    </body>
-</html>-->
+<script src="<c:url value="/js/grauParentescoController.js"/>" type="text/javascript"></script>

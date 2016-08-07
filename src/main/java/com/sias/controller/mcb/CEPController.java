@@ -20,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.CEP;
 import com.sias.model.service.mcb.interfaces.CEPService;
 import com.sias.model.service.mcb.interfaces.MunicipioService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -65,16 +68,23 @@ public class CEPController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/cep/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute CEP cep) {
-
+    @RequestMapping(value = "/cep/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
+        
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            CEP cep = (CEP) GSONConverter.convert(json, CEP.class);
             cepService.create(cep);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/cadastrosBasicos/cep");
+        return response;
     }
 
     @RequestMapping(value = "/cep/{id}/editar", method = RequestMethod.GET)

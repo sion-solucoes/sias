@@ -8,11 +8,9 @@ package com.sias.model.dao.mcf.impl;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.sias.model.constants.mcf.CondicaoOcupacaoConstants;
-import com.sias.model.constants.mcf.GrauParentescoConstants;
 import com.sias.model.dao.mcf.interfaces.CondicaoOcupacaoDAO;
 import com.sias.model.entity.mcf.CondicaoOcupacao;
 import com.sias.model.rowmapper.mcf.CondicaoOcupacaoRowMapper;
-import com.sias.model.rowmapper.mcf.GrauParentescoRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
 

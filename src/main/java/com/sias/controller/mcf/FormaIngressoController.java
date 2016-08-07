@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.sias.controller.mcb.CEPController;
 import com.sias.model.entity.mcf.FormaIngresso;
 import com.sias.model.service.mcf.interfaces.FormaIngressoService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -58,16 +60,23 @@ public class FormaIngressoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/formaIngresso/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute FormaIngresso formaIngresso) {
+    @RequestMapping(value = "/formaIngresso/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
+        
+        Map<String, Object> response = new HashMap<String, Object>();
 
         try {
+            FormaIngresso formaIngresso = (FormaIngresso) GSONConverter.convert(json, FormaIngresso.class);
             formaIngressoService.create(formaIngresso);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(FormaIngressoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/formaIngresso");
+        return response;
     }
 
     @RequestMapping(value = "/formaIngresso/{id}/editar", method = RequestMethod.GET)

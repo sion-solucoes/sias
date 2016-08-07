@@ -22,12 +22,12 @@
                 <div class="card-header">
                     <h4>Dados Básicos</h4>
                 </div>
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="deficienciaForm">
                     <div class="form-group">
                         <label for="txtCodigo" class="control-label col-sm-2">Código</label>
                         <div class="col-md-4">
                             <div class="fg-line">
-                                <input type="text" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${deficiencia.codigo}"/>    
+                                <input type="number" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${deficiencia.codigo}"/>    
                             </div>
                         </div>
                     </div>
@@ -52,3 +52,4 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
+<script src="<c:url value="/js/deficienciaController.js"/>" type="text/javascript"></script>

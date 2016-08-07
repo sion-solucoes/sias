@@ -7,7 +7,10 @@ package com.sias.controller.mcf;
 
 import com.sias.model.entity.mcf.CondicaoOcupacao;
 import com.sias.model.service.mcf.interfaces.CondicaoOcupacaoService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,16 +60,23 @@ public class CondicaoOcupacaoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/condicaoOcupacao/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute CondicaoOcupacao condicaoOcupacao) {
+    @RequestMapping(value = "/condicaoOcupacao/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            CondicaoOcupacao condicaoOcupacao = (CondicaoOcupacao) GSONConverter.convert(json, CondicaoOcupacao.class);
             condicaoOcupacaoService.create(condicaoOcupacao);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(CondicaoOcupacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/condicaoOcupacao");
+        return response;
     }
 
     @RequestMapping(value = "/condicaoOcupacao/{id}/editar", method = RequestMethod.GET)

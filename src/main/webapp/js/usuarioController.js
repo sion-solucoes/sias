@@ -144,6 +144,7 @@ $('#btnConfirmar').click(function (event) {
     var txtNome = document.getElementById("txtNome");
     var txtSobrenome = document.getElementById("txtSobrenome");
     var txtFoto = document.getElementById("txtFoto");
+    var unidadeAtendimento = document.getElementById("unidadeAtendimento");
 
     var senha = txtSenha.value;
     var confirmacaoSenha = txtConfirmacaoSenha.value;
@@ -204,7 +205,7 @@ $('#btnConfirmar').click(function (event) {
         senha: txtSenha.value,
         nome: txtNome.value,
         sobrenome: txtSobrenome.value,
-        usuarioUnidadeAtendimentoList: usuarioUnidadeAtendimentoList,
+        usuarioUnidadeAtendimentoList: unidadeAtendimento.value,
         usuarioSegurancaList: usuarioSegurancaList,
         foto: txtFoto.value
     };
@@ -212,7 +213,7 @@ $('#btnConfirmar').click(function (event) {
     var data = {
         json: JSON.stringify(usuario)
     };
-
+    console.log(data);
     $.ajax({
         method: 'POST',
         url: '/sias/controleAmbiente/usuario/save',

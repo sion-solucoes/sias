@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.sias.model.entity.mcf.Escolaridade;
 import com.sias.model.service.mcf.interfaces.EscolaridadeService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,16 +60,23 @@ public class EscolaridadeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/escolaridade/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute Escolaridade escolaridade) {
+    @RequestMapping(value = "/escolaridade/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            Escolaridade escolaridade = (Escolaridade) GSONConverter.convert(json, Escolaridade.class);
             escolaridadeService.create(escolaridade);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(EscolaridadeController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/escolaridade");
+        return response;
     }
 
     @RequestMapping(value = "/escolaridade/{id}/editar", method = RequestMethod.GET)

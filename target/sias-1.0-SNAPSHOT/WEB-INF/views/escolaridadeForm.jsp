@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="card-body card-padding">
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="escolaridadeForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
@@ -27,7 +27,7 @@
                         <label for="txtCodigo" class="control-label col-sm-2">Código</label>
                         <div class="col-md-4">
                             <div class="fg-line">
-                                <input type="text" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${escolaridade.codigo}"/>    
+                                <input type="number" placeholder="Código" max="100" min="0" name="codigo" class="form-control input-sm" id="txtCodigo" value="${escolaridade.codigo}"/>    
                             </div>
                         </div>
                     </div>
@@ -52,3 +52,4 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
+<script src="<c:url value="/js/escolaridadeController.js"/>" type="text/javascript"></script>

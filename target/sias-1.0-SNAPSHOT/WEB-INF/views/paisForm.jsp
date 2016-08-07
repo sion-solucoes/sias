@@ -5,83 +5,61 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>SIASWeb</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
-
-    </head>
-
-    <body class="background-color title-margin">
-        <%@include file="header.jsp" %>
-        <div class="container">
-            <h2>Cadastro de Pa√≠s</h2>
-            <hr>
-            <div class="row clearfix">
-                <form method="post" role="form">
-                    <div class="row clearfix">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="txtSigla">Sigla</label>
-                                <input placeholder="Sigla" maxlength="3" name="sigla" class="form-control sias-default" id="txtSigla" value="${pais.sigla}"/>    
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Cadastro de Pais</h2>
+                </div>
+                <div class="pull-right">
+                    <a type="button" href="<c:url value = "/cadastrosBasicos/pais"/>" class="btn bgm-blue">Voltar</a>
+                </div>
+            </div>
+            <div class="card-body card-padding">
+                <div class="card-header">
+                    <h4>Dados B·sicos</h4>
+                </div>
+                <form class="form-horizontal" role="form" method="POST" id="paisForm">
+                    <div class="form-group">
+                        <label for="txtSigla" class="control-label col-sm-2">Sigla</label>
+                        <div class="col-md-3">
+                            <div class="fg-line">
+                                <input placeholder="Sigla" maxlength="3" name="sigla" class="form-control input-sm" id="txtSigla" value="${pais.sigla}"/>    
                             </div>
                         </div>
                     </div>
-                    <div class="row clearfix">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label for="txtDescricao">Descri√ß√£o</label>
-                                <input placeholder="Descri√ß√£o" maxlength="100" name="descricao" class="form-control sias-default" id="txtDescricao" value="${pais.descricao}"/>    
+                    <div class="form-group">
+                        <label for="txtDescricao" class="control-label col-sm-2">DescriÁ„o</label>
+                        <div class="col-md-6">
+                            <div class="fg-line">
+                                <input placeholder="DescriÁ„o" maxlength="100" name="descricao" class="form-control input-sm" id="txtDescricao" value="${pais.descricao}"/>    
                             </div>
                         </div>
                     </div>
-                    <div class="row clearfix">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="txtCodigoBACEN">C√≥digo(BACEN)</label>
-                                <input placeholder="C√≥digo(BACEN)" name="codigoBACEN" class="form-control sias-default" id="txtCodigoBACEN" value="${pais.codigoBACEN}"/>    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-4"></div>
+                    <div class="form-group">
+                        <label for="txtCodigoBACEN" class="control-label col-sm-2">CÛdigo(BACEN)</label>
                         <div class="col-md-4">
-                            <button id="btnConfirmar" type="submit" class="btn btn-primary sias-default buttons hvr-bob margem">
-                                <img alt="" src="<c:url value="/img/icon-confirm.png"/>" class="img-rounded" />
-                                Confirmar
-                            </button>
+                            <div class="fg-line">
+                                <input placeholder="CÛdigo(BACEN)" name="codigoBACEN" class="form-control input-sm" id="txtCodigoBACEN" value="${pais.codigoBACEN}"/>    
+                            </div>
                         </div>
-                        <div class="col-md-4"></div>
                     </div>
-                    <div class="row clearfix">
-                        <div class="col-md-4"></div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"></label>
                         <div class="col-md-4">
-                            <a href="<c:url value = "/cadastrosBasicos/pais"/>" class="btn btn-primary sias-default buttons hvr-bob">
-                                <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
-                                Voltar
-                            </a>
+                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
                         </div>
-                        <div class="col-md-4"></div>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+</section>
 
-        
-        
-    </body>
-</html>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
+<script type="text/javascript" src="<c:url value="/js/paisController.js"/>"></script>
 
 

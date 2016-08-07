@@ -23,7 +23,7 @@ public class DeficienciaRowMapper implements RowMapper<Deficiencia> {
         Deficiencia deficiencia = new Deficiencia();
 
         deficiencia.setId(rs.getLong(DeficienciaConstants.ID));
-        deficiencia.setCodigo(rs.getString(DeficienciaConstants.CODIGO));
+        deficiencia.setCodigo(rs.getShort(DeficienciaConstants.CODIGO));
         deficiencia.setDescricao(rs.getString(DeficienciaConstants.DESCRICAO));
 
         return deficiencia;

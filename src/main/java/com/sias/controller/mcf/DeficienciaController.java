@@ -7,7 +7,10 @@ package com.sias.controller.mcf;
 
 import com.sias.model.entity.mcf.Deficiencia;
 import com.sias.model.service.mcf.interfaces.DeficienciaService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,16 +60,23 @@ public class DeficienciaController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deficiencia/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute Deficiencia deficiencia) {
+    @RequestMapping(value = "/deficiencia/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            Deficiencia deficiencia = (Deficiencia) GSONConverter.convert(json, Deficiencia.class);
             deficienciaService.create(deficiencia);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(DeficienciaController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/deficiencia");
+        return response;
     }
 
     @RequestMapping(value = "/deficiencia/{id}/editar", method = RequestMethod.GET)

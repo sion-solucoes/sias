@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcf.EspecificidadeSocial;
 import com.sias.model.service.mcf.interfaces.EspecificidadeSocialService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -55,16 +59,23 @@ public class EspecificidadeSocialController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/especificidadeSocial/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute EspecificidadeSocial especificidadeSocial) {
+    @RequestMapping(value = "/especificidadeSocial/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            EspecificidadeSocial especificidadeSocial = (EspecificidadeSocial) GSONConverter.convert(json, EspecificidadeSocial.class);
             especificidadeSocialService.create(especificidadeSocial);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(EspecificidadeSocialController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/controleFamiliar/especificidadeSocial");
+        return response;
     }
 
     @RequestMapping(value = "/especificidadeSocial/{id}/editar", method = RequestMethod.GET)

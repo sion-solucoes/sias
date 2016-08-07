@@ -57,6 +57,9 @@
                 <a href="<c:url value="#"/>" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-list"></i> Cadastros Básicos</a>
                 <ul>
                     <li>
+                        <a href="<c:url value="/cadastrosBasicos/pais"/>"> Cadastro de Pais</a>
+                    </li>
+                    <li>
                         <a href="<c:url value="/cadastrosBasicos/unidadeFederacao"/>"> Cadastro de Unidade Federativa(UF)</a>
                     </li>
                     <li>

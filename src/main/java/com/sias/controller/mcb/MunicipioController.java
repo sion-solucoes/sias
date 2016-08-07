@@ -17,6 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.Municipio;
 import com.sias.model.service.mcb.interfaces.MunicipioService;
 import com.sias.model.service.mcb.interfaces.UnidadeFederacaoService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -62,16 +66,23 @@ public class MunicipioController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/municipio/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute Municipio municipio) {
+    @RequestMapping(value = "/municipio/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save (String json) {
+        
+        Map<String, Object> response = new HashMap<String, Object>();
 
         try {
+            Municipio municipio = (Municipio) GSONConverter.convert(json, Municipio.class);
             municipioService.create(municipio);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/cadastrosBasicos/municipio");
+        return response;
     }
 
     @RequestMapping(value = "/municipio/{id}/editar", method = RequestMethod.GET)

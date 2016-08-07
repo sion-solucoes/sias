@@ -17,6 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.UnidadeFederacao;
 import com.sias.model.service.mcb.interfaces.PaisService;
 import com.sias.model.service.mcb.interfaces.UnidadeFederacaoService;
+import com.sias.util.GSONConverter;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -62,16 +66,23 @@ public class UnidadeFederacaoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/unidadeFederacao/novo", method = RequestMethod.POST)
-    public ModelAndView novo(@ModelAttribute UnidadeFederacao unidadeFederacao) {
+    @RequestMapping(value = "/unidadeFederacao/save", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> save(String json) {
 
+        Map<String, Object> response = new HashMap<String, Object>();
+        
         try {
+            UnidadeFederacao unidadeFederacao = (UnidadeFederacao) GSONConverter.convert(json, UnidadeFederacao.class);
             unidadeFederacaoService.create(unidadeFederacao);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(UnidadeFederacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
         }
 
-        return new ModelAndView("redirect:/cadastrosBasicos/unidadeFederacao");
+        return response;
     }
 
     @RequestMapping(value = "/unidadeFederacao/{id}/editar", method = RequestMethod.GET)

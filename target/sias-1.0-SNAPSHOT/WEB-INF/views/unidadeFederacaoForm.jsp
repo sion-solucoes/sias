@@ -20,7 +20,7 @@
             </div>
                 
             <div class="card-body card-padding">
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="unidadeFederativaForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
@@ -79,6 +79,9 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
+
+<script src="<c:url value="/js/unidadeFederacaoController.js"/>"></script>
+
 
    
 
