@@ -21,9 +21,10 @@ $('#unidadeFederativaForm').submit(function (event) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
-                    Msg.notify(data.msg, 'success', 2000, null, function () {
+                    var voltarListagem = function () {
                         document.location.assign('../unidadeFederacao');
-                    });
+                    };
+                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }
