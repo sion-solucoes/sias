@@ -105,6 +105,19 @@ INSERT INTO deficiencia ( deficiencia_codigo, deficiencia_descricao ) VALUES ( 6
 INSERT INTO deficiencia ( deficiencia_codigo, deficiencia_descricao ) VALUES ( 7, 'Síndrome de Down');
 INSERT INTO deficiencia ( deficiencia_codigo, deficiencia_descricao ) VALUES ( 8, 'Transtorno/doença mental');
 
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 1, 'Auxilio Natalidade');
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 2, 'Auxilio Funeral');
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 3, 'Item/Kit especifico para enfrentamento de situações de Emergência ou Calamidade Pública');
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 4, 'Cesta Básica');
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 5, 'Aluguel Social/Pagamento de aluguel');
+INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_descricao)
+	VALUES ( 6, 'Outros');
+
 INSERT INTO familia 
 (
 familia_unidade_atendimento_id, 
