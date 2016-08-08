@@ -27,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -88,9 +89,36 @@ public class FamiliaVisitaController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/familiaVisita/find", method = RequestMethod.GET)
+    @RequestMapping(value = "/familiaVisita/save", method = RequestMethod.POST)
     public @ResponseBody
-    List<FamiliaVisita> familia(@RequestParam("inicio") Date inicio, @RequestParam("fim") Date fim, HttpSession httpSession) {
+    Map<String, Object> save(@RequestParam("json") String json, HttpSession httpSession) {
+
+        Map<String, Object> response = new HashMap<String, Object>();
+
+        try {
+            UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
+            FamiliaVisita familiaVisita = (FamiliaVisita) GSONConverter.convert(json, FamiliaVisita.class);
+            familiaVisita.setUnidadeAtendimento(unidadeAtendimento);
+            familiaVisitaService.create(familiaVisita);
+            response.put("success", true);
+            response.put("msg", "Salvo com sucesso!");
+        } catch (ValidateException ex) {
+            response.put("success", false);
+            response.put("msg", ex.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(FamiliaController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
+        }
+
+        return response;
+    }
+
+    @RequestMapping(value = "/familiaVisita/find", method = RequestMethod.POST)
+    public @ResponseBody
+    Map<String, Object> find(@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm") @RequestParam("inicio") Date inicio, @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm") @RequestParam("fim") Date fim, HttpSession httpSession) {
+
+        Map<String, Object> response = new HashMap<String, Object>();
 
         try {
             List<Criteria> criteriaList = new ArrayList<Criteria>();
@@ -114,33 +142,29 @@ public class FamiliaVisitaController {
             criteriaUnidadeAtendimento.setValue(fim);
             criteriaUnidadeAtendimento.setValue(unidadeAtendimento.getId());
             criteriaList.add(criteriaUnidadeAtendimento);
-            
-            return familiaVisitaService.readByCriteria(criteriaList);
+
+            response.put("familiaVisitaList", familiaVisitaService.readByCriteria(criteriaList));
+            response.put("success", true);
         } catch (Exception e) {
-            
+            Logger.getLogger(FamiliaVisitaController.class.getName()).log(Level.SEVERE, null, e);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
         }
 
-        return null;
+        return response;
     }
 
-    @RequestMapping(value = "/familiaVisita/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/familiaVisita/delete", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, Object> save(@RequestParam("json") String json, HttpSession httpSession) {
+    Map<String, Object> delete(@RequestParam("id") Long id, HttpSession httpSession) {
 
         Map<String, Object> response = new HashMap<String, Object>();
 
         try {
-            UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
-            FamiliaVisita familiaVisita = (FamiliaVisita) GSONConverter.convert(json, FamiliaVisita.class);
-            familiaVisita.setUnidadeAtendimento(unidadeAtendimento);
-            familiaVisitaService.create(familiaVisita);
+            familiaVisitaService.delete(id);
             response.put("success", true);
-            response.put("msg", "Salvo com sucesso!");
-        } catch (ValidateException ex) {
-            response.put("success", false);
-            response.put("msg", ex.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(FamiliaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(FamiliaVisitaController.class.getName()).log(Level.SEVERE, null, e);
             response.put("success", false);
             response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
         }

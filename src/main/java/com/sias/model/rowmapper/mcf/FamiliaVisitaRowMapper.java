@@ -27,6 +27,8 @@ public class FamiliaVisitaRowMapper implements RowMapper<FamiliaVisita> {
 
         FamiliaVisita familiaVisita = new FamiliaVisita();
 
+        familiaVisita.setId(rs.getLong(FamiliaVisitaConstants.ID));
+        
         if (rs.getObject(FamiliaVisitaConstants.UNIDADE_ATENDIMENTO_ID) == null) {
             UnidadeAtendimento unidadeAtendimento = new UnidadeAtendimento();
             unidadeAtendimento.setId(rs.getLong(FamiliaVisitaConstants.UNIDADE_ATENDIMENTO_ID));
@@ -57,8 +59,8 @@ public class FamiliaVisitaRowMapper implements RowMapper<FamiliaVisita> {
             familiaVisita.setUsuario(usuario);
         }
 
-        familiaVisita.setInicio(rs.getDate(FamiliaVisitaConstants.INICIO));
-        familiaVisita.setFim(rs.getDate(FamiliaVisitaConstants.FIM));
+        familiaVisita.setInicio(rs.getTimestamp(FamiliaVisitaConstants.INICIO));
+        familiaVisita.setFim(rs.getTimestamp(FamiliaVisitaConstants.FIM));
         familiaVisita.setCor(rs.getString(FamiliaVisitaConstants.COR));
         
         return familiaVisita;

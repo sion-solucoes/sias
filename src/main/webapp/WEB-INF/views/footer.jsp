@@ -23,15 +23,20 @@
 <script type="text/javascript" src="<c:url value="/js/Select2TecnicoConfig.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Select2FamiliaConfig.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Searcher.js"/>"></script>
-<!--<script type="text/javascript" src="<c:url value="/js/jquery.dataTables.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/jquery.dataTables.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/dataTables.bootstrap.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/DataTableConfig.js"/>"></script>-->
 <script type="text/javascript" src="<c:url value="/js/Formatter.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.price-format.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/PriceFormatConfig.js"/>"></script>
 
 <!-- js template -->
+<script src="<c:url value="/js/jquery.sparkline.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.easypiechart.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.flot.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.flot.pie.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.flot.resize.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.flot.tooltip.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.flot.orderBars.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/curvedLines.js"/>" type="text/javascript"></script>
+
 <script src="<c:url value="/js/jquery.mCustomScrollbar.concat.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/waves.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/bootstrap-growl.min.js"/>" type="text/javascript"></script>
