@@ -21,12 +21,11 @@ $('#unidadeFederativaForm').submit(function (event) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
-                    Msg.notify(data.msg, 'success');
-                    setTimeout(function () {
+                    Msg.notify(data.msg, 'success', 2000, null, function () {
                         document.location.assign('../unidadeFederacao');
-                    }, 1500);
+                    });
                 } else {
-                    Msg.notify(data.msg, 'danger');
+                    Msg.notify(data.msg, 'warning');
                 }
             }
         },

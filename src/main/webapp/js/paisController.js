@@ -18,17 +18,16 @@ $('#paisForm').submit(function (event) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
-                    Msg.notify(data.msg, 'success');
-                    setTimeout(function () {
+                    Msg.notify(data.msg, 'success', 2000, null, function () {
                         document.location.assign('../pais');
-                    }, 1500);
+                    });
                 } else {
-                    Msg.notify(data.msg, 'danger');
+                    Msg.notify(data.msg, 'warning');
                 }
             }
         },
         failure: function (data) {
-            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema');
+            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema', 'warning');
         }
     });
 
