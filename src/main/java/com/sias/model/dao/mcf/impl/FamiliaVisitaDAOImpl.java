@@ -5,6 +5,7 @@
  */
 package com.sias.model.dao.mcf.impl;
 
+import com.sias.model.constants.mcf.FamiliaConstants;
 import com.sias.model.constants.mcf.FamiliaVisitaConstants;
 import com.sias.model.dao.mcf.interfaces.FamiliaVisitaDAO;
 import com.sias.model.entity.mcf.FamiliaVisita;
@@ -55,8 +56,9 @@ public class FamiliaVisitaDAOImpl extends JDBCBaseDAO implements FamiliaVisitaDA
     public List<FamiliaVisita> readByCriteria(List<Criteria> criteriaList) throws Exception {
 
         String query = "SELECT * FROM " + FamiliaVisitaConstants.TABELA;
+        query += " LEFT JOIN " + FamiliaConstants.TABELA;
+        query += " ON " + FamiliaVisitaConstants.FAMILIA_ID + " = " + FamiliaConstants.ID;
         query += " WHERE TRUE ";
-
         List<Object> args = new ArrayList<Object>();
         if (criteriaList != null) {
             for (Criteria criteria : criteriaList) {
@@ -87,7 +89,13 @@ public class FamiliaVisitaDAOImpl extends JDBCBaseDAO implements FamiliaVisitaDA
 
     @Override
     public void delete(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String query = "DELETE FROM " + FamiliaVisitaConstants.TABELA;
+        query += " WHERE " + FamiliaVisitaConstants.ID + "=? ";
+
+        Object args[] = {id};
+        
+        getTemplate().update(query, args);
     }
 
 }

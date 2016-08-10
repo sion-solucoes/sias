@@ -20,8 +20,8 @@
                     
                 </div>
 
-                <div class="sp-info">
-                    ${usuarioSessao.email}
+                <div class="sp-info" id="${usuarioSessao.nome}">
+                    ${usuarioSessao.nome} - ${usuarioSessao.email}
                     <i class="zmdi zmdi-caret-down"></i>
                 </div>
             </a>
