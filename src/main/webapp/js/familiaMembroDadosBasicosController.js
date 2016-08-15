@@ -3,6 +3,9 @@ $('#comboGrauParentesco').ready(function (event) {
     var txtGrauParentesco = $('#txtGrauParentesco');
     var grauParentescoId = txtGrauParentesco.val();
     var comboGrauParentesco = $('#comboGrauParentesco');
+    comboGrauParentesco.selectpicker({
+        size: 4
+    });
 
     $.ajax({
         method: 'POST',
@@ -17,6 +20,7 @@ $('#comboGrauParentesco').ready(function (event) {
                     option.text = grauParentesco.codigo + ' - ' + grauParentesco.descricao;
                     comboGrauParentesco.append(option);
                 }
+                comboGrauParentesco.selectpicker("refresh");
             }
         }
     });

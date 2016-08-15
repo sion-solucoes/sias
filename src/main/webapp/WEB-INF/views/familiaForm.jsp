@@ -5,62 +5,59 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>SIASWeb</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
-
-    </head>
-
-    <body class="background-color title-margin">
-        <%@include file="header.jsp" %>
-        <div class="container">
-            <input id="txtId" type="number" hidden="true" name="id" value="${familia.id}">
-            <h2>Cadastro de FamÃ­lia</h2>
-            <hr>
-            <form method="post" role="form">
-                <%@include file="familiaFormPanDadosBasicos.jsp" %>
-                <%@include file="familiaFormPanComposicaoFamiliar.jsp" %>
-                <%@include file="familiaFormPanCondicoesHabitacionais.jsp" %>
-                <div class="row clearfix margem">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <a id="btnConfirmar" type="submit" class="btn btn-primary sias-default buttons hvr-bob">
-                            <img alt="" src="<c:url value="/img/icon-confirm.png"/>" class="img-rounded" />
-                            Confirmar
-                        </a>
-                    </div>
-                    <div class="col-md-4"></div>
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Cadastro de Família</h2>
                 </div>
-                <div class="row clearfix">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <a href="<c:url value = "/controleFamiliar/familia"/>" class="btn btn-primary sias-default buttons hvr-bob">
-                            <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
-                            Voltar
-                        </a>
-                    </div>
-                    <div class="col-md-4"></div>
+                <div class="pull-right">
+                    <a href="<c:url value="/controleFamiliar/familia"/>" type="button" class="btn bgm-blue">Voltar</a>
                 </div>
-            </form>
+            </div>
+            <div class="card-body card-padding">
+                <form class="form-wizard-basic fw-container form-horizontal">
+                    <input id="txtId" type="hidden" name="id" value="${familia.id}">
+                    <ul class="tab-nav text-center">
+                        <li><a href="#tab1" data-toggle="tab">Dados Básicos</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Composição Familiar</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Condições Habitacionais</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane animated fadeInUp" id="tab1">
+                            <jsp:include page="/WEB-INF/views/familiaFormPanDadosBasicos.jsp"/>
+                        </div>
+                        <div class="tab-pane animated fadeInUp" id="tab2">
+                            <jsp:include page="/WEB-INF/views/familiaFormPanComposicaoFamiliar.jsp"/>
+                        </div>
+                        <div class="tab-pane animated fadeInUp" id="tab3">
+                            <jsp:include page="/WEB-INF/views/familiaFormPanCondicoesHabitacionais.jsp"/>
+                        </div>
+                        
+                        <ul class="fw-footer pagination wizard">
+                            <li class="previous first"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
+                            <li class="previous"><a class="a-prevent" href=""><i class="zmdi zmdi-chevron-left"></i></a></li>
+                            <li class="next"><a class="a-prevent" href=""><i class="zmdi zmdi-chevron-right"></i></a></li>
+                            <li class="next last"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
+</section>
 
-        <script type="text/javascript" src="<c:url value="/js/familiaController.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/familiaDadosBasicosController.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/familiaComposicaoFamiliarController.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/familiaEnderecoController.js"/>"></script>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 
-    </body>
-</html>
+<jsp:include page="/WEB-INF/views/familiaMembroForm.jsp"/>
+
+<script type="text/javascript" src="<c:url value="/js/familiaController.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/familiaDadosBasicosController.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/familiaComposicaoFamiliarController.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/familiaEnderecoController.js"/>"></script>
+
+   

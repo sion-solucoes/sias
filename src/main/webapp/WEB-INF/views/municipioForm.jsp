@@ -42,8 +42,8 @@
                     <div class="form-group">
                         <label for="comboUnidadeFederacao" class="control-label col-sm-2">Unidade Federação</label>
                         <div class="col-md-4">
-                            <select class="selectpicker" data-live-search="true" id="comboUnidadeFederacao" name="unidadeFederacao.id">
-                                <option>Selecione o estado...</option>
+                            <select class="selectpicker" title="Selecione o estado..." data-live-search="true" id="comboUnidadeFederacao" name="unidadeFederacao.id">
+                                
                                 <c:if test="${not empty unidadeFederacaoList}">
                                     <c:forEach var="unidadeFederacao" items="${unidadeFederacaoList}">
                                         <c:if test="${municipio.unidadeFederacao.id == unidadeFederacao.id}">

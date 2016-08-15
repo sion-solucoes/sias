@@ -80,6 +80,7 @@ C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\model\dao\mca\interfa
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\model\constants\mcf\FamiliaVisitaConstants.java
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\model\rowmapper\mcb\PaisRowMapper.java
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\model\entity\mcb\Pais.java
+C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\util\CustomDateJsonSerializer.java
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\controller\mca\UsuarioSegurancaController.java
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\model\service\mca\interfaces\UnidadeAtendimentoService.java
 C:\Users\jaderhenrique\Desktop\sias\src\main\java\com\sias\controller\mcb\MunicipioController.java

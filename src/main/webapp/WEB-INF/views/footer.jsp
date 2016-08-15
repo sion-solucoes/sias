@@ -45,6 +45,8 @@
 <script src="<c:url value="/js/bootgridConfig.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/bootstrap-select.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/bootstrap-datetimepicker.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/jquery.bootstrap.wizard.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/js/autosize.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/app.js"/>" type="text/javascript"></script>
 
 <script type="text/javascript" src="<c:url value="/js/Msg.js"/>"></script>

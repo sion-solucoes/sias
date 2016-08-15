@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.service.mcf.interfaces.FamiliaService;
+import com.sias.model.service.mcf.interfaces.FormaIngressoService;
 import com.sias.util.Constants;
 import com.sias.util.Criteria;
 import com.sias.util.GSONConverter;
@@ -39,7 +40,7 @@ public class FamiliaController {
 
     @Autowired
     private FamiliaService familiaService;
-
+    
     @RequestMapping(value = "/familia", method = RequestMethod.GET)
     public ModelAndView familia(HttpSession httpSession) {
 
@@ -65,7 +66,7 @@ public class FamiliaController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("familiaForm");
-
+        
         return modelAndView;
     }
 

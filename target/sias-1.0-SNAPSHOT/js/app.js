@@ -373,8 +373,6 @@ $(window).load(function () {
     if (!document.URL.endsWith('home'))
         return;
 
-
-
     function notify(message, type) {
         $.growl({
             message: message
@@ -413,47 +411,51 @@ $(document).ready(function () {
     /*----------------------------------------------
      Make some random data for Flot Line Chart
      ----------------------------------------------*/
-    var data1 = [[1, 60], [2, 30], [3, 50], [4, 100], [5, 10], [6, 90], [7, 85]];
-    var data2 = [[1, 20], [2, 90], [3, 60], [4, 40], [5, 100], [6, 25], [7, 65]];
-    var data3 = [[1, 100], [2, 20], [3, 60], [4, 90], [5, 80], [6, 10], [7, 5]];
+    var data = [
+        [1, 4], 
+        [2, 5], 
+        [3, 3],
+        [4, 6], 
+        [5, 5], 
+        [6, 0], 
+        [7, 0],
+        [8, 4], 
+        [9, 5], 
+        [10, 3],
+        [11, 6], 
+        [12, 5], 
+        [13, 0], 
+        [14, 0],
+        [15, 4], 
+        [16, 5], 
+        [17, 3],
+        [18, 6], 
+        [19, 5], 
+        [20, 0], 
+        [21, 0],
+        [22, 4], 
+        [23, 5], 
+        [24, 3],
+        [25, 6], 
+        [26, 5], 
+        [27, 0], 
+        [28, 0],
+        [29, 4], 
+        [30, 5]
+    ];
 
     /* Create an Array push the data + Draw the bars*/
 
     var barData = new Array();
 
     barData.push({
-        data: data1,
-        label: 'Tokyo',
+        data: data,
         bars: {
             show: true,
             barWidth: 0.08,
             order: 1,
             lineWidth: 0,
             fillColor: '#8BC34A'
-        }
-    });
-
-    barData.push({
-        data: data2,
-        label: 'Seoul',
-        bars: {
-            show: true,
-            barWidth: 0.08,
-            order: 2,
-            lineWidth: 0,
-            fillColor: '#00BCD4'
-        }
-    });
-
-    barData.push({
-        data: data3,
-        label: 'Beijing',
-        bars: {
-            show: true,
-            barWidth: 0.08,
-            order: 3,
-            lineWidth: 0,
-            fillColor: '#FF9800'
         }
     });
 
@@ -824,11 +826,11 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     var pieData = [
-        {data: 1, color: '#F44336', label: 'Toyota'},
-        {data: 2, color: '#03A9F4', label: 'Nissan'},
-        {data: 3, color: '#8BC34A', label: 'Hyundai'},
-        {data: 4, color: '#FFEB3B', label: 'Scion'},
-        {data: 4, color: '#009688', label: 'Daihatsu'},
+        {data: 1, color: '#F44336', label: 'Auxílio Natalidade'},
+        {data: 2, color: '#03A9F4', label: 'Auxílio Funeral'},
+        {data: 3, color: '#8BC34A', label: 'Cesta Básica'},
+        {data: 4, color: '#FFEB3B', label: 'Aluguel'},
+        {data: 4, color: '#009688', label: 'Outros'},
     ];
 
 
