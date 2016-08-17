@@ -1,5 +1,6 @@
 com\sias\model\service\mcb\impl\UnidadeFederacaoServiceImpl.class
 com\sias\model\service\mcf\impl\FamiliaServiceImpl.class
+com\sias\util\CustomDateJsonSerializer.class
 com\sias\model\entity\mcb\CEP.class
 com\sias\model\constants\mcf\EspecificidadeSocialConstants.class
 com\sias\model\service\mca\impl\UsuarioServiceImpl.class

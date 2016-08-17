@@ -51,8 +51,7 @@
                     <div class="form-group">
                         <label for="comboPais" class="col-sm-2 control-label">Pais</label>
                         <div class="col-md-5">
-                            <select class="selectpicker" data-live-search="true" id="comboPais" name="pais.id">
-                                <option>Selecione o pais...</option>
+                            <select class="selectpicker" title="Selecione o pais..." data-live-search="true" id="comboPais" name="pais.id">
                                 <c:if test="${not empty paisList}">
                                     <c:forEach var="pais" items="${paisList}">
                                         <c:if test="${unidadeFederacao.pais.id == pais.id}">

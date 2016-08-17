@@ -1,25 +1,32 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="familiaFormPanDadosBasicos">
-    <h3>Dados Básicos</h3>
-    <hr>
-    <div class="row clearfix margem">
-        <div class="col-md-12">
-            <input id="txtFormaIngresso" hidden="true" name="formaIngresso.id" value="${familia.formaIngresso.id}">
+    <div class="card-header">
+        <h3>Dados Básicos</h3>
+    </div>
+    <div class="row form-group p-l-30">
+        <div class="col-md-6">
             <label for="comboFormaIngresso">Forma de Ingresso</label>
-            <select class="form-control sias-default" name="formaIngresso.id" id="comboFormaIngresso">
-                <option disabled="true" selected>Selecione...</option>
+            <input id="txtFormaIngresso" hidden="true" name="formaIngresso.id" value="${familia.formaIngresso.id}">
+            <select class="selectpicker" data-live-search="true" title="Selecione..." name="formaIngresso.id" id="comboFormaIngresso">
+                <!--<option disabled="true" selected>Selecione...</option>-->
+                
             </select>
         </div>
     </div>
-    <div class="row clearfix">
-        <div class="col-md-12">
+    <div class="row form-group p-l-30">
+        <div class="col-md-10">
             <label for="txtDetalheFormaIngressoEncaminhamento">Detalhe o nome e contato do órgão/unidade que encaminhou o usuário/a família(detalhe da forma de ingresso)</label>
-            <textarea class="form-control sias-default" rows="2" id="txtDetalheFormaIngressoEncaminhamento">${familia.detalheFormaIngressoEncaminhamento}</textarea>
+            <div class="fg-line">
+                <textarea class="form-control auto-size" id="txtDetalheFormaIngressoEncaminhamento">${familia.detalheFormaIngressoEncaminhamento}</textarea>
+            </div>
         </div>
     </div>
-    <div class="row clearfix">
-        <div class="col-md-12">
+    <div class="row form-group p-l-30">
+        <div class="col-md-10">
             <label for="txtObservacaoFormaIngresso">Quais razões, demandas ou necessidades motivaram o atendimento?(observação da forma de ingresso)</label>
-            <textarea class="form-control sias-default" rows="5" id="txtObservacaoFormaIngresso">${familia.observacaoFormaIngresso}</textarea>
+            <div class="fg-line">
+                <textarea class="form-control auto-size" id="txtObservacaoFormaIngresso">${familia.observacaoFormaIngresso}</textarea>
+            </div>
         </div>
     </div>
 </div>

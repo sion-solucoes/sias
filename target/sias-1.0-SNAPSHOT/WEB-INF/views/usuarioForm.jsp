@@ -1,4 +1,4 @@
-8 <%-- 
+<%-- 
     Document   : usuarioForm
     Created on : 12/06/2015, 22:37:07
     Author     : Fernando Laranjo
@@ -76,8 +76,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Unidade de Atendimento</label>
                         <div class="col-md-6">
-                            <select class="selectpicker" data-live-search="true" id="unidadeAtendimento">
-                                <option>Selecione...</option>
+                            <select class="selectpicker" title="Selecione..." data-live-search="true" id="unidadeAtendimento">
                                 <c:if test="${not empty unidadeAtendimentoList}">
                                     <c:forEach var="unidadeAtendimento" items="${unidadeAtendimentoList}">
                                         <option value="${unidadeAtendimento.codigo}">${unidadeAtendimento.descricao}</option>

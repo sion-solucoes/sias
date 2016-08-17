@@ -72,8 +72,8 @@
                     <div class="form-group">
                         <label for="comboCEPEndereco" class="col-sm-2 control-label">CEP</label>
                         <div class="col-md-6">
-                            <select class="selectpicker" data-live-search="true" id="comboCEPEndereco">
-                                <option>Selecione...</option>
+                            <select class="selectpicker" title="Selecione..." data-live-search="true" id="comboCEPEndereco">
+                                <!--<option>Selecione...</option>-->
                                 <c:if test="${not empty cepList}">
                                     <c:forEach var="cep" items="${cepList}">
                                         <option value="${cep.id}">${cep.codigo}</option>

@@ -15,31 +15,56 @@ $(document).ready(function () {
         theme: true, //Do not remove this as it ruin the design
         selectable: true,
         selectHelper: true,
-        editable: true,
+        eventRender: function (event, element) {
+            element.find('.fc-content').append("<button id='delete-event' class='fc-time'>X</button>");
+            element.find("#delete-event").click(function () {
+                $.ajax({
+                    method: 'POST',
+                    url: '../controleFamiliar/familiaVisita/delete',
+                    data: {
+                        id: event._id
+                    },
+                    success: function () {
+                        $('#calendar').fullCalendar('refetchEvents');
+                    }
+                });
+            });
+        },
         events: function (start, end, timezone, callback) {
             $.ajax({
+                method: 'POST',
                 url: '../controleFamiliar/familiaVisita/find',
                 data: {
-                    inicio: start.unix(),
-                    fim: end.unix()
+                    inicio: moment(start).format('DD/MM/YYYY HH:mm'),
+                    fim: moment(start).format('DD/MM/YYYY HH:mm')
                 },
-                success: function (doc) {
-                    var events = [];
-                    $(doc).find('event').each(function () {
-                        events.push({
-                            title: $(this).attr('title'),
-                            start: $(this).attr('start') // will be parsed
-                        });
-                    });
-                    callback(events);
+                success: function (data) {
+                    if (data != null) {
+                        if (data.success) {
+                            var events = [];
+                            var familiaVisitaList = data.familiaVisitaList;
+                            $.each(familiaVisitaList, function (index, familiaVisita) {
+                                events.push({
+                                    id: familiaVisita.id,
+                                    title: familiaVisita.familia.nomePessoaReferencia,
+                                    allDay: false,
+                                    start: new Date(familiaVisita.inicio),
+                                    end: new Date(familiaVisita.fim),
+                                    className: familiaVisita.cor
+                                });
+                            });
+                            callback(events);
+
+                        }
+                    }
                 }
             });
         },
         //On Day Select
         select: function (start, end, allDay) {
             $('#addNew-event').modal('show');
-            $('#dtpInicio').val(moment(start).format('DD/MM/YYYY HH:ss'));
-            $('#dtpFim').val(moment(end).format('DD/MM/YYYY HH:ss'));
+            $('#dtpInicio').val(moment(start).format('DD/MM/YYYY HH:mm'));
+            $('#dtpFim').val(moment(end).format('DD/MM/YYYY HH:mm'));
         }
     });
     //Create and ddd Action button with dropdown in Calendar header. 

@@ -1,32 +1,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="familiaFormPanComposicaoFamiliar">
-    <h3>Composição Familiar</h3>
+    <div class="card-header">
+        <h3>Composição Familiar</h3>
+    </div>
     <hr>
-    <div class="row clearfix margem">
+    <center class="form-group">
         <div class="col-md-4"></div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary buttons hvr-bob sias-default" id="btnAdicionarMembro">
-                <img alt="" src="<c:url value="/img/icon-add.png"/>" class="img-rounded" />
+        <div class="col-md-2 text-center">
+            <button type="button" class="btn bgm-blue" id="btnAdicionarMembro">
                 Adicionar Membro
             </button>
         </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary buttons hvr-bob sias-default" id="btnEditarMembro">
-                <img alt="" src="<c:url value="/img/icon-edit.png"/>" class="img-rounded" />
+        <div class="col-md-2 text-center">
+            <button type="button" class="btn bgm-blue" id="btnEditarMembro">
                 Editar Membro
             </button>
         </div>
         <div class="col-md-4"></div>
+    </center>
+    <div class="form-group m-t-30">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-condensed" id="tabelaComposicaoFamiliar">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Grau Parentesco</th>
+                    <th><span class="glyphicon glyphicon-trash"></span></th>
+                </tr>
+            </thead>
+        </table>
+        </div>
     </div>
-    <%@include file="familiaMembroForm.jsp" %>
-    <table class="table table-striped" id="tabelaComposicaoFamiliar">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Nome</th>
-                <th>Grau Parentesco</th>
-                <th><span class="glyphicon glyphicon-trash"></span></th>
-            </tr>
-        </thead>
-    </table>
 </div>

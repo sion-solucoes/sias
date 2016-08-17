@@ -2,7 +2,10 @@ $('#comboFormaIngresso').ready(function (event) {
 
     var txtFormaIngresso = $('#txtFormaIngresso');
     var formaIngressoId = txtFormaIngresso.val();
-    var combo = document.getElementById('comboFormaIngresso');
+    var combo = $('#comboFormaIngresso');
+    combo.selectpicker({
+        size: 4
+    });
 
     $.ajax({
         method: 'POST',
@@ -18,8 +21,9 @@ $('#comboFormaIngresso').ready(function (event) {
                     if (formaIngressoId == formaIngresso.id) {
                         option.selected = true;
                     }
-                    combo.appendChild(option);
+                    combo.append(option);
                 }
+                combo.selectpicker('refresh');
             }
         }
     });

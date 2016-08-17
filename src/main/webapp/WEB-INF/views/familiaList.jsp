@@ -6,51 +6,26 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>SIASWeb</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
-
-    </head>
-
-    <body class="background-color title-margin">
-        <%@include file="header.jsp" %>
-        <div class="container">
-            <h2>Listagem de FamÃ­lias</h2>
-            <hr>
-            <div class="row clearfix">
-                <div class="col-md-2 column margem">
-                    <a type="button" class="btn btn-primary buttons hvr-bob sias-default" href="<c:url value="/controleFamiliar/familia/novo"/>">
-                        <img alt="" src="<c:url value="/img/icon-add.png"/>" class="img-rounded" />
-                        Novo
-                    </a>
+<section id="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pull-left">
+                    <h2>Listagem de Famílias</h2>
                 </div>
-                <div class="col-md-2 column margem">
-                    <a type="button" class="btn btn-primary buttons hvr-bob sias-default" href="<c:url value="/controleFamiliar"/>">
-                        <img alt="" src="<c:url value="/img/icon-back.png"/>" class="img-rounded" />
-                        Voltar
-                    </a>
+                <div class="pull-right">
+                    <a type="button" class="btn bgm-blue" href="<c:url value="/controleFamiliar/familia/novo"/>">Novo</a>
                 </div>
             </div>
-            <div class="col-md-12">
-                <table class="table table-striped" id="tabela">
+            <div class="table-responsive">
+                <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th>Nome(pessoa de referÃªncia)</th>
-                            <th>EndereÃ§o</th>
-                            <th><span class="glyphicon glyphicon-trash"></span></th>
+                            <th data-column-id="pessoa_referencia">Nome(pessoa de referência)</th>
+                            <th data-column-id="endereco">Endereço</th>
+                            <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,20 +33,16 @@
                             <c:forEach var="familia" items="${familiaList}">
                                 <tr>
                                     <td>
-                                        <a href="<c:url value="/controleFamiliar/familia/${familia.id}/editar"/>">
-                                            ${familia.nomePessoaReferencia}
-                                        </a>
+                                        ${familia.nomePessoaReferencia}
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/controleFamiliar/familia/${familia.id}/editar"/>">
-                                            ${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}
-                                        </a>
+                                        ${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}
                                     </td>
-                                    <td>
+                                    <!--<td>
                                         <a href="<c:url value="/controleFamiliar/familia/${familia.id}/excluir"/>">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </a>
-                                    </td>
+                                    </td>-->
                                 </tr>
                             </c:forEach>
                         </c:if>
@@ -79,12 +50,17 @@
                 </table>
             </div>
         </div>
+    </div>
+</section>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#tabela').DataTable(DataTableConfig);
-            });
-        </script>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 
-    </body>
-</html>
+<!-- Data Table -->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Command Buttons
+        $("#data-table-command").bootgrid(bootgridConfig);
+    });
+
+</script>

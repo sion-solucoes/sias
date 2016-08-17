@@ -50,8 +50,8 @@
                     <div class="form-group">
                         <label for="comboMunicipio" class="control-label col-sm-2">Município</label>
                         <div class="col-md-4">
-                            <select class="selectpicker" data-live-search="true" name="municipio.id" id="comboMunicipio">
-                                <option>Selecione o município...</option>
+                            <select class="selectpicker" title="Selecione o município..." data-live-search="true" name="municipio.id" id="comboMunicipio">
+                                
                                 <c:if test="${not empty municipioList}">
                                     <c:forEach var="municipio" items="${municipioList}">
                                         <c:if test="${cep.municipio.id == municipio.id}">
