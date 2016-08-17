@@ -2,7 +2,10 @@ $('#comboEscolaridade').ready(function (event) {
 
     var txtEscolaridade = document.getElementById('txtEscolaridade');
     var escolaridadeId = txtEscolaridade.value;
-    var comboEscolaridade = document.getElementById('comboEscolaridade');
+    var comboEscolaridade = $('#comboEscolaridade');
+    comboEscolaridade.selectpicker({
+        size: 4
+    });
 
     $.ajax({
         method: 'POST',
@@ -15,8 +18,9 @@ $('#comboEscolaridade').ready(function (event) {
                     option.selected = escolaridadeId === escolaridade.id;
                     option.value = escolaridade.id;
                     option.text = escolaridade.codigo + ' - ' + escolaridade.descricao;
-                    comboEscolaridade.appendChild(option);
+                    comboEscolaridade.append(option);
                 }
+                comboEscolaridade.selectpicker('refresh');
             }
         }
     });

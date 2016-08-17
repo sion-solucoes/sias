@@ -36,8 +36,8 @@
         </div>
         <div class="col-md-4">
             <label for="txtDataNascimento">Data de Nascimento</label>
-            <div class="fg-line">
-                <input type="date" placeholder="Data de Nascimento" name="dataNascimento" class="form-control input-sm" id="txtDataNascimento" value="${familiaMembro.dataNascimento}"/>    
+            <div class="dtp-container">
+                <input type="text" placeholder="Data de Nascimento" name="dataNascimento" class="form-control date-picker" id="txtDataNascimento" value="${familiaMembro.dataNascimento}"/>    
             </div>
         </div>
     </div>
@@ -84,8 +84,8 @@
         </div>
         <div class="col-md-3">
             <label for="txtRGDataEmissao">Data Emissão(RG)</label>
-            <div class="fg-line">
-                <input type="date" placeholder="Data Emissão(RG)" name="rgDataEmissao" class="form-control input-sm" id="txtRGDataEmissao" value="${familiaMembro.rgDataEmissao}"/>    
+            <div class="dtp-container">
+                <input type="text" placeholder="Data Emissão(RG)" name="rgDataEmissao" class="form-control date-picker" id="txtRGDataEmissao" value="${familiaMembro.rgDataEmissao}"/>    
             </div>
         </div>
     </div>

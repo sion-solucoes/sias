@@ -3,6 +3,9 @@ $('#comboCondicaoOcupacao').ready(function (event) {
     var txtCondicaoOcupacao = $('#txtCondicaoOcupacao');
     var condicaoOcupacaoId = txtCondicaoOcupacao.val();
     var comboCondicaoOcupacao = $('#comboCondicaoOcupacao');
+    comboCondicaoOcupacao.selectpicker({
+        size: 4
+    });
 
     $.ajax({
         method: 'POST',
@@ -17,6 +20,7 @@ $('#comboCondicaoOcupacao').ready(function (event) {
                     option.text = condicaoOcupacao.codigo + ' - ' + condicaoOcupacao.descricao;
                     comboCondicaoOcupacao.append(option);
                 }
+                comboCondicaoOcupacao.selectpicker('refresh');
             }
         }
     });
