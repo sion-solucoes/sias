@@ -126,8 +126,10 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
     if (indexOrdem === 0) {
         comboGrauParentesco.prop('selectedIndex', 1);
         comboGrauParentesco.prop('disabled', true);
+        comboGrauParentesco.selectpicker('refresh');
     } else {
         comboGrauParentesco.prop('disabled', false);
+        comboGrauParentesco.selectpicker('refresh');
     }
 
 

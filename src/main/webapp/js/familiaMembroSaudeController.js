@@ -3,6 +3,9 @@ $('#abaSaude').ready(function (event) {
     var txtDeficiencia = $('#txtDeficiencia');
     var deficienciaId = txtDeficiencia.val();
     var comboDeficiencia = $('#comboDeficiencia');
+    comboDeficiencia.selectpicker({
+        size: 4
+    });
 
     $.ajax({
         method: 'POST',
@@ -17,6 +20,7 @@ $('#abaSaude').ready(function (event) {
                     option.text = deficiencia.codigo + ' - ' + deficiencia.descricao;
                     comboDeficiencia.append(option);
                 }
+                comboDeficiencia.selectpicker('refresh');
             }
         }
     });
