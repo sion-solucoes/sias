@@ -94,7 +94,7 @@
 	CREATE TABLE beneficio_eventual (
 		beneficio_eventual_id 			BIGSERIAL NOT NULL,
 		beneficio_eventual_codigo 		varchar(10) NOT NULL UNIQUE,
-		beneficio_eventual_descricao 	varchar(50) NOT NULL,
+		beneficio_eventual_descricao 	varchar(255) NOT NULL,
 		PRIMARY KEY (beneficio_eventual_id)
 	);
 
