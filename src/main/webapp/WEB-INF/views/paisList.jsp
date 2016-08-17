@@ -12,12 +12,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <h2>Listagem de Paises</h2>
-                </div>
-                <div class="pull-right">
-                    <a type="button" class="btn bgm-blue" href="<c:url value="/cadastrosBasicos/pais/novo"/>">Novo</a>
+                    <h2>Listagem de Países</h2>
                 </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/pais/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
@@ -25,7 +23,7 @@
                             <th data-column-id="sigla">Sigla</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="codigo">Código(BACEN)</th>
-                            <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
+                            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,8 +64,8 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>
- 
+
 
 

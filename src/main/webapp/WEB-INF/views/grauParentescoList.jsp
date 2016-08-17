@@ -14,10 +14,8 @@
                 <div class="pull-left">
                     <h2>Listagem de Grau de Parentesco</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/controleFamiliar/grauParentesco/novo"/>" type="button" class="btn bgm-blue">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/grauParentesco/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
@@ -56,7 +54,7 @@
 
 <!-- Data Table -->
 <script type="text/javascript">
-    
+
     $(document).ready(function () {
 
         //Command Buttons

@@ -1,50 +1,50 @@
 /*
-$('body').ready(function (event) {
-
-    var txtComboCEPEndereco = document.getElementById('txtCEPEndereco');
-    var cepId = txtComboCEPEndereco.value;
-    var combo = document.getElementById('comboCEPEndereco');
-    var txtMunicipioEndereco = document.getElementById('txtMunicipioEndereco');
-    var txtUFEndereco = document.getElementById('txtUFEndereco');
-    var txtPaisEndereco = document.getElementById('txtPaisEndereco');
-
-    $.ajax({
-        method: 'POST',
-        url: '/sias/cadastrosBasicos/cep/readAll',
-        success: function (data) {
-            var cepList = data;
-            if (cepList != null) {
-                for (var indexCEPEndereco = 0; indexCEPEndereco < cepList.length; indexCEPEndereco++) {
-                    var cep = cepList[indexCEPEndereco];
-                    var option = document.createElement("option");
-                    option.value = cep.id;
-                    option.innerText = cep.codigo;
-                    if (cepId == cep.id) {
-                        option.selected = true;
-                        var data = {
-                            id: cepId
-                        };
-                        $.ajax({
-                            method: 'POST',
-                            url: '/sias/cadastrosBasicos/cep/readById',
-                            data: data,
-                            success: function (data) {
-                                var cep = data;
-                                if (cep != null) {
-                                    txtMunicipioEndereco.value = cep.municipio.descricao;
-                                    txtUFEndereco.value = cep.municipio.unidadeFederacao.sigla + ' - ' + cep.municipio.unidadeFederacao.descricao;
-                                    txtPaisEndereco.value = cep.municipio.unidadeFederacao.pais.sigla + ' - ' + cep.municipio.unidadeFederacao.pais.descricao;
-                                }
-                            }
-                        });
-                    }
-                    combo.appendChild(option);
-                }
-            }
-        }
-    });
-});
-*/
+ $('body').ready(function (event) {
+ 
+ var txtComboCEPEndereco = document.getElementById('txtCEPEndereco');
+ var cepId = txtComboCEPEndereco.value;
+ var combo = document.getElementById('comboCEPEndereco');
+ var txtMunicipioEndereco = document.getElementById('txtMunicipioEndereco');
+ var txtUFEndereco = document.getElementById('txtUFEndereco');
+ var txtPaisEndereco = document.getElementById('txtPaisEndereco');
+ 
+ $.ajax({
+ method: 'POST',
+ url: '/sias/cadastrosBasicos/cep/readAll',
+ success: function (data) {
+ var cepList = data;
+ if (cepList != null) {
+ for (var indexCEPEndereco = 0; indexCEPEndereco < cepList.length; indexCEPEndereco++) {
+ var cep = cepList[indexCEPEndereco];
+ var option = document.createElement("option");
+ option.value = cep.id;
+ option.innerText = cep.codigo;
+ if (cepId == cep.id) {
+ option.selected = true;
+ var data = {
+ id: cepId
+ };
+ $.ajax({
+ method: 'POST',
+ url: '/sias/cadastrosBasicos/cep/readById',
+ data: data,
+ success: function (data) {
+ var cep = data;
+ if (cep != null) {
+ txtMunicipioEndereco.value = cep.municipio.descricao;
+ txtUFEndereco.value = cep.municipio.unidadeFederacao.sigla + ' - ' + cep.municipio.unidadeFederacao.descricao;
+ txtPaisEndereco.value = cep.municipio.unidadeFederacao.pais.sigla + ' - ' + cep.municipio.unidadeFederacao.pais.descricao;
+ }
+ }
+ });
+ }
+ combo.appendChild(option);
+ }
+ }
+ }
+ });
+ });
+ */
 
 $('#comboCEPEndereco').change(function (event) {
 
@@ -53,11 +53,11 @@ $('#comboCEPEndereco').change(function (event) {
     var txtMunicipioEndereco = document.getElementById('txtMunicipioEndereco');
     var txtUFEndereco = document.getElementById('txtUFEndereco');
     var txtPaisEndereco = document.getElementById('txtPaisEndereco');
-    
+
     var data = {
         id: id
     };
-    
+
     if (id != null && id != "" && id != "Selecione...") {
         $.ajax({
             method: 'POST',
@@ -119,11 +119,11 @@ $('#btnConfirmar').click(function (event) {
         numeroEndereco: txtNumeroEndereco.value,
         bairroEndereco: txtBairroEndereco.value
     };
-    
+
     var data = {
         json: JSON.stringify(unidadeAtendimento)
     };
-    
+
     $.ajax({
         method: 'POST',
         url: '/sias/controleAmbiente/unidadeAtendimento/save',
@@ -134,20 +134,18 @@ $('#btnConfirmar').click(function (event) {
                 var msg = data.msg;
                 if (msg != null) {
                     if (success) {
-                        $('#msgSuccess').text(msg);
-                        $('#dlgSuccess').modal('show');
-                        setTimeout(function () {
-                            document.location.assign('/sias/controleAmbiente/unidadeAtendimento');
-                        }, 3000);
+                        var voltarListagem = function () {
+                            document.location.assign('../unidadeAtendimento');
+                        };
+                        Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                     } else {
-                        $('#msgFailure').text(msg);
-                        $('#dlgFailure').modal('show');
-                        setTimeout(function () {
-                            $('#dlgFailure').modal('hide');
-                        }, 3000);
+                        Msg.notify(data.msg, 'warning');
                     }
                 }
             }
+        },
+        failure: function () {
+            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema', 'warning');
         }
     });
 });

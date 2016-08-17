@@ -31,7 +31,7 @@ $('#unidadeFederativaForm').submit(function (event) {
             }
         },
         failure: function (data) {
-            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema');
+            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema', 'warning');
         }
     });
 

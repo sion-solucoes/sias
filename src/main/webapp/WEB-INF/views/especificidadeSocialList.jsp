@@ -12,12 +12,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <h2>Listagem de Especificidade Social</h2>
-                </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/controleFamiliar/especificidadeSocial/novo"/>" type="button" class="btn bgm-blue">Novo</a>
+                    <h2>Listagem de Especificidades Sociais</h2>
                 </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/especificidadeSocial/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
@@ -71,7 +69,6 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>
 
-        

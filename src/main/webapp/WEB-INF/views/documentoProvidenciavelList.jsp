@@ -14,10 +14,8 @@
                 <div class="pull-left">
                     <h2>Listagem de Documentos Providenciáveis</h2>
                 </div>
-                <div class="pull-right">
-                    <a type="button" class="btn bgm-blue" href="<c:url value="/controleFamiliar/documentoProvidenciavel/novo"/>">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/documentoProvidenciavel/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
@@ -61,6 +59,6 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>
-        
+

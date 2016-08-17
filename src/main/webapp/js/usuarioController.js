@@ -134,32 +134,20 @@ $('#btnImprimirCodigos').click(function (event) {
 
 $('#btnConfirmar').click(function (event) {
 
-    var txtId = document.getElementById("txtId");
-    var radioTipoMaster = document.getElementById("radioTipoMaster");
-    var radioTipoTecnico = document.getElementById("radioTipoTecnico");
-    var radioTipoAdministrativo = document.getElementById("radioTipoAdministrativo");
-    var txtEmail = document.getElementById("txtEmail");
-    var txtSenha = document.getElementById("txtSenha");
-    var txtConfirmacaoSenha = document.getElementById("txtConfirmacaoSenha");
-    var txtNome = document.getElementById("txtNome");
-    var txtSobrenome = document.getElementById("txtSobrenome");
-    var txtFoto = document.getElementById("txtFoto");
-    var unidadeAtendimento = document.getElementById("unidadeAtendimento");
+    var txtId = $("#txtId");
+    var radioTipoMaster = $("#radioTipoMaster");
+    var radioTipoTecnico = $("#radioTipoTecnico");
+    var radioTipoAdministrativo = $("#radioTipoAdministrativo");
+    var txtEmail = $("#txtEmail");
+    var txtSenha = $("#txtSenha");
+    var txtConfirmacaoSenha = $("#txtConfirmacaoSenha");
+    var txtNome = $("#txtNome");
+    var txtSobrenome = $("#txtSobrenome");
+    var txtFoto = $("#txtFoto");
+    var unidadeAtendimento = $("#unidadeAtendimento");
 
-    var senha = txtSenha.value;
-    var confirmacaoSenha = txtConfirmacaoSenha.value;
-
-    if (senha != confirmacaoSenha) {
-        $('#msgFailure').text('As senhas não coincidem!');
-        $('#dlgFailure').modal('show');
-        setTimeout(function () {
-            $('#dlgFailure').modal('hide');
-        }, 3000);
-        return;
-    }
-   
     var usuarioSegurancaList = new Array();
-    var tabelaCodigosSeguranca1 = document.getElementById("tabelaCodigosSeguranca1-5");
+    var tabelaCodigosSeguranca1 = $("#tabelaCodigosSeguranca1-5");
     for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.rows.length; tabelaUsuarioSeguranca++) {
         var row = tabelaCodigosSeguranca1.rows[tabelaUsuarioSeguranca];
         var data = row.cells[1];
@@ -171,7 +159,7 @@ $('#btnConfirmar').click(function (event) {
             usuarioSegurancaList.push(usuarioSeguranca);
         }
     }
-    var tabelaCodigosSeguranca2 = document.getElementById("tabelaCodigosSeguranca6-10");
+    var tabelaCodigosSeguranca2 = $("#tabelaCodigosSeguranca6-10");
     for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca2.rows.length; tabelaUsuarioSeguranca++) {
         var row = tabelaCodigosSeguranca2.rows[tabelaUsuarioSeguranca];
         var data = row.cells[1];
@@ -185,11 +173,11 @@ $('#btnConfirmar').click(function (event) {
     }
 
     var tipo = null;
-    if (radioTipoMaster.checked) {
+    if (radioTipoMaster.val()) {
         tipo = 1;
-    } else if (radioTipoTecnico.checked) {
+    } else if (radioTipoTecnico.val()) {
         tipo = 2;
-    } else if (radioTipoAdministrativo.checked) {
+    } else if (radioTipoAdministrativo.val()) {
         tipo = 3;
     }
 
@@ -201,19 +189,21 @@ $('#btnConfirmar').click(function (event) {
     var usuario = {
         id: id,
         tipo: tipo,
-        email: txtEmail.value,
-        senha: txtSenha.value,
-        nome: txtNome.value,
-        sobrenome: txtSobrenome.value,
-        usuarioUnidadeAtendimentoList: unidadeAtendimento.value,
+        email: txtEmail.val(),
+        senha: txtSenha.val(),
+        nome: txtNome.val(),
+        sobrenome: txtSobrenome.val(),
+        usuarioUnidadeAtendimento: {
+            id: unidadeAtendimento.val()
+        },
         usuarioSegurancaList: usuarioSegurancaList,
-        foto: txtFoto.value
+        foto: txtFoto.val()
     };
 
     var data = {
         json: JSON.stringify(usuario)
     };
-    console.log(data);
+
     $.ajax({
         method: 'POST',
         url: '/sias/controleAmbiente/usuario/save',
@@ -221,23 +211,18 @@ $('#btnConfirmar').click(function (event) {
         success: function (data) {
             if (data != null) {
                 var success = data.success;
-                var msg = data.msg;
-                if (msg != null) {
-                    if (success) {
-                        $('#msgSuccess').text(msg);
-                        $('#dlgSuccess').modal('show');
-                        setTimeout(function () {
-                            document.location.assign('/sias/controleAmbiente/usuario');
-                        }, 3000);
-                    } else {
-                        $('#msgFailure').text(msg);
-                        $('#dlgFailure').modal('show');
-                        setTimeout(function () {
-                            $('#dlgFailure').modal('hide');
-                        }, 3000);
-                    }
+                if (success) {
+                    var voltarListagem = function () {
+                        document.location.assign('../usuario');
+                    };
+                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                } else {
+                    Msg.notify(data.msg, 'warning');
                 }
             }
+        },
+        failure: function (data) {
+            Msg.notify('Erro inesperado. Contate o adminstrador do Sistema', 'warning');
         }
     });
 
