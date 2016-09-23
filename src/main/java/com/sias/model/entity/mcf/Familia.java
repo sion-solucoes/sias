@@ -5,6 +5,8 @@
  */
 package com.sias.model.entity.mcf;
 
+import com.sias.model.entity.mcb.EspecificidadeSocial;
+import com.sias.model.entity.mcb.FormaIngresso;
 import java.util.List;
 import com.sias.model.base.entity.BaseEntity;
 import com.sias.model.entity.mca.UnidadeAtendimento;

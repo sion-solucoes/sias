@@ -12,16 +12,15 @@
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <h2>Listagem de CEP</h2>
-                </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/cadastrosBasicos/cep/novo"/>" type="button" class="btn bgm-blue">Novo</a>
+                    <h2>Listagem de CEPs</h2>
                 </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/cep/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="codigo">Código</th>
                             <th data-column-id="logradouro">Logradouro</th>
                             <th data-column-id="bairro">Bairro</th>
@@ -33,18 +32,11 @@
                         <c:if test="${not empty cepList}">
                             <c:forEach var="cep" items="${cepList}">
                                 <tr>
-                                    <td>
-                                        ${cep.codigo}
-                                    </td>
-                                    <td>
-                                        ${cep.logradouro}
-                                    </td>
-                                    <td>
-                                        ${cep.bairro}
-                                    </td>
-                                    <td>
-                                        ${cep.municipio.descricao}
-                                    </td>
+                                    <td>${cep.id}</td>
+                                    <td>${cep.codigo}</td>
+                                    <td>${cep.logradouro}</td>
+                                    <td>${cep.bairro}</td>
+                                    <td>${cep.municipio.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>
@@ -56,7 +48,7 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
-        
+
 <!-- Data Table -->
 <script type="text/javascript">
     $(document).ready(function () {
@@ -65,5 +57,5 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>

@@ -1,6 +1,12 @@
 $('#grauParentescoForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var grauParentesco = {
+        id: id,
         codigo: $("#txtCodigo").val(),
         descricao: $("#txtDescricao").val()
     };
@@ -11,14 +17,14 @@ $('#grauParentescoForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../grauParentesco/save',
+        url: '/sias/cadastrosBasicos/grauParentesco/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../grauParentesco');
+                        document.location.assign('/sias/cadastrosBasicos/grauParentesco');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

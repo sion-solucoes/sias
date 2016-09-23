@@ -90,28 +90,29 @@
 
         </div>
 
-
         <!-- Modal Small -->
         <div id="dlgSeguranca" class="modal fade" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="dlgSeguranca">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <label id="lblSeguranca"></label>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group m-b-20">
-                            <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
-                            <div class="fg-line">
-                                <input type="hidden" id="txtNumeroSeguranca">
-                                <input class="form-control" id="txtCodigoSeguranca">
+            <form method="POST" id="formSeguranca">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">  
+                            <label id="lblSeguranca"></label>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group m-b-20">
+                                <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                                <div class="fg-line">
+                                    <input type="hidden" id="txtNumeroSeguranca">
+                                    <input class="form-control" id="txtCodigoSeguranca">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
 
         <script src="<c:url value="/js/jquery.min.js"/>"></script>

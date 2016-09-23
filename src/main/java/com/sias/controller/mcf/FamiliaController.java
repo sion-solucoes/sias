@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcf.Familia;
+import com.sias.model.service.mcb.interfaces.DocumentoProvidenciavelService;
 import com.sias.model.service.mcf.interfaces.FamiliaService;
-import com.sias.model.service.mcf.interfaces.FormaIngressoService;
+import com.sias.model.service.mcb.interfaces.FormaIngressoService;
 import com.sias.util.Constants;
 import com.sias.util.Criteria;
 import com.sias.util.GSONConverter;
@@ -40,7 +41,10 @@ public class FamiliaController {
 
     @Autowired
     private FamiliaService familiaService;
-    
+
+    @Autowired
+    private DocumentoProvidenciavelService documentoProvidenciavelService;
+
     @RequestMapping(value = "/familia", method = RequestMethod.GET)
     public ModelAndView familia(HttpSession httpSession) {
 
@@ -66,7 +70,12 @@ public class FamiliaController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("familiaForm");
-        
+        try {
+            modelAndView.addObject("documentoProvidenciavelList", documentoProvidenciavelService.readAll());
+        } catch (Exception ex) {
+            Logger.getLogger(FamiliaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return modelAndView;
     }
 
@@ -78,6 +87,7 @@ public class FamiliaController {
 
         try {
             modelAndView.addObject("familia", familiaService.readById(id));
+            modelAndView.addObject("documentoProvidenciavelList", documentoProvidenciavelService.readAll());
         } catch (Exception ex) {
             Logger.getLogger(FamiliaController.class.getName()).log(Level.SEVERE, null, ex);
         }

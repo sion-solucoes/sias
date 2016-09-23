@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.CEP;
 import com.sias.model.service.mcb.interfaces.CEPService;
 import com.sias.model.service.mcb.interfaces.MunicipioService;
+import com.sias.util.Constants;
 import com.sias.util.GSONConverter;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,10 +34,10 @@ public class CEPController {
 
     @Autowired
     private CEPService cepService;
-    
+
     @Autowired
     private MunicipioService municipioService;
-    
+
     @RequestMapping(value = "/cep", method = RequestMethod.GET)
     public ModelAndView cep() {
 
@@ -64,24 +64,29 @@ public class CEPController {
         } catch (Exception ex) {
             Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return modelAndView;
     }
 
     @RequestMapping(value = "/cep/save", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> save (String json) {
-        
+    public @ResponseBody
+    Map<String, Object> save(String json) {
+
         Map<String, Object> response = new HashMap<String, Object>();
-        
+
         try {
             CEP cep = (CEP) GSONConverter.convert(json, CEP.class);
-            cepService.create(cep);
+            if (cep.getId() == null) {
+                cepService.create(cep);
+            } else {
+                cepService.update(cep);
+            }
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
             Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
-            response.put("msg", ex.getMessage());
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
         }
 
         return response;
@@ -103,18 +108,6 @@ public class CEPController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/cep/{id}/editar", method = RequestMethod.POST)
-    public ModelAndView editar(@ModelAttribute CEP cep) {
-
-        try {
-            cepService.update(cep);
-        } catch (Exception ex) {
-            Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new ModelAndView("redirect:/cadastrosBasicos/cep");
-    }
-
     @RequestMapping(value = "/cep/{id}/excluir", method = RequestMethod.GET)
     public ModelAndView excluir(@PathVariable Long id) {
 
@@ -126,28 +119,30 @@ public class CEPController {
 
         return new ModelAndView("redirect:/cadastrosBasicos/cep");
     }
-    
+
     @RequestMapping(value = "/cep/readById", method = RequestMethod.POST)
-    public @ResponseBody CEP readById(@RequestParam("id") Long id){
-        
+    public @ResponseBody
+    CEP readById(@RequestParam("id") Long id) {
+
         try {
             return cepService.readById(id);
         } catch (Exception ex) {
             Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        
+        }
+
         return null;
     }
-    
+
     @RequestMapping(value = "/cep/readAll", method = RequestMethod.POST)
-    public @ResponseBody List<CEP> readAll(){
-        
+    public @ResponseBody
+    List<CEP> readAll() {
+
         try {
             return cepService.readAll();
         } catch (Exception ex) {
             Logger.getLogger(CEPController.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        
+        }
+
         return null;
     }
 }

@@ -1,8 +1,14 @@
 $('#especificidadeSocialForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var especificidadeSocial = {
+        id: id,
         descricao: $("#txtDescricao").val(),
-        indigena: $("#checkIndigena").val(),
+        indigena: $("#checkIndigena").prop('checked'),
         povoEtnia: $("#txtPovoEtnia").val()
     };
 
@@ -12,14 +18,14 @@ $('#especificidadeSocialForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../especificidadeSocial/save',
+        url: '/sias/cadastrosBasicos/especificidadeSocial/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../especificidadeSocial');
+                        document.location.assign('/sias/cadastrosBasicos/especificidadeSocial');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

@@ -5,6 +5,7 @@
  */
 package com.sias.model.entity.mcf;
 
+import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.base.entity.BaseEntity;
 
 /**

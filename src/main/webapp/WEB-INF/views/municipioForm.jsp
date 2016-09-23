@@ -14,15 +14,13 @@
                 <div class="pull-left">
                     <h2>Cadastro de Município</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value = "/cadastrosBasicos/municipio"/>" type="button" class="btn bgm-blue">Voltar</a>
-                </div>
             </div>
             <div class="card-body card-padding">
                 <form class="form-horizontal" role="form" method="POST" id="municipioForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
+                    <input type="hidden" id="txtId" value="${municipio.id}"/>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="txtDescricao">Descrição</label>
                         <div class="col-md-6">
@@ -43,7 +41,7 @@
                         <label for="comboUnidadeFederacao" class="control-label col-sm-2">Unidade Federação</label>
                         <div class="col-md-4">
                             <select class="selectpicker" title="Selecione o estado..." data-live-search="true" id="comboUnidadeFederacao" name="unidadeFederacao.id">
-                                
+
                                 <c:if test="${not empty unidadeFederacaoList}">
                                     <c:forEach var="unidadeFederacao" items="${unidadeFederacaoList}">
                                         <c:if test="${municipio.unidadeFederacao.id == unidadeFederacao.id}">
@@ -57,10 +55,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2"></label>
-                        <div class="col-md-5">
-                            <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<c:url value = "/cadastrosBasicos/municipio"/>" type="button" class="btn bgm-white">Voltar</a>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
                     </div>
                 </form>

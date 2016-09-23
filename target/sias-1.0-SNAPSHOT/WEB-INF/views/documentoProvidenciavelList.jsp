@@ -14,14 +14,13 @@
                 <div class="pull-left">
                     <h2>Listagem de Documentos Providenciáveis</h2>
                 </div>
-                <div class="pull-right">
-                    <a type="button" class="btn bgm-blue" href="<c:url value="/controleFamiliar/documentoProvidenciavel/novo"/>">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/documentoProvidenciavel/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="codigo">Código</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
@@ -31,17 +30,9 @@
                         <c:if test="${not empty documentoProvidenciavelList}">
                             <c:forEach var="documentoProvidenciavel" items="${documentoProvidenciavelList}">
                                 <tr>
-                                    <td>
-                                        ${documentoProvidenciavel.codigo}
-                                    </td>
-                                    <td>
-                                        ${documentoProvidenciavel.descricao}
-                                    </td>
-                                    <!--<td>
-                                        <a href="<c:url value="/controleFamiliar/documentoProvidenciavel/${documentoProvidenciavel.id}/excluir"/>">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </td>-->
+                                    <td>${documentoProvidenciavel.id}</td>
+                                    <td>${documentoProvidenciavel.codigo}</td>
+                                    <td>${documentoProvidenciavel.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>
@@ -61,6 +52,6 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>
-        
+

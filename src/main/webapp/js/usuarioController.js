@@ -1,16 +1,16 @@
 $(document).ready(function (event) {
 
-    var txtId = document.getElementById("txtId");
+    var txtId = document.getElementById('txtId');
     var usuarioId = txtId.value;
 
-    var tabelaCodigos1 = document.getElementById("tabelaCodigosSeguranca1-5");
-    var tabelaCodigos2 = document.getElementById("tabelaCodigosSeguranca6-10");
+    var tabelaCodigos1 = document.getElementById('tabelaCodigosSeguranca1-5');
+    var tabelaCodigos2 = document.getElementById('tabelaCodigosSeguranca6-10');
 
     var data = {
         usuarioId: usuarioId
     };
 
-    if (usuarioId != null && usuarioId != "") {
+    if (usuarioId != null && usuarioId != '') {
         $.ajax({
             method: 'POST',
             data: data,
@@ -38,7 +38,7 @@ $('#fileFoto').change(function (event) {
     var imgFoto = document.getElementById('imgFoto');
 
     var data = new FormData();
-    data.append("file", fileFoto.files[0]);
+    data.append('file', fileFoto.files[0]);
     $.ajax({
         method: 'POST',
         url: '/sias/controleAmbiente/usuario/foto',
@@ -55,8 +55,8 @@ $('#fileFoto').change(function (event) {
 
 $('#btnGerarCodigos').click(function (event) {
 
-    var tabelaCodigos1 = document.getElementById("tabelaCodigosSeguranca1-5");
-    var tabelaCodigos2 = document.getElementById("tabelaCodigosSeguranca6-10");
+    var tabelaCodigos1 = document.getElementById('tabelaCodigosSeguranca1-5');
+    var tabelaCodigos2 = document.getElementById('tabelaCodigosSeguranca6-10');
 
     $.ajax({
         method: 'POST',
@@ -77,27 +77,27 @@ $('#btnGerarCodigos').click(function (event) {
 
 $('#btnImprimirCodigos').click(function (event) {
 
-    var txtEmail = document.getElementById("txtEmail");
+    var txtEmail = document.getElementById('txtEmail');
 
     var usuarioSegurancaList = new Array();
-    var tabelaCodigosSeguranca1 = document.getElementById("tabelaCodigosSeguranca1-5");
+    var tabelaCodigosSeguranca1 = document.getElementById('tabelaCodigosSeguranca1-5');
     for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.rows.length; tabelaUsuarioSeguranca++) {
         var row = tabelaCodigosSeguranca1.rows[tabelaUsuarioSeguranca];
         var data = row.cells[1];
         var codigo = data.innerText;
-        if (codigo != null && codigo != "") {
+        if (codigo != null && codigo != '') {
             var usuarioSeguranca = {
                 codigo: codigo
             };
             usuarioSegurancaList.push(usuarioSeguranca);
         }
     }
-    var tabelaCodigosSeguranca2 = document.getElementById("tabelaCodigosSeguranca6-10");
+    var tabelaCodigosSeguranca2 = document.getElementById('tabelaCodigosSeguranca6-10');
     for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca2.rows.length; tabelaUsuarioSeguranca++) {
         var row = tabelaCodigosSeguranca2.rows[tabelaUsuarioSeguranca];
         var data = row.cells[1];
         var codigo = data.innerText;
-        if (codigo != null && codigo != "") {
+        if (codigo != null && codigo != '') {
             var usuarioSeguranca = {
                 codigo: codigo
             };
@@ -106,7 +106,7 @@ $('#btnImprimirCodigos').click(function (event) {
     }
 
     var id = null;
-    if (txtId.value != null && txtId.value != "") {
+    if (txtId.value != null && txtId.value != '') {
         id = txtId.value;
     }
 
@@ -124,9 +124,9 @@ $('#btnImprimirCodigos').click(function (event) {
         method: 'POST',
         url: '/sias/controleAmbiente/usuario/imprimirCodigos',
         data: data,
-        success: function (data) {
+        success: function (data, response) {
             if (data != null) {
-                window.open(data, '_blank');
+                window.open('data:application/pdf,' + escape(data), '_blank');
             }
         }
     });
@@ -134,66 +134,55 @@ $('#btnImprimirCodigos').click(function (event) {
 
 $('#btnConfirmar').click(function (event) {
 
-    var txtId = $("#txtId");
-    var radioTipoMaster = $("#radioTipoMaster");
-    var radioTipoTecnico = $("#radioTipoTecnico");
-    var radioTipoAdministrativo = $("#radioTipoAdministrativo");
-    var txtEmail = $("#txtEmail");
-    var txtSenha = $("#txtSenha");
-    var txtConfirmacaoSenha = $("#txtConfirmacaoSenha");
-    var txtNome = $("#txtNome");
-    var txtSobrenome = $("#txtSobrenome");
-    var txtFoto = $("#txtFoto");
-    var unidadeAtendimento = $("#unidadeAtendimento");
+    var txtId = $('#txtId');
+    var radioTipo = $(':radio[name="tipo"]:checked');
+    var txtEmail = $('#txtEmail');
+    var txtSenha = $('#txtSenha');
+    var txtConfirmacaoSenha = $('#txtConfirmacaoSenha');
+    var txtNome = $('#txtNome');
+    var txtSobrenome = $('#txtSobrenome');
+    var txtFoto = $('#txtFoto');
+    var unidadeAtendimento = $('#unidadeAtendimento');
 
     var usuarioSegurancaList = new Array();
-    var tabelaCodigosSeguranca1 = $("#tabelaCodigosSeguranca1-5");
-    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.rows.length; tabelaUsuarioSeguranca++) {
-        var row = tabelaCodigosSeguranca1.rows[tabelaUsuarioSeguranca];
+    var tabelaCodigosSeguranca1 = $('#tabelaCodigosSeguranca1-5 tr');
+    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.length; tabelaUsuarioSeguranca++) {
+        var row = tabelaCodigosSeguranca1[tabelaUsuarioSeguranca];
         var data = row.cells[1];
         var codigo = data.innerText;
-        if (codigo != null && codigo != "") {
+        if (codigo != null && codigo != '') {
             var usuarioSeguranca = {
                 codigo: codigo
             };
             usuarioSegurancaList.push(usuarioSeguranca);
         }
     }
-    var tabelaCodigosSeguranca2 = $("#tabelaCodigosSeguranca6-10");
-    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca2.rows.length; tabelaUsuarioSeguranca++) {
-        var row = tabelaCodigosSeguranca2.rows[tabelaUsuarioSeguranca];
+    var tabelaCodigosSeguranca2 = $('#tabelaCodigosSeguranca6-10 tr');
+    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca2.length; tabelaUsuarioSeguranca++) {
+        var row = tabelaCodigosSeguranca2[tabelaUsuarioSeguranca];
         var data = row.cells[1];
         var codigo = data.innerText;
-        if (codigo != null && codigo != "") {
+        if (codigo != null && codigo != '') {
             var usuarioSeguranca = {
                 codigo: codigo
             };
             usuarioSegurancaList.push(usuarioSeguranca);
         }
-    }
-
-    var tipo = null;
-    if (radioTipoMaster.val()) {
-        tipo = 1;
-    } else if (radioTipoTecnico.val()) {
-        tipo = 2;
-    } else if (radioTipoAdministrativo.val()) {
-        tipo = 3;
     }
 
     var id = null;
-    if (txtId.value != null && txtId.value != "") {
+    if (txtId.value != null && txtId.value != '') {
         id = txtId.value;
     }
 
     var usuario = {
         id: id,
-        tipo: tipo,
+        tipo: radioTipo.val(),
         email: txtEmail.val(),
         senha: txtSenha.val(),
         nome: txtNome.val(),
         sobrenome: txtSobrenome.val(),
-        usuarioUnidadeAtendimento: {
+        unidadeAtendimento: {
             id: unidadeAtendimento.val()
         },
         usuarioSegurancaList: usuarioSegurancaList,

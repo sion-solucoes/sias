@@ -20,6 +20,7 @@
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="sigla">Sigla</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="codigo">Código(BACEN)</th>
@@ -30,20 +31,10 @@
                         <c:if test="${not empty paisList}">
                             <c:forEach var="pais" items="${paisList}">
                                 <tr>
-                                    <td>
-                                        ${pais.sigla}
-                                    </td>
-                                    <td>
-                                        ${pais.descricao}
-                                    </td>
-                                    <td>
-                                        ${pais.codigoBACEN}
-                                    </td>
-                                    <!--<td>
-                                        <a id="colExcluir" href="pais/${pais.id}/excluir">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </td>-->
+                                    <td>${pais.id}</td>
+                                    <td>${pais.sigla}</td>
+                                    <td>${pais.descricao}</td>
+                                    <td>${pais.codigoBACEN}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

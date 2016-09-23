@@ -14,15 +14,13 @@
                 <div class="pull-left">
                     <h2>Cadastro de Especificidade Social</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/controleFamiliar/especificidadeSocial"/>" type="button" class="btn bgm-blue">Voltar</a>
-                </div>
             </div>
             <div class="card-header card-padding">
                 <form class="form-horizontal" role="form" method="POST" id="especificidadeSocialForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
+                    <input type="hidden" id="txtId" value="${especificidadeSocial.id}"/>
                     <div class="form-group">
                         <label for="txtDescricao" class="col-sm-2 control-label">Descrição</label>
                         <div class="col-md-6">
@@ -49,16 +47,22 @@
                         <label for="txtPovoEtnia" class="col-sm-2 control-label">Povo/Etnia</label>
                         <div class="col-md-6">
                             <div class="fg-line">
-                                <input placeholder="Povo/Etnia" maxlength="50" name="povoEtnia" class="form-control" id="txtPovoEtnia"/>    
+                                <input placeholder="Povo/Etnia" maxlength="50" name="povoEtnia" class="form-control" id="txtPovoEtnia" value="${especificidadeSocial.povoEtnia}"/>    
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<c:url value = "/cadastrosBasicos/especificidadeSocial"/>" type="button" class="btn bgm-white">Voltar</a>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
-                    </div>        
+                    </div>     
                 </form>
             </div>
         </div>
@@ -67,4 +71,3 @@
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 <script src="<c:url value="/js/especificidadeSocialController.js"/>"></script>
-        

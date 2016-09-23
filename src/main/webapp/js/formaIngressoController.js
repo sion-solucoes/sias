@@ -1,6 +1,12 @@
 $('#formaIngressoForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var formaIngresso = {
+        id: id,
         descricao: $("#txtDescricao").val()
     };
 
@@ -10,14 +16,14 @@ $('#formaIngressoForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../formaIngresso/save',
+        url: '/sias/cadastrosBasicos/formaIngresso/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../formaIngresso');
+                        document.location.assign('/sias/cadastrosBasicos/formaIngresso');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

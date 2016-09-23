@@ -1,6 +1,12 @@
 $('#documentoProvidenciavelForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var documentoProvidenciavel = {
+        id: id,
         descricao: $("#txtDescricao").val(),
         codigo: $("#txtCodigo").val()
     };
@@ -11,14 +17,14 @@ $('#documentoProvidenciavelForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../documentoProvidenciavel/save',
+        url: '/sias/cadastrosBasicos/documentoProvidenciavel/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../documentoProvidenciavel');
+                        document.location.assign('/sias/cadastrosBasicos/documentoProvidenciavel');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

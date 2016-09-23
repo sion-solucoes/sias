@@ -1,6 +1,12 @@
 $('#beneficioEventualForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var beneficioEventual = {
+        id: id,
         codigo: $("#txtCodigo").val(),
         descricao: $("#txtDescricao").val()
     };
@@ -11,14 +17,14 @@ $('#beneficioEventualForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../beneficioEventual/save',
+        url: '/sias/cadastrosBasicos/beneficioEventual/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../beneficioEventual');
+                        document.location.assign('/sias/cadastrosBasicos/beneficioEventual');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

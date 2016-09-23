@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mca.UnidadeAtendimento;
-import com.sias.model.entity.mca.Usuario;
 import com.sias.model.service.mca.interfaces.UnidadeAtendimentoService;
 import com.sias.model.service.mcb.interfaces.CEPService;
 import com.sias.util.Constants;
@@ -64,7 +62,7 @@ public class UnidadeAtendimentoController {
         modelAndView.setViewName("unidadeAtendimentoForm");
         try {
             modelAndView.addObject("cepList", cepService.readAll());
-            
+
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
         }

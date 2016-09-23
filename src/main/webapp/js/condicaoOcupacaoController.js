@@ -1,8 +1,14 @@
 $('#condicaoOcupacaoForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var condicaoOcupacao = {
-        descricao: $("#txtDescricao").val(),
-        codigo: $("#txtCodigo").val()
+        id: id,
+        codigo: $("#txtCodigo").val(),
+        descricao: $("#txtDescricao").val()
     };
 
     var data = {
@@ -11,14 +17,14 @@ $('#condicaoOcupacaoForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../condicaoOcupacao/save',
+        url: '/sias/cadastrosBasicos/condicaoOcupacao/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../condicaoOcupacao');
+                        document.location.assign('/sias/cadastrosBasicos/condicaoOcupacao');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

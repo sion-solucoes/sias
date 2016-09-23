@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.sias.model.constants.mcb.CEPConstants;
 import com.sias.model.constants.mcf.FamiliaConstants;
 import com.sias.model.constants.mcf.FamiliaMembroConstants;
-import com.sias.model.constants.mcf.FormaIngressoConstants;
+import com.sias.model.constants.mcb.FormaIngressoConstants;
 import com.sias.model.dao.mcf.interfaces.FamiliaDAO;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.rowmapper.mcf.FamiliaRowMapper;

@@ -5,6 +5,10 @@
  */
 package com.sias.model.entity.mcf;
 
+import com.sias.model.entity.mcb.GrauParentesco;
+import com.sias.model.entity.mcb.Deficiencia;
+import com.sias.model.entity.mcb.Escolaridade;
+import com.sias.model.entity.mcb.CondicaoOcupacao;
 import java.util.Date;
 import java.util.List;
 import com.sias.model.base.entity.BaseEntity;

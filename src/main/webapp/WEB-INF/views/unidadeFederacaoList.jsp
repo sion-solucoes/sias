@@ -20,6 +20,7 @@
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="sigla">Sigla</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="codigo">Código(IBGE)</th>
@@ -31,19 +32,11 @@
                         <c:if test="${not empty unidadeFederacaoList}">
                             <c:forEach var="unidadeFederacao" items="${unidadeFederacaoList}">
                                 <tr>
-                                    <td>
-                                        ${unidadeFederacao.sigla}
-                                    </td>
-                                    <td>
-                                        ${unidadeFederacao.descricao}
-                                    </td>
-                                    <td>
-                                        ${unidadeFederacao.codigoIBGE}
-                                    </td>
-                                    <td>
-                                        ${unidadeFederacao.pais.sigla} - ${unidadeFederacao.pais.descricao}
-                                    </td>
-
+                                    <td>${unidadeFederacao.id}</td>
+                                    <td>${unidadeFederacao.sigla}</td>
+                                    <td>${unidadeFederacao.descricao}</td>
+                                    <td>${unidadeFederacao.codigoIBGE}</td>
+                                    <td>${unidadeFederacao.pais.sigla} - ${unidadeFederacao.pais.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

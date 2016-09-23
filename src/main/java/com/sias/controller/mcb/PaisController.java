@@ -58,13 +58,18 @@ public class PaisController {
     }
 
     @RequestMapping(value = "/pais/save", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> save (String json) {
-        
+    public @ResponseBody
+    Map<String, Object> save(String json) {
+
         Map<String, Object> response = new HashMap<String, Object>();
 
         try {
             Pais pais = (Pais) GSONConverter.convert(json, Pais.class);
-            paisService.create(pais);
+            if (pais.getId() == null) {
+                paisService.create(pais);
+            } else {
+                paisService.update(pais);
+            }
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
@@ -89,18 +94,6 @@ public class PaisController {
         }
 
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/pais/{id}/editar", method = RequestMethod.POST)
-    public ModelAndView editar(@ModelAttribute Pais pais) {
-
-        try {
-            paisService.update(pais);
-        } catch (Exception ex) {
-            Logger.getLogger(PaisController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new ModelAndView("redirect:/cadastrosBasicos/pais");
     }
 
     @RequestMapping(value = "/pais/{id}/excluir", method = RequestMethod.GET)

@@ -15,11 +15,12 @@
                     <h2>Listagem de Benefícios Eventuais</h2>
                 </div>
             </div>
-            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/beneficioEventual/novo"/>"><i class="zmdi zmdi-plus"></i></a>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/beneficioEventual/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="codigo">Código</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
@@ -29,17 +30,9 @@
                         <c:if test="${not empty beneficioEventualList}">
                             <c:forEach var="beneficioEventual" items="${beneficioEventualList}">
                                 <tr>
-                                    <td>
-                                        ${beneficioEventual.codigo}
-                                    </td>
-                                    <td>
-                                        ${beneficioEventual.descricao}
-                                    </td>
-                                    <!--<td>
-                                        <a href="<c:url value="/controleFamiliar/beneficioEventual/${beneficioEventual.id}/excluir"/>">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </td>-->
+                                    <td>${beneficioEventual.id}</td>
+                                    <td>${beneficioEventual.codigo}</td>
+                                    <td>${beneficioEventual.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

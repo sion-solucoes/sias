@@ -1,6 +1,12 @@
 $('#cepForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var cep = {
+        id: id,
         codigo: $("#txtCodigo").val(),
         logradouro: $("#txtLogradouro").val(),
         bairro: $("#txtBairro").val(),
@@ -15,14 +21,14 @@ $('#cepForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../cep/save',
+        url: '/sias/cadastrosBasicos/cep/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../cep');
+                        document.location.assign('/sias/cadastrosBasicos/cep');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

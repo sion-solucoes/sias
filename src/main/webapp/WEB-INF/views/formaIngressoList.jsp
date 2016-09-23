@@ -24,12 +24,12 @@
                     <h2>Listagem de Formas de Ingresso</h2>
                 </div>
             </div>
-            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/formaIngresso/novo"/>"><i class="zmdi zmdi-plus"></i></a>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/formaIngresso/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th data-column-id="codigo">Código</th>
+                            <th data-column-id="id">Código</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                         </tr>
@@ -38,12 +38,8 @@
                         <c:if test="${not empty formaIngressoList}">
                             <c:forEach var="formaIngresso" items="${formaIngressoList}">
                                 <tr>
-                                    <td>
-                                        ${formaIngresso.id}
-                                    </td>
-                                    <td>
-                                        ${formaIngresso.descricao}
-                                    </td>
+                                    <td>${formaIngresso.id}</td>
+                                    <td>${formaIngresso.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

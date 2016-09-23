@@ -5,16 +5,20 @@
  */
 package com.sias.model.rowmapper.mcf;
 
+import com.sias.model.rowmapper.mcb.CondicaoOcupacaoRowMapper;
+import com.sias.model.rowmapper.mcb.DeficienciaRowMapper;
+import com.sias.model.rowmapper.mcb.GrauParentescoRowMapper;
+import com.sias.model.rowmapper.mcb.EscolaridadeRowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.sias.model.constants.mcf.FamiliaMembroConstants;
-import com.sias.model.entity.mcf.CondicaoOcupacao;
-import com.sias.model.entity.mcf.Deficiencia;
-import com.sias.model.entity.mcf.Escolaridade;
+import com.sias.model.entity.mcb.CondicaoOcupacao;
+import com.sias.model.entity.mcb.Deficiencia;
+import com.sias.model.entity.mcb.Escolaridade;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.entity.mcf.FamiliaMembro;
-import com.sias.model.entity.mcf.GrauParentesco;
+import com.sias.model.entity.mcb.GrauParentesco;
 
 /**
  *

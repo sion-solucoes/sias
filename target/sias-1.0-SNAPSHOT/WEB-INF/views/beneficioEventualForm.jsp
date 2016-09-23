@@ -14,15 +14,13 @@
                 <div class="pull-left">
                     <h2>Cadastro de Banefício Eventual</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value = "/controleFamiliar/beneficioEventual"/>" type="button" class="btn bgm-blue">Voltar</a>
-                </div>
             </div>
             <div class="card-body card-padding">
                 <form class="form-horizontal" role="form" method="POST" id="beneficioEventualForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>
+                    <input type="hidden" id="txtId" value="${beneficioEventual.id}"/>
                     <div class="form-group">
                         <label for="txtCodigo" class="control-label col-sm-2">Código</label>
                         <div class="col-md-4">
@@ -39,12 +37,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2"></label>
-                        <div class="col-md-4">
-                            <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<c:url value = "/cadastrosBasicos/beneficioEventual"/>" type="button" class="btn bgm-white">Voltar</a>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
-                    </div>       
+                    </div>   
                 </form>
             </div>
         </div>

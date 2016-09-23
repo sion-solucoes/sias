@@ -57,7 +57,7 @@
                 <a href="<c:url value="#"/>" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-list"></i> Cadastros Básicos</a>
                 <ul>
                     <li>
-                        <a href="<c:url value="/cadastrosBasicos/pais"/>"> Cadastro de Pais</a>
+                        <a href="<c:url value="/cadastrosBasicos/pais"/>"> Cadastro de País</a>
                     </li>
                     <li>
                         <a href="<c:url value="/cadastrosBasicos/unidadeFederacao"/>"> Cadastro de Unidade Federativa(UF)</a>
@@ -69,28 +69,28 @@
                         <a href="<c:url value="/cadastrosBasicos/cep"/>"> Cadastro de CEP</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/formaIngresso"/>"> Cadastro de Forma de Ingresso</a>
+                        <a href="<c:url value="/cadastrosBasicos/formaIngresso"/>"> Cadastro de Forma de Ingresso</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/beneficioEventual"/>"> Cadastro de Benefício Eventual</a>
+                        <a href="<c:url value="/cadastrosBasicos/beneficioEventual"/>"> Cadastro de Benefício Eventual</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/especificidadeSocial"/>"> Cadastro de Especificidade Social</a>
+                        <a href="<c:url value="/cadastrosBasicos/especificidadeSocial"/>"> Cadastro de Especificidade Social</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/grauParentesco"/>"> Cadastro de Grau de Parentesco</a>
+                        <a href="<c:url value="/cadastrosBasicos/grauParentesco"/>"> Cadastro de Grau de Parentesco</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/documentoProvidenciavel"/>"> Cadastro de Documento Providenciável</a>
+                        <a href="<c:url value="/cadastrosBasicos/documentoProvidenciavel"/>"> Cadastro de Documento Providenciável</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/escolaridade"/>"> Cadastro de Escolaridade</a>
+                        <a href="<c:url value="/cadastrosBasicos/escolaridade"/>"> Cadastro de Escolaridade</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/condicaoOcupacao"/>"> Cadastro de Condição de Ocupação</a>
+                        <a href="<c:url value="/cadastrosBasicos/condicaoOcupacao"/>"> Cadastro de Condição de Ocupação</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/controleFamiliar/deficiencia"/>"> Cadastro de Deficiência</a>
+                        <a href="<c:url value="/cadastrosBasicos/deficiencia"/>"> Cadastro de Deficiência</a>
                     </li>
                 </ul>
             </li>

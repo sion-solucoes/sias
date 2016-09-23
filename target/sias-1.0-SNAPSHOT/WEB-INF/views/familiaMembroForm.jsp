@@ -17,7 +17,7 @@
                         <li><a href="#tab7" data-toggle="tab">Trabalho</a></li>
                         <li><a href="#tab8" data-toggle="tab">Saúde</a></li>
                     </ul>
-                    
+
                     <div class="tab-content">
                         <div class="tab-pane animated fadeInUp" id="tab4">
                             <jsp:include page="/WEB-INF/views/familiaMembroFormPanDadosBasicos.jsp"/>
@@ -34,7 +34,7 @@
                         <div class="tab-pane animated fadeInUp" id="tab8">
                             <jsp:include page="/WEB-INF/views/familiaMembroFormPanSaude.jsp"/>
                         </div>
-                        
+
                         <ul class="fw-footer pagination wizard">
                             <li class="previous first"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
                             <li class="previous"><a class="a-prevent" href=""><i class="zmdi zmdi-chevron-left"></i></a></li>
@@ -42,21 +42,27 @@
                             <li class="next last"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
                         </ul>
                     </div>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="BUTTON" class="btn bgm-blue" id="btnConfirmarFamiliaMembro">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn bgm-white" data-dismiss="modal">Cancelar</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>  
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div class="pull-left">
-                    <button id="btnConfirmarFamiliaMembro" type="button" class="btn bgm-blue">Confirmar</button>
-                    <button type="button" class="btn bgm-blue" data-dismiss="modal">Cancelar</button>
-                </div>
             </div>
         </div>
     </div>
 </div>
-                            
+
 <script type="text/javascript" src="<c:url value="/js/familiaMembroController.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/familiaMembroDadosBasicosController.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/familiaMembroDocumentosProvidenciaveisController.js"/>"></script>
+<!--<script type="text/javascript" src="<c:url value="/js/familiaMembroDocumentosProvidenciaveisController.js"/>"></script>-->
 <script type="text/javascript" src="<c:url value="/js/familiaMembroCondicoesEducacionaisController.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/familiaMembroTrabalhoRendimentosController.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/familiaMembroSaudeController.js"/>"></script>

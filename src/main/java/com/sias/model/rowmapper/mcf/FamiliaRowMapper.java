@@ -5,6 +5,7 @@
  */
 package com.sias.model.rowmapper.mcf;
 
+import com.sias.model.rowmapper.mcb.FormaIngressoRowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcb.CEP;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.entity.mcf.FamiliaMembro;
-import com.sias.model.entity.mcf.FormaIngresso;
+import com.sias.model.entity.mcb.FormaIngresso;
 import com.sias.model.rowmapper.mcb.CEPRowMapper;
 
 /**

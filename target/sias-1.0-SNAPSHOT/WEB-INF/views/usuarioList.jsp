@@ -14,10 +14,8 @@
                 <div class="pull-left">
                     <h2>Listagem de Usuários</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/controleAmbiente/usuario/novo"/>" type="button" class="btn bgm-blue">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleAmbiente/usuario/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
@@ -79,5 +77,5 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>

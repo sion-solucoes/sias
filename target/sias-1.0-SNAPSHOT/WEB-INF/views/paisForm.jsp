@@ -14,15 +14,13 @@
                 <div class="pull-left">
                     <h2>Cadastro de Pais</h2>
                 </div>
-                <div class="pull-right">
-                    <a type="button" href="<c:url value = "/cadastrosBasicos/pais"/>" class="btn bgm-blue">Voltar</a>
-                </div>
             </div>
             <div class="card-body card-padding">
-                <div class="card-header">
-                    <h4>Dados Básicos</h4>
-                </div>
                 <form class="form-horizontal" role="form" method="POST" id="paisForm">
+                    <div class="card-header">
+                        <h4>Dados Básicos</h4>
+                    </div>
+                    <input id="txtId" type="hidden" name="id" value="${pais.id}"/>    
                     <div class="form-group">
                         <label for="txtSigla" class="control-label col-sm-2">Sigla</label>
                         <div class="col-md-3">
@@ -47,10 +45,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a type="button" href="<c:url value = "/cadastrosBasicos/pais"/>" class="btn bgm-white">Voltar</a>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
                     </div>
                 </form>

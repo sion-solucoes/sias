@@ -5,13 +5,13 @@
  */
 package com.sias.model.dao.mcf.impl;
 
-import com.sias.model.constants.mcf.CondicaoOcupacaoConstants;
+import com.sias.model.constants.mcb.CondicaoOcupacaoConstants;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import com.sias.model.constants.mcf.EscolaridadeConstants;
+import com.sias.model.constants.mcb.EscolaridadeConstants;
 import com.sias.model.constants.mcf.FamiliaConstants;
 import com.sias.model.constants.mcf.FamiliaMembroConstants;
-import com.sias.model.constants.mcf.GrauParentescoConstants;
+import com.sias.model.constants.mcb.GrauParentescoConstants;
 import com.sias.model.dao.mcf.interfaces.FamiliaMembroDAO;
 import com.sias.model.entity.mcf.FamiliaMembro;
 import com.sias.model.rowmapper.mcf.FamiliaMembroRowMapper;

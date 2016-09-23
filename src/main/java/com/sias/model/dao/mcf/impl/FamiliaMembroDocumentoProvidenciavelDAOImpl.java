@@ -7,12 +7,12 @@ package com.sias.model.dao.mcf.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import com.sias.model.constants.mcf.DocumentoProvidenciavelConstants;
+import com.sias.model.constants.mcb.DocumentoProvidenciavelConstants;
 import com.sias.model.constants.mcf.FamiliaMembroDocumentoProvidenciavelConstants;
 import com.sias.model.dao.mcf.interfaces.FamiliaMembroDocumentoProvidenciavelDAO;
-import com.sias.model.entity.mcf.DocumentoProvidenciavel;
+import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
-import com.sias.model.rowmapper.mcf.DocumentoProvidenciavelRowMapper;
+import com.sias.model.rowmapper.mcb.DocumentoProvidenciavelRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
 

@@ -14,15 +14,13 @@
                 <div class="pull-left">
                     <h2>Cadastro de Condição de Trabalho ou Ocupação</h2>
                 </div>
-                <div class="pull-right">
-                    <a type="button" href="<c:url value = "/controleFamiliar/condicaoOcupacao"/>" class="btn bgm-blue">Voltar</a>
-                </div>
             </div>
             <div class="card-body card-padding">
-                <div class="card-header">
-                    <h4>Dados Básicos</h4>
-                </div>
                 <form class="form-horizontal" role="form" method="POST" id="condicaoOcupacaoForm">
+                    <div class="card-header">
+                        <h4>Dados Básicos</h4>
+                    </div>
+                    <input id="txtId" type="hidden" name="id" value="${condicaoOcupacao.id}"/>
                     <div class="form-group">
                         <label for="txtCodigo" class="control-label col-sm-2">Código</label>
                         <div class="col-md-4">
@@ -39,10 +37,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                    <div class="row clearfix">
+                        <div class="form-group">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" id="btnConfirmar" class="btn bgm-blue">Confirmar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<c:url value = "/cadastrosBasicos/condicaoOcupacao"/>" type="button" class="btn bgm-white">Voltar</a>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
                     </div>
                 </form>

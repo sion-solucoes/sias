@@ -33,6 +33,7 @@ import com.sias.util.Criteria;
 import com.sias.util.GSONConverter;
 import com.sias.util.Relatorio;
 import com.sias.util.ValidateException;
+import java.io.InputStream;
 import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Encoder;
 
@@ -74,10 +75,10 @@ public class UsuarioController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("usuarioForm");
-        
+
         try {
             modelAndView.addObject("unidadeAtendimentoList", unidadeAtendimentoService.readAll());
-           // modelAndView.addObject("controleAmbiente", "active toggled");
+            // modelAndView.addObject("controleAmbiente", "active toggled");
             //modelAndView.addObject("usuario", "active");
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,8 +215,10 @@ public class UsuarioController {
             List<Usuario> usuarioList = new ArrayList<Usuario>();
             usuarioList.add(usuario);
             Map<String, Object> parametros = new HashMap<String, Object>();
-            parametros.put("logo", session.getServletContext().getRealPath("/img/logo.png"));
-            byte relatorio[] = Relatorio.imprimir(UsuarioController.class.getResourceAsStream("/sias/relatorios/cartaoseguranca.jasper"), parametros, new JRBeanCollectionDataSource(usuarioList));
+            String logo = session.getServletContext().getRealPath("/img/logo.png");
+            parametros.put("logo", logo);
+            InputStream jasper = session.getServletContext().getResourceAsStream("/relatorios/cartaoseguranca.jasper");
+            byte relatorio[] = Relatorio.imprimir(jasper, parametros, new JRBeanCollectionDataSource(usuarioList));
             httpServletResponse.setContentType("application/pdf");
             httpServletResponse.getOutputStream().write(relatorio);
         } catch (Exception ex) {

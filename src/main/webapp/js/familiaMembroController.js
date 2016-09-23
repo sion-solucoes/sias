@@ -110,7 +110,7 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
         checkPossuiQualificacaoProfissional.prop('checked', familiaMembro.possuiQualificacaoProfissional);
         txtDescricaoQualificacaoProfissional.val(familiaMembro.descricaoQualificacaoProfissional);
         txtRendaMensal.val(familiaMembro.rendaMensal.toFixed(2));
-        if (familiaMembro.deficiencia != null && familiaMembro.defiencia.id != null) {
+        if (familiaMembro.deficiencia != null && familiaMembro.deficiencia.id != null) {
             comboDeficiencia.val(familiaMembro.deficiencia.id);
         }
         checkNecessitaCuidadosConstantes.prop('checked', familiaMembro.necessitaCuidadosConstantes);
@@ -143,119 +143,101 @@ $('#btnConfirmarFamiliaMembro').click(function (event) {
     var familiaMembroModal = $('#familiaMembroModal');
 
     /*
-     * Aba "Básico"
-     * */
-    var comboGrauParentesco = $('#comboGrauParentesco');
-    var txtNome = $('#txtNome');
-    var comboSexo = $('#comboSexo');
-    var txtApelido = $('#txtApelido');
-    var txtDataNascimento = $('#txtDataNascimento');
-    var txtNomeMae = $('#txtNomeMae');
-    var txtNIS = $('#txtNIS');
-    var txtCPF = $('#txtCPF');
-    var txtRG = $('#txtRG');
-    var txtRGOrgaoExpedidor = $('#txtRGOrgaoExpedidor');
-    var txtRGUFEmissao = $('#txtRGUFEmissao');
-    var txtRGDataEmissao = $('#txtRGDataEmissao');
-    /*
      * Aba "Documentos Providenciáveis"
      * */
     var familiaMembroDocumentoProvidenciavelList = new Array();
-    var tabelaDocumentosProvidenciaveis = $('#tabelaDocumentosProvidenciaveis');
-    var rowsTabelaDocumentosProvidenciaveis = tabelaDocumentosProvidenciaveis.prop('rows');
-    for (var indexDocumentoProvidenciavel = 1; indexDocumentoProvidenciavel < rowsTabelaDocumentosProvidenciaveis.length; indexDocumentoProvidenciavel++) {
-        var row = rowsTabelaDocumentosProvidenciaveis[indexDocumentoProvidenciavel];
-        var data = row.cells[0];
-        var check = $(data.children[0]);
-        if (check.prop('checked')) {
-            var documentoProvidenciavel = {
-                id: check.value
-            };
-            var familiaMembroDocumentoProvidenciavel = {
-                documentoProvidenciavel: documentoProvidenciavel
-            };
-            familiaMembroDocumentoProvidenciavelList.push(familiaMembroDocumentoProvidenciavel);
-        }
+    $("input[type=checkbox][name='documentoProvidenciavel[]']:checked").each(function () {
+        var familiaMembroDocumentoProvidenciavel = {
+            documentoProvidenciavel: {
+                id: $(this).val()
+            }
+        };
+        familiaMembroDocumentoProvidenciavelList.push(familiaMembroDocumentoProvidenciavel);
+    });
+
+    var deficiencia = {
+        id: $("#comboDeficiencia").val()
+    };
+
+    if (deficiencia.id == null || deficiencia.id == '') {
+        deficiencia = null;
     }
 
-    /*
-     * Aba "Condições Educacionais"
-     * */
-    var comboEscolaridade = $('#comboEscolaridade');
-    var checkSabeLerEscrever = $('#checkSabeLerEscrever');
-    var checkFrequentaEscolaAtualmente = $('#checkFrequentaEscolaAtualmente');
-    var checkPossuiCarteiraTrabalho = $('#checkPossuiCarteiraTrabalho');
-    var comboCondicaoOcupacao = $('#comboCondicaoOcupacao');
-    var checkPossuiQualificacaoProfissional = $('#checkPossuiQualificacaoProfissional');
-    var txtDescricaoQualificacaoProfissional = $('#txtDescricaoQualificacaoProfissional');
-    var txtRendaMensal = $('#txtRendaMensal');
-    var comboDeficiencia = $('#comboDeficiencia');
-    var checkNecessitaCuidadosConstantes = $('#checkNecessitaCuidadosConstantes');
-    var txtDescricaoNecessidadeCuidadosConstantes = $('#txtDescricaoNecessidadeCuidadosConstantes');
-    var checkUsuarioRemediosControlados = $('#checkUsuarioRemediosControlados');
-    var checkUsuarioBebidasAlcoolicas = $('#checkUsuarioBebidasAlcoolicas');
-    var checkUsuarioEntorpecentes = $('#checkUsuarioEntorpecentes');
-    var checkGestante = $('#checkGestante');
-    var txtMesesGestacao = $('#txtMesesGestacao');
-    var checkIniciouPreNatal = $('#checkIniciouPreNatal');
+    var escolaridade = {
+        id: $("#comboEscolaridade").val()
+    };
+    if (escolaridade.id == null || escolaridade.id == '') {
+        escolaridade = null;
+    }
+
+    var condicaoOcupacao = {
+        id: $("#comboCondicaoOcupacao").val()
+    };
+    if (condicaoOcupacao.id == null || condicaoOcupacao.id == '') {
+        condicaoOcupacao = null;
+    }
 
     var familiaMembro = {
         grauParentesco: {
-            id: comboGrauParentesco.val()
+            id: $("#comboGrauParentesco").val()
         },
-        nome: txtNome.val(),
-        sexo: comboSexo.val(),
-        apelido: txtApelido.val(),
-        dataNascimento: txtDataNascimento.val() == '' ? null : txtDataNascimento.val(),
-        nomeMae: txtNomeMae.val(),
-        nis: txtNIS.val(),
-        cpf: txtCPF.val(),
-        rg: txtRG.val(),
-        rgOrgaoExpedidor: txtRGOrgaoExpedidor.val(),
-        rgUFEmissao: txtRGUFEmissao.val(),
-        rgDataEmissao: txtRGDataEmissao.val() == '' ? null : txtRGDataEmissao.val(),
+        nome: $("#txtNome").val(),
+        sexo: $("#comboSexo").val(),
+        apelido: $("#txtApelido").val(),
+        dataNascimento: $("#txtDataNascimento").val() == '' ? null : $("#txtDataNascimento").val(),
+        nomeMae: $("#txtNomeMae").val(),
+        nis: $("#txtNIS").val(),
+        cpf: $("#txtCPF").val(),
+        rg: $("#txtRG").val(),
+        rgOrgaoExpedidor: $("#txtRGOrgaoExpedidor").val(),
+        rgUFEmissao: $("#txtRGUFEmissao").val(),
+        rgDataEmissao: $("#txtRGDataEmissao").val() == '' ? null : $("#txtRGDataEmissao").val(),
         familiaMembroDocumentoProvidenciavelList: familiaMembroDocumentoProvidenciavelList,
-        escolaridade: {
-            id: comboEscolaridade.val()
-        },
-        sabeLerEscrever: checkSabeLerEscrever.prop('checked'),
-        frequentaEscolaAtualmente: checkFrequentaEscolaAtualmente.prop('checked'),
-        possuiCarteiraTrabalho: checkPossuiCarteiraTrabalho.prop('checked'),
-        condicaoOcupacao: {
-            id: comboCondicaoOcupacao.val()
-        },
-        possuiQualificacaoProfissional: checkPossuiQualificacaoProfissional.prop('checked'),
-        descricaoQualificacaoProfissional: txtDescricaoQualificacaoProfissional.val(),
-        rendaMensal: parseFloat(txtRendaMensal.val().replace('R$ ', '').replace('.', '').replace(',', '.')),
-        deficiencia: {
-            id: comboDeficiencia.val()
-        },
-        necessitaCuidadosConstantes: checkNecessitaCuidadosConstantes.prop('checked'),
-        descricaoNecessidadeCuidadosConstantes: txtDescricaoNecessidadeCuidadosConstantes.val(),
-        usuarioRemediosControlados: checkUsuarioRemediosControlados.prop('checked'),
-        usuarioBebidasAlcoolicas: checkUsuarioBebidasAlcoolicas.prop('checked'),
-        usuarioEntorpecentes: checkUsuarioEntorpecentes.prop('checked'),
-        gestante: checkGestante.prop('checked'),
-        mesesGestacao: txtMesesGestacao.val(),
-        iniciouPreNatal: checkIniciouPreNatal.prop('checked')
+        escolaridade: escolaridade,
+        sabeLerEscrever: $("#checkSabeLerEscrever").prop('checked'),
+        frequentaEscolaAtualmente: $("#checkFrequentaEscolaAtualmente").prop('checked'),
+        possuiCarteiraTrabalho: $("#checkPossuiCarteiraTrabalho").prop('checked'),
+        condicaoOcupacao: condicaoOcupacao,
+        possuiQualificacaoProfissional: $("#checkPossuiQualificacaoProfissional").prop('checked'),
+        descricaoQualificacaoProfissional: $("#txtDescricaoQualificacaoProfissional").val(),
+        rendaMensal: parseFloat($("#txtRendaMensal").val().replace('R$ ', '').replace('.', '').replace(',', '.')),
+        deficiencia: deficiencia,
+        necessitaCuidadosConstantes: $("#checkNecessitaCuidadosConstantes").prop('checked'),
+        descricaoNecessidadeCuidadosConstantes: $("#txtDescricaoNecessidadeCuidadosConstantes").val(),
+        usuarioRemediosControlados: $("#checkUsuarioRemediosControlados").prop('checked'),
+        usuarioBebidasAlcoolicas: $("#checkUsuarioBebidasAlcoolicas").prop('checked'),
+        usuarioEntorpecentes: $("#checkUsuarioEntorpecentes").prop('checked'),
+        gestante: $("#checkGestante").prop('checked'),
+        mesesGestacao: $("#txtMesesGestacao").val() == '' ? 0 : $("#txtMesesGestacao").val(),
+        iniciouPreNatal: $("#checkIniciouPreNatal").prop('checked')
     };
 
     var row = tabelaComposicaoFamiliar.prop('rows')[0].cloneNode();
     var checkData = document.createElement("td");
+    var checkValue = JSON.stringify(familiaMembro);
+    var div = document.createElement("div");
+    div.className = "checkbox";
+    var checkLabel = document.createElement("label");
+    var i = document.createElement("i");
+    i.className = "input-helper";
+    //var check = '<div class="checkbox"><label><input type="checkbox" id="checkTabelaFamiliaMembro" value="'+checkValue+'"/><i class="input-helper"></i></label></div>';
     var check = document.createElement("input");
     check.type = "checkbox";
     check.id = "checkTabelaFamiliaMembro";
     check.value = JSON.stringify(familiaMembro);
-    checkData.appendChild(check);
+    checkLabel.appendChild(check);
+    checkLabel.appendChild(i);
+    div.appendChild(checkLabel);
+    checkData.appendChild(div);
     row.appendChild(checkData);
     var nomeData = document.createElement("td");
-    nomeData.value = txtNome.val();
-    var nome = document.createTextNode(txtNome.val());
+    nomeData.value = $("#txtNome").val();
+    var nome = document.createTextNode($("#txtNome").val());
     nomeData.appendChild(nome);
     row.appendChild(nomeData);
     var grauParentesco = document.createElement("td");
-    grauParentesco.value = comboGrauParentesco.val();
-    grauParentesco.appendChild(document.createTextNode(comboGrauParentesco.find('option:selected').prop('innerText')));
+    grauParentesco.value = $("#comboGrauParentesco").val();
+    grauParentesco.appendChild(document.createTextNode($("#comboGrauParentesco").find('option:selected').prop('innerText')));
     row.appendChild(grauParentesco);
     var trashData = document.createElement("td");
     var trash = document.createElement("a");
@@ -269,6 +251,7 @@ $('#btnConfirmarFamiliaMembro').click(function (event) {
         var checkBoxCheckedList = tabelaComposicaoFamiliar.find('input:checkbox:checked');
         var dataAtual = checkBoxCheckedList[0].parentElement;
         var rowAtual = dataAtual.parentElement;
+        $(rowAtual).html(null);
         $(rowAtual).html($(row).html());
     } else {
         var body = tabelaComposicaoFamiliar.find('tbody');
@@ -282,5 +265,5 @@ $('#btnConfirmarFamiliaMembro').click(function (event) {
     }
 
     familiaMembroModal.modal('toggle');
-    return;
+
 });

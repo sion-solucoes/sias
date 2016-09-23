@@ -15,11 +15,12 @@
                     <h2>Listagem de Especificidades Sociais</h2>
                 </div>
             </div>
-            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/especificidadeSocial/novo"/>"><i class="zmdi zmdi-plus"></i></a>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/especificidadeSocial/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="indigena">Indígena</th>
                             <th data-column-id="povo">Povo/Etnia</th>
@@ -30,25 +31,10 @@
                         <c:if test="${not empty especificidadeSocialList}">
                             <c:forEach var="especificidadeSocial" items="${especificidadeSocialList}">
                                 <tr>
-                                    <td>
-                                        ${especificidadeSocial.descricao}
-                                    </td>
-                                    <td>
-                                        <c:if test="${especificidadeSocial.indigena}" >
-                                            Sim
-                                        </c:if>
-                                        <c:if test="${!especificidadeSocial.indigena}" >
-                                            Não
-                                        </c:if>
-                                    </td>
-                                    <td>
-                                        ${especificidadeSocial.povoEtnia}
-                                    </td>
-                                    <!--<td>
-                                        <a href="<c:url value="/controleFamiliar/especificidadeSocial/${especificidadeSocial.id}/excluir"/>">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </td>-->
+                                    <td>${especificidadeSocial.id}</td>
+                                    <td>${especificidadeSocial.descricao}</td>
+                                    <td><c:if test="${especificidadeSocial.indigena}">Sim</c:if><c:if test="${!especificidadeSocial.indigena}">Não</c:if></td>
+                                    <td>${especificidadeSocial.povoEtnia}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

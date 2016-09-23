@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,10 +31,10 @@ public class MunicipioController {
 
     @Autowired
     private MunicipioService municipioService;
-    
+
     @Autowired
     private UnidadeFederacaoService unidadeFederacaoService;
-    
+
     @RequestMapping(value = "/municipio", method = RequestMethod.GET)
     public ModelAndView unidadeFederacao() {
 
@@ -62,18 +61,23 @@ public class MunicipioController {
         } catch (Exception ex) {
             Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return modelAndView;
     }
 
     @RequestMapping(value = "/municipio/save", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> save (String json) {
-        
+    public @ResponseBody
+    Map<String, Object> save(String json) {
+
         Map<String, Object> response = new HashMap<String, Object>();
 
         try {
             Municipio municipio = (Municipio) GSONConverter.convert(json, Municipio.class);
-            municipioService.create(municipio);
+            if (municipio.getId() == null) {
+                municipioService.create(municipio);
+            } else{
+                municipioService.update(municipio);
+            }
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
@@ -99,18 +103,6 @@ public class MunicipioController {
         }
 
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/municipio/{id}/editar", method = RequestMethod.POST)
-    public ModelAndView editar(@ModelAttribute Municipio municipio) {
-
-        try {
-            municipioService.update(municipio);
-        } catch (Exception ex) {
-            Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new ModelAndView("redirect:/cadastrosBasicos/municipio");
     }
 
     @RequestMapping(value = "/municipio/{id}/excluir", method = RequestMethod.GET)

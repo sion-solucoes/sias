@@ -8,14 +8,13 @@
                 <div class="pull-left">
                     <h2>Listagem de Unidade de Atendimento</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/controleAmbiente/unidadeAtendimento/novo"/>" type="button" class="btn bgm-blue">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleAmbiente/unidadeAtendimento/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="codigo">Código</th>
                             <th data-column-id="sender">Descrição</th>
                             <th data-column-id="received" data-order="desc">Tipo</th>
@@ -26,31 +25,10 @@
                         <c:if test="${not empty unidadeAtendimentoList}">
                             <c:forEach var="unidadeAtendimento" items="${unidadeAtendimentoList}">
                                 <tr>
-                                    <td>
-                                        ${unidadeAtendimento.codigo}
-                                    </td>
-                                    <td>
-                                        ${unidadeAtendimento.descricao}
-                                    </td>
-                                    <td>
-                                        <c:if test="${unidadeAtendimento.tipo == 1}">
-                                            CRAS
-                                        </c:if>     
-                                        <c:if test="${unidadeAtendimento.tipo == 2}">
-                                            CREAS
-                                        </c:if>
-                                    </td>
-                                    <!--
-                                    <td>
-                                        <a href="<c:url value="/controleAmbiente/unidadeAtendimento/${unidadeAtendimento.id}/editar"/>" type="button" class="btn btn-icon waves-effect waves-circle">
-                                            <span class="zmdi zmdi-edit"></span>
-                                        </a>
-                                        <a href="<c:url value="/controleAmbiente/unidadeAtendimento/${unidadeAtendimento.id}/excluir"/>" type="button" class="btn btn-icon waves-effect waves-circle">
-                                            <span class="zmdi zmdi-delete"></span>
-                                        </a>
-                                    </td>
-                                    -->
-                                </tr>
+                                    <td>${unidadeAtendimento.codigo}</td>
+                                    <td>${unidadeAtendimento.descricao}</td>
+                                    <td><c:if test="${unidadeAtendimento.tipo == 1}">CRAS</c:if><c:if test="${unidadeAtendimento.tipo == 2}">CREAS</c:if></td>
+                                    </tr>
                             </c:forEach>
                         </c:if>
                     </tbody>
@@ -70,5 +48,5 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>

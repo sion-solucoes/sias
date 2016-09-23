@@ -1,6 +1,12 @@
 $('#deficienciaForm').submit(function (event) {
 
+    var id = $("#txtId").val();
+    if (id == "") {
+        id = null;
+    }
+
     var deficiencia = {
+        id: id,
         codigo: $("#txtCodigo").val(),
         descricao: $("#txtDescricao").val()
     };
@@ -11,14 +17,14 @@ $('#deficienciaForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../deficiencia/save',
+        url: '/sias/cadastrosBasicos/deficiencia/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../deficiencia');
+                        document.location.assign('/sias/cadastrosBasicos/deficiencia');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

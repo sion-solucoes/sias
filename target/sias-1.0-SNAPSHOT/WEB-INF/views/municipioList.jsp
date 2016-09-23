@@ -14,14 +14,13 @@
                 <div class="pull-left">
                     <h2>Listagem de Municípios</h2>
                 </div>
-                <div class="pull-right">
-                    <a href="<c:url value="/cadastrosBasicos/municipio/novo"/>" type="button" class="btn bgm-blue">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/cadastrosBasicos/municipio/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="descricao">Descrição</th>
                             <th data-column-id="codigo">Código(IBGE)</th>
                             <th data-column-id="uf">Unidade Federação</th>
@@ -32,15 +31,10 @@
                         <c:if test="${not empty municipioList}">
                             <c:forEach var="municipio" items="${municipioList}">
                                 <tr>
-                                    <td>
-                                        ${municipio.descricao}
-                                    </td>
-                                    <td>
-                                        ${municipio.codigoIBGE}
-                                    </td>
-                                    <td>
-                                        ${municipio.unidadeFederacao.sigla} - ${municipio.unidadeFederacao.descricao}
-                                    </td>
+                                    <td>${municipio.id}</td>
+                                    <td>${municipio.descricao}</td>
+                                    <td>${municipio.codigoIBGE}</td>
+                                    <td>${municipio.unidadeFederacao.sigla} - ${municipio.unidadeFederacao.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>
@@ -61,9 +55,9 @@
         $("#data-table-command").bootgrid(bootgridConfig);
     });
 
-    
+
 </script>
 
-    
+
 
 

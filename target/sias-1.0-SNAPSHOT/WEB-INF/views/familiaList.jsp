@@ -15,14 +15,13 @@
                 <div class="pull-left">
                     <h2>Listagem de Famílias</h2>
                 </div>
-                <div class="pull-right">
-                    <a type="button" class="btn bgm-blue" href="<c:url value="/controleFamiliar/familia/novo"/>">Novo</a>
-                </div>
             </div>
+            <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/familia/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="pessoa_referencia">Nome(pessoa de referência)</th>
                             <th data-column-id="endereco">Endereço</th>
                             <th data-column-id="commands" data-formatter="commands" data-sortable="false"></th>
@@ -32,17 +31,9 @@
                         <c:if test="${not empty familiaList}">
                             <c:forEach var="familia" items="${familiaList}">
                                 <tr>
-                                    <td>
-                                        ${familia.nomePessoaReferencia}
-                                    </td>
-                                    <td>
-                                        ${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}
-                                    </td>
-                                    <!--<td>
-                                        <a href="<c:url value="/controleFamiliar/familia/${familia.id}/excluir"/>">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </td>-->
+                                    <td>${familia.id}</td>
+                                    <td>${familia.nomePessoaReferencia}</td>
+                                    <td>${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

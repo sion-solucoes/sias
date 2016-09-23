@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sias.model.dao.mcf.interfaces.FamiliaMembroDocumentoProvidenciavelDAO;
-import com.sias.model.entity.mcf.DocumentoProvidenciavel;
+import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
 import com.sias.model.service.mcf.interfaces.FamiliaMembroDocumentoProvidenciavelService;
 import com.sias.util.Criteria;

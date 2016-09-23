@@ -20,6 +20,7 @@
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="codigo">Código</th>
                             <th data-column-id="logradouro">Logradouro</th>
                             <th data-column-id="bairro">Bairro</th>
@@ -31,18 +32,11 @@
                         <c:if test="${not empty cepList}">
                             <c:forEach var="cep" items="${cepList}">
                                 <tr>
-                                    <td>
-                                        ${cep.codigo}
-                                    </td>
-                                    <td>
-                                        ${cep.logradouro}
-                                    </td>
-                                    <td>
-                                        ${cep.bairro}
-                                    </td>
-                                    <td>
-                                        ${cep.municipio.descricao}
-                                    </td>
+                                    <td>${cep.id}</td>
+                                    <td>${cep.codigo}</td>
+                                    <td>${cep.logradouro}</td>
+                                    <td>${cep.bairro}</td>
+                                    <td>${cep.municipio.descricao}</td>
                                 </tr>
                             </c:forEach>
                         </c:if>

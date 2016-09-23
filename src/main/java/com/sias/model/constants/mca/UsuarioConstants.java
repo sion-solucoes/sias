@@ -27,6 +27,8 @@ public class UsuarioConstants {
 
     public static final String NOME = PREFIXO + "nome";
     
+    public static final String SOBRENOME = PREFIXO + "sobrenome";
+    
     public static final String FOTO = PREFIXO + "foto";
     
 }

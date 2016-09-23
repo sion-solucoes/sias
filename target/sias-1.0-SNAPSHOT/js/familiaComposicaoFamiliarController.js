@@ -60,17 +60,17 @@ $('#btnAdicionarMembro').click(function (event) {
 
 $('#btnEditarMembro').click(function (event) {
 
-    var tabelaComposicaoFamiliar = $('#tabelaComposicaoFamiliar');
-    var checkBoxCheckedList = tabelaComposicaoFamiliar.find('input:checkbox:checked');
-
-    if (checkBoxCheckedList.length == 0) {
-        $('#msgFailure').text('Selecione um membro para poder editá-lo.');
-        $('#dlgFailure').modal('show');
-        setTimeout(function () {
-            $('#dlgFailure').modal('hide');
-        }, 3000);
-        return;
-    }
+//    var tabelaComposicaoFamiliar = $('#tabelaComposicaoFamiliar');
+//    var checkBoxCheckedList = tabelaComposicaoFamiliar.find('input:checkbox:checked');
+//
+//    if (checkBoxCheckedList.length == 0) {
+//        $('#msgFailure').text('Selecione um membro para poder editá-lo.');
+//        $('#dlgFailure').modal('show');
+//        setTimeout(function () {
+//            $('#dlgFailure').modal('hide');
+//        }, 3000);
+//        return;
+//    }
 
     var familiaMembroModal = $('#familiaMembroModal');
     familiaMembroModal.find('#familiaMembroModalLabel').text('Cadastro de Membro Familiar - Editar');

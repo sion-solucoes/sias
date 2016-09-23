@@ -7,7 +7,7 @@ package com.sias.model.dao.mcf.interfaces;
 
 import java.util.List;
 import com.sias.model.base.dao.BaseDAO;
-import com.sias.model.entity.mcf.DocumentoProvidenciavel;
+import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
 
 /**

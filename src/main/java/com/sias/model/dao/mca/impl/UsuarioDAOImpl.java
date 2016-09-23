@@ -29,17 +29,26 @@ public class UsuarioDAOImpl extends JDBCBaseDAO implements UsuarioDAO {
         String query = "INSERT INTO " + UsuarioConstants.TABELA;
         query += "(";
         {
+            query += UsuarioConstants.UNIDADE_ATENDIMENTO_ID + ", ";
+            query += UsuarioConstants.TIPO + ", ";
             query += UsuarioConstants.EMAIL + ", ";
             query += UsuarioConstants.SENHA + ", ";
-            query += UsuarioConstants.TIPO + ", ";
             query += UsuarioConstants.NOME + ", ";
+            query += UsuarioConstants.SOBRENOME + ", ";
             query += UsuarioConstants.FOTO;
         }
         query += ")";
-        query += " VALUES (?, MD5(?), ?, ?, ?)";
+        query += " VALUES (?, ?, ?, MD5(?), ?, ?, ?)";
         query += " RETURNING " + UsuarioConstants.ID;
 
-        Object args[] = {usuario.getEmail(), usuario.getSenha(), usuario.getTipo(), usuario.getNome(), usuario.getFoto()};
+        Object args[] = {
+            usuario.getUnidadeAtendimento().getId(),
+            usuario.getTipo(),
+            usuario.getEmail(),
+            usuario.getSenha(),
+            usuario.getNome(),
+            usuario.getSobrenome(),
+            usuario.getFoto()};
 
         usuario.setId(getTemplate().queryForObject(query, args, Long.class));
     }
@@ -51,7 +60,7 @@ public class UsuarioDAOImpl extends JDBCBaseDAO implements UsuarioDAO {
         query += " WHERE TRUE ";
 
         List<Object> args = new ArrayList<Object>();
-        
+
         for (Criteria criteria : criteriaList) {
             query += " AND ";
             query += criteria.getAttribute() + " ";
@@ -84,20 +93,37 @@ public class UsuarioDAOImpl extends JDBCBaseDAO implements UsuarioDAO {
 
         String query = "UPDATE " + UsuarioConstants.TABELA;
         query += " SET ";
+        query += UsuarioConstants.UNIDADE_ATENDIMENTO_ID + "=?, ";
+        query += UsuarioConstants.TIPO + "=?, ";
         query += UsuarioConstants.EMAIL + "=?, ";
         if (usuario.getSenha() != null && !usuario.getSenha().trim().isEmpty()) {
             query += UsuarioConstants.SENHA + "=MD5(?), ";
         }
-        query += UsuarioConstants.TIPO + "=?, ";
         query += UsuarioConstants.NOME + "=?, ";
-        query += UsuarioConstants.FOTO + "=? ";
+        query += UsuarioConstants.SOBRENOME + "=?, ";
+        query += UsuarioConstants.FOTO + "=?";
         query += " WHERE " + UsuarioConstants.ID + "=? ";
 
         if (usuario.getSenha() != null && !usuario.getSenha().trim().isEmpty()) {
-            Object args[] = {usuario.getEmail(), usuario.getSenha(), usuario.getTipo(), usuario.getNome(), usuario.getFoto(), usuario.getId()};
+            Object args[] = {
+                usuario.getUnidadeAtendimento().getId(),
+                usuario.getTipo(),
+                usuario.getEmail(),
+                usuario.getSenha(),
+                usuario.getNome(),
+                usuario.getSobrenome(),
+                usuario.getFoto(),
+                usuario.getId()};
             getTemplate().update(query, args);
         } else {
-            Object args[] = {usuario.getEmail(), usuario.getTipo(), usuario.getNome(), usuario.getFoto(), usuario.getId()};
+            Object args[] = {
+                usuario.getUnidadeAtendimento().getId(),
+                usuario.getTipo(),
+                usuario.getEmail(),
+                usuario.getNome(),
+                usuario.getSobrenome(),
+                usuario.getFoto(),
+                usuario.getId()};
             getTemplate().update(query, args);
         }
 

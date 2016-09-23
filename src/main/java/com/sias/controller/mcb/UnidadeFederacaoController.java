@@ -67,13 +67,18 @@ public class UnidadeFederacaoController {
     }
 
     @RequestMapping(value = "/unidadeFederacao/save", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> save(String json) {
+    public @ResponseBody
+    Map<String, Object> save(String json) {
 
         Map<String, Object> response = new HashMap<String, Object>();
-        
+
         try {
             UnidadeFederacao unidadeFederacao = (UnidadeFederacao) GSONConverter.convert(json, UnidadeFederacao.class);
-            unidadeFederacaoService.create(unidadeFederacao);
+            if (unidadeFederacao.getId() == null) {
+                unidadeFederacaoService.create(unidadeFederacao);
+            } else {
+                unidadeFederacaoService.update(unidadeFederacao);
+            }
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (Exception ex) {
@@ -99,18 +104,6 @@ public class UnidadeFederacaoController {
         }
 
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/unidadeFederacao/{id}/editar", method = RequestMethod.POST)
-    public ModelAndView editar(@ModelAttribute UnidadeFederacao unidadeFederacao) {
-
-        try {
-            unidadeFederacaoService.update(unidadeFederacao);
-        } catch (Exception ex) {
-            Logger.getLogger(UnidadeFederacaoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new ModelAndView("redirect:/cadastrosBasicos/unidadeFederacao");
     }
 
     @RequestMapping(value = "/unidadeFederacao/{id}/excluir", method = RequestMethod.GET)

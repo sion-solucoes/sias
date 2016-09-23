@@ -35,7 +35,7 @@ $('#formLogin').submit(function (event) {
     return false;
 });
 
-$('#btnConfirmar').click(function (event) {
+$('#formSeguranca').submit(function (event) {
 
     var txtEmail = document.getElementById("txtEmail");
     var txtSenha = document.getElementById("txtSenha");
@@ -64,5 +64,6 @@ $('#btnConfirmar').click(function (event) {
             }
         }
     });
-
+    
+    return false;
 });
