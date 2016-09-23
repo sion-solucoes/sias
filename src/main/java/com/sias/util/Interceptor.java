@@ -22,6 +22,8 @@ public class Interceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest req, HttpServletResponse res, Object arg2, ModelAndView modelAndView) throws Exception {
 
         String url = req.getRequestURL().toString();
+        
+        url = url.replace("/sias", "");
 
         if (url.endsWith("/home")) {
             if (req.getSession().getAttribute("usuarioSessao") != null) {
