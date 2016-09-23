@@ -41,6 +41,8 @@ public class Interceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object arg2) throws Exception {
 
         String url = req.getRequestURL().toString();
+        
+        url = url.replace("/sias", "");
 
         System.out.println(url);
 
