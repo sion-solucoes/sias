@@ -45,7 +45,7 @@ public class HomeController {
         return null;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    @RequestMapping(value = "home", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> home(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpSession httpSession) {
 
@@ -66,7 +66,7 @@ public class HomeController {
         return response;
     }
 
-    @RequestMapping(value = "/home/verificaSeguranca", method = RequestMethod.POST)
+    @RequestMapping(value = "home/verificaSeguranca", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> home(@RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("numeroSeguranca") Integer numeroSeguranca, @RequestParam("codigoSeguranca") String codigoSeguranca, HttpSession httpSession) {
 
@@ -90,27 +90,27 @@ public class HomeController {
         return response;
     }
 
-    @RequestMapping(value = "/home/loginError", method = RequestMethod.GET)
+    @RequestMapping(value = "home/loginError", method = RequestMethod.GET)
     public ModelAndView loginError(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("loginError");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "home", method = RequestMethod.GET)
     public ModelAndView home(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home/alterarSenha", method = RequestMethod.GET)
+    @RequestMapping(value = "home/alterarSenha", method = RequestMethod.GET)
     public ModelAndView alterarSenha(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home/deslogar", method = RequestMethod.GET)
+    @RequestMapping(value = "home/deslogar", method = RequestMethod.GET)
     public ModelAndView deslogar(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         httpSession.invalidate();
@@ -118,31 +118,10 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    @RequestMapping(value = "auth", method = RequestMethod.GET)
     public ModelAndView auth(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("authError");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/controleFamiliar", method = RequestMethod.GET)
-    public ModelAndView controleFamiliar() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("controleFamiliar");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/controleAmbiente", method = RequestMethod.GET)
-    public ModelAndView controleAmbiente() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("controleAmbiente");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/cadastrosBasicos", method = RequestMethod.GET)
-    public ModelAndView cadastrosBasicos() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("cadastrosBasicos");
         return modelAndView;
     }
 
