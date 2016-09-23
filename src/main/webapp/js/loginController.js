@@ -14,7 +14,7 @@ $('#formLogin').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: 'home',
+        url: '/home',
         data: data,
         success: function (data) {
             if (data != null) {
@@ -51,15 +51,15 @@ $('#formSeguranca').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/home/verificaSeguranca',
+        url: '/home/verificaSeguranca',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
-                    document.location.assign('/sias/home');
+                    document.location.assign('/home');
                 } else {
-                    document.location.assign('/sias/home/loginError');
+                    document.location.assign('/home/loginError');
                 }
             }
         }
