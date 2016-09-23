@@ -23,7 +23,7 @@ public class Interceptor implements HandlerInterceptor {
 
         String url = req.getRequestURL().toString();
 
-        if (url.endsWith("/sias/home")) {
+        if (url.endsWith("/home")) {
             if (req.getSession().getAttribute("usuarioSessao") != null) {
                 String urlDesejada = (String) req.getSession().getAttribute("urlDesejada");
                 if (urlDesejada != null) {
@@ -40,25 +40,27 @@ public class Interceptor implements HandlerInterceptor {
 
         String url = req.getRequestURL().toString();
 
+        System.out.println(url);
+
         if (url.contains("css") || url.contains("fonts") || url.contains("img") || url.contains("js") || url.contains("less")) {
             return true;
         }
 
-        if (url.endsWith("/sias/home/loginError")) {
+        if (url.endsWith("/home/loginError")) {
             return true;
         }
 
-        if (url.endsWith("/sias")) {
+        if (url.endsWith("/")) {
             if (req.getSession().getAttribute("usuarioSessao") == null) {
-                res.sendRedirect("/sias/home");
+                res.sendRedirect("/home");
                 return false;
             }
         }
 
-        if (!url.endsWith("/sias/home") && !url.endsWith("/sias/home/verificaSeguranca")) {
+        if (!url.endsWith("/home") && !url.endsWith("/home/verificaSeguranca")) {
             if (req.getSession().getAttribute("usuarioSessao") == null) {
                 req.getSession().setAttribute("urlDesejada", url);
-                res.sendRedirect("/sias");
+                res.sendRedirect("/");
                 return false;
             }
         }
@@ -69,17 +71,17 @@ public class Interceptor implements HandlerInterceptor {
             req.getSession().setAttribute("usuarioSessao", usuario);
             if (usuario.getTipo() == Usuario.TIPO_ADMINISTRATIVO) {
                 if (url.contains("controleFamiliar")) {
-                    res.sendRedirect("/sias/auth");
+                    res.sendRedirect("/auth");
                     return false;
                 }
                 if (url.contains("controleAmbiente")) {
-                    res.sendRedirect("/sias/auth");
+                    res.sendRedirect("/auth");
                     return false;
                 }
             }
             if (usuario.getTipo() == Usuario.TIPO_TECNICO) {
                 if (url.contains("controleAmbiente")) {
-                    res.sendRedirect("/sias/auth");
+                    res.sendRedirect("/auth");
                     return false;
                 }
             }
