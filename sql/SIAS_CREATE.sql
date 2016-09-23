@@ -5,6 +5,7 @@
 	  usuario_email varchar(50) NOT NULL UNIQUE, 
 	  usuario_senha varchar(100) NOT NULL, 
 	  usuario_nome  varchar(50) NOT NULL, 
+	  usuario_sobrenome varchar(50) NOT NULL,
 	  usuario_foto  varchar,
 	  PRIMARY KEY (usuario_id)
 	);

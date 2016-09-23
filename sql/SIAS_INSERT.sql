@@ -24,7 +24,7 @@ VALUES
 'CENTRO'
  );
  
-INSERT INTO usuario ( usuario_unidade_atendimento_id, usuario_tipo, usuario_email, usuario_senha, usuario_nome ) VALUES ( 1, 1, 'sias@sias.com', MD5('sias@sias.com'), 'MASTER' );
+INSERT INTO usuario ( usuario_unidade_atendimento_id, usuario_tipo, usuario_email, usuario_senha, usuario_nome, usuario_sobrenome ) VALUES ( 1, 1, 'sias@sias.com', MD5('sias@sias.com'), 'MASTER', 'MASTER' );
 INSERT INTO usuario_seguranca ( usuario_seguranca_codigo, usuario_seguranca_usuario_id ) VALUES ( 'XXXXX', 1 );
 INSERT INTO usuario_seguranca ( usuario_seguranca_codigo, usuario_seguranca_usuario_id ) VALUES ( 'XXXXX', 1 );
 INSERT INTO usuario_seguranca ( usuario_seguranca_codigo, usuario_seguranca_usuario_id ) VALUES ( 'XXXXX', 1 );
