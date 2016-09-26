@@ -9,7 +9,7 @@ $('#comboFormaIngresso').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/formaIngresso/readAll',
+        url: '/cadastrosBasicos/formaIngresso/readAll',
         success: function (data) {
             var formaIngressoList = data;
             if (formaIngressoList != null) {
