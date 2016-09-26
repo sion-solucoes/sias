@@ -25,14 +25,14 @@ $('#btnConfirmar').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleAmbiente/unidadeAtendimento/save',
+        url: '/controleAmbiente/unidadeAtendimento/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('/sias/controleAmbiente/unidadeAtendimento');
+                        document.location.assign('/controleAmbiente/unidadeAtendimento');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
