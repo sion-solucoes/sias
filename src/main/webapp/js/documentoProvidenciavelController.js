@@ -17,14 +17,14 @@ $('#documentoProvidenciavelForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/documentoProvidenciavel/save',
+        url: '/cadastrosBasicos/documentoProvidenciavel/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('/sias/cadastrosBasicos/documentoProvidenciavel');
+                        document.location.assign('/cadastrosBasicos/documentoProvidenciavel');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
