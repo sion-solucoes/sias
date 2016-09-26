@@ -20,7 +20,7 @@ $(document).ready(function () {
             element.find("#delete-event").click(function () {
                 $.ajax({
                     method: 'POST',
-                    url: '../controleFamiliar/familiaVisita/delete',
+                    url: '/controleFamiliar/familiaVisita/delete',
                     data: {
                         id: event._id
                     },
@@ -33,7 +33,7 @@ $(document).ready(function () {
         events: function (start, end, timezone, callback) {
             $.ajax({
                 method: 'POST',
-                url: '../controleFamiliar/familiaVisita/find',
+                url: '/controleFamiliar/familiaVisita/find',
                 data: {
                     inicio: moment(start).format('DD/MM/YYYY HH:mm'),
                     fim: moment(start).format('DD/MM/YYYY HH:mm')
@@ -139,7 +139,7 @@ $(document).ready(function () {
         };
         $.ajax({
             method: 'POST',
-            url: '../controleFamiliar/familiaVisita/save',
+            url: '/controleFamiliar/familiaVisita/save',
             data: data,
             success: function (data) {
                 if (data != null) {
