@@ -17,14 +17,14 @@ $('#escolaridadeForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/escolaridade/save',
+        url: '/cadastrosBasicos/escolaridade/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('/sias/cadastrosBasicos/escolaridade');
+                        document.location.assign('/cadastrosBasicos/escolaridade');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
