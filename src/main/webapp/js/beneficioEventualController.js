@@ -17,14 +17,14 @@ $('#beneficioEventualForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/beneficioEventual/save',
+        url: '/cadastrosBasicos/beneficioEventual/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('/sias/cadastrosBasicos/beneficioEventual');
+                        document.location.assign('/cadastrosBasicos/beneficioEventual');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
