@@ -18,14 +18,14 @@ $('#especificidadeSocialForm').submit(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/especificidadeSocial/save',
+        url: '/cadastrosBasicos/especificidadeSocial/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('/sias/cadastrosBasicos/especificidadeSocial');
+                        document.location.assign('/cadastrosBasicos/especificidadeSocial');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {
