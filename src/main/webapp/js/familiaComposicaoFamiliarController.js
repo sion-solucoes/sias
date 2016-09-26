@@ -11,7 +11,7 @@ $('#tabelaComposicaoFamiliar').ready(function (event) {
         $.ajax({
             method: 'POST',
             data: data,
-            url: '/sias/controleFamiliar/familiaMembro/readFamiliaMembroByFamilia',
+            url: '/controleFamiliar/familiaMembro/readFamiliaMembroByFamilia',
             success: function (familiaMembroList) {
                 if (familiaMembroList !== null) {
                     var body = document.createElement("tbody");
