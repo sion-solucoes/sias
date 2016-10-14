@@ -23,7 +23,6 @@ import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcf.Familia;
 import com.sias.model.service.mcb.interfaces.DocumentoProvidenciavelService;
 import com.sias.model.service.mcf.interfaces.FamiliaService;
-import com.sias.model.service.mcb.interfaces.FormaIngressoService;
 import com.sias.util.Constants;
 import com.sias.util.Criteria;
 import com.sias.util.GSONConverter;

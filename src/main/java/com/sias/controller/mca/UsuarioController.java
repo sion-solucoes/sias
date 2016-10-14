@@ -61,8 +61,6 @@ public class UsuarioController {
         modelAndView.setViewName("usuarioList");
         try {
             modelAndView.addObject("usuarioList", usuarioService.readAll());
-            modelAndView.addObject("controleAmbiente", "active toggled");
-            modelAndView.addObject("usuario", "active");
         } catch (Exception ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,8 +76,6 @@ public class UsuarioController {
 
         try {
             modelAndView.addObject("unidadeAtendimentoList", unidadeAtendimentoService.readAll());
-            // modelAndView.addObject("controleAmbiente", "active toggled");
-            //modelAndView.addObject("usuario", "active");
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
         }

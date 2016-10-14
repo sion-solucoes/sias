@@ -120,6 +120,7 @@ INSERT INTO beneficio_eventual (beneficio_eventual_codigo, beneficio_eventual_de
 
 INSERT INTO familia 
 (
+familia_data_ultima_alteracao,
 familia_unidade_atendimento_id, 
 familia_forma_ingresso_id,
 familia_endereco_localizacao,
@@ -131,6 +132,7 @@ familia_bairro_endereco
 ) 
 VALUES 
 (
+(SELECT now()),
 1,
 1,
 0,

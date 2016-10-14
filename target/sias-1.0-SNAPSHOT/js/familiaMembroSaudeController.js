@@ -9,7 +9,7 @@ $('#abaSaude').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleFamiliar/deficiencia/readAll',
+        url: '/cadastrosBasicos/deficiencia/readAll',
         success: function (data) {
             if (data !== null) {
                 for (var i = 0; i < data.length; i++) {

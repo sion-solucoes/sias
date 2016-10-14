@@ -1,10 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </section>
 
+<div class="page-loader" style="display: none;">
+    <div class="preloader pls-blue">
+        <svg class="pl-circular" viewBox="25 25 50 50">
+        <circle class="plc-path" cx="50" cy="50" r="20"></circle>
+        </svg>
+        <p>Por favor, aguarde...</p>
+    </div>
+</div>
+
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/moment.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/fullcalendar.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/pt-br.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="/js/sidebar.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/app.js"/>"></script>
 
@@ -40,15 +51,6 @@
 <script type="text/javascript" src="<c:url value="/js/autosize.min.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/Msg.js"/>"></script>
-
-<div class="page-loader" style="display: none;">
-    <div class="preloader pls-blue">
-        <svg class="pl-circular" viewBox="25 25 50 50">
-        <circle class="plc-path" cx="50" cy="50" r="20"></circle>
-        </svg>
-        <p>Por favor, aguarde...</p>
-    </div>
-</div>
 
 </body>
 </html>

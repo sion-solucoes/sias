@@ -11,6 +11,7 @@ import java.util.List;
 import com.sias.model.base.entity.BaseEntity;
 import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.mcb.CEP;
+import java.util.Date;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Familia extends BaseEntity {
 
     public static final Short LOCALIZACAO_RURAL = 1;
 
+    private Date dataUltimaAlteracao;
+    
     private UnidadeAtendimento unidadeAtendimento;
 
     private String nomePessoaReferencia;
@@ -49,6 +52,14 @@ public class Familia extends BaseEntity {
     private String bairroEndereco;
 
     private String pontoReferenciaEndereco;
+
+    public Date getDataUltimaAlteracao() {
+        return dataUltimaAlteracao;
+    }
+
+    public void setDataUltimaAlteracao(Date dataUltimaAlteracao) {
+        this.dataUltimaAlteracao = dataUltimaAlteracao;
+    }
 
     public UnidadeAtendimento getUnidadeAtendimento() {
         return unidadeAtendimento;

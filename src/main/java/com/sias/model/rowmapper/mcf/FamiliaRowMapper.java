@@ -33,6 +33,8 @@ public class FamiliaRowMapper implements RowMapper<Familia> {
 
         familia.setId(rs.getLong(FamiliaConstants.ID));
 
+        familia.setDataUltimaAlteracao(rs.getDate(FamiliaConstants.DATA_ULTIMA_ALTERACAO));
+        
         if (rs.getObject(FamiliaConstants.UNIDADE_ATENDIMENTO_ID) != null) {
             UnidadeAtendimento unidadeAtendimento = new UnidadeAtendimento();
             unidadeAtendimento.setId(rs.getLong(FamiliaConstants.UNIDADE_ATENDIMENTO_ID));

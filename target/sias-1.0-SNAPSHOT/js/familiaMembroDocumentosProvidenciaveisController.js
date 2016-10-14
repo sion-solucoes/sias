@@ -12,13 +12,13 @@ $('#tabelaDocumentosProvidenciaveis').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleFamiliar/documentoProvidenciavel/readAll',
+        url: '/controleFamiliar/documentoProvidenciavel/readAll',
         success: function (documentoProvidenciavelList) {
             if (familiaMembroId != null && familiaMembroId != "") {
                 $.ajax({
                     method: 'POST',
                     data: data,
-                    url: '/sias/controleFamiliar/familiaMembroDocumentoProvidenciavel/readDocumentoProvidenciavelByFamiliaMembro',
+                    url: '/controleFamiliar/familiaMembroDocumentoProvidenciavel/readDocumentoProvidenciavelByFamiliaMembro',
                     success: function (familiaMembroDocumentoProvidenciavelList) {
                         if (documentoProvidenciavelList !== null) {
                             for (var indexDocumentoProvidenciavel = 0; indexDocumentoProvidenciavel < documentoProvidenciavelList.length; indexDocumentoProvidenciavel++) {

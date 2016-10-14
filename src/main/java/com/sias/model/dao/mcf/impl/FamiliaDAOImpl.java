@@ -17,6 +17,7 @@ import com.sias.model.rowmapper.mcf.FamiliaRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -31,6 +32,8 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         String query = "INSERT INTO " + FamiliaConstants.TABELA;
         query += "(";
         {
+            query += FamiliaConstants.DATA_ULTIMA_ALTERACAO + ", ";
+            query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + ", ";
             query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + ", ";
             query += FamiliaConstants.FORMA_INGRESSO_ID + ", ";
             query += FamiliaConstants.DETALHE_FORMA_INGRESSO_ENCAMINHAMENTO + ", ";
@@ -45,11 +48,11 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
             query += FamiliaConstants.ESPECIFICIDADE_SOCIAL_ID;
         }
         query += ")";
-        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         query += " RETURNING " + FamiliaConstants.ID;
 
         Object args[] = {
-            familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
+            new Date(), familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
             familia.getFormaIngresso() != null ? familia.getFormaIngresso().getId() : null,
             familia.getDetalheFormaIngressoEncaminhamento(),
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),
@@ -119,6 +122,7 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
 
         String query = "UPDATE " + FamiliaConstants.TABELA;
         query += " SET ";
+        query += FamiliaConstants.DATA_ULTIMA_ALTERACAO + "=?, ";
         query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + "=?, ";
         query += FamiliaConstants.FORMA_INGRESSO_ID + "=?, ";
         query += FamiliaConstants.DETALHE_FORMA_INGRESSO_ENCAMINHAMENTO + "=?, ";
@@ -134,7 +138,7 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         query += " WHERE " + FamiliaConstants.ID + "=? ";
 
         Object args[] = {
-            familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
+            new Date(), familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
             familia.getFormaIngresso() != null ? familia.getFormaIngresso().getId() : null,
             familia.getDetalheFormaIngressoEncaminhamento(),
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),

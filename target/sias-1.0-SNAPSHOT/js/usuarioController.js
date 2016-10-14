@@ -14,7 +14,7 @@ $(document).ready(function (event) {
         $.ajax({
             method: 'POST',
             data: data,
-            url: '/sias/controleAmbiente/usuarioSeguranca/readByUsuarioId',
+            url: '/controleAmbiente/usuarioSeguranca/readByUsuarioId',
             success: function (usuarioSegurancaList) {
                 if (usuarioSegurancaList != null) {
                     for (var indexUsuarioSeguranca = 0; indexUsuarioSeguranca < usuarioSegurancaList.length; indexUsuarioSeguranca++) {
@@ -41,7 +41,7 @@ $('#fileFoto').change(function (event) {
     data.append('file', fileFoto.files[0]);
     $.ajax({
         method: 'POST',
-        url: '/sias/controleAmbiente/usuario/foto',
+        url: '/controleAmbiente/usuario/foto',
         data: data,
         processData: false,
         contentType: false,
@@ -60,7 +60,7 @@ $('#btnGerarCodigos').click(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleAmbiente/usuarioSeguranca/gerarCodigos',
+        url: '/controleAmbiente/usuarioSeguranca/gerarCodigos',
         success: function (data) {
             if (data != null) {
                 for (var indexCodigos = 0; indexCodigos < data.length; indexCodigos++) {
@@ -122,7 +122,7 @@ $('#btnImprimirCodigos').click(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleAmbiente/usuario/imprimirCodigos',
+        url: '/controleAmbiente/usuario/imprimirCodigos',
         data: data,
         success: function (data, response) {
             if (data != null) {
@@ -195,14 +195,14 @@ $('#btnConfirmar').click(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleAmbiente/usuario/save',
+        url: '/controleAmbiente/usuario/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../usuario');
+                        document.location.assign('/controleAmbiente/usuario');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

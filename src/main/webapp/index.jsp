@@ -91,7 +91,7 @@
         </div>
 
         <!-- Modal Small -->
-        <div id="dlgSeguranca" class="modal fade" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="dlgSeguranca">
+        <div id="dlgSeguranca" class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="dlgSeguranca">
             <form method="POST" id="formSeguranca">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">

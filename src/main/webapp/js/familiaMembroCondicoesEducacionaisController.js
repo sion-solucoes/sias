@@ -4,12 +4,12 @@ $('#comboEscolaridade').ready(function (event) {
     var escolaridadeId = txtEscolaridade.value;
     var comboEscolaridade = $('#comboEscolaridade');
     comboEscolaridade.selectpicker({
-        size: 4
+        size: 5
     });
 
     $.ajax({
         method: 'POST',
-        url: '/controleFamiliar/escolaridade/readAll',
+        url: '/cadastrosBasicos/escolaridade/readAll',
         success: function (data) {
             if (data !== null) {
                 for (var i = 0; i < data.length; i++) {

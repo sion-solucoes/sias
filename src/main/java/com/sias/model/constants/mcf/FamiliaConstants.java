@@ -16,6 +16,8 @@ public class FamiliaConstants {
     private static final String PREFIXO = TABELA + "_";
 
     public static final String ID = PREFIXO + "id";
+    
+    public static final String DATA_ULTIMA_ALTERACAO = PREFIXO + "data_ultima_alteracao";
 
     public static final String UNIDADE_ATENDIMENTO_ID = PREFIXO + "unidade_atendimento_id";
 

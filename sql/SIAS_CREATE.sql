@@ -123,6 +123,7 @@
 
 	CREATE TABLE familia (
 	  familia_id                       	BIGSERIAL NOT NULL, 
+          familia_data_ultima_alteracao         timestamp without time zone NOT NULL,
 	  familia_unidade_atendimento_id 	bigint NOT NULL, 
 	  familia_nome_pessoa_referencia varchar(255),
 	  familia_forma_ingresso_id		bigint NOT NULL,

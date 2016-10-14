@@ -12,7 +12,7 @@ $('#comboCEPEndereco').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/cadastrosBasicos/cep/readAll',
+        url: '/cadastrosBasicos/cep/readAll',
         success: function (data) {
             var cepList = data;
             if (cepList != null) {
@@ -28,7 +28,7 @@ $('#comboCEPEndereco').ready(function (event) {
                         };
                         $.ajax({
                             method: 'POST',
-                            url: '/sias/cadastrosBasicos/cep/readById',
+                            url: '/cadastrosBasicos/cep/readById',
                             data: data,
                             success: function (data) {
                                 var cep = data;
@@ -63,7 +63,7 @@ $('#comboCEPEndereco').change(function (event) {
     if (id != null && id != "" && id != "Selecione...") {
         $.ajax({
             method: 'POST',
-            url: '/sias/cadastrosBasicos/cep/readById',
+            url: '/cadastrosBasicos/cep/readById',
             data: data,
             success: function (data) {
                 var cep = data;

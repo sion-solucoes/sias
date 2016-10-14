@@ -9,7 +9,7 @@ $('#comboGrauParentesco').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/controleFamiliar/grauParentesco/readAll',
+        url: '/cadastrosBasicos/grauParentesco/readAll',
         success: function (data) {
             if (data !== null) {
                 for (var i = 0; i < data.length; i++) {

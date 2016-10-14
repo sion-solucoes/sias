@@ -21,15 +21,16 @@
     <div class="form-group m-t-30">
         <div class="col-md-12">
             <table class="table table-striped table-bordered table-condensed" id="tabelaComposicaoFamiliar">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Nome</th>
-                    <th>Grau Parentesco</th>
-                    <th><span class="glyphicon glyphicon-trash"></span></th>
-                </tr>
-            </thead>
-        </table>
+                <thead>
+                    <tr>
+                        <th width="10"></th>
+                        <th>Nome</th>
+                        <th>Grau Parentesco</th>
+                        <th>NIS</th>
+                        <th><span class="glyphicon glyphicon-trash"></span></th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>

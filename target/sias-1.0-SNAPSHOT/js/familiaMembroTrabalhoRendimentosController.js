@@ -9,7 +9,7 @@ $('#comboCondicaoOcupacao').ready(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '/sias/controleFamiliar/condicaoOcupacao/readAll',
+        url: '/cadastrosBasicos/condicaoOcupacao/readAll',
         success: function (data) {
             if (data !== null) {
                 for (var i = 0; i < data.length; i++) {

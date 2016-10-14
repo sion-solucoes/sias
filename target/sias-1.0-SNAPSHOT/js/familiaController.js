@@ -50,14 +50,14 @@ $('#btnConfirmar').click(function (event) {
 
     $.ajax({
         method: 'POST',
-        url: '../familia/save',
+        url: '/controleFamiliar/familia/save',
         data: data,
         success: function (data) {
             if (data != null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
-                        document.location.assign('../familia');
+                        document.location.assign('/controleFamiliar/familia');
                     };
                     Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
                 } else {

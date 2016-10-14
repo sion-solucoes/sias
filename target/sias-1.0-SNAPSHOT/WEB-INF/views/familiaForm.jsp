@@ -14,6 +14,14 @@
                 <div class="pull-left">
                     <h2>Cadastro de Família</h2>
                 </div>
+                <div class="pull-right">
+                    <div class="form-group">
+                        <label>Última Alteração</label>
+                        <div class="dtp-container">
+                            <input type="text" class="form-control date-picker" id="txtDataUltimaAlteracao" value="${familia.dataUltimaAlteracao}"/>    
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body card-padding">
                 <form class="form-wizard-basic fw-container form-horizontal">
@@ -46,7 +54,7 @@
                         <div class="form-group">
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
-                                <button type="button" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
+                                <button type="submit" class="btn bgm-blue" id="btnConfirmar">Confirmar</button>
                             </div>
                             <div class="col-md-2">
                                 <a type="button" href="<c:url value = "/controleFamiliar/familia"/>" class="btn bgm-white">Voltar</a>

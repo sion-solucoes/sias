@@ -33,6 +33,10 @@ $('#tabelaComposicaoFamiliar').ready(function (event) {
                         var grauParentesco = document.createElement("td");
                         grauParentesco.appendChild(document.createTextNode(familiaMembro.grauParentesco.codigo + ' - ' + familiaMembro.grauParentesco.descricao));
                         row.appendChild(grauParentesco);
+                        var nis = document.createElement("td");
+                        nis.appendChild(document.createTextNode(familiaMembro.nis));
+                        row.appendChild(nis);
+                        
                         var trashData = document.createElement("td");
                         var trash = document.createElement("a");
                         trash.id = "trashTabelaFamiliaMembro";
