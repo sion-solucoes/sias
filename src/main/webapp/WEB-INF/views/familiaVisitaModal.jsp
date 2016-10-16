@@ -9,8 +9,7 @@
                 <form class="addEvent" role="form">
                     <div class="form-group">
                         <label for="comboFamilia" class="control-label">Família</label>
-                        <select class="selectpicker" data-live-search="true" id="comboFamilia">
-                            <option>Selecione...</option>
+                        <select class="selectpicker" title="Selecione..." data-live-search="true" id="comboFamilia">
                             <c:if test="${not empty familiaList}">
                                 <c:forEach var="familia" items="${familiaList}">
                                     <option value="${familia.id}"><h3>${familia.nomePessoaReferencia} | Endereço: ${familia.logradouroEndereco}, ${familia.numeroEndereco}, ${familia.bairroEndereco}</option>
@@ -21,8 +20,7 @@
 
                     <div class="form-group">
                         <label for="comboUsuario" class="control-label">Técnico Responsável</label>
-                        <select class="selectpicker" data-live-search="true" id="comboUsuario">
-                            <option>Selecione...</option>
+                        <select class="selectpicker" title="Selecione..." data-live-search="true" id="comboUsuario">
                             <c:if test="${not empty usuarioList}">
                                 <c:forEach var="usuario" items="${usuarioList}">
                                     <option value="${usuario.id}">${usuario.nome} - ${usuario.email}</option>

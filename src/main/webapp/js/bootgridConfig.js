@@ -26,6 +26,14 @@ bootgridConfig = {
             var del = "<a href=\"" + pathDel + "\" type=\"button\" class=\"btn btn-icon command-delete waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></a>";
 
             return edit + del;
+        },
+        "commands2": function (column, row){
+            var pathSplitted = document.URL.split("/");
+            var pathDel = '../' + pathSplitted[pathSplitted.length - 2] + '/' + pathSplitted[pathSplitted.length - 1] + '/' + row.id + '/' + 'excluir';
+            
+            var del = "<a href=\"" + pathDel + "\" type=\"button\" class=\"btn btn-icon command-delete waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></a>";
+            
+            return del;
         }
     }
 };

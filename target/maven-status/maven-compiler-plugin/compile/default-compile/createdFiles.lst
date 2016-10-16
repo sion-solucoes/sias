@@ -27,6 +27,7 @@ com\sias\model\rowmapper\mcb\CEPRowMapper.class
 com\sias\model\entity\mcf\Familia.class
 com\sias\model\service\mcb\interfaces\UnidadeFederacaoService.class
 com\sias\util\Interceptor.class
+com\sias\model\constants\mcf\FamiliaBeneficioEventualConstants.class
 com\sias\model\service\mcf\interfaces\FamiliaVisitaService.class
 com\sias\model\constants\mca\UsuarioSegurancaConstants.class
 com\sias\controller\mcb\DocumentoProvidenciavelController.class
@@ -69,6 +70,7 @@ com\sias\model\constants\mcb\UnidadeFederacaoConstants.class
 com\sias\model\dao\mcb\interfaces\CEPDAO.class
 com\sias\model\service\mcb\impl\CondicaoOcupacaoServiceImpl.class
 com\sias\model\constants\mcb\EspecificidadeSocialConstants.class
+com\sias\controller\mcf\FamiliaBeneficioEventualController.class
 com\sias\model\rowmapper\mcf\FamiliaRowMapper.class
 com\sias\model\service\mcb\interfaces\PaisService.class
 com\sias\model\service\mcb\interfaces\GrauParentescoService.class
@@ -115,6 +117,7 @@ com\sias\model\service\mcb\impl\FormaIngressoServiceImpl.class
 com\sias\model\base\service\BaseService.class
 com\sias\model\service\mcb\impl\EscolaridadeServiceImpl.class
 com\sias\model\service\mcb\interfaces\CondicaoOcupacaoService.class
+com\sias\model\rowmapper\mcf\FamiliaBeneficioEventualRowMapper.class
 com\sias\model\service\mcb\impl\DeficienciaServiceImpl.class
 com\sias\model\constants\mcb\MunicipioConstants.class
 com\sias\model\dao\mcb\interfaces\EscolaridadeDAO.class
@@ -123,9 +126,11 @@ com\sias\model\service\mcb\interfaces\CEPService.class
 com\sias\model\dao\mcb\impl\DeficienciaDAOImpl.class
 com\sias\model\service\mcf\impl\FamiliaMembroDocumentoProvidenciavelServiceImpl.class
 com\sias\model\dao\mcb\impl\UnidadeFederacaoDAOImpl.class
+com\sias\model\service\mcf\interfaces\FamiliaBeneficioEventualService.class
 com\sias\model\dao\mcb\interfaces\FormaIngressoDAO.class
 com\sias\model\dao\mca\impl\UnidadeAtendimentoDAOImpl.class
 com\sias\model\service\mcb\impl\MunicipioServiceImpl.class
+com\sias\model\dao\mcf\interfaces\FamiliaBeneficioEventualDAO.class
 com\sias\model\service\mcb\impl\DocumentoProvidenciavelServiceImpl.class
 com\sias\model\service\mcb\impl\EspecificidadeSocialServiceImpl.class
 com\sias\model\base\entity\BaseEntity.class
@@ -139,12 +144,15 @@ com\sias\model\dao\mcf\interfaces\FamiliaMembroDAO.class
 com\sias\util\Relatorio.class
 com\sias\model\constants\mcf\FamiliaMembroDocumentoProvidenciavelConstants.class
 com\sias\model\service\mcf\impl\FamiliaMembroServiceImpl.class
+com\sias\model\service\mcf\impl\FamiliaBeneficioEventualServiceImpl.class
+com\sias\model\entity\mcf\FamiliaBeneficioEventual.class
 com\sias\controller\mca\HomeController.class
 com\sias\model\rowmapper\mca\UsuarioRowMapper.class
 com\sias\model\service\mca\interfaces\UsuarioSegurancaService.class
 com\sias\model\rowmapper\mcb\EscolaridadeRowMapper.class
 com\sias\model\rowmapper\mcb\GrauParentescoRowMapper.class
 com\sias\model\dao\mcb\interfaces\MunicipioDAO.class
+com\sias\model\dao\mcf\impl\FamiliaBeneficioEventualDAOImpl.class
 com\sias\model\rowmapper\mcf\FamiliaVisitaRowMapper.class
 com\sias\model\service\mca\interfaces\UnidadeAtendimentoService.class
 com\sias\model\dao\mcf\impl\FamiliaVisitaDAOImpl.class

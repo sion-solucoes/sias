@@ -203,6 +203,8 @@
 
 	CREATE TABLE familia_beneficio_eventual (
 		familia_beneficio_eventual_id 		BIGSERIAL NOT NULL,
+		familia_beneficio_eventual_data_solicitacao date NOT NULL,
+		familia_beneficio_eventual_data_concessao date,
 		familia_beneficio_eventual_beneficio_eventual_id	bigint NOT NULL,
 		familia_beneficio_eventual_familia_id bigint NOT NULL,
 		PRIMARY KEY (familia_beneficio_eventual_id),
