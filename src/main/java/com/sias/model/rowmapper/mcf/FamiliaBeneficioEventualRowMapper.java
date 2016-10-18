@@ -27,7 +27,7 @@ public class FamiliaBeneficioEventualRowMapper implements RowMapper<FamiliaBenef
         
         familiaBeneficioEventual.setId(rs.getLong(FamiliaBeneficioEventualConstants.ID));
         
-        if(rs.getObject(FamiliaBeneficioEventualConstants.BENEFICIO_EVENTUAL_ID) == null){
+        if(rs.getObject(FamiliaBeneficioEventualConstants.BENEFICIO_EVENTUAL_ID) != null){
             BeneficioEventual beneficioEventual = new BeneficioEventual();
             beneficioEventual.setId(rs.getLong(FamiliaBeneficioEventualConstants.BENEFICIO_EVENTUAL_ID));
             try {

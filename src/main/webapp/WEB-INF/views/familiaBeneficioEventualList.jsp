@@ -23,8 +23,8 @@
                             <th data-column-id="id">ID</th>
                             <th data-column-id="familia">Família</th>
                             <th data-column-id="beneficio">Benefício</th>
-                            <th data-column-id="data_solicitacao">Data de Solicitação</th>
-                            <th data-column-id="data_concessao">Data de Concessão</th>
+                            <th data-column-id="data_solicitacao" data-formatter="date">Data de Solicitação</th>
+                            <th data-column-id="data_concessao" data-formatter="date">Data de Concessão</th>
                             <th data-column-id="commands" data-formatter="commands2" data-sortable="false"></th>
                         </tr>
                     </thead>

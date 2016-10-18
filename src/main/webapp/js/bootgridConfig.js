@@ -34,6 +34,9 @@ bootgridConfig = {
             var del = "<a href=\"" + pathDel + "\" type=\"button\" class=\"btn btn-icon command-delete waves-effect waves-circle\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></a>";
             
             return del;
+        },
+        "date": function (column, row) {
+            return moment.utc(row[column.id]).format("DD/MM/YYYY");
         }
     }
 };

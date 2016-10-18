@@ -61,6 +61,7 @@ public class FamiliaBeneficioEventualController {
             unidadeAtendimentoFamilia.setAttribute(FamiliaConstants.UNIDADE_ATENDIMENTO_ID);
             unidadeAtendimentoFamilia.setOperation(Criteria.EQUALS);
             unidadeAtendimentoFamilia.setValue(unidadeAtendimento.getId());
+            familiaCriteriaList.add(unidadeAtendimentoFamilia);
             mv.addObject("familiaBeneficioList", familiaBeneficioEventualService.readByCriteria(familiaCriteriaList));
         } catch (Exception e) {
             Logger.getLogger(FamiliaBeneficioEventualController.class.getName()).log(Level.SEVERE, null, e);
