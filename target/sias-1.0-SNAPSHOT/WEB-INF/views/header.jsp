@@ -82,8 +82,8 @@
             <!-- Top Search Content -->
             <div class="h-search-wrap">
                 <div class="hsw-inner" id="panComboBusca">
-                    <i class="hsw-close zmdi zmdi-arrow-left" data-ma-action="search-close"></i>
-                    <input type="text" placeholder="Pesquise famílias por seus membros aqui..."/>
+                    <i class="hsw-close zmdi zmdi-arrow-left" data-ma-action="search-close" id="busca"></i>
+                    <input type="text" id="buscaValor" placeholder="Pesquise famílias por seus membros aqui..."/>
                 </div>
             </div>
         </header>

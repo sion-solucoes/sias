@@ -66,7 +66,9 @@ public class FamiliaMembroController {
     List<FamiliaMembro> readByCriteria(String json) {
 
         try {
-            FamiliaMembro familiaMembro = (FamiliaMembro) GSONConverter.convert(json, FamiliaMembro.class);
+//            FamiliaMembro familiaMembro = (FamiliaMembro) GSONConverter.convert(json, FamiliaMembro.class);
+            FamiliaMembro familiaMembro = new FamiliaMembro();
+            familiaMembro.setNome(json);
             List<Criteria> criteriaList = new ArrayList<Criteria>();
             if (familiaMembro != null) {
                 Criteria criteria = new Criteria();

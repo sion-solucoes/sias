@@ -10,6 +10,33 @@
     </div>
 </div>
 
+<!-- Modal formulação do problema -->
+<div class="modal fade" id="resultadoPesquisa" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title text-center">Resultados da pesquisa</h3>
+            </div>
+            <div class="modal-body">
+                <div class="m-15 table-responsive" id="tabela-resultados">
+                    <table class="table table-condensed table-striped table-vmiddle">
+                        <thead>
+                            <tr>
+                                <th>Pessoa referência</th>
+                                <th>NIS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultados">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/moment.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/fullcalendar.min.js"/>"></script>
