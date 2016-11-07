@@ -94,7 +94,35 @@ public class FamiliaVisitaDAOImpl extends JDBCBaseDAO implements FamiliaVisitaDA
         query += " WHERE " + FamiliaVisitaConstants.ID + "=? ";
 
         Object args[] = {id};
-        
+
+        getTemplate().update(query, args);
+    }
+
+    @Override
+    public void confirm(Long id) throws Exception {
+
+        String query = "UPDATE " + FamiliaVisitaConstants.TABELA;
+        query += " SET ";
+        query += FamiliaVisitaConstants.CONFIRMADA + "=TRUE ";
+        query += " WHERE ";
+        query += FamiliaVisitaConstants.ID + "=?";
+
+        Object args[] = {id};
+
+        getTemplate().update(query, args);
+    }
+    
+    @Override
+    public void disconfirm(Long id) throws Exception {
+
+        String query = "UPDATE " + FamiliaVisitaConstants.TABELA;
+        query += " SET ";
+        query += FamiliaVisitaConstants.CONFIRMADA + "=FALSE ";
+        query += " WHERE ";
+        query += FamiliaVisitaConstants.ID + "=?";
+
+        Object args[] = {id};
+
         getTemplate().update(query, args);
     }
 

@@ -20,6 +20,7 @@
                 <table id="data-table-command" class="table table-striped table-vmiddle">
                     <thead>
                         <tr>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="nome">Nome</th>
                             <th data-column-id="email">Email</th>
                             <th data-column-id="tipo" data-order="desc">Tipo</th>
@@ -30,33 +31,10 @@
                         <c:if test="${not empty usuarioList}">
                             <c:forEach var="usuario" items="${usuarioList}">
                                 <tr>
-                                    <td>
-                                        ${usuario.nome}
-                                    </td>
-                                    <td>
-                                        ${usuario.email}
-                                    </td>
-                                    <td>
-                                        <c:if test="${usuario.tipo == 1}">
-                                            Master
-                                        </c:if>     
-                                        <c:if test="${usuario.tipo == 2}">
-                                            Técnico
-                                        </c:if> 
-                                        <c:if test="${usuario.tipo == 3}">
-                                            Administrativo
-                                        </c:if>
-                                    </td>
-                                    <!--
-                                    <td>
-                                        <a href="<c:url value="/controleAmbiente/unidadeAtendimento/${unidadeAtendimento.id}/editar"/>" type="button" class="btn btn-icon waves-effect waves-circle">
-                                            <span class="zmdi zmdi-edit"></span>
-                                        </a>
-                                        <a href="<c:url value="/controleAmbiente/unidadeAtendimento/${unidadeAtendimento.id}/excluir"/>" type="button" class="btn btn-icon waves-effect waves-circle">
-                                            <span class="zmdi zmdi-delete"></span>
-                                        </a>
-                                    </td>
-                                    -->
+                                    <td>${usuario.id}</td>
+                                    <td>${usuario.nome}</td>
+                                    <td>${usuario.email}</td>
+                                    <td><c:if test="${usuario.tipo == 1}">Master</c:if><c:if test="${usuario.tipo == 2}">Técnico</c:if> <c:if test="${usuario.tipo == 3}">Administrativo</c:if></td>
                                 </tr>
                             </c:forEach>
                         </c:if>

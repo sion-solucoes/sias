@@ -25,8 +25,10 @@ public class FamiliaVisita extends BaseEntity {
     private Date inicio;
 
     private Date fim;
-    
+
     private String cor;
+
+    private boolean confirmada;
 
     public UnidadeAtendimento getUnidadeAtendimento() {
         return unidadeAtendimento;
@@ -74,6 +76,14 @@ public class FamiliaVisita extends BaseEntity {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public boolean isConfirmada() {
+        return confirmada;
+    }
+
+    public void setConfirmada(boolean confirmada) {
+        this.confirmada = confirmada;
     }
 
 }

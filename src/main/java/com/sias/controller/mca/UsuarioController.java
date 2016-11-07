@@ -91,6 +91,7 @@ public class UsuarioController {
 
         try {
             modelAndView.addObject("usuario", usuarioService.readById(id));
+            modelAndView.addObject("unidadeAtendimentoList", unidadeAtendimentoService.readAll());
         } catch (Exception ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -202,9 +203,8 @@ public class UsuarioController {
         return null;
     }
 
-    @RequestMapping(value = "/usuario/imprimirCodigos", method = RequestMethod.POST)
-    public @ResponseBody
-    String imprimirCodigos(@RequestParam("json") String json, HttpSession session, HttpServletResponse httpServletResponse) {
+    @RequestMapping(value = "/usuario/imprimirCodigos", method = RequestMethod.GET)
+    public void imprimirCodigos(@RequestParam("json") String json, HttpSession session, HttpServletResponse httpServletResponse) {
 
         try {
             Usuario usuario = (Usuario) GSONConverter.convert(json, Usuario.class);
@@ -220,8 +220,7 @@ public class UsuarioController {
         } catch (Exception ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return null;
+        
     }
 
 }

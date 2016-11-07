@@ -229,6 +229,7 @@
 	  familia_visita_inicio timestamp NOT NULL,
 	  familia_visita_fim timestamp NOT NULL,
 	  familia_visita_cor varchar(20) NOT NULL,
+          familia_visita_confirmada boolean NOT NULL DEFAULT FALSE,
 	  PRIMARY KEY (familia_visita_id)
 	);
 

@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="card-body card-padding">
-                <form class="form-wizard-basic fw-container form-horizontal">
+                <form class="form-wizard-basic fw-container form-horizontal" id="familiaForm">
                     <input id="txtId" type="hidden" name="id" value="${familia.id}">
                     <ul class="tab-nav text-center">
                         <li><a href="#tab1" data-toggle="tab">Dados Básicos</a></li>

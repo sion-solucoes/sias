@@ -7,9 +7,8 @@
         <div class="col-md-6">
             <label for="comboFormaIngresso">Forma de Ingresso</label>
             <input id="txtFormaIngresso" hidden="true" name="formaIngresso.id" value="${familia.formaIngresso.id}">
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="formaIngresso.id" id="comboFormaIngresso">
-                <!--<option disabled="true" selected>Selecione...</option>-->
-                
+            <select class="selectpicker" title="Selecione..." name="formaIngresso.id" id="comboFormaIngresso">
+
             </select>
         </div>
     </div>
