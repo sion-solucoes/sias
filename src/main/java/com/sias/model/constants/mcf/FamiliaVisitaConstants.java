@@ -26,7 +26,9 @@ public class FamiliaVisitaConstants {
     public static final String INICIO = PREFIXO + "inicio";
 
     public static final String FIM = PREFIXO + "fim";
-    
+
     public static final String COR = PREFIXO + "cor";
+
+    public static final String CONFIRMADA = PREFIXO + "confirmada";
 
 }

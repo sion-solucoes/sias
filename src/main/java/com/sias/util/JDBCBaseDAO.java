@@ -5,7 +5,10 @@
  */
 package com.sias.util;
 
+import java.util.Locale;
+import java.util.TimeZone;
 import javax.annotation.PostConstruct;
+import javax.ejb.Local;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,10 +30,12 @@ public class JDBCBaseDAO {
     private JdbcTemplate jdbcTemplate;
 
     @PostConstruct
-    public void initialize(){
+    public void initialize() {
+        Locale.setDefault(new Locale("pt", "BR"));
+        TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
-    
+
     public JdbcTemplate getTemplate() throws Exception {
         return jdbcTemplate;
     }

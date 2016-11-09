@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <input id="txtDeficiencia" hidden="true" name="id" value="${familiaMembro.deficiencia.id}">
             <label for="comboDeficiencia">Deficiência</label>
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="deficiencia" id="comboDeficiencia">
+            <select class="selectpicker" title="Selecione..." name="deficiencia.id" id="comboDeficiencia">
                 
             </select>
         </div>

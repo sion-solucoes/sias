@@ -12,6 +12,10 @@ import com.sias.model.entity.mcf.FamiliaVisita;
  *
  * @author Fernando
  */
-public interface FamiliaVisitaService extends BaseService<FamiliaVisita>{
+public interface FamiliaVisitaService extends BaseService<FamiliaVisita> {
+
+    public void confirm(Long id) throws Exception;
     
+    public void disconfirm(Long id) throws Exception;
+
 }

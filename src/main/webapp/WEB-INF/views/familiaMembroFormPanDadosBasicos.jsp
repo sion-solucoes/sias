@@ -6,8 +6,7 @@
         <div class="col-md-6">
             <label for="comboGrauParentesco">Grau de Parentesco(com o membro de referência)</label>
             <input hidden="true" id="txtGrauParentesco" value="${familiaMembro.grauParentesco.id}">
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="grauParentesco.id" id="comboGrauParentesco">
-                
+            <select class="selectpicker" title="Selecione..." name="grauParentesco.id" id="comboGrauParentesco">
             </select>
         </div>
     </div>
@@ -20,13 +19,13 @@
         </div>
         <div class="col-md-4">
             <label for="comboSexo">Sexo</label>
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="sexo" id="comboSexo">
+            <select class="selectpicker" title="Selecione..." name="sexo" id="comboSexo">
                 <option value="0">Masculino</option>
                 <option value="1">Feminino</option>
             </select>
         </div>
     </div>
-    
+
     <div class="row form-group p-l-15">
         <div class="col-md-6">
             <label for="txtApelido">Apelido</label>

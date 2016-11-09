@@ -154,6 +154,42 @@ public class FamiliaVisitaController {
         return response;
     }
 
+    @RequestMapping(value = "/familiaVisita/confirm", method = RequestMethod.POST)
+    public @ResponseBody
+    Map<String, Object> confirm(@RequestParam("id") Long id, HttpSession httpSession) {
+
+        Map<String, Object> response = new HashMap<String, Object>();
+
+        try {
+            familiaVisitaService.confirm(id);
+            response.put("success", true);
+        } catch (Exception e) {
+            Logger.getLogger(FamiliaVisitaController.class.getName()).log(Level.SEVERE, null, e);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
+        }
+
+        return response;
+    }
+
+    @RequestMapping(value = "/familiaVisita/disconfirm", method = RequestMethod.POST)
+    public @ResponseBody
+    Map<String, Object> disconfirm(@RequestParam("id") Long id, HttpSession httpSession) {
+
+        Map<String, Object> response = new HashMap<String, Object>();
+
+        try {
+            familiaVisitaService.confirm(id);
+            response.put("success", true);
+        } catch (Exception e) {
+            Logger.getLogger(FamiliaVisitaController.class.getName()).log(Level.SEVERE, null, e);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
+        }
+
+        return response;
+    }
+
     @RequestMapping(value = "/familiaVisita/delete", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> delete(@RequestParam("id") Long id, HttpSession httpSession) {

@@ -12,6 +12,10 @@ import com.sias.model.entity.mcf.FamiliaVisita;
  *
  * @author Fernando
  */
-public interface FamiliaVisitaDAO extends BaseDAO<FamiliaVisita>{
+public interface FamiliaVisitaDAO extends BaseDAO<FamiliaVisita> {
+
+    public void confirm(Long id) throws Exception;
+
+    public void disconfirm(Long id) throws Exception;
     
 }

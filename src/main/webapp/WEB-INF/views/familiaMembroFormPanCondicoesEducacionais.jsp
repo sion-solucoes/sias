@@ -7,8 +7,8 @@
         <div class="col-md-8">
             <input id="txtEscolaridade" hidden="true" name="id" value="${familiaMembro.escolaridade.id}">
             <label for="comboEscolaridade">Escolaridade</label>
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="sexo" id="comboEscolaridade">
-                
+            <select class="selectpicker" title="Selecione..." name="escolaridade.id" id="comboEscolaridade">
+
             </select>
         </div>
     </div>

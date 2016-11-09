@@ -18,11 +18,11 @@ import org.springframework.stereotype.Service;
  * @author Fernando
  */
 @Service
-public class FamiliaVisitaServiceImpl implements FamiliaVisitaService{
+public class FamiliaVisitaServiceImpl implements FamiliaVisitaService {
 
     @Autowired
     private FamiliaVisitaDAO familiaVisitaDAO;
-    
+
     @Override
     public void create(FamiliaVisita familiaVisita) throws Exception {
         familiaVisitaDAO.create(familiaVisita);
@@ -57,5 +57,15 @@ public class FamiliaVisitaServiceImpl implements FamiliaVisitaService{
     public void validate(FamiliaVisita e) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void confirm(Long id) throws Exception {
+        familiaVisitaDAO.confirm(id);
+    }
     
+    @Override
+    public void disconfirm(Long id) throws Exception {
+        familiaVisitaDAO.disconfirm(id);
+    }
+
 }
