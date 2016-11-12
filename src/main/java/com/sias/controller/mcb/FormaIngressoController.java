@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +22,7 @@ import com.sias.util.GSONConverter;
 import com.sias.util.ValidateException;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.dao.DuplicateKeyException;
 
 /**
  *
@@ -81,6 +81,10 @@ public class FormaIngressoController {
             Logger.getLogger(FormaIngressoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(FormaIngressoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
             Logger.getLogger(FormaIngressoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);

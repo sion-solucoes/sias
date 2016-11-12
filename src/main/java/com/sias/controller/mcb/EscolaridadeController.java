@@ -20,6 +20,7 @@ import com.sias.util.GSONConverter;
 import com.sias.util.ValidateException;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -77,8 +78,13 @@ public class EscolaridadeController {
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (ValidateException ex) {
+            Logger.getLogger(EscolaridadeController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(EscolaridadeController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
             Logger.getLogger(EscolaridadeController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);

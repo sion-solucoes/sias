@@ -22,6 +22,7 @@ import com.sias.util.GSONConverter;
 import com.sias.util.ValidateException;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.dao.DuplicateKeyException;
 
 /**
  *
@@ -80,6 +81,10 @@ public class GrauParentescoController {
             Logger.getLogger(GrauParentescoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(GrauParentescoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
             Logger.getLogger(GrauParentescoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);

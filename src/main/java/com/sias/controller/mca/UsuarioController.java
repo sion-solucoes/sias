@@ -35,6 +35,7 @@ import com.sias.util.Relatorio;
 import com.sias.util.ValidateException;
 import java.io.InputStream;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.dao.DuplicateKeyException;
 import sun.misc.BASE64Encoder;
 
 /**
@@ -119,8 +120,13 @@ public class UsuarioController {
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (ValidateException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
@@ -220,7 +226,7 @@ public class UsuarioController {
         } catch (Exception ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
 }

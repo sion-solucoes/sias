@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,6 +81,10 @@ public class CondicaoOcupacaoController {
             Logger.getLogger(CondicaoOcupacaoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(CondicaoOcupacaoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
             Logger.getLogger(CondicaoOcupacaoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);

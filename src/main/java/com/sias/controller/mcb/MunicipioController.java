@@ -16,9 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mcb.Municipio;
 import com.sias.model.service.mcb.interfaces.MunicipioService;
 import com.sias.model.service.mcb.interfaces.UnidadeFederacaoService;
+import com.sias.util.Constants;
 import com.sias.util.GSONConverter;
+import com.sias.util.ValidateException;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -75,15 +78,23 @@ public class MunicipioController {
             Municipio municipio = (Municipio) GSONConverter.convert(json, Municipio.class);
             if (municipio.getId() == null) {
                 municipioService.create(municipio);
-            } else{
+            } else {
                 municipioService.update(municipio);
             }
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
-        } catch (Exception ex) {
+        } catch (ValidateException ex) {
             Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
+        } catch (Exception ex) {
+            Logger.getLogger(MunicipioController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
         }
 
         return response;

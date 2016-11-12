@@ -24,6 +24,7 @@ import com.sias.model.service.mcb.interfaces.CEPService;
 import com.sias.util.Constants;
 import com.sias.util.GSONConverter;
 import com.sias.util.ValidateException;
+import org.springframework.dao.DuplicateKeyException;
 
 /**
  *
@@ -101,10 +102,15 @@ public class UnidadeAtendimentoController {
             response.put("success", true);
             response.put("msg", "Salvo com sucesso!");
         } catch (ValidateException ex) {
+            Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", ex.getMessage());
+        } catch (DuplicateKeyException ex) {
+            Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
+            response.put("success", false);
+            response.put("msg", Constants.MENSAGEM_DUPLICATE_KEY_EXCEPTION);
         } catch (Exception ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
             response.put("success", false);
             response.put("msg", Constants.MENSAGEM_ERRO_INESPERADO);
         }
