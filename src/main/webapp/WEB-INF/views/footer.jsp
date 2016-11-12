@@ -18,20 +18,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title text-center">Resultados da pesquisa</h3>
             </div>
-            <div class="modal-body">
-                <div class="m-15 table-responsive" id="tabela-resultados">
-                    <table class="table table-condensed table-striped table-vmiddle">
-                        <thead>
-                            <tr>
-                                <th>Pessoa referência</th>
-                                <th>NIS</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resultados">
-                            
-                        </tbody>
-                    </table>
-                </div>
+            <div class="modal-body" id="resultados_pesquisa">
+                
             </div>
         </div>
     </div>
