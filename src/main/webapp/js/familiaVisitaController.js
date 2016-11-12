@@ -217,3 +217,21 @@ $(document).ready(function () {
         cId.fullCalendar('changeView', dataView);
     });
 });
+
+$('#addNew-event').on('shown.bs.modal', function () {
+
+    var comboFamilia = $('#comboFamilia');
+    comboFamilia.prop('selectedIndex', 0);
+    comboFamilia.selectpicker('refresh');
+
+    var comboUsuario = $('#comboUsuario');
+    comboUsuario.prop('selectedIndex', 0);
+    comboUsuario.selectpicker('refresh');
+
+    var dataInicio = $('dtpInicio');
+    dataInicio.val('');
+
+    var dataFim = $('dtpFim');
+    dataFim.val('');
+
+});
