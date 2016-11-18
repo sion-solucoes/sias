@@ -52,6 +52,34 @@ public class Familia extends BaseEntity {
     private String bairroEndereco;
 
     private String pontoReferenciaEndereco;
+    
+    private String tipoResidencia;
+    
+    private String materialParedesExternas;
+    
+    private String acessoEnergiaEletrica;
+    
+    private String aguaCanalizada;
+    
+    private String formaAbastecimentoAgua;
+    
+    private String escoamentoSanitario;
+    
+    private String coletaLixo;
+    
+    private Integer numeroComodos;
+    
+    private Integer numeroDormitorios;
+    
+    private String acessibilidade;
+    
+    private String localizacaoAreaRisco;
+    
+    private String dificilAcessoGeografico;
+    
+    private String areaConflitoViolencia;
+    
+    private String observacoesCondicoesHabitacionais;
 
     public Date getDataUltimaAlteracao() {
         return dataUltimaAlteracao;
@@ -171,6 +199,118 @@ public class Familia extends BaseEntity {
 
     public void setEnderecoAbrigo(Boolean enderecoAbrigo) {
         this.enderecoAbrigo = enderecoAbrigo;
+    }
+
+    public String getTipoResidencia() {
+        return tipoResidencia;
+    }
+
+    public void setTipoResidencia(String tipoResidencia) {
+        this.tipoResidencia = tipoResidencia;
+    }
+
+    public String getMaterialParedesExternas() {
+        return materialParedesExternas;
+    }
+
+    public void setMaterialParedesExternas(String materialParedesExternas) {
+        this.materialParedesExternas = materialParedesExternas;
+    }
+
+    public String getAcessoEnergiaEletrica() {
+        return acessoEnergiaEletrica;
+    }
+
+    public void setAcessoEnergiaEletrica(String acessoEnergiaEletrica) {
+        this.acessoEnergiaEletrica = acessoEnergiaEletrica;
+    }
+
+    public String getAguaCanalizada() {
+        return aguaCanalizada;
+    }
+
+    public void setAguaCanalizada(String aguaCanalizada) {
+        this.aguaCanalizada = aguaCanalizada;
+    }
+
+    public String getFormaAbastecimentoAgua() {
+        return formaAbastecimentoAgua;
+    }
+
+    public void setFormaAbastecimentoAgua(String formaAbastecimentoAgua) {
+        this.formaAbastecimentoAgua = formaAbastecimentoAgua;
+    }
+
+    public String getEscoamentoSanitario() {
+        return escoamentoSanitario;
+    }
+
+    public void setEscoamentoSanitario(String escoamentoSanitario) {
+        this.escoamentoSanitario = escoamentoSanitario;
+    }
+
+    public String getColetaLixo() {
+        return coletaLixo;
+    }
+
+    public void setColetaLixo(String coletaLixo) {
+        this.coletaLixo = coletaLixo;
+    }
+
+    public Integer getNumeroComodos() {
+        return numeroComodos;
+    }
+
+    public void setNumeroComodos(Integer numeroComodos) {
+        this.numeroComodos = numeroComodos;
+    }
+
+    public Integer getNumeroDormitorios() {
+        return numeroDormitorios;
+    }
+
+    public void setNumeroDormitorios(Integer numeroDormitorios) {
+        this.numeroDormitorios = numeroDormitorios;
+    }
+
+    public String getAcessibilidade() {
+        return acessibilidade;
+    }
+
+    public void setAcessibilidade(String acessibilidade) {
+        this.acessibilidade = acessibilidade;
+    }
+
+    public String getLocalizacaoAreaRisco() {
+        return localizacaoAreaRisco;
+    }
+
+    public void setLocalizacaoAreaRisco(String localizacaoAreaRisco) {
+        this.localizacaoAreaRisco = localizacaoAreaRisco;
+    }
+
+    public String getDificilAcessoGeografico() {
+        return dificilAcessoGeografico;
+    }
+
+    public void setDificilAcessoGeografico(String dificilAcessoGeografico) {
+        this.dificilAcessoGeografico = dificilAcessoGeografico;
+    }
+
+    public String getAreaConflitoViolencia() {
+        return areaConflitoViolencia;
+    }
+
+    public void setAreaConflitoViolencia(String areaConflitoViolencia) {
+        this.areaConflitoViolencia = areaConflitoViolencia;
+    }
+
+    public String getObservacoesCondicoesHabitacionais() {
+        return observacoesCondicoesHabitacionais;
+    }
+
+    public void setObservacoesCondicoesHabitacionais(String observacoesCondicoesHabitacionais) {
+        this.observacoesCondicoesHabitacionais = observacoesCondicoesHabitacionais;
     }
 
 }

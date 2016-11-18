@@ -81,6 +81,20 @@ public class FamiliaRowMapper implements RowMapper<Familia> {
         familia.setNumeroEndereco(rs.getString(FamiliaConstants.NUMERO_ENDERECO));
         familia.setBairroEndereco(rs.getString(FamiliaConstants.BAIRRO_ENDERECO));
         familia.setPontoReferenciaEndereco(rs.getString(FamiliaConstants.PONTO_REFERENCIA_ENDERECO));
+        familia.setTipoResidencia(rs.getString(FamiliaConstants.TIPO_RESIDENCIA));
+        familia.setMaterialParedesExternas(rs.getString(FamiliaConstants.MATERIAL_PAREDES_EXTERNAS));
+        familia.setAcessoEnergiaEletrica(rs.getString(FamiliaConstants.ACESSO_ENERGIA_ELETRICA));
+        familia.setAguaCanalizada(rs.getString(FamiliaConstants.AGUA_CANALIZADA));
+        familia.setFormaAbastecimentoAgua(rs.getString(FamiliaConstants.FORMA_ABASTECIMENTO_AGUA));
+        familia.setEscoamentoSanitario(rs.getString(FamiliaConstants.ESCOAMENTO_SANITARIO));
+        familia.setColetaLixo(rs.getString(FamiliaConstants.COLETA_LIXO));
+        familia.setNumeroComodos(rs.getInt(FamiliaConstants.NUMERO_COMODOS));
+        familia.setNumeroDormitorios(rs.getInt(FamiliaConstants.NUMERO_DORMITORIOS));
+        familia.setAcessibilidade(rs.getString(FamiliaConstants.ACESSIBILIDADE));
+        familia.setLocalizacaoAreaRisco(rs.getString(FamiliaConstants.LOCALIZACAO_AREA_RISCO));
+        familia.setDificilAcessoGeografico(rs.getString(FamiliaConstants.DIFICIL_ACESSO_GEOGRAFICO));
+        familia.setAreaConflitoViolencia(rs.getString(FamiliaConstants.AREA_CONFLITO_VIOLENCIA));
+        familia.setObservacoesCondicoesHabitacionais(rs.getString(FamiliaConstants.OBSERVACOES_CONDICOES_HABITACIONAIS));
 
         return familia;
     }

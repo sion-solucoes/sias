@@ -1,3 +1,116 @@
+$("#familiaFormPanEndereco").ready(function (){
+    
+    var comboTipoResidencia = $("#comboTipoResidencia");
+    comboTipoResidencia.selectpicker();
+    var tipoResidencia = $("#tipoResidencia").val();
+    $.each(comboTipoResidencia.children("option"), function (){
+        if($(this).text() == tipoResidencia){
+            comboTipoResidencia.val($(this).val());
+        }
+    });
+    comboTipoResidencia.selectpicker('refresh');
+    
+    var comboMaterialParedes = $("#comboMaterialParedes");
+    comboMaterialParedes.selectpicker();
+    var materialPeredes = $("#materialParedes").val();
+    $.each(comboMaterialParedes.children("option"), function (){
+        if($(this).text() == materialPeredes){
+            comboMaterialParedes.val($(this).val());
+        }
+    });
+    comboMaterialParedes.selectpicker("refresh");
+    
+    var comboAcessoEnergia = $("#comboAcessoEnergia");
+    comboAcessoEnergia.selectpicker();
+    var acessoEnergia = $("#acessoEnergiaEletrica").val();
+    $.each(comboAcessoEnergia.children("option"), function (){
+        if($(this).text() == acessoEnergia){
+            comboAcessoEnergia.val($(this).val());
+        }
+    });
+    comboAcessoEnergia.selectpicker("refresh");
+    
+    var comboAguaCanalizada = $("#comboAguaCanalizada");
+    comboAguaCanalizada.selectpicker();
+    var aguaCanalizada = $("#aguaCanalizada").val();
+    $.each(comboAguaCanalizada.children("option"), function (){
+        if($(this).text() == aguaCanalizada){
+            comboAguaCanalizada.val($(this).val());
+        }
+    });
+    comboAguaCanalizada.selectpicker("refresh");
+    
+    var comboFormaAbastecimento = $("#comboFormaAbastecimentoAgua");
+    comboFormaAbastecimento.selectpicker();
+    var formaAbastecimento = $("#formaAbastecimentoAgua").val();
+    $.each(comboFormaAbastecimento.children("option"), function (){
+        if($(this).text() == formaAbastecimento){
+            comboFormaAbastecimento.val($(this).val());
+        }
+    });
+    comboFormaAbastecimento.selectpicker("refresh");
+    
+    var comboEscoamentoSanitario = $("#comboEscoamentoSanitario");
+    comboEscoamentoSanitario.selectpicker();
+    var escomentoSanitario = $("#escoamentoSanitario").val();
+    $.each(comboEscoamentoSanitario.children("option"), function (){
+        if($(this).text() == escomentoSanitario){
+            comboEscoamentoSanitario.val($(this).val());
+        }
+    });
+    comboEscoamentoSanitario.selectpicker("refresh");
+    
+    var comboColetaLixo = $("#comboColetaLixo");
+    comboColetaLixo.selectpicker();
+    var coletaLixo = $("#coletaLixo").val();
+    $.each(comboColetaLixo.children("option"), function (){
+        if($(this).text() == coletaLixo){
+            comboColetaLixo.val($(this).val());
+        }
+    });
+    comboColetaLixo.selectpicker("refresh");
+    
+    var comboAcessibilidade = $("#comboAcessibilidade");
+    comboAcessibilidade.selectpicker();
+    var acessibilidade = $("#acessibilidade").val();
+    $.each(comboAcessibilidade.children("option"), function(){
+        if($(this).text() == acessibilidade){
+            comboAcessibilidade.val($(this).val());
+        }
+    });
+    comboAcessibilidade.selectpicker("refresh");
+    
+    var combolocalizacaoAreaRisco = $("#comboLocalizacaoRisco");
+    combolocalizacaoAreaRisco.selectpicker();
+    var localizacaoRisco = $("#localizacaoRisco").val();
+    $.each(combolocalizacaoAreaRisco.children("option"), function (){
+        if($(this).text() == localizacaoRisco){
+            combolocalizacaoAreaRisco.val($(this).val());
+        }
+    });
+    combolocalizacaoAreaRisco.selectpicker("refresh");
+    
+    var comboAcessoGeografico = $("#comboAcessoGeografico");
+    comboAcessoGeografico.selectpicker();
+    var acessoGeografico = $("#acessoGeografico").val();
+    $.each(comboAcessoGeografico.children("option"), function (){
+        if($(this).text() == acessoGeografico){
+            comboAcessoGeografico.val($(this).val());
+        }
+    });
+    comboAcessoGeografico.selectpicker("refresh");
+    
+    var comboAreaViolencia = $("#comboAreaViolencia");
+    comboAreaViolencia.selectpicker();
+    var areaViolencia = $("#areaViolencia").val();
+    $.each(comboAreaViolencia.children("option"), function (){
+        if($(this).text() == areaViolencia){
+            comboAreaViolencia.val($(this).val());
+        }
+    });
+    comboAreaViolencia.selectpicker("refresh");
+});
+
 $('#familiaForm').submit(function (event) {
 
     var txtId = $('#txtId');
@@ -13,7 +126,21 @@ $('#familiaForm').submit(function (event) {
     var txtNumeroEndereco = $('#txtNumeroEndereco');
     var txtBairroEndereco = $('#txtBairroEndereco');
     var txtPontoReferenciaEndereco = $('#txtPontoReferenciaEndereco');
-
+    var comboTipoResidencia = $("#comboTipoResidencia");
+    var comboMaterialParedes = $("#comboMaterialParedes");
+    var comboAcessoEnergia = $("#comboAcessoEnergia");
+    var comboAguaCanalizada = $("#comboAguaCanalizada");
+    var comboFormaAbastecimentoAgua = $("#comboFormaAbastecimentoAgua");
+    var comboEscoamentoSanitario = $("#comboEscoamentoSanitario");
+    var comboColetaLixo = $("#comboColetaLixo");
+    var txtNumeroComodos = $("#txtNumeroComodos");
+    var txtNumeroDormitorios = $("#txtNumeroDormitorios");
+    var comboAcessibilidade = $("#comboAcessibilidade");
+    var comboLocalizacaoRisco = $("#comboLocalizacaoRisco");
+    var comboAcessoGeografico = $("#comboAcessoGeografico");
+    var comboAreaViolencia = $("#comboAreaViolencia");
+    var txtObservacoesCondicoesHabitacionais = $("#txtObservacoesCondicoesHabitacionais");
+        
     var id = txtId.val();
     if (id === '') {
         id = null;
@@ -35,7 +162,21 @@ $('#familiaForm').submit(function (event) {
         logradouroEndereco: txtLogradouroEndereco.val(),
         numeroEndereco: txtNumeroEndereco.val(),
         bairroEndereco: txtBairroEndereco.val(),
-        pontoReferenciaEndereco: txtPontoReferenciaEndereco.val()
+        pontoReferenciaEndereco: txtPontoReferenciaEndereco.val(),
+        tipoResidencia: comboTipoResidencia.children("option:selected").text(),
+        materialParedesExternas: comboMaterialParedes.children("option:selected").text(),
+        acessoEnergiaEletrica: comboAcessoEnergia.children("option:selected").text(),
+        aguaCanalizada: comboAguaCanalizada.children("option:selected").text(),
+        formaAbastecimentoAgua: comboFormaAbastecimentoAgua.children("option:selected").text(),
+        escoamentoSanitario: comboEscoamentoSanitario.children("option:selected").text(),
+        coletaLixo: comboColetaLixo.children("option:selected").text(),
+        numeroComodos: txtNumeroComodos.val(),
+        numeroDormitorios: txtNumeroDormitorios.val(),
+        acessibilidade: comboAcessibilidade.children("option:selected").text(),
+        localizacaoAreaRisco: comboLocalizacaoRisco.children("option:selected").text(),
+        dificilAcessoGeografico: comboAcessoGeografico.children("option:selected").text(),
+        areaConflitoViolencia: comboAreaViolencia.children("option:selected").text(),
+        observacoesCondicoesHabitacionais: txtObservacoesCondicoesHabitacionais.val()
     };
 
     var data = {

@@ -45,10 +45,24 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
             query += FamiliaConstants.NUMERO_ENDERECO + ", ";
             query += FamiliaConstants.BAIRRO_ENDERECO + ", ";
             query += FamiliaConstants.PONTO_REFERENCIA_ENDERECO + ", ";
+            query += FamiliaConstants.TIPO_RESIDENCIA + ", ";
+            query += FamiliaConstants.MATERIAL_PAREDES_EXTERNAS + ", ";
+            query += FamiliaConstants.ACESSO_ENERGIA_ELETRICA + ", ";
+            query += FamiliaConstants.AGUA_CANALIZADA + ", ";
+            query += FamiliaConstants.FORMA_ABASTECIMENTO_AGUA + ", ";
+            query += FamiliaConstants.ESCOAMENTO_SANITARIO + ", ";
+            query += FamiliaConstants.COLETA_LIXO + ", ";
+            query += FamiliaConstants.NUMERO_COMODOS + ", ";
+            query += FamiliaConstants.NUMERO_DORMITORIOS + ", ";
+            query += FamiliaConstants.ACESSIBILIDADE + ", ";
+            query += FamiliaConstants.LOCALIZACAO_AREA_RISCO + ", ";
+            query += FamiliaConstants.DIFICIL_ACESSO_GEOGRAFICO + ", ";
+            query += FamiliaConstants.AREA_CONFLITO_VIOLENCIA + ", ";
+            query += FamiliaConstants.OBSERVACOES_CONDICOES_HABITACIONAIS + ", ";
             query += FamiliaConstants.ESPECIFICIDADE_SOCIAL_ID;
         }
         query += ")";
-        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         query += " RETURNING " + FamiliaConstants.ID;
 
         Object args[] = {
@@ -58,7 +72,11 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),
             familia.getCepEndereco() != null ? familia.getCepEndereco().getId() : null,
             familia.getLogradouroEndereco(), familia.getNumeroEndereco(), familia.getBairroEndereco(),
-            familia.getPontoReferenciaEndereco(),
+            familia.getPontoReferenciaEndereco(), familia.getTipoResidencia(), familia.getMaterialParedesExternas(),
+            familia.getAcessoEnergiaEletrica(), familia.getAguaCanalizada(), familia.getFormaAbastecimentoAgua(),
+            familia.getEscoamentoSanitario(), familia.getColetaLixo(), familia.getNumeroComodos(),
+            familia.getNumeroDormitorios(), familia.getAcessibilidade(), familia.getLocalizacaoAreaRisco(),
+            familia.getDificilAcessoGeografico(), familia.getAreaConflitoViolencia(), familia.getObservacoesCondicoesHabitacionais(),
             familia.getEspecificidadeSocial() != null ? familia.getEspecificidadeSocial().getId() : null
         };
 
@@ -134,6 +152,20 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         query += FamiliaConstants.NUMERO_ENDERECO + "=?, ";
         query += FamiliaConstants.BAIRRO_ENDERECO + "=?, ";
         query += FamiliaConstants.PONTO_REFERENCIA_ENDERECO + "=?, ";
+        query += FamiliaConstants.TIPO_RESIDENCIA + "=?, ";
+        query += FamiliaConstants.MATERIAL_PAREDES_EXTERNAS + "=?, ";
+        query += FamiliaConstants.ACESSO_ENERGIA_ELETRICA + "=?, ";
+        query += FamiliaConstants.AGUA_CANALIZADA + "=?, ";
+        query += FamiliaConstants.FORMA_ABASTECIMENTO_AGUA + "=?, ";
+        query += FamiliaConstants.ESCOAMENTO_SANITARIO + "=?, ";
+        query += FamiliaConstants.COLETA_LIXO + "=?, ";
+        query += FamiliaConstants.NUMERO_COMODOS + "=?, ";
+        query += FamiliaConstants.NUMERO_DORMITORIOS + "=?, ";
+        query += FamiliaConstants.ACESSIBILIDADE + "=?, ";
+        query += FamiliaConstants.LOCALIZACAO_AREA_RISCO + "=?, ";
+        query += FamiliaConstants.DIFICIL_ACESSO_GEOGRAFICO + "=?, ";
+        query += FamiliaConstants.AREA_CONFLITO_VIOLENCIA + "=?, ";
+        query += FamiliaConstants.OBSERVACOES_CONDICOES_HABITACIONAIS + "=?, ";
         query += FamiliaConstants.ESPECIFICIDADE_SOCIAL_ID + "=?";
         query += " WHERE " + FamiliaConstants.ID + "=? ";
 
@@ -144,7 +176,11 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),
             familia.getCepEndereco() != null ? familia.getCepEndereco().getId() : null,
             familia.getLogradouroEndereco(), familia.getNumeroEndereco(), familia.getBairroEndereco(),
-            familia.getPontoReferenciaEndereco(),
+            familia.getPontoReferenciaEndereco(), familia.getTipoResidencia(), familia.getMaterialParedesExternas(),
+            familia.getAcessoEnergiaEletrica(), familia.getAguaCanalizada(), familia.getFormaAbastecimentoAgua(),
+            familia.getEscoamentoSanitario(), familia.getColetaLixo(), familia.getNumeroComodos(),
+            familia.getNumeroDormitorios(), familia.getAcessibilidade(), familia.getLocalizacaoAreaRisco(),
+            familia.getDificilAcessoGeografico(), familia.getAreaConflitoViolencia(), familia.getObservacoesCondicoesHabitacionais(),
             familia.getEspecificidadeSocial() != null ? familia.getEspecificidadeSocial().getId() : null,
             familia.getId()
         };

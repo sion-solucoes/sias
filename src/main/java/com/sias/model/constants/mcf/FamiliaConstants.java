@@ -42,6 +42,34 @@ public class FamiliaConstants {
     public static final String BAIRRO_ENDERECO = PREFIXO + "bairro_endereco";
 
     public static final String PONTO_REFERENCIA_ENDERECO = PREFIXO + "ponto_referencia_endereco";
+    
+    public static final String TIPO_RESIDENCIA = PREFIXO + "tipo_residencia";
+    
+    public static final String MATERIAL_PAREDES_EXTERNAS = PREFIXO + "material_paredes_externas";
+    
+    public static final String ACESSO_ENERGIA_ELETRICA = PREFIXO + "acesso_energia_eletrica";
+    
+    public static final String AGUA_CANALIZADA = PREFIXO + "agua_canalizada";
+    
+    public static final String FORMA_ABASTECIMENTO_AGUA = PREFIXO + "forma_abastecimento_agua";
+    
+    public static final String ESCOAMENTO_SANITARIO = PREFIXO + "escoamento_sanitario";
+    
+    public static final String COLETA_LIXO = PREFIXO + "coleta_lixo";
+    
+    public static final String NUMERO_COMODOS = PREFIXO + "numero_comodos";
+    
+    public static final String NUMERO_DORMITORIOS = PREFIXO + "numero_dormitorios";
+    
+    public static final String ACESSIBILIDADE = PREFIXO + "acessibilidade";
+    
+    public static final String LOCALIZACAO_AREA_RISCO = PREFIXO + "localizacao_area_risco";
+    
+    public static final String DIFICIL_ACESSO_GEOGRAFICO = PREFIXO + "dificil_acesso_geografico";
+    
+    public static final String AREA_CONFLITO_VIOLENCIA = PREFIXO + "area_conflito_violencia";
+    
+    public static final String OBSERVACOES_CONDICOES_HABITACIONAIS = PREFIXO + "observacoes_condicoes_habitacionais";
 
     public static final String ESPECIFICIDADE_SOCIAL_ID = PREFIXO + "especificidade_social_id";
 
