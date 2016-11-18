@@ -1,31 +1,3 @@
-$('#abaSaude').ready(function (event) {
-
-    var txtDeficiencia = $('#txtDeficiencia');
-    var deficienciaId = txtDeficiencia.val();
-    var comboDeficiencia = $('#comboDeficiencia');
-    comboDeficiencia.selectpicker({
-        size: 4
-    });
-
-    $.ajax({
-        method: 'POST',
-        url: '/cadastrosBasicos/deficiencia/readAll',
-        success: function (data) {
-            if (data !== null) {
-                for (var i = 0; i < data.length; i++) {
-                    var deficiencia = data[i];
-                    var option = document.createElement("option");
-                    option.selected = deficienciaId === deficiencia.id;
-                    option.value = deficiencia.id;
-                    option.text = deficiencia.codigo + ' - ' + deficiencia.descricao;
-                    comboDeficiencia.append(option);
-                }
-                comboDeficiencia.selectpicker('refresh');
-            }
-        }
-    });
-});
-
 $('#checkNecessitaCuidadosConstantes').change(function () {
 
     var checkNecessitaCuidadosConstantes = $('#checkNecessitaCuidadosConstantes');

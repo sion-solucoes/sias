@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaoseguranca" pageWidth="300" pageHeight="842" columnWidth="260" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4680cf91-eb65-49ba-bf27-9ec6b83aca79">
+	<property name="ireport.zoom" value="1.6105100000000032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#00008B">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFEFFF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[0].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[1].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[2].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[3].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[4].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[5].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[6].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[7].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[8].codigo" class="java.lang.String"/>
+	<field name="usuarioSegurancaList[9].codigo" class="java.lang.String"/>
+	<title>
+		<band height="19" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement mode="Opaque" x="0" y="-1" width="260" height="20" forecolor="#000099" backcolor="#6666FF" uuid="f2e2b682-1d00-4120-b590-5e5ada87d92b"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="11" y="-1" width="238" height="20" forecolor="#FFFFFF" uuid="4ebc67ff-667a-4d76-9364-9e4ca3ab525e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cartão de Segurança]]></text>
+			</staticText>
+			<image>
+				<reportElement x="11" y="1" width="17" height="16" uuid="2d02f1a0-d758-4aba-b097-f70087c2f676"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Transparent" x="221" y="5" width="39" height="9" forecolor="#FFFFFF" uuid="dd1418e4-e1ee-4fdb-9d39-4726227f1497"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIASWeb]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="131" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement x="0" y="0" width="260" height="131" forecolor="#000099" backcolor="#6666FF" uuid="213d2cb9-5195-4aef-8edf-7e652a3a2768"/>
+			</rectangle>
+			<rectangle radius="15">
+				<reportElement mode="Opaque" x="4" y="9" width="238" height="95" forecolor="#6666FF" backcolor="#0068C3" uuid="25da324a-78a5-406b-83e8-d8822cc99a12"/>
+			</rectangle>
+			<rectangle radius="15">
+				<reportElement mode="Opaque" x="11" y="3" width="238" height="95" forecolor="#FFFFFF" backcolor="#000099" uuid="e72845db-bff6-4c33-9491-938aae2f2937"/>
+			</rectangle>
+			<textField>
+				<reportElement x="57" y="18" width="68" height="15" forecolor="#FFFFFF" uuid="e9a3e2cf-1b66-49e8-87e0-00b229b0b75d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[0].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="34" width="68" height="15" forecolor="#FFFFFF" uuid="6cc66795-89cf-4851-8910-7a80542a7d08"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[1].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="50" width="68" height="15" forecolor="#FFFFFF" uuid="b557ef6c-4322-4ff2-aadf-7e911ebdc51c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[2].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="66" width="68" height="15" forecolor="#FFFFFF" uuid="d364213b-ee68-4336-a9b4-8f35d3fc3828"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[3].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="82" width="68" height="15" forecolor="#FFFFFF" uuid="4537fd28-5b1e-46c2-9b56-bf8c5920e2b5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[4].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="82" width="68" height="15" forecolor="#FFFFFF" uuid="518020c8-71e4-43d3-9489-0edaff079d40"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[9].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="18" width="68" height="15" forecolor="#FFFFFF" uuid="337d6968-b6c7-48b8-9b50-68a90791cd35"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[5].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="50" width="68" height="15" forecolor="#FFFFFF" uuid="7d16399f-1a42-4fc6-a106-ab887ff5214b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[7].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="66" width="68" height="15" forecolor="#FFFFFF" uuid="72f3f107-8725-4167-adcb-78e7accc8901"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[8].codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="34" width="68" height="15" forecolor="#FFFFFF" uuid="8f4cb1b5-1ac3-4bf0-b3b7-8d657dd3d65f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarioSegurancaList[6].codigo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="11" y="17" width="238" height="1" forecolor="#FFFFFF" uuid="cb126b1b-e8be-4c13-85a4-ec9f93c4f549"/>
+			</line>
+			<line>
+				<reportElement x="53" y="3" width="1" height="95" forecolor="#FFFFFF" uuid="53c6870c-d33c-4e0a-aef2-a21632a483f8"/>
+			</line>
+			<line>
+				<reportElement x="129" y="3" width="1" height="95" forecolor="#FFFFFF" uuid="a34a5690-056d-4c7d-8170-4d7c62ac1372"/>
+			</line>
+			<line>
+				<reportElement x="205" y="3" width="1" height="95" forecolor="#FFFFFF" uuid="bd7c18da-9972-4435-84b0-36418c8b219a"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="3" width="43" height="15" forecolor="#FFFFFF" uuid="bc71ad15-e423-478c-ad02-5c0c9dd36ae3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="3" width="75" height="15" forecolor="#FFFFFF" uuid="5665ddc3-e3dd-472d-96e6-a7b8de482d77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="3" width="75" height="15" forecolor="#FFFFFF" uuid="f62ce0d7-4e35-4753-b17e-04a7d45c23a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="3" width="43" height="15" forecolor="#FFFFFF" uuid="87eab840-c0ff-43e2-8cf2-69d6c670f0ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="18" width="43" height="15" forecolor="#FFFFFF" uuid="32e53315-d530-4d7c-94f5-6e3d77df7f40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="34" width="43" height="15" forecolor="#FFFFFF" uuid="e5371bcb-461f-4a41-a888-ead61472238e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="50" width="43" height="15" forecolor="#FFFFFF" uuid="a67f28c5-1658-4c40-a94e-1c692623f195"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="66" width="43" height="15" forecolor="#FFFFFF" uuid="16fd51f6-c105-4ac3-9964-144ee4be3ed3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="82" width="43" height="15" forecolor="#FFFFFF" uuid="d293552b-afcb-479f-8cbd-520ec633b20d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="66" width="43" height="15" forecolor="#FFFFFF" uuid="b801b8d1-698e-4b59-b2dd-dc0cfcbfd442"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="18" width="43" height="15" forecolor="#FFFFFF" uuid="163713aa-ca6e-4901-973b-a17ac4c40dd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="82" width="43" height="15" forecolor="#FFFFFF" uuid="92690018-9a1f-468d-8093-7bf42471a83b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="50" width="43" height="15" forecolor="#FFFFFF" uuid="4cc699ae-7ace-4c51-a196-9dc82aa0cc7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[8]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="34" width="43" height="15" forecolor="#FFFFFF" uuid="40b3996c-f3c3-457a-b034-70652b8ade3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="104" width="148" height="18" forecolor="#FFFFFF" uuid="0cd150bb-7783-4921-85f2-6cc218bfcf00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="55" y="122" width="148" height="9" forecolor="#FFFFFF" uuid="2e11df7b-0e53-47b3-b305-22c344ce8981"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SioN Soluções]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

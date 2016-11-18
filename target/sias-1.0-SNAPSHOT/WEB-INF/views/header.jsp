@@ -15,7 +15,6 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <link href="<c:url value="/css/normalize.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/fullcalendar.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/fullcalendar.print.css"/>" media="print" rel="stylesheet">

@@ -121,7 +121,7 @@ $('#btnImprimirCodigos').click(function (event) {
     };
 
     $.ajax({
-        method: 'POST',
+        method: 'GET',
         url: '/controleAmbiente/usuario/imprimirCodigos',
         data: data,
         success: function (data, response) {

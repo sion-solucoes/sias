@@ -50,7 +50,7 @@
     <div class="form-group">
         <label for="comboCEPEndereco" class="control-label col-sm-2">CEP</label>
         <div class="col-md-6">
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="cep.id" id="comboCEPEndereco">
+            <select class="selectpicker" title="Selecione..." name="cep.id" id="comboCEPEndereco">
                 
             </select>
         </div>

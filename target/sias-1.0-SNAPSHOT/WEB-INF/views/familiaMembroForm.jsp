@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
-                                <button type="BUTTON" class="btn bgm-blue" id="btnConfirmarFamiliaMembro">Confirmar</button>
+                                <button type="submit" class="btn bgm-blue" id="btnConfirmarFamiliaMembro">Confirmar</button>
                             </div>
                             <div class="col-md-2">
                                 <button type="button" class="btn bgm-white" data-dismiss="modal">Cancelar</button>
@@ -61,8 +61,5 @@
 </div>
 
 <script type="text/javascript" src="<c:url value="/js/familiaMembroController.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/familiaMembroDadosBasicosController.js"/>"></script>
-<!--<script type="text/javascript" src="<c:url value="/js/familiaMembroDocumentosProvidenciaveisController.js"/>"></script>-->
-<script type="text/javascript" src="<c:url value="/js/familiaMembroCondicoesEducacionaisController.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/familiaMembroTrabalhoRendimentosController.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/familiaMembroSaudeController.js"/>"></script>

@@ -16,7 +16,7 @@
         <div class="col-md-8">
             <input id="txtCondicaoOcupacao" hidden="true" name="id" value="${familiaMembro.condicaoOcupacao.id}">
             <label for="comboCondicaoOcupacao">Condição de Ocupação</label>
-            <select class="selectpicker" data-live-search="true" title="Selecione..." name="condicaoOcupacao" id="comboCondicaoOcupacao">
+            <select class="selectpicker" title="Selecione..." name="condicaoOcupacao" id="comboCondicaoOcupacao">
                 
             </select>
         </div>

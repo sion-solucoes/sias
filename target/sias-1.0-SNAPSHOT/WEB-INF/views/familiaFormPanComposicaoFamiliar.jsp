@@ -5,32 +5,27 @@
     </div>
     <hr>
     <center class="form-group">
-        <div class="col-md-4"></div>
+        <div class="col-md-5"></div>
         <div class="col-md-2 text-center">
             <button type="button" class="btn bgm-blue" id="btnAdicionarMembro">
                 Adicionar Membro
             </button>
         </div>
-        <div class="col-md-2 text-center">
-            <button type="button" class="btn bgm-blue" id="btnEditarMembro">
-                Editar Membro
-            </button>
-        </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-5"></div>
     </center>
     <div class="form-group m-t-30">
         <div class="col-md-12">
-            <table class="table table-striped table-bordered table-condensed" id="tabelaComposicaoFamiliar">
+            <table class="table table-striped table-vmiddle" id="tabelaComposicaoFamiliar">
                 <thead>
                     <tr>
-                        <th width="10"></th>
-                        <th>Nome</th>
-                        <th>Grau Parentesco</th>
-                        <th>NIS</th>
-                        <th><span class="glyphicon glyphicon-trash"></span></th>
+                        <th data-column-id="nome">Nome</th>
+                        <th data-column-id="grauParentesco" data-formatter="grauParentesco">Grau Parentesco</th>
+                        <th data-column-id="nis">NIS</th>
+                        <th data-column-id="commands" data-formatter="composicaoFamiliar" data-sortable="false">Ações</th>
                     </tr>
                 </thead>
             </table>
         </div>
     </div>
 </div>
+

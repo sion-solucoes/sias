@@ -3,8 +3,7 @@ $(document).ready(function () {
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-    var cId = $('#calendar'); //Change the name if you want. I'm also using thsi add button for more actions
-
+    var cId = $('#calendar');
     //Generate the Calendar
     cId.fullCalendar({
         header: {
@@ -16,18 +15,62 @@ $(document).ready(function () {
         selectable: true,
         selectHelper: true,
         eventRender: function (event, element) {
-            element.find('.fc-content').append("<button id='delete-event' class='fc-time'>X</button>");
+
+            if (!event.confirmed) {
+                element.find('.fc-content').append('<button id="confirm-event" class="fc-time"><i class="zmdi zmdi-check"></i></button>');
+            } else {
+                element.find('.fc-content').append('<button id="disconfirm-event" class="fc-time"><i class="zmdi zmdi-check-all"></i></button>');
+            }
+            element.find('.fc-content').append('<button id="delete-event" class="fc-time"><i class="zmdi zmdi-delete"></i></button>');
+
+            var atualizaCalendario = function () {
+                $('#calendar').fullCalendar('refetchEvents');
+            };
+
+            element.find("#confirm-event").click(function () {
+                var confirmaVisita = function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: '/controleFamiliar/familiaVisita/confirm',
+                        data: {
+                            id: event._id
+                        },
+                        success: function () {
+                            Msg.notify('Visita confirmada!', 'success', 2000, null, atualizaCalendario);
+                        }
+                    });
+                };
+                Msg.yesno('Deseja confirmar a visita?', 'warning', confirmaVisita);
+            });
+            element.find("#disconfirm-event").click(function () {
+                var desconfirmaVisita = function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: '/controleFamiliar/familiaVisita/disconfirm',
+                        data: {
+                            id: event._id
+                        },
+                        success: function () {
+                            Msg.notify('Visita desconfirmada!', 'success', 2000, null, atualizaCalendario);
+                        }
+                    });
+                };
+                Msg.yesno('Deseja desconfirmar a visita?', 'warning', desconfirmaVisita);
+            });
             element.find("#delete-event").click(function () {
-                $.ajax({
-                    method: 'POST',
-                    url: '/controleFamiliar/familiaVisita/delete',
-                    data: {
-                        id: event._id
-                    },
-                    success: function () {
-                        $('#calendar').fullCalendar('refetchEvents');
-                    }
-                });
+                var remover = function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: '/controleFamiliar/familiaVisita/delete',
+                        data: {
+                            id: event._id
+                        },
+                        success: function () {
+                            Msg.notify('Agendamento removido!', 'success', 2000, null, atualizaCalendario);
+                        }
+                    });
+                };
+                Msg.yesno('Deseja remover o agendamento?', 'warning', remover);
             });
         },
         events: function (start, end, timezone, callback) {
@@ -47,6 +90,7 @@ $(document).ready(function () {
                                 events.push({
                                     id: familiaVisita.id,
                                     title: familiaVisita.familia.nomePessoaReferencia,
+                                    confirmed: familiaVisita.confirmada,
                                     allDay: false,
                                     start: new Date(familiaVisita.inicio),
                                     end: new Date(familiaVisita.fim),
@@ -172,4 +216,22 @@ $(document).ready(function () {
         $(this).parent().addClass('active');
         cId.fullCalendar('changeView', dataView);
     });
-});        
+});
+
+$('#addNew-event').on('shown.bs.modal', function () {
+
+    var comboFamilia = $('#comboFamilia');
+    comboFamilia.prop('selectedIndex', 0);
+    comboFamilia.selectpicker('refresh');
+
+    var comboUsuario = $('#comboUsuario');
+    comboUsuario.prop('selectedIndex', 0);
+    comboUsuario.selectpicker('refresh');
+
+    var dataInicio = $('dtpInicio');
+    dataInicio.val('');
+
+    var dataFim = $('dtpFim');
+    dataFim.val('');
+
+});

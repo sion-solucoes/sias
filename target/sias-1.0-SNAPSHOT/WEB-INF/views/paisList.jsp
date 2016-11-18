@@ -54,8 +54,6 @@
         //Command Buttons
         $("#data-table-command").bootgrid(bootgridConfig);
     });
-
-
 </script>
 
 

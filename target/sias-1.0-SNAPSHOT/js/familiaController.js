@@ -1,17 +1,11 @@
-$('#btnConfirmar').click(function (event) {
+$('#familiaForm').submit(function (event) {
 
     var txtId = $('#txtId');
     var comboFormaIngresso = $('#comboFormaIngresso');
     var txtDetalheFormaIngressoEncaminhamento = $('#txtDetalheFormaIngressoEncaminhamento');
     var txtObservacaoFormaIngresso = $('#txtObservacaoFormaIngresso');
     var tabelaComposicaoFamiliar = $('#tabelaComposicaoFamiliar');
-    var composicaoFamiliarCheckList = tabelaComposicaoFamiliar.find('input:checkbox');
-    var familiaMembroList = new Array();
-    for (var indexComposicaoFamiliarCheck = 0; indexComposicaoFamiliarCheck < composicaoFamiliarCheckList.length; indexComposicaoFamiliarCheck++) {
-        var checkComposicaoFamiliar = composicaoFamiliarCheckList[indexComposicaoFamiliarCheck];
-        var familiaMembro = JSON.parse($(checkComposicaoFamiliar).val());
-        familiaMembroList.push(familiaMembro);
-    }
+    var familiaMembroList = tabelaComposicaoFamiliar.prop('familiaMembroList');
     var radioLocalizacao = $("input[type=radio][name='localizacaoEndereco']:checked").val();
     var checkEnderecoAbrigo = $('#checkEnderecoAbrigo');
     var comboCEPEndereco = $('#comboCEPEndereco');
@@ -20,9 +14,9 @@ $('#btnConfirmar').click(function (event) {
     var txtBairroEndereco = $('#txtBairroEndereco');
     var txtPontoReferenciaEndereco = $('#txtPontoReferenciaEndereco');
 
-    var id = null;
-    if (txtId.val() != "") {
-        id = txtId.val();
+    var id = txtId.val();
+    if (id === '') {
+        id = null;
     }
 
     var familia = {
@@ -67,6 +61,7 @@ $('#btnConfirmar').click(function (event) {
         }
     });
 
+    return false;
 });
 
 
