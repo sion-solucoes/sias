@@ -7,8 +7,7 @@ $('#tabelaComposicaoFamiliar').ready(function (event) {
     var data = {
         familiaId: familiaId
     };
-
-    tabelaComposicaoFamiliar.bootgrid(bootgridConfig);
+    
     if (familiaId !== null && familiaId !== "") {
         $.ajax({
             method: 'POST',

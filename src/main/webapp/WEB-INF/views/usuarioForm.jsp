@@ -17,6 +17,7 @@
             </div>
             <div class="card-body card-padding">
                 <form class="form-horizontal" role="form" method="POST">
+                    <input id="txtUsuarioUnidadeAtendimento" type="hidden" value="${usuario.unidadeAtendimento.id}">
                     <input id="txtId" type="number" hidden="true" name="id" value="${usuario.id}">
                     <input id="txtFoto" hidden="true" name="foto" value="${usuario.foto}">
                     <div class="card-header">

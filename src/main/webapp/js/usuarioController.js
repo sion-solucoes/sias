@@ -1,4 +1,9 @@
 $(document).ready(function (event) {
+    
+    var usuarioUnidadeAtendimento = document.getElementById("txtUsuarioUnidadeAtendimento").value;
+    var comboUnidadeAtendimento = $("#unidadeAtendimento");
+    comboUnidadeAtendimento.val(usuarioUnidadeAtendimento);
+    comboUnidadeAtendimento.selectpicker("refresh");
 
     var txtId = document.getElementById('txtId');
     var usuarioId = txtId.value;

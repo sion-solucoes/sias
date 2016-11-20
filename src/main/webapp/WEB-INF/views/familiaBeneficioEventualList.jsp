@@ -17,10 +17,10 @@
             </div>
             <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleFamiliar/requisicaoBeneficio/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
-                <table id="data-table-command" class="table table-striped table-vmiddle">
+                <table id="data-table-command" class="table table-striped table-vmiddle table-bootgrid">
                     <thead>
                         <tr>
-                            <th data-column-id="id">ID</th>
+                            <th data-column-id="id" data-visible="false">ID</th>
                             <th data-column-id="familia">Família</th>
                             <th data-column-id="beneficio">Benefício</th>
                             <th data-column-id="dataSolicitacao" data-formatter="date">Data de Solicitação</th>

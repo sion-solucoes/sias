@@ -36,9 +36,6 @@
 
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/FullCalendarConfig.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/select2.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/Select2TecnicoConfig.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/Select2FamiliaConfig.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Searcher.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Formatter.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.price-format.min.js"/>"></script>
@@ -66,6 +63,6 @@
 <script type="text/javascript" src="<c:url value="/js/autosize.min.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/Msg.js"/>"></script>
-
+<script src="<c:url value="/js/initialize.js"/>" type="text/javascript"></script>
 </body>
 </html>

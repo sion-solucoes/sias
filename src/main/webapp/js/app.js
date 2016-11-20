@@ -96,71 +96,7 @@ $(document).ready(function () {
                 }, (z * 150) + 200);
 
                 break;
-
-
-                /*-------------------------------------------
-                 Fullscreen Browsing
-                 ---------------------------------------------*/
-            case 'fullscreen':
-                //Launch
-                function launchIntoFullscreen(element) {
-                    if (element.requestFullscreen) {
-                        element.requestFullscreen();
-                    } else if (element.mozRequestFullScreen) {
-                        element.mozRequestFullScreen();
-                    } else if (element.webkitRequestFullscreen) {
-                        element.webkitRequestFullscreen();
-                    } else if (element.msRequestFullscreen) {
-                        element.msRequestFullscreen();
-                    }
-                }
-
-                //Exit
-                function exitFullscreen() {
-
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.mozCancelFullScreen) {
-                        document.mozCancelFullScreen();
-                    } else if (document.webkitExitFullscreen) {
-                        document.webkitExitFullscreen();
-                    }
-                }
-
-                launchIntoFullscreen(document.documentElement);
-
-                break;
-
-
-                /*-------------------------------------------
-                 Clear Local Storage
-                 ---------------------------------------------*/
-            case 'clear-localstorage':
-                swal({
-                    title: "Are you sure?",
-                    text: "All your saved localStorage values will be removed",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "Yes, delete it!",
-                    closeOnConfirm: false
-                }, function () {
-                    localStorage.clear();
-                    swal("Done!", "localStorage is cleared", "success");
-                });
-
-                break;
-
-
-                /*-------------------------------------------
-                 Print
-                 ---------------------------------------------*/
-            case 'print':
-
-                window.print();
-
-                break;
-
-
+                
                 /*-------------------------------------------
                  Login Window Switch
                  ---------------------------------------------*/
@@ -212,43 +148,6 @@ $(document).ready(function () {
                 }, 350);
 
                 break;
-
-
-                /*-------------------------------------------
-                 Wall Comment Open/Close
-                 ---------------------------------------------*/
-                //Open
-            case 'wall-comment-open':
-                if (!($this).closest('.wic-form').hasClass('toggled')) {
-                    $this.closest('.wic-form').addClass('toggled');
-                }
-
-                break;
-
-                //Close
-            case 'wall-comment-close':
-                $this.closest('.wic-form').find('textarea').val('');
-                $this.closest('.wic-form').removeClass('toggled');
-
-                break;
-
-
-                /*-------------------------------------------
-                 Todo Form Open/Close
-                 ---------------------------------------------*/
-                //Open
-            case 'todo-form-open':
-                $this.closest('.t-add').addClass('toggled');
-
-                break;
-
-                //Close
-            case 'todo-form-close':
-                $this.closest('.t-add').removeClass('toggled');
-                $this.closest('.t-add').find('textarea').val('');
-
-                break;
-
 
                 /*-------------------------------------------
                  Change Header Skin
@@ -364,10 +263,6 @@ $(document).ready(function () {
         easyPieChart('sub-pie-2', 'rgba(255,255,255,0.2)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 2, 'butt', 90);
     }
 });
-
-
-
-
 $(window).load(function () {
 
     if (!document.URL.endsWith('home'))
@@ -405,7 +300,6 @@ $(window).load(function () {
         }
     }, 1000);
 });
-
 $(document).ready(function () {
 
     /*----------------------------------------------
@@ -1003,13 +897,10 @@ $(document).ready(function () {
         });
     }
 
-
     /*----------------------------------------------------------
      Calendar Widget
      -----------------------------------------------------------*/
     if ($('#calendar-widget')[0]) {
-
-
 
         (function () {
             $('#cw-body').fullCalendar({
@@ -1080,35 +971,6 @@ $(document).ready(function () {
 
     }
 
-
-    /*----------------------------------------------------------
-     Weather Widget
-     -----------------------------------------------------------*/
-    if ($('#weather-widget')[0]) {
-        $.simpleWeather({
-            location: 'Austin, TX',
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                html = '<div class="weather-status">' + weather.temp + '&deg;' + weather.units.temp + '</div>';
-                html += '<ul class="weather-info"><li>' + weather.city + ', ' + weather.region + '</li>';
-                html += '<li class="currently">' + weather.currently + '</li></ul>';
-                html += '<div class="weather-icon wi-' + weather.code + '"></div>';
-                html += '<div class="dw-footer"><div class="weather-list tomorrow">';
-                html += '<span class="weather-list-icon wi-' + weather.forecast[2].code + '"></span><span>' + weather.forecast[1].high + '/' + weather.forecast[1].low + '</span><span>' + weather.forecast[1].text + '</span>';
-                html += '</div>';
-                html += '<div class="weather-list after-tomorrow">';
-                html += '<span class="weather-list-icon wi-' + weather.forecast[2].code + '"></span><span>' + weather.forecast[2].high + '/' + weather.forecast[2].low + '</span><span>' + weather.forecast[2].text + '</span>';
-                html += '</div></div>';
-                $("#weather-widget").html(html);
-            },
-            error: function (error) {
-                $("#weather-widget").html('<p>' + error + '</p>');
-            }
-        });
-    }
-
-
     /*----------------------------------------------------------
      Auto Size Textare
      -----------------------------------------------------------*/
@@ -1153,158 +1015,6 @@ $(document).ready(function () {
         });
     }
 
-
-    /*----------------------------------------------------------
-     Audio and Video Player
-     -----------------------------------------------------------*/
-    if ($('audio, video')[0]) {
-        $('video,audio').mediaelementplayer();
-    }
-
-
-    /*----------------------------------------------------------
-     Chosen
-     -----------------------------------------------------------*/
-    if ($('.chosen')[0]) {
-        $('.chosen').chosen({
-            width: '100%',
-            allow_single_deselect: true
-        });
-    }
-
-
-    /*----------------------------------------------------------
-     NoUiSlider (Input Slider)
-     -----------------------------------------------------------*/
-    //Basic
-    if ($('#input-slider')[0]) {
-        var slider = document.getElementById('input-slider');
-
-        noUiSlider.create(slider, {
-            start: [20],
-            connect: 'lower',
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
-    }
-
-    //Range
-    if ($('#input-slider-range')[0]) {
-        var sliderRange = document.getElementById('input-slider-range');
-
-        noUiSlider.create(sliderRange, {
-            start: [40, 70],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
-    }
-
-    //Range with value
-    if ($('#input-slider-value')[0]) {
-        var sliderRangeValue = document.getElementById('input-slider-value');
-
-        noUiSlider.create(sliderRangeValue, {
-            start: [10, 50],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
-
-        sliderRangeValue.noUiSlider.on('update', function (values, handle) {
-            document.getElementById('input-slider-value-output').innerHTML = values[handle];
-        });
-    }
-
-
-    /*----------------------------------------------------------
-     Input Mask
-     -----------------------------------------------------------*/
-    if ($('input-mask')[0]) {
-        $('.input-mask').mask();
-    }
-
-
-    /*----------------------------------------------------------
-     Farbtastic Color Picker
-     -----------------------------------------------------------*/
-    if ($('.color-picker')[0]) {
-        $('.color-picker').each(function () {
-            var colorOutput = $(this).closest('.cp-container').find('.cp-value');
-            $(this).farbtastic(colorOutput);
-        });
-    }
-
-
-    /*-----------------------------------------------------------
-     Summernote HTML Editor
-     -----------------------------------------------------------*/
-    if ($('.html-editor')[0]) {
-        $('.html-editor').summernote({
-            height: 150
-        });
-    }
-
-    if ($('.html-editor-click')[0]) {
-        //Edit
-        $('body').on('click', '.hec-button', function () {
-            $('.html-editor-click').summernote({
-                focus: true
-            });
-            $('.hec-save').show();
-        })
-
-        //Save
-        $('body').on('click', '.hec-save', function () {
-            $('.html-editor-click').code();
-            $('.html-editor-click').destroy();
-            $('.hec-save').hide();
-            notify('Content Saved Successfully!', 'success');
-        });
-    }
-
-    //Air Mode
-    if ($('.html-editor-airmod')[0]) {
-        $('.html-editor-airmod').summernote({
-            airMode: true
-        });
-    }
-
-
-    /*-----------------------------------------------------------
-     Date Time Picker
-     -----------------------------------------------------------*/
-    //Date Time Picker
-    if ($('.date-time-picker')[0]) {
-        $('.date-time-picker').datetimepicker();
-    }
-
-    //Time
-    if ($('.time-picker')[0]) {
-        $('.time-picker').datetimepicker({
-            format: 'LT'
-        });
-    }
-
-    //Date
-    if ($('.date-picker')[0]) {
-        $('.date-picker').datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    }
-
-    $('.date-picker').on('dp.hide', function () {
-        $(this).closest('.dtp-container').removeClass('fg-toggled');
-        $(this).blur();
-    })
-
-
     /*-----------------------------------------------------------
      Form Wizard
      -----------------------------------------------------------*/
@@ -1327,16 +1037,6 @@ $(document).ready(function () {
     })();
 
 
-    /*----------------------------------------------------------
-     Lightbox
-     -----------------------------------------------------------*/
-    if ($('.lightbox')[0]) {
-        $('.lightbox').lightGallery({
-            enableTouch: true
-        });
-    }
-
-
     /*-----------------------------------------------------------
      Link prevent
      -----------------------------------------------------------*/
@@ -1344,84 +1044,12 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-
-    /*----------------------------------------------------------
-     Bootstrap Accordion Fix
-     -----------------------------------------------------------*/
-    if ($('.collapse')[0]) {
-
-        //Add active class for opened items
-        $('.collapse').on('show.bs.collapse', function (e) {
-            $(this).closest('.panel').find('.panel-heading').addClass('active');
-        });
-
-        $('.collapse').on('hide.bs.collapse', function (e) {
-            $(this).closest('.panel').find('.panel-heading').removeClass('active');
-        });
-
-        //Add active class for pre opened items
-        $('.collapse.in').each(function () {
-            $(this).closest('.panel').find('.panel-heading').addClass('active');
-        });
-    }
-
-
-    /*-----------------------------------------------------------
-     Tooltips
-     -----------------------------------------------------------*/
-    if ($('[data-toggle="tooltip"]')[0]) {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
-
-
-    /*-----------------------------------------------------------
-     Popover
-     -----------------------------------------------------------*/
-    if ($('[data-toggle="popover"]')[0]) {
-        $('[data-toggle="popover"]').popover();
-    }
-
-
     /*-----------------------------------------------------------
      IE 9 Placeholder
      -----------------------------------------------------------*/
     if ($('html').hasClass('ie9')) {
         $('input, textarea').placeholder({
             customClass: 'ie9-placeholder'
-        });
-    }
-
-
-    /*-----------------------------------------------------------
-     Typeahead Auto Complete
-     -----------------------------------------------------------*/
-    if ($('.typeahead')[0]) {
-
-        var statesArray = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-            'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-            'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-            'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-            'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-            'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-            'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-            'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-            'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        ];
-
-        var states = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: statesArray
-        });
-
-        $('.typeahead').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1
-        },
-        {
-            name: 'states',
-            source: states
         });
     }
 });

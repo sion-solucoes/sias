@@ -27,6 +27,7 @@ public class UsuarioRowMapper implements RowMapper<Usuario> {
         usuario.setId(rs.getLong(UsuarioConstants.ID));
         usuario.setEmail(rs.getString(UsuarioConstants.EMAIL));
         usuario.setNome(rs.getString(UsuarioConstants.NOME));
+        usuario.setSobrenome(rs.getString(UsuarioConstants.SOBRENOME));
         usuario.setTipo(rs.getShort(UsuarioConstants.TIPO));
         usuario.setFoto(rs.getString(UsuarioConstants.FOTO));
 

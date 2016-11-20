@@ -78,6 +78,7 @@ public class UnidadeAtendimentoController {
         modelAndView.setViewName("unidadeAtendimentoForm");
 
         try {
+            modelAndView.addObject("cepList", cepService.readAll());
             modelAndView.addObject("unidadeAtendimento", unidadeAtendimentoService.readById(id));
         } catch (Exception ex) {
             Logger.getLogger(UnidadeAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);

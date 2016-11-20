@@ -1,3 +1,10 @@
+$("#unidadeAtendimento").ready(function (){
+    var unidadeAtendimentoCEPEndereco = $("#txtCEPEndereco").val();
+    var comboCEPEndereco = $("#comboCEPEndereco");
+    comboCEPEndereco.val(unidadeAtendimentoCEPEndereco);
+    comboCEPEndereco.selectpicker("refresh");
+});
+
 $('#btnConfirmar').submit(function (event) {
 
     var id = $("#txtId").val();

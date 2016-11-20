@@ -1,7 +1,6 @@
 $("#familiaFormPanEndereco").ready(function (){
     
     var comboTipoResidencia = $("#comboTipoResidencia");
-    comboTipoResidencia.selectpicker();
     var tipoResidencia = $("#tipoResidencia").val();
     $.each(comboTipoResidencia.children("option"), function (){
         if($(this).text() == tipoResidencia){
@@ -11,7 +10,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboTipoResidencia.selectpicker('refresh');
     
     var comboMaterialParedes = $("#comboMaterialParedes");
-    comboMaterialParedes.selectpicker();
     var materialPeredes = $("#materialParedes").val();
     $.each(comboMaterialParedes.children("option"), function (){
         if($(this).text() == materialPeredes){
@@ -21,7 +19,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboMaterialParedes.selectpicker("refresh");
     
     var comboAcessoEnergia = $("#comboAcessoEnergia");
-    comboAcessoEnergia.selectpicker();
     var acessoEnergia = $("#acessoEnergiaEletrica").val();
     $.each(comboAcessoEnergia.children("option"), function (){
         if($(this).text() == acessoEnergia){
@@ -31,7 +28,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboAcessoEnergia.selectpicker("refresh");
     
     var comboAguaCanalizada = $("#comboAguaCanalizada");
-    comboAguaCanalizada.selectpicker();
     var aguaCanalizada = $("#aguaCanalizada").val();
     $.each(comboAguaCanalizada.children("option"), function (){
         if($(this).text() == aguaCanalizada){
@@ -41,7 +37,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboAguaCanalizada.selectpicker("refresh");
     
     var comboFormaAbastecimento = $("#comboFormaAbastecimentoAgua");
-    comboFormaAbastecimento.selectpicker();
     var formaAbastecimento = $("#formaAbastecimentoAgua").val();
     $.each(comboFormaAbastecimento.children("option"), function (){
         if($(this).text() == formaAbastecimento){
@@ -51,7 +46,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboFormaAbastecimento.selectpicker("refresh");
     
     var comboEscoamentoSanitario = $("#comboEscoamentoSanitario");
-    comboEscoamentoSanitario.selectpicker();
     var escomentoSanitario = $("#escoamentoSanitario").val();
     $.each(comboEscoamentoSanitario.children("option"), function (){
         if($(this).text() == escomentoSanitario){
@@ -61,7 +55,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboEscoamentoSanitario.selectpicker("refresh");
     
     var comboColetaLixo = $("#comboColetaLixo");
-    comboColetaLixo.selectpicker();
     var coletaLixo = $("#coletaLixo").val();
     $.each(comboColetaLixo.children("option"), function (){
         if($(this).text() == coletaLixo){
@@ -71,7 +64,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboColetaLixo.selectpicker("refresh");
     
     var comboAcessibilidade = $("#comboAcessibilidade");
-    comboAcessibilidade.selectpicker();
     var acessibilidade = $("#acessibilidade").val();
     $.each(comboAcessibilidade.children("option"), function(){
         if($(this).text() == acessibilidade){
@@ -81,7 +73,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboAcessibilidade.selectpicker("refresh");
     
     var combolocalizacaoAreaRisco = $("#comboLocalizacaoRisco");
-    combolocalizacaoAreaRisco.selectpicker();
     var localizacaoRisco = $("#localizacaoRisco").val();
     $.each(combolocalizacaoAreaRisco.children("option"), function (){
         if($(this).text() == localizacaoRisco){
@@ -91,7 +82,6 @@ $("#familiaFormPanEndereco").ready(function (){
     combolocalizacaoAreaRisco.selectpicker("refresh");
     
     var comboAcessoGeografico = $("#comboAcessoGeografico");
-    comboAcessoGeografico.selectpicker();
     var acessoGeografico = $("#acessoGeografico").val();
     $.each(comboAcessoGeografico.children("option"), function (){
         if($(this).text() == acessoGeografico){
@@ -101,7 +91,6 @@ $("#familiaFormPanEndereco").ready(function (){
     comboAcessoGeografico.selectpicker("refresh");
     
     var comboAreaViolencia = $("#comboAreaViolencia");
-    comboAreaViolencia.selectpicker();
     var areaViolencia = $("#areaViolencia").val();
     $.each(comboAreaViolencia.children("option"), function (){
         if($(this).text() == areaViolencia){

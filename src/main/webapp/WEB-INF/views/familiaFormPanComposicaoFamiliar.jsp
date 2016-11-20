@@ -15,7 +15,7 @@
     </center>
     <div class="form-group m-t-30">
         <div class="col-md-12">
-            <table class="table table-striped table-vmiddle" id="tabelaComposicaoFamiliar">
+            <table class="table table-striped table-vmiddle table-bootgrid" id="tabelaComposicaoFamiliar">
                 <thead>
                     <tr>
                         <th data-column-id="nome">Nome</th>

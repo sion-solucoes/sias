@@ -11,7 +11,7 @@
             </div>
             <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleAmbiente/unidadeAtendimento/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
-                <table id="data-table-command" class="table table-striped table-vmiddle">
+                <table id="data-table-command" class="table table-striped table-vmiddle table-bootgrid">
                     <thead>
                         <tr>
                             <th data-column-id="id" data-visible="false">ID</th>
@@ -25,10 +25,11 @@
                         <c:if test="${not empty unidadeAtendimentoList}">
                             <c:forEach var="unidadeAtendimento" items="${unidadeAtendimentoList}">
                                 <tr>
+                                    <td>${unidadeAtendimento.id}</td>
                                     <td>${unidadeAtendimento.codigo}</td>
                                     <td>${unidadeAtendimento.descricao}</td>
                                     <td><c:if test="${unidadeAtendimento.tipo == 1}">CRAS</c:if><c:if test="${unidadeAtendimento.tipo == 2}">CREAS</c:if></td>
-                                    </tr>
+                                </tr>
                             </c:forEach>
                         </c:if>
                     </tbody>

@@ -3,9 +3,7 @@ $('#comboCEPEndereco').ready(function (event) {
     var txtComboCEP = document.getElementById('txtCEPEndereco');
     var cepId = txtComboCEP.value;
     var combo = $('#comboCEPEndereco');
-    combo.selectpicker({
-        size: 4
-    });
+    
     var txtMunicipio = document.getElementById('txtMunicipioEndereco');
     var txtUF = document.getElementById('txtUFEndereco');
     var txtPais = document.getElementById('txtPaisEndereco');

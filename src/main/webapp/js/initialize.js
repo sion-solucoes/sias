@@ -12,7 +12,7 @@ $(document).ready(function () {
             size: 4
         });
     }
-    if ($('.table')[0]) {
-        $('.table').bootgrid(bootgridConfig);
+    if ($('.table-bootgrid')[0]) {
+        $('.table-bootgrid').bootgrid(bootgridConfig);
     }
 });

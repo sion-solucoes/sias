@@ -3,9 +3,6 @@ $('#comboFormaIngresso').ready(function (event) {
     var txtFormaIngresso = $('#txtFormaIngresso');
     var formaIngressoId = txtFormaIngresso.val();
     var combo = $('#comboFormaIngresso');
-    combo.selectpicker({
-        size: 4
-    });
 
     $.ajax({
         method: 'POST',

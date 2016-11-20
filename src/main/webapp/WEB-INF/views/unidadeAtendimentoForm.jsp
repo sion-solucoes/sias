@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-body card-padding">
-                <form class="form-horizontal" role="form" method="POST">
+                <form class="form-horizontal" role="form" method="POST" id="unidadeAtendimentoForm">
                     <div class="card-header">
                         <h4>Dados Básicos</h4>
                     </div>

@@ -22,8 +22,6 @@
         <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/animate.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/hover.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/select2.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/select2-bootstrap.css"/>" rel="stylesheet">
 
         <!-- css template -->
         <link href="<c:url value="/css/sweetalert.css"/>" rel="stylesheet" type="text/css"/>

@@ -17,7 +17,7 @@
             </div>
             <a type="button" class="btn btn-float bgm-blue m-btn" href="<c:url value="/controleAmbiente/usuario/novo"/>"><i class="zmdi zmdi-plus"></i></a>
             <div class="table-responsive">
-                <table id="data-table-command" class="table table-striped table-vmiddle">
+                <table id="data-table-command" class="table table-striped table-vmiddle table-bootgrid">
                     <thead>
                         <tr>
                             <th data-column-id="id" data-visible="false">ID</th>
@@ -47,13 +47,4 @@
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 
-<!-- Data Table -->
-<script type="text/javascript">
-    $(document).ready(function () {
 
-        //Command Buttons
-        $("#data-table-command").bootgrid(bootgridConfig);
-    });
-
-
-</script>
