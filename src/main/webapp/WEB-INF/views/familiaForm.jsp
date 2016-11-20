@@ -17,8 +17,8 @@
                 <div class="pull-right">
                     <div class="form-group">
                         <label>Última Alteração</label>
-                        <div class="dtp-container">
-                            <input type="text" class="form-control date-picker" id="txtDataUltimaAlteracao" value="${familia.dataUltimaAlteracao}"/>    
+                        <div class="fg-line">
+                            <input type="date" class="form-control" disabled="true" id="txtDataUltimaAlteracao" value="${familia.dataUltimaAlteracao}"/>    
                         </div>
                     </div>
                 </div>

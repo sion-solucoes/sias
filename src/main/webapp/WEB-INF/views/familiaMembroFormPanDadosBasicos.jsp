@@ -35,8 +35,8 @@
         </div>
         <div class="col-md-4">
             <label for="txtDataNascimento">Data de Nascimento</label>
-            <div class="dtp-container">
-                <input type="text" placeholder="Data de Nascimento" name="dataNascimento" class="form-control date-picker" id="txtDataNascimento" value="${familiaMembro.dataNascimento}"/>    
+            <div class="fg-line">
+                <input type="date" placeholder="Data de Nascimento" name="dataNascimento" class="form-control" id="txtDataNascimento" value="${familiaMembro.dataNascimento}"/>    
             </div>
         </div>
     </div>

@@ -125,7 +125,15 @@ public class FamiliaMembroServiceImpl implements FamiliaMembroService {
 
     @Override
     public List<FamiliaMembro> readFamiliaMembroByFamilia(Long familiaId) throws Exception {
-        return familiaMembroDAO.readFamiliaMembroByFamilia(familiaId);
+
+        List<FamiliaMembro> familiaMembroList = familiaMembroDAO.readFamiliaMembroByFamilia(familiaId);
+        if (familiaMembroList != null) {
+            for (FamiliaMembro familiaMembro : familiaMembroList) {
+                familiaMembro.setFamiliaMembroDocumentoProvidenciavelList(familiaMembroDocumentoProvidenciavelService.readDocumentoProvidenciavelByFamiliaMembro(familiaMembro.getId()));
+            }
+        }
+
+        return familiaMembroList;
     }
 
     @Override

@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 public class CustomDateJsonSerializer implements JsonSerializer<Date>, JsonDeserializer<Date> {
 
     private static final Pattern DATE_PATTERN = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+    private static final Pattern DATE_PATTERN_EN = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
     private static final Pattern DATE_TIME_PATTERN = Pattern.compile("\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}");
     private static final Pattern DATE_TIME_PATTERN_WITH_SECONDS = Pattern.compile("\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}:\\d{2}");
 
@@ -38,6 +39,8 @@ public class CustomDateJsonSerializer implements JsonSerializer<Date>, JsonDeser
         try {
             if (DATE_PATTERN.matcher(asString).matches()) {
                 return getDateFormat().parse(asString);
+            } else if (DATE_PATTERN_EN.matcher(asString).matches()) {
+                return getDateFormatEN().parse(asString);
             } else if (DATE_TIME_PATTERN.matcher(asString).matches()) {
                 return getDateTimeFormat().parse(asString);
             } else if (DATE_TIME_PATTERN_WITH_SECONDS.matcher(asString).matches()) {
@@ -53,6 +56,11 @@ public class CustomDateJsonSerializer implements JsonSerializer<Date>, JsonDeser
 
     private static DateFormat getDateFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat;
+    }
+
+    private static DateFormat getDateFormatEN() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat;
     }
 

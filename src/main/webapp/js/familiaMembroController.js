@@ -1,9 +1,6 @@
 $('#familiaMembroForm').ready(function () {
 
     var comboGrauParentesco = $('#comboGrauParentesco');
-    comboGrauParentesco.selectpicker({
-        size: 4
-    });
 
     $.ajax({
         method: 'POST',
@@ -21,16 +18,7 @@ $('#familiaMembroForm').ready(function () {
         }
     });
 
-    var comboSexo = $('#comboSexo');
-    comboSexo.selectpicker({
-        size: 2
-    });
-
     var comboEscolaridade = $('#comboEscolaridade');
-    comboEscolaridade.selectpicker({
-        size: 3
-    });
-
     $.ajax({
         method: 'POST',
         url: '/cadastrosBasicos/escolaridade/readAll',
@@ -49,9 +37,6 @@ $('#familiaMembroForm').ready(function () {
     });
 
     var comboCondicaoOcupacao = $('#comboCondicaoOcupacao');
-    comboCondicaoOcupacao.selectpicker({
-        size: 5
-    });
 
     $.ajax({
         method: 'POST',
@@ -71,9 +56,6 @@ $('#familiaMembroForm').ready(function () {
     });
 
     var comboDeficiencia = $('#comboDeficiencia');
-    comboDeficiencia.selectpicker({
-        size: 5
-    });
 
     $.ajax({
         method: 'POST',
@@ -99,6 +81,11 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
 
     var tabelaComposicaoFamiliar = $('#tabelaComposicaoFamiliar');
 
+    $('#tabs .active').removeClass('active');
+
+    $('#liTab4').addClass('active');
+    $('#tab4').addClass('active');
+
     var comboGrauParentesco = $('#comboGrauParentesco');
     var txtNome = $('#txtNome');
     var comboSexo = $('#comboSexo');
@@ -111,8 +98,7 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
     var txtOrgaoExpedidorRG = $('#txtOrgaoExpedidorRG');
     var txtUFEmissaoRG = $('#txtUFEmissaoRG');
     var txtDataEmissaoRG = $('#txtDataEmissaoRG');
-    var tabelaDocumentosProvidenciaveis = $('#tabelaDocumentosProvidenciaveis');
-    var checkDocumentoProvidenciavelList = tabelaDocumentosProvidenciaveis.find('input');
+    var checkDocumentoProvidenciavelList = $('input[type=checkbox][name="documentoProvidenciavel[]"]');
     var comboEscolaridade = $('#comboEscolaridade');
     var checkSabeLerEscrever = $('#checkSabeLerEscrever');
     var checkFrequentaEscolaAtualmente = $('#checkFrequentaEscolaAtualmente');
@@ -145,10 +131,9 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
     txtOrgaoExpedidorRG.val('');
     txtUFEmissaoRG.val('');
     txtDataEmissaoRG.val('');
-    for (var indexDocumentoProvidenciavel = 0; indexDocumentoProvidenciavel < checkDocumentoProvidenciavelList.length; indexDocumentoProvidenciavel++) {
-        var check = checkDocumentoProvidenciavelList[indexDocumentoProvidenciavel];
-        check.checked = false;
-    }
+    checkDocumentoProvidenciavelList.each(function () {
+        $(this).prop('checked', false);
+    });
     comboEscolaridade.prop('selectedIndex', 0);
     comboEscolaridade.selectpicker('refresh');
     checkSabeLerEscrever.prop('checked', false);
@@ -191,18 +176,17 @@ $('#familiaMembroModal').on('shown.bs.modal', function () {
         txtOrgaoExpedidorRG.val(familiaMembro.rgOrgaoExpedidor);
         txtUFEmissaoRG.val(familiaMembro.rgUFEmissao);
         txtDataEmissaoRG.val(familiaMembro.rgDataEmissao);
-        for (var indexDocumentoProvidenciavel = 1; indexDocumentoProvidenciavel < checkDocumentoProvidenciavelList.length; indexDocumentoProvidenciavel++) {
-            var check = checkDocumentoProvidenciavelList[indexDocumentoProvidenciavel];
+        checkDocumentoProvidenciavelList.each(function () {
             if (familiaMembro.familiaMembroDocumentoProvidenciavelList) {
                 for (var indexFamiliaMembroDocumentoProvidenciavel = 0; indexFamiliaMembroDocumentoProvidenciavel < familiaMembro.familiaMembroDocumentoProvidenciavelList.length; indexFamiliaMembroDocumentoProvidenciavel++) {
                     var familiaMembroDocumentoProvidenciavel = familiaMembro.familiaMembroDocumentoProvidenciavelList[indexFamiliaMembroDocumentoProvidenciavel];
                     var documentoProvidenciavel = familiaMembroDocumentoProvidenciavel.documentoProvidenciavel;
-                    if (check.value === documentoProvidenciavel.id) {
-                        check.prop('checked', true);
+                    if (parseInt($(this).val()) === documentoProvidenciavel.id) {
+                        $(this).prop('checked', true);
                     }
                 }
             }
-        }
+        });
         comboEscolaridade.val(familiaMembro.escolaridade.id);
         comboEscolaridade.selectpicker('refresh');
         checkSabeLerEscrever.prop('checked', familiaMembro.sabeLerEscrever);
@@ -249,7 +233,7 @@ $('#familiaMembroForm').submit(function (event) {
      * Aba "Documentos Providenciáveis"
      * */
     var familiaMembroDocumentoProvidenciavelList = new Array();
-    $("input[type=checkbox][name='documentoProvidenciavel[]']:checked").each(function () {
+    $('input[type=checkbox][name="documentoProvidenciavel[]"]:checked').each(function () {
         var familiaMembroDocumentoProvidenciavel = {
             documentoProvidenciavel: {
                 id: $(this).val()
@@ -258,21 +242,21 @@ $('#familiaMembroForm').submit(function (event) {
         familiaMembroDocumentoProvidenciavelList.push(familiaMembroDocumentoProvidenciavel);
     });
     var deficiencia = {
-        id: $("#comboDeficiencia").val()
+        id: $('#comboDeficiencia').val()
     };
     if (deficiencia.id === null || deficiencia.id === '') {
         deficiencia = null;
     }
 
     var escolaridade = {
-        id: $("#comboEscolaridade").val()
+        id: $('#comboEscolaridade').val()
     };
     if (escolaridade.id === null || escolaridade.id === '') {
         escolaridade = null;
     }
 
     var condicaoOcupacao = {
-        id: $("#comboCondicaoOcupacao").val()
+        id: $('#comboCondicaoOcupacao').val()
     };
     if (condicaoOcupacao.id === null || condicaoOcupacao.id === '') {
         condicaoOcupacao = null;
@@ -280,39 +264,39 @@ $('#familiaMembroForm').submit(function (event) {
 
     var familiaMembro = {
         grauParentesco: {
-            id: $("#comboGrauParentesco").val(),
+            id: $('#comboGrauParentesco').val(),
             codigo: $('#comboGrauParentesco option:selected').prop('label').split(' - ')[0],
             descricao: $('#comboGrauParentesco option:selected').prop('label').split(' - ')[1]
         },
-        nome: $("#txtNome").val(),
-        sexo: $("#comboSexo").val(),
-        apelido: $("#txtApelido").val(),
-        dataNascimento: $("#txtDataNascimento").val() === '' ? null : $("#txtDataNascimento").val(),
-        nomeMae: $("#txtNomeMae").val(),
-        nis: $("#txtNIS").val(),
-        cpf: $("#txtCPF").val(),
-        rg: $("#txtRG").val(),
-        rgOrgaoExpedidor: $("#txtRGOrgaoExpedidor").val(),
-        rgUFEmissao: $("#txtRGUFEmissao").val(),
-        rgDataEmissao: $("#txtRGDataEmissao").val() === '' ? null : $("#txtRGDataEmissao").val(),
+        nome: $('#txtNome').val(),
+        sexo: $('#comboSexo').val(),
+        apelido: $('#txtApelido').val(),
+        dataNascimento: $('#txtDataNascimento').val() === '' ? null : $('#txtDataNascimento').val(),
+        nomeMae: $('#txtNomeMae').val(),
+        nis: $('#txtNIS').val(),
+        cpf: $('#txtCPF').val(),
+        rg: $('#txtRG').val(),
+        rgOrgaoExpedidor: $('#txtRGOrgaoExpedidor').val(),
+        rgUFEmissao: $('#txtRGUFEmissao').val(),
+        rgDataEmissao: $('#txtRGDataEmissao').val() === '' ? null : $('#txtRGDataEmissao').val(),
         familiaMembroDocumentoProvidenciavelList: familiaMembroDocumentoProvidenciavelList,
         escolaridade: escolaridade,
-        sabeLerEscrever: $("#checkSabeLerEscrever").prop('checked'),
-        frequentaEscolaAtualmente: $("#checkFrequentaEscolaAtualmente").prop('checked'),
-        possuiCarteiraTrabalho: $("#checkPossuiCarteiraTrabalho").prop('checked'),
+        sabeLerEscrever: $('#checkSabeLerEscrever').prop('checked'),
+        frequentaEscolaAtualmente: $('#checkFrequentaEscolaAtualmente').prop('checked'),
+        possuiCarteiraTrabalho: $('#checkPossuiCarteiraTrabalho').prop('checked'),
         condicaoOcupacao: condicaoOcupacao,
-        possuiQualificacaoProfissional: $("#checkPossuiQualificacaoProfissional").prop('checked'),
-        descricaoQualificacaoProfissional: $("#txtDescricaoQualificacaoProfissional").val(),
-        rendaMensal: parseFloat($("#txtRendaMensal").val().replace('R$ ', '').replace('.', '').replace(',', '.')),
+        possuiQualificacaoProfissional: $('#checkPossuiQualificacaoProfissional').prop('checked'),
+        descricaoQualificacaoProfissional: $('#txtDescricaoQualificacaoProfissional').val(),
+        rendaMensal: parseFloat($('#txtRendaMensal').val().replace('R$ ', '').replace('.', '').replace(',', '.')),
         deficiencia: deficiencia,
-        necessitaCuidadosConstantes: $("#checkNecessitaCuidadosConstantes").prop('checked'),
-        descricaoNecessidadeCuidadosConstantes: $("#txtDescricaoNecessidadeCuidadosConstantes").val(),
-        usuarioRemediosControlados: $("#checkUsuarioRemediosControlados").prop('checked'),
-        usuarioBebidasAlcoolicas: $("#checkUsuarioBebidasAlcoolicas").prop('checked'),
-        usuarioEntorpecentes: $("#checkUsuarioEntorpecentes").prop('checked'),
-        gestante: $("#checkGestante").prop('checked'),
-        mesesGestacao: $("#txtMesesGestacao").val() === '' ? 0 : $("#txtMesesGestacao").val(),
-        iniciouPreNatal: $("#checkIniciouPreNatal").prop('checked')
+        necessitaCuidadosConstantes: $('#checkNecessitaCuidadosConstantes').prop('checked'),
+        descricaoNecessidadeCuidadosConstantes: $('#txtDescricaoNecessidadeCuidadosConstantes').val(),
+        usuarioRemediosControlados: $('#checkUsuarioRemediosControlados').prop('checked'),
+        usuarioBebidasAlcoolicas: $('#checkUsuarioBebidasAlcoolicas').prop('checked'),
+        usuarioEntorpecentes: $('#checkUsuarioEntorpecentes').prop('checked'),
+        gestante: $('#checkGestante').prop('checked'),
+        mesesGestacao: $('#txtMesesGestacao').val() === '' ? 0 : $('#txtMesesGestacao').val(),
+        iniciouPreNatal: $('#checkIniciouPreNatal').prop('checked')
     };
 
     var familiaMembroIndex = tabelaComposicaoFamiliar.prop('index');

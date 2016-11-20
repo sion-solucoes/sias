@@ -8,11 +8,11 @@ package com.sias.model.dao.mcf.impl;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.sias.model.constants.mcb.DocumentoProvidenciavelConstants;
+import com.sias.model.constants.mcf.FamiliaMembroConstants;
 import com.sias.model.constants.mcf.FamiliaMembroDocumentoProvidenciavelConstants;
 import com.sias.model.dao.mcf.interfaces.FamiliaMembroDocumentoProvidenciavelDAO;
-import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
-import com.sias.model.rowmapper.mcb.DocumentoProvidenciavelRowMapper;
+import com.sias.model.rowmapper.mcf.FamiliaMembroDocumentoProvidenciavelRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
 
@@ -40,7 +40,7 @@ public class FamiliaMembroDocumentoProvidenciavelDAOImpl extends JDBCBaseDAO imp
             familiaMembroDocumentoProvidenciavel.getDocumentoProvidenciavel() != null ? familiaMembroDocumentoProvidenciavel.getDocumentoProvidenciavel().getId() : null};
 
         familiaMembroDocumentoProvidenciavel.setId(getTemplate().queryForObject(query, args, Long.class));
-        
+
     }
 
     @Override
@@ -69,21 +69,19 @@ public class FamiliaMembroDocumentoProvidenciavelDAOImpl extends JDBCBaseDAO imp
     }
 
     @Override
-    public List<DocumentoProvidenciavel> readDocumentoProvidenciavelByFamiliaMembro(Long familiaMembroId) throws Exception {
+    public List<FamiliaMembroDocumentoProvidenciavel> readDocumentoProvidenciavelByFamiliaMembro(Long familiaMembroId) throws Exception {
 
-        String query = "SELECT * FROM " + DocumentoProvidenciavelConstants.TABELA;
-        query += " WHERE " + DocumentoProvidenciavelConstants.ID;
-        query += " IN (";
-        {
-            query += " SELECT " + FamiliaMembroDocumentoProvidenciavelConstants.DOCUMENTO_PROVIDENCIAVEL_ID;
-            query += " FROM " + FamiliaMembroDocumentoProvidenciavelConstants.TABELA;
-            query += " WHERE " + FamiliaMembroDocumentoProvidenciavelConstants.FAMILIA_MEMBRO_ID + "=? ";
-        }
-        query += ")";
+        String query = "SELECT * FROM " + FamiliaMembroDocumentoProvidenciavelConstants.TABELA;
+        query += " LEFT JOIN " + FamiliaMembroConstants.TABELA;
+        query += " ON " + FamiliaMembroDocumentoProvidenciavelConstants.FAMILIA_MEMBRO_ID + " = " + FamiliaMembroConstants.ID;
+        query += " LEFT JOIN " + DocumentoProvidenciavelConstants.TABELA;
+        query += " ON " + FamiliaMembroDocumentoProvidenciavelConstants.DOCUMENTO_PROVIDENCIAVEL_ID + " = " + DocumentoProvidenciavelConstants.ID;
+        query += " WHERE " + FamiliaMembroDocumentoProvidenciavelConstants.FAMILIA_MEMBRO_ID + "=? ";
 
         Object args[] = {familiaMembroId};
 
-        return getTemplate().query(query, args, new DocumentoProvidenciavelRowMapper());
+        return getTemplate()
+                .query(query, args, new FamiliaMembroDocumentoProvidenciavelRowMapper());
     }
 
     @Override

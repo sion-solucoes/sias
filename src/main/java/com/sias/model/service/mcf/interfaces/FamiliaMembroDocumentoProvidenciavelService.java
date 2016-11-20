@@ -7,7 +7,6 @@ package com.sias.model.service.mcf.interfaces;
 
 import java.util.List;
 import com.sias.model.base.service.BaseService;
-import com.sias.model.entity.mcb.DocumentoProvidenciavel;
 import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
 
 /**
@@ -16,7 +15,7 @@ import com.sias.model.entity.mcf.FamiliaMembroDocumentoProvidenciavel;
  */
 public interface FamiliaMembroDocumentoProvidenciavelService extends BaseService<FamiliaMembroDocumentoProvidenciavel> {
 
-    public List<DocumentoProvidenciavel> readDocumentoProvidenciavelByFamiliaMembro(Long familiaMembroId) throws Exception;
+    public List<FamiliaMembroDocumentoProvidenciavel> readDocumentoProvidenciavelByFamiliaMembro(Long familiaMembroId) throws Exception;
     
     public void deleteByFamiliaMembro(Long familiaMembroId) throws Exception;
     

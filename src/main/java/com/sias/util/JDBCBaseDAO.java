@@ -5,16 +5,19 @@
  */
 package com.sias.util;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.TimeZone;
 import javax.annotation.PostConstruct;
-import javax.ejb.Local;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 /**
  *
@@ -31,9 +34,16 @@ public class JDBCBaseDAO {
 
     @PostConstruct
     public void initialize() {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
         Locale.setDefault(new Locale("pt", "BR"));
         TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
-        jdbcTemplate = new JdbcTemplate(dataSource);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
     public JdbcTemplate getTemplate() throws Exception {
