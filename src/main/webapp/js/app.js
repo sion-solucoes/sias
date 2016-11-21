@@ -301,117 +301,129 @@ $(window).load(function () {
     }, 1000);
 });
 $(document).ready(function () {
+    var now = new Date();
+    var mesAtual = now.getMonth() + 1;
+    
+    $.ajax({
+        method: 'POST',
+        url: '/home/loadFamiliaVisitaDataChart',
+        data: {
+            mesAtual: mesAtual
+        },
+        success: function (dados){
+            var i = 1;
+            /*----------------------------------------------
+            Make some random data for Flot Line Chart
+            ----------------------------------------------*/
+           var data = [
+                [1, dados[i++]], 
+                [2, dados[i++]], 
+                [3, dados[i++]],
+                [4, dados[i++]], 
+                [5, dados[i++]], 
+                [6, dados[i++]], 
+                [7, dados[i++]],
+                [8, dados[i++]], 
+                [9, dados[i++]], 
+                [10, dados[i++]],
+                [11, dados[i++]], 
+                [12, dados[i++]], 
+                [13, dados[i++]], 
+                [14, dados[i++]],
+                [15, dados[i++]], 
+                [16, dados[i++]], 
+                [17, dados[i++]],
+                [18, dados[i++]], 
+                [19, dados[i++]], 
+                [20, dados[i++]], 
+                [21, dados[i++]],
+                [22, dados[i++]], 
+                [23, dados[i++]], 
+                [24, dados[i++]],
+                [25, dados[i++]], 
+                [26, dados[i++]], 
+                [27, dados[i++]], 
+                [28, dados[i++]],
+                [29, dados[i++]], 
+                [30, dados[i++]]
+               ];
+               
+            /* Create an Array push the data + Draw the bars*/
 
-    /*----------------------------------------------
-     Make some random data for Flot Line Chart
-     ----------------------------------------------*/
-    var data = [
-        [1, 4], 
-        [2, 5], 
-        [3, 3],
-        [4, 6], 
-        [5, 5], 
-        [6, 0], 
-        [7, 0],
-        [8, 4], 
-        [9, 5], 
-        [10, 3],
-        [11, 6], 
-        [12, 5], 
-        [13, 0], 
-        [14, 0],
-        [15, 4], 
-        [16, 5], 
-        [17, 3],
-        [18, 6], 
-        [19, 5], 
-        [20, 0], 
-        [21, 0],
-        [22, 4], 
-        [23, 5], 
-        [24, 3],
-        [25, 6], 
-        [26, 5], 
-        [27, 0], 
-        [28, 0],
-        [29, 4], 
-        [30, 5]
-    ];
+            var barData = new Array();
 
-    /* Create an Array push the data + Draw the bars*/
-
-    var barData = new Array();
-
-    barData.push({
-        data: data,
-        bars: {
-            show: true,
-            barWidth: 0.08,
-            order: 1,
-            lineWidth: 0,
-            fillColor: '#8BC34A'
+            barData.push({
+                data: data,
+                bars: {
+                    show: true,
+                    barWidth: 0.08,
+                    order: 1,
+                    lineWidth: 0,
+                    fillColor: '#8BC34A'
+                }
+            });
+            
+            /*---------------------------------
+            Let's create the chart
+            ---------------------------------*/
+           if ($('#bar-chart')[0]) {
+               $.plot($("#bar-chart"), barData, {
+                   grid: {
+                       borderWidth: 1,
+                       borderColor: '#eee',
+                       show: true,
+                       hoverable: true,
+                       clickable: true
+                   },
+                   yaxis: {
+                       tickColor: '#eee',
+                       tickDecimals: 0,
+                       font: {
+                           lineHeight: 13,
+                           style: "normal",
+                           color: "#9f9f9f",
+                       },
+                       shadowSize: 0
+                   },
+                   xaxis: {
+                       tickColor: '#fff',
+                       tickDecimals: 0,
+                       font: {
+                           lineHeight: 13,
+                           style: "normal",
+                           color: "#9f9f9f"
+                       },
+                       shadowSize: 0,
+                   },
+                   legend: {
+                       container: '.flc-bar',
+                       backgroundOpacity: 0.5,
+                       noColumns: 0,
+                       backgroundColor: "white",
+                       lineWidth: 0
+                   }
+               });
+           }
         }
     });
 
-    /*---------------------------------
-     Let's create the chart
-     ---------------------------------*/
-    if ($('#bar-chart')[0]) {
-        $.plot($("#bar-chart"), barData, {
-            grid: {
-                borderWidth: 1,
-                borderColor: '#eee',
-                show: true,
-                hoverable: true,
-                clickable: true
-            },
-            yaxis: {
-                tickColor: '#eee',
-                tickDecimals: 0,
-                font: {
-                    lineHeight: 13,
-                    style: "normal",
-                    color: "#9f9f9f",
-                },
-                shadowSize: 0
-            },
-            xaxis: {
-                tickColor: '#fff',
-                tickDecimals: 0,
-                font: {
-                    lineHeight: 13,
-                    style: "normal",
-                    color: "#9f9f9f"
-                },
-                shadowSize: 0,
-            },
-            legend: {
-                container: '.flc-bar',
-                backgroundOpacity: 0.5,
-                noColumns: 0,
-                backgroundColor: "white",
-                lineWidth: 0
-            }
-        });
-    }
-
-    /*---------------------------------
-     Tooltips for Flot Charts
-     ---------------------------------*/
-    if ($(".flot-chart")[0]) {
-        $(".flot-chart").bind("plothover", function (event, pos, item) {
-            if (item) {
-                var x = item.datapoint[0].toFixed(2),
-                        y = item.datapoint[1].toFixed(2);
-                $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY + 5, left: item.pageX + 5}).show();
-            }
-            else {
-                $(".flot-tooltip").hide();
-            }
-        });
-
-        $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
-    }
+//    /*---------------------------------
+//     Tooltips for Flot Charts
+//     ---------------------------------*/
+//    if ($(".flot-chart")[0]) {
+//        $(".flot-chart").bind("plothover", function (event, pos, item) {
+//            if (item) {
+//                var x = item.datapoint[0].toFixed(2),
+//                        y = item.datapoint[1].toFixed(2);
+//                $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY + 5, left: item.pageX + 5}).show();
+//            }
+//            else {
+//                $(".flot-tooltip").hide();
+//            }
+//        });
+//
+//        $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
+//    }
 });
 $(document).ready(function () {
 
@@ -719,52 +731,63 @@ $(document).ready(function () {
     }
 });
 $(document).ready(function () {
-    var pieData = [
-        {data: 1, color: '#F44336', label: 'Auxílio Natalidade'},
-        {data: 2, color: '#03A9F4', label: 'Auxílio Funeral'},
-        {data: 3, color: '#8BC34A', label: 'Cesta Básica'},
-        {data: 4, color: '#FFEB3B', label: 'Aluguel'},
-        {data: 4, color: '#009688', label: 'Outros'},
-    ];
+    
+    var now = new Date();
+    var mes = now.getMonth() + 1;
+    
+    $.ajax({
+        method: 'POST',
+        url: '/home/loadBeneficioEventualDataChart',
+        data: {mesAtual: mes},
+        success: function (dados){
+            var pieData = [
+                {data: dados.auxilioNatalidade, color: '#F44336', label: 'Auxílio Natalidade'},
+                {data: dados.auxilioFuneral, color: '#03A9F4', label: 'Auxílio Funeral'},
+                {data: dados.situacoesEmergencia, color: '#FFA500', label: 'Kit para situações de emergência'},
+                {data: dados.cestaBasica, color: '#8BC34A', label: 'Cesta Básica'},
+                {data: dados.aluguel, color: '#FFEB3B', label: 'Aluguel'},
+                {data: dados.outros, color: '#009688', label: 'Outros'},
+            ];
 
-
-    /*---------------------------------
-     Pie Chart
-     ---------------------------------*/
-    if ($('#pie-chart')[0]) {
-        $.plot('#pie-chart', pieData, {
-            series: {
-                pie: {
-                    show: true,
-                    stroke: {
-                        width: 2,
+            /*---------------------------------
+             Pie Chart
+             ---------------------------------*/
+            if ($('#pie-chart')[0]) {
+                $.plot('#pie-chart', pieData, {
+                    series: {
+                        pie: {
+                            show: true,
+                            stroke: {
+                                width: 2,
+                            },
+                        },
                     },
-                },
-            },
-            legend: {
-                container: '.flc-pie',
-                backgroundOpacity: 0.5,
-                noColumns: 0,
-                backgroundColor: "white",
-                lineWidth: 0
-            },
-            grid: {
-                hoverable: true,
-                clickable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: false,
-                cssClass: 'flot-tooltip'
-            }
+                    legend: {
+                        container: '.flc-pie',
+                        backgroundOpacity: 0.5,
+                        noColumns: 0,
+                        backgroundColor: "white",
+                        lineWidth: 0
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                        shifts: {
+                            x: 20,
+                            y: 0
+                        },
+                        defaultTheme: false,
+                        cssClass: 'flot-tooltip'
+                    }
 
-        });
-    }
+                });
+            }
+        }
+    });
 
     /*---------------------------------
      Donut Chart

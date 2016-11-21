@@ -5,6 +5,9 @@
  */
 package com.sias.controller.mca;
 
+import com.sias.model.constants.mcf.FamiliaConstants;
+import com.sias.model.constants.mcf.FamiliaVisitaConstants;
+import com.sias.model.entity.mca.UnidadeAtendimento;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +22,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mca.Usuario;
 import com.sias.model.entity.mca.UsuarioSeguranca;
+import com.sias.model.entity.mcf.FamiliaBeneficioEventual;
+import com.sias.model.entity.mcf.FamiliaVisita;
 import com.sias.model.service.mca.interfaces.UsuarioSegurancaService;
 import com.sias.model.service.mca.interfaces.UsuarioService;
+import com.sias.model.service.mcf.interfaces.FamiliaBeneficioEventualService;
+import com.sias.model.service.mcf.interfaces.FamiliaVisitaService;
+import com.sias.util.Criteria;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +46,12 @@ public class HomeController {
 
     @Autowired
     private UsuarioSegurancaService usuarioSegurancaService;
+    
+    @Autowired
+    private FamiliaBeneficioEventualService familiaBeneficioEventualService;
+    
+    @Autowired
+    private FamiliaVisitaService familiaVisitaService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ModelAndView base(HttpSession httpSession) {
@@ -124,5 +142,93 @@ public class HomeController {
         modelAndView.setViewName("authError");
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/home/loadBeneficioEventualDataChart", method = RequestMethod.POST)
+    public @ResponseBody
+    Map<String, Long> carregaFamiliaBeneficioEventualGrafico (HttpSession session, Long mesAtual) {
+        Map<String, Long> dados = new HashMap<String, Long>();
+        Calendar c = Calendar.getInstance();
+        UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) session.getAttribute("unidadeAtendimentoSessao");
+        long qtdeAuxilioNatalidade = 0;
+        long qtdeAuxilioFuneral = 0;
+        long qtdeSituacoesEmergencia = 0;
+        long qtdeCestaBasica = 0;
+        long qtdeAluguel = 0;
+        long qtdeOutros = 0;
+        
+        try {
+            List<Criteria> familiaCriteriaList = new ArrayList<>();
+            Criteria unidadeAtendimentoFamilia = new Criteria();
+            unidadeAtendimentoFamilia.setAttribute(FamiliaConstants.UNIDADE_ATENDIMENTO_ID);
+            unidadeAtendimentoFamilia.setOperation(Criteria.EQUALS);
+            unidadeAtendimentoFamilia.setValue(unidadeAtendimento.getId());
+            familiaCriteriaList.add(unidadeAtendimentoFamilia);
+            
+            List<FamiliaBeneficioEventual> beneficioEventualList = familiaBeneficioEventualService.readByCriteria(familiaCriteriaList);
+            for (FamiliaBeneficioEventual familiaBeneficioEventual : beneficioEventualList) {
+                c.setTime(familiaBeneficioEventual.getDataConcessao());
+                int mes = c.get(Calendar.MONTH) + 1;
+                if(mesAtual == mes){
+                    if(familiaBeneficioEventual.getId() == 1){
+                        qtdeAuxilioNatalidade++;
+                    }else if(familiaBeneficioEventual.getId() == 2){
+                        qtdeAuxilioFuneral++;
+                    }else if(familiaBeneficioEventual.getId() == 3){
+                        qtdeSituacoesEmergencia++;
+                    }else if(familiaBeneficioEventual.getId() == 4){
+                        qtdeCestaBasica++;
+                    }else if(familiaBeneficioEventual.getId() == 5){        
+                        qtdeAluguel++;
+                    }else if(familiaBeneficioEventual.getId() == 6){
+                        qtdeOutros++;
+                    }
+                }
+            }
+        
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dados.put("auxilioNatalidade", qtdeAuxilioNatalidade);
+        dados.put("auxilioFuneral", qtdeAuxilioFuneral);
+        dados.put("situacoesEmergencia", qtdeSituacoesEmergencia);
+        dados.put("cestaBasica", qtdeCestaBasica);
+        dados.put("aluguel", qtdeAluguel);
+        dados.put("outros", qtdeOutros);
+        
+        return dados;
+    }
 
+    @RequestMapping(value = "/home/loadFamiliaVisitaDataChart", method = RequestMethod.POST)
+    public @ResponseBody
+    Integer[] carregaDadosFamiliaVisita (HttpSession session, Long mesAtual) {
+        Integer [] visitas = {0, 0, 0, 0, 0, 0, 
+                              0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 
+                              0, 0, 0, 0, 0, 0, 
+                              0, 0, 0, 0, 0, 0, 0, 0};
+        UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) session.getAttribute("unidadeAtendimentoSessao");
+        Calendar c = Calendar.getInstance();
+        List<FamiliaVisita> familiaVisitaList = new ArrayList<FamiliaVisita>();
+        
+        try {
+            List<Criteria> criteriaList = new ArrayList<Criteria>();
+            Criteria criteriaUnidadeAtendimento = new Criteria();
+            criteriaUnidadeAtendimento.setAttribute(FamiliaVisitaConstants.UNIDADE_ATENDIMENTO_ID);
+            criteriaUnidadeAtendimento.setOperation(Criteria.EQUALS);
+            criteriaUnidadeAtendimento.setValue(unidadeAtendimento.getId());
+            criteriaList.add(criteriaUnidadeAtendimento);
+
+            familiaVisitaList = familiaVisitaService.readByCriteria(criteriaList);
+            for (FamiliaVisita familiaVisita : familiaVisitaList) {
+                c.setTime(familiaVisita.getInicio());
+                int mes = c.get(Calendar.MONTH) + 1;
+                if(mesAtual == mes){
+                    visitas[c.get(Calendar.DAY_OF_MONTH)] = visitas[c.get(Calendar.DAY_OF_MONTH)] + 1;
+                }
+            }
+        } catch (Exception e) {
+        }
+        return visitas;
+    } 
 }
