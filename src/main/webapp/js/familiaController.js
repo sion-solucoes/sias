@@ -1,99 +1,89 @@
-$("#familiaFormPanEndereco").ready(function (){
-    
+$("#familiaFormPanEndereco").ready(function () {
+
     var comboTipoResidencia = $("#comboTipoResidencia");
     var tipoResidencia = $("#tipoResidencia").val();
-    $.each(comboTipoResidencia.children("option"), function (){
-        if($(this).text() == tipoResidencia){
+    $.each(comboTipoResidencia.children("option"), function () {
+        if ($(this).text() === tipoResidencia) {
             comboTipoResidencia.val($(this).val());
         }
     });
     comboTipoResidencia.selectpicker('refresh');
-    
     var comboMaterialParedes = $("#comboMaterialParedes");
     var materialPeredes = $("#materialParedes").val();
-    $.each(comboMaterialParedes.children("option"), function (){
-        if($(this).text() == materialPeredes){
+    $.each(comboMaterialParedes.children("option"), function () {
+        if ($(this).text() === materialPeredes) {
             comboMaterialParedes.val($(this).val());
         }
     });
     comboMaterialParedes.selectpicker("refresh");
-    
     var comboAcessoEnergia = $("#comboAcessoEnergia");
     var acessoEnergia = $("#acessoEnergiaEletrica").val();
-    $.each(comboAcessoEnergia.children("option"), function (){
-        if($(this).text() == acessoEnergia){
+    $.each(comboAcessoEnergia.children("option"), function () {
+        if ($(this).text() === acessoEnergia) {
             comboAcessoEnergia.val($(this).val());
         }
     });
     comboAcessoEnergia.selectpicker("refresh");
-    
     var comboAguaCanalizada = $("#comboAguaCanalizada");
     var aguaCanalizada = $("#aguaCanalizada").val();
-    $.each(comboAguaCanalizada.children("option"), function (){
-        if($(this).text() == aguaCanalizada){
+    $.each(comboAguaCanalizada.children("option"), function () {
+        if ($(this).text() === aguaCanalizada) {
             comboAguaCanalizada.val($(this).val());
         }
     });
     comboAguaCanalizada.selectpicker("refresh");
-    
     var comboFormaAbastecimento = $("#comboFormaAbastecimentoAgua");
     var formaAbastecimento = $("#formaAbastecimentoAgua").val();
-    $.each(comboFormaAbastecimento.children("option"), function (){
-        if($(this).text() == formaAbastecimento){
+    $.each(comboFormaAbastecimento.children("option"), function () {
+        if ($(this).text() === formaAbastecimento) {
             comboFormaAbastecimento.val($(this).val());
         }
     });
     comboFormaAbastecimento.selectpicker("refresh");
-    
     var comboEscoamentoSanitario = $("#comboEscoamentoSanitario");
     var escomentoSanitario = $("#escoamentoSanitario").val();
-    $.each(comboEscoamentoSanitario.children("option"), function (){
-        if($(this).text() == escomentoSanitario){
+    $.each(comboEscoamentoSanitario.children("option"), function () {
+        if ($(this).text() === escomentoSanitario) {
             comboEscoamentoSanitario.val($(this).val());
         }
     });
     comboEscoamentoSanitario.selectpicker("refresh");
-    
     var comboColetaLixo = $("#comboColetaLixo");
     var coletaLixo = $("#coletaLixo").val();
-    $.each(comboColetaLixo.children("option"), function (){
-        if($(this).text() == coletaLixo){
+    $.each(comboColetaLixo.children("option"), function () {
+        if ($(this).text() === coletaLixo) {
             comboColetaLixo.val($(this).val());
         }
     });
     comboColetaLixo.selectpicker("refresh");
-    
     var comboAcessibilidade = $("#comboAcessibilidade");
     var acessibilidade = $("#acessibilidade").val();
-    $.each(comboAcessibilidade.children("option"), function(){
-        if($(this).text() == acessibilidade){
+    $.each(comboAcessibilidade.children("option"), function () {
+        if ($(this).text() === acessibilidade) {
             comboAcessibilidade.val($(this).val());
         }
     });
     comboAcessibilidade.selectpicker("refresh");
-    
     var combolocalizacaoAreaRisco = $("#comboLocalizacaoRisco");
     var localizacaoRisco = $("#localizacaoRisco").val();
-    $.each(combolocalizacaoAreaRisco.children("option"), function (){
-        if($(this).text() == localizacaoRisco){
+    $.each(combolocalizacaoAreaRisco.children("option"), function () {
+        if ($(this).text() === localizacaoRisco) {
             combolocalizacaoAreaRisco.val($(this).val());
         }
     });
     combolocalizacaoAreaRisco.selectpicker("refresh");
-    
     var comboAcessoGeografico = $("#comboAcessoGeografico");
     var acessoGeografico = $("#acessoGeografico").val();
-    $.each(comboAcessoGeografico.children("option"), function (){
-        if($(this).text() == acessoGeografico){
+    $.each(comboAcessoGeografico.children("option"), function () {
+        if ($(this).text() === acessoGeografico) {
             comboAcessoGeografico.val($(this).val());
         }
     });
     comboAcessoGeografico.selectpicker("refresh");
-    
     var comboAreaViolencia = $("#comboAreaViolencia");
     var areaViolencia = $("#areaViolencia").val();
-    $.each(comboAreaViolencia.children("option"), function (){
-        if($(this).text() == areaViolencia){
+    $.each(comboAreaViolencia.children("option"), function () {
+        if ($(this).text() === areaViolencia) {
             comboAreaViolencia.val($(this).val());
         }
     });
@@ -129,25 +119,33 @@ $('#familiaForm').submit(function (event) {
     var comboAcessoGeografico = $("#comboAcessoGeografico");
     var comboAreaViolencia = $("#comboAreaViolencia");
     var txtObservacoesCondicoesHabitacionais = $("#txtObservacoesCondicoesHabitacionais");
-        
+
     var id = txtId.val();
     if (id === '') {
         id = null;
     }
 
+    var formaIngresso = {
+        id: comboFormaIngresso.val()
+    };
+    if (formaIngresso.id === null || formaIngresso.id === '')
+        formaIngresso = null;
+
+    var cepEndereco = {
+        id: comboCEPEndereco.val()
+    };
+    if (cepEndereco.id === null || cepEndereco.id === '')
+        cepEndereco = null;
+
     var familia = {
         id: id,
-        formaIngresso: {
-            id: comboFormaIngresso.val()
-        },
+        formaIngresso: formaIngresso,
         detalheFormaIngressoEncaminhamento: txtDetalheFormaIngressoEncaminhamento.val(),
         observacaoFormaIngresso: txtObservacaoFormaIngresso.val(),
         familiaMembroList: familiaMembroList,
         localizacaoEndereco: radioLocalizacao,
         enderecoAbrigo: checkEnderecoAbrigo.prop('checked'),
-        cepEndereco: {
-            id: comboCEPEndereco.val()
-        },
+        cepEndereco: cepEndereco,
         logradouroEndereco: txtLogradouroEndereco.val(),
         numeroEndereco: txtNumeroEndereco.val(),
         bairroEndereco: txtBairroEndereco.val(),
@@ -172,25 +170,26 @@ $('#familiaForm').submit(function (event) {
         json: JSON.stringify(familia)
     };
 
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: 'POST',
         url: '/controleFamiliar/familia/save',
         data: data,
         success: function (data) {
-            if (data != null) {
+            if (data !== null) {
                 var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
                         document.location.assign('/controleFamiliar/familia');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }
             }
         }
     });
-
     return false;
 });
 

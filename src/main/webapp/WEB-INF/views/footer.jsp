@@ -1,38 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </section>
 
-<div class="page-loader" style="display: none;">
+<div class="page-loader">
     <div class="preloader pls-blue">
         <svg class="pl-circular" viewBox="25 25 50 50">
-        <circle class="plc-path" cx="50" cy="50" r="20"></circle>
+        <circle class="plc-path" cx="50" cy="50" r="20" />
         </svg>
+
         <p>Por favor, aguarde...</p>
     </div>
 </div>
 
-<!-- Modal formulação do problema -->
-<div class="modal fade" id="resultadoPesquisa" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title text-center">Resultados da pesquisa</h3>
-            </div>
-            <div class="modal-body" id="resultados_pesquisa">
-                
-            </div>
-        </div>
-    </div>
-</div>
-
 <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
+
 <script type="text/javascript" src="<c:url value="/js/moment.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/fullcalendar.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/pt-br.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/sidebar.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="/js/app.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/FullCalendarConfig.js"/>"></script>
@@ -41,7 +26,6 @@
 <script type="text/javascript" src="<c:url value="/js/jquery.price-format.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/PriceFormatConfig.js"/>"></script>
 
-<!-- js template -->
 <script type="text/javascript" src="<c:url value="/js/jquery.sparkline.min.js"/>"></script>
 <script type="text/javascript" rc="<c:url value="/js/jquery.easypiechart.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.flot.js"/>"></script>
@@ -63,6 +47,10 @@
 <script type="text/javascript" src="<c:url value="/js/autosize.min.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/js/Msg.js"/>"></script>
-<script src="<c:url value="/js/initialize.js"/>" type="text/javascript"></script>
+<script type="text/javascript" src="<c:url value="/js/initialize.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="/js/app.js"/>"></script>
+
 </body>
+
 </html>

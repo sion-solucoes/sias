@@ -17,6 +17,8 @@ import com.sias.model.entity.mcf.FamiliaMembro;
 import com.sias.model.rowmapper.mcf.FamiliaMembroRowMapper;
 import com.sias.util.Criteria;
 import com.sias.util.JDBCBaseDAO;
+import java.util.Date;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -44,14 +46,17 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
             query += FamiliaMembroConstants.RG_ORGAO_EXPEDIDOR + ", ";
             query += FamiliaMembroConstants.RG_UF_EMISSAO + ", ";
             query += FamiliaMembroConstants.RG_DATA_EMISSAO + ", ";
+
             query += FamiliaMembroConstants.ESCOLARIDADE_ID + ", ";
             query += FamiliaMembroConstants.SABE_LER_ESCREVER + ", ";
             query += FamiliaMembroConstants.FREQUENTA_ESCOLA_ATUALMENTE + ", ";
+
             query += FamiliaMembroConstants.POSSUI_CARTEIRA_TRABALHO + ", ";
             query += FamiliaMembroConstants.CONDICAO_OCUPACAO_ID + ", ";
             query += FamiliaMembroConstants.POSSUI_QUALIFICACAO_PROFISSIONAL + ", ";
             query += FamiliaMembroConstants.DESCRICAO_QUALIFICACAO_PROFISSIONAL + ", ";
             query += FamiliaMembroConstants.RENDA_MENSAL + ", ";
+
             query += FamiliaMembroConstants.DEFICIENCIA_ID + ", ";
             query += FamiliaMembroConstants.NECESSITA_CUIDADOS_ESPECIAIS + ", ";
             query += FamiliaMembroConstants.DESCRICAO_NECESSIDADE_CUIDADOS_ESPECIAIS + ", ";
@@ -60,11 +65,29 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
             query += FamiliaMembroConstants.USUARIO_ENTORPECENTES + ", ";
             query += FamiliaMembroConstants.GESTANTE + ", ";
             query += FamiliaMembroConstants.MESES_GESTACAO + ", ";
-            query += FamiliaMembroConstants.INICIOU_PRE_NATAL;
+            query += FamiliaMembroConstants.INICIOU_PRE_NATAL + ", ";
 
+            query += FamiliaMembroConstants.VITIMA_AMEACAS_DISCRIMINACAO + ", ";
+            query += FamiliaMembroConstants.PARTICIPA_GRUPOS_RELIOSOS + ", ";
+            query += FamiliaMembroConstants.PARTICIPA_MOVIMENTOS_SOCIAIS + ", ";
+            query += FamiliaMembroConstants.ACESSO_LAZER + ", ";
+            query += FamiliaMembroConstants.COMPANHIA_ADULTO + ", ";
+
+            query += FamiliaMembroConstants.VIOLENCIA_FISICA + ", ";
+            query += FamiliaMembroConstants.VIOLENCIA_PSICOLOGICA + ", ";
+            query += FamiliaMembroConstants.EXPLORACAO_SEXUAL + ", ";
+            query += FamiliaMembroConstants.ABUSO_VIOLENCIA_SEXUAL + ", ";
+            query += FamiliaMembroConstants.NEGLIGENCIA_ABANDONO + ", ";
+            query += FamiliaMembroConstants.TRABALHO_INFANTIL + ", ";
+            query += FamiliaMembroConstants.TRAJETORIA_RUA + ", ";
+            query += FamiliaMembroConstants.TRAFICO_PESSOAS + ", ";
+            query += FamiliaMembroConstants.DISCRIMINACAO_ORIENTACAO_SEXUAL + ", ";
+            query += FamiliaMembroConstants.VIOLENCIA_IDOSO_PCD + ", ";
+
+            query += FamiliaMembroConstants.ACOMPANHAMENTO;
         }
         query += ")";
-        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        query += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         query += " RETURNING " + FamiliaMembroConstants.ID;
 
         Object args[] = {familiaMembro.getFamilia() != null ? familiaMembro.getFamilia().getId() : null,
@@ -73,11 +96,15 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
             familiaMembro.getNomeMae(), familiaMembro.getNis(), familiaMembro.getCpf(), familiaMembro.getRg(),
             familiaMembro.getRgOrgaoExpedidor(), familiaMembro.getRgUFEmissao(), familiaMembro.getRgDataEmissao(),
             familiaMembro.getEscolaridade() != null ? familiaMembro.getEscolaridade().getId() : null,
-            familiaMembro.isSabeLerEscrever(), familiaMembro.isFrequentaEscolaAtualmente(), familiaMembro.isPossuiCarteiraTrabalho(), familiaMembro.getCondicaoOcupacao() != null ? familiaMembro.getCondicaoOcupacao().getId() : null,
+            familiaMembro.isSabeLerEscrever(), familiaMembro.isFrequentaEscolaAtualmente(),
+            familiaMembro.isPossuiCarteiraTrabalho(), familiaMembro.getCondicaoOcupacao() != null ? familiaMembro.getCondicaoOcupacao().getId() : null,
             familiaMembro.isPossuiQualificacaoProfissional(), familiaMembro.getDescricaoQualificacaoProfissional(), familiaMembro.getRendaMensal(),
             familiaMembro.getDeficiencia() != null ? familiaMembro.getDeficiencia().getId() : null, familiaMembro.isNecessitaCuidadosConstantes(),
             familiaMembro.getDescricaoNecessidadeCuidadosConstantes(), familiaMembro.isUsuarioRemediosControlados(), familiaMembro.isUsuarioBebidasAlcoolicas(),
-            familiaMembro.isUsuarioEntorpecentes(), familiaMembro.isGestante(), familiaMembro.getMesesGestacao(), familiaMembro.isIniciouPreNatal()
+            familiaMembro.isUsuarioEntorpecentes(), familiaMembro.isGestante(), familiaMembro.getMesesGestacao(), familiaMembro.isIniciouPreNatal(),
+            familiaMembro.isVitimaAmeacasDiscriminacao(), familiaMembro.isParticipaGruposReligiosos(), familiaMembro.isParticipaMovimentosSociais(), familiaMembro.isAcessoLazer(), familiaMembro.isCompanhiaAdulto(),
+            familiaMembro.isViolenciaFisica(), familiaMembro.isViolenciaPsicologica(), familiaMembro.isExploracaoSexual(), familiaMembro.isAbusoViolenciaSexual(), familiaMembro.isNegligenciaAbandono(), familiaMembro.isTrabalhoInfantil(), familiaMembro.isTrajetoriaRua(), familiaMembro.isTraficoPessoas(), familiaMembro.isDiscriminacaoOrientacaoSexual(), familiaMembro.isViolenciaIdosoPCD(),
+            familiaMembro.getAcompanhamento()
         };
 
         familiaMembro.setId(getTemplate().queryForObject(query, args, Long.class));
@@ -147,6 +174,7 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
         String query = "UPDATE " + FamiliaMembroConstants.TABELA;
         query += " SET ";
         query += FamiliaMembroConstants.FAMILIA_ID + "=?, ";
+        query += FamiliaMembroConstants.DATA_ULTIMA_ALTERACAO + "=?, ";
         query += FamiliaMembroConstants.GRAU_PARENTESCO_ID + "=?, ";
         query += FamiliaMembroConstants.NOME + "=?, ";
         query += FamiliaMembroConstants.SEXO + "=?, ";
@@ -159,18 +187,65 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
         query += FamiliaMembroConstants.RG_ORGAO_EXPEDIDOR + "=?, ";
         query += FamiliaMembroConstants.RG_UF_EMISSAO + "=?, ";
         query += FamiliaMembroConstants.RG_DATA_EMISSAO + "=?, ";
+
         query += FamiliaMembroConstants.ESCOLARIDADE_ID + "=?, ";
         query += FamiliaMembroConstants.SABE_LER_ESCREVER + "=?, ";
-        query += FamiliaMembroConstants.FREQUENTA_ESCOLA_ATUALMENTE + "=? ";
+        query += FamiliaMembroConstants.FREQUENTA_ESCOLA_ATUALMENTE + "=?, ";
+
+        query += FamiliaMembroConstants.POSSUI_CARTEIRA_TRABALHO + "=?, ";
+        query += FamiliaMembroConstants.CONDICAO_OCUPACAO_ID + "=?, ";
+        query += FamiliaMembroConstants.POSSUI_QUALIFICACAO_PROFISSIONAL + "=?, ";
+        query += FamiliaMembroConstants.DESCRICAO_QUALIFICACAO_PROFISSIONAL + "=?, ";
+        query += FamiliaMembroConstants.RENDA_MENSAL + "=?, ";
+
+        query += FamiliaMembroConstants.DEFICIENCIA_ID + "=?, ";
+        query += FamiliaMembroConstants.NECESSITA_CUIDADOS_ESPECIAIS + "=?, ";
+        query += FamiliaMembroConstants.DESCRICAO_NECESSIDADE_CUIDADOS_ESPECIAIS + "=?, ";
+        query += FamiliaMembroConstants.USUARIO_REMEDIOS_CONTROLADOS + "=?, ";
+        query += FamiliaMembroConstants.USUARIO_BEDIDAS_ALCOOLICAS + "=?, ";
+        query += FamiliaMembroConstants.USUARIO_ENTORPECENTES + "=?, ";
+        query += FamiliaMembroConstants.GESTANTE + "=?, ";
+        query += FamiliaMembroConstants.MESES_GESTACAO + "=?, ";
+        query += FamiliaMembroConstants.INICIOU_PRE_NATAL + "=?, ";
+
+        query += FamiliaMembroConstants.VITIMA_AMEACAS_DISCRIMINACAO + "=?, ";
+        query += FamiliaMembroConstants.PARTICIPA_GRUPOS_RELIOSOS + "=?, ";
+        query += FamiliaMembroConstants.PARTICIPA_MOVIMENTOS_SOCIAIS + "=?, ";
+        query += FamiliaMembroConstants.ACESSO_LAZER + "=?, ";
+        query += FamiliaMembroConstants.COMPANHIA_ADULTO + "=?, ";
+
+        query += FamiliaMembroConstants.VIOLENCIA_FISICA + "=?, ";
+        query += FamiliaMembroConstants.VIOLENCIA_PSICOLOGICA + "=?, ";
+        query += FamiliaMembroConstants.EXPLORACAO_SEXUAL + "=?, ";
+        query += FamiliaMembroConstants.ABUSO_VIOLENCIA_SEXUAL + "=?, ";
+        query += FamiliaMembroConstants.NEGLIGENCIA_ABANDONO + "=?, ";
+        query += FamiliaMembroConstants.TRABALHO_INFANTIL + "=?, ";
+        query += FamiliaMembroConstants.TRAJETORIA_RUA + "=?, ";
+        query += FamiliaMembroConstants.TRAFICO_PESSOAS + "=?, ";
+        query += FamiliaMembroConstants.DISCRIMINACAO_ORIENTACAO_SEXUAL + "=?, ";
+        query += FamiliaMembroConstants.VIOLENCIA_IDOSO_PCD + "=?, ";
+
+        query += FamiliaMembroConstants.ACOMPANHAMENTO + "=? ";
+
         query += " WHERE " + FamiliaMembroConstants.ID + "=? ";
 
-        Object args[] = {familiaMembro.getFamilia() != null ? familiaMembro.getFamilia().getId() : null,
+        Object args[] = {
+            familiaMembro.getFamilia() != null ? familiaMembro.getFamilia().getId() : null,
+            new Date(),
             familiaMembro.getGrauParentesco() != null ? familiaMembro.getGrauParentesco().getId() : null,
             familiaMembro.getNome(), familiaMembro.getSexo(), familiaMembro.getApelido(), familiaMembro.getDataNascimento(),
             familiaMembro.getNomeMae(), familiaMembro.getNis(), familiaMembro.getCpf(), familiaMembro.getRg(),
             familiaMembro.getRgOrgaoExpedidor(), familiaMembro.getRgUFEmissao(), familiaMembro.getRgDataEmissao(),
             familiaMembro.getEscolaridade() != null ? familiaMembro.getEscolaridade().getId() : null,
             familiaMembro.isSabeLerEscrever(), familiaMembro.isFrequentaEscolaAtualmente(),
+            familiaMembro.isPossuiCarteiraTrabalho(), familiaMembro.getCondicaoOcupacao() != null ? familiaMembro.getCondicaoOcupacao().getId() : null,
+            familiaMembro.isPossuiQualificacaoProfissional(), familiaMembro.getDescricaoQualificacaoProfissional(), familiaMembro.getRendaMensal(),
+            familiaMembro.getDeficiencia() != null ? familiaMembro.getDeficiencia().getId() : null, familiaMembro.isNecessitaCuidadosConstantes(),
+            familiaMembro.getDescricaoNecessidadeCuidadosConstantes(), familiaMembro.isUsuarioRemediosControlados(), familiaMembro.isUsuarioBebidasAlcoolicas(),
+            familiaMembro.isUsuarioEntorpecentes(), familiaMembro.isGestante(), familiaMembro.getMesesGestacao(), familiaMembro.isIniciouPreNatal(),
+            familiaMembro.isVitimaAmeacasDiscriminacao(), familiaMembro.isParticipaGruposReligiosos(), familiaMembro.isParticipaMovimentosSociais(), familiaMembro.isAcessoLazer(), familiaMembro.isCompanhiaAdulto(),
+            familiaMembro.isViolenciaFisica(), familiaMembro.isViolenciaPsicologica(), familiaMembro.isExploracaoSexual(), familiaMembro.isAbusoViolenciaSexual(), familiaMembro.isNegligenciaAbandono(), familiaMembro.isTrabalhoInfantil(), familiaMembro.isTrajetoriaRua(), familiaMembro.isTraficoPessoas(), familiaMembro.isDiscriminacaoOrientacaoSexual(), familiaMembro.isViolenciaIdosoPCD(),
+            familiaMembro.getAcompanhamento(),
             familiaMembro.getId()
         };
 
@@ -211,10 +286,13 @@ public class FamiliaMembroDAOImpl extends JDBCBaseDAO implements FamiliaMembroDA
     }
 
     @Override
-    public void deleteByFamilia(Long familiaId) throws Exception {
+    public void deleteByFamiliaNotInList(Long familiaId, List<Long> listId) throws Exception {
 
         String query = "DELETE FROM " + FamiliaMembroConstants.TABELA;
         query += " WHERE " + FamiliaMembroConstants.FAMILIA_ID + "=? ";
+        if (listId != null) {
+            query += " AND " + FamiliaMembroConstants.ID + " NOT IN (" + StringUtils.join(listId, ",") + ")";
+        }
 
         Object args[] = {familiaId};
 

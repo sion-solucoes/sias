@@ -15,6 +15,8 @@ $('#beneficioEventualForm').submit(function (event) {
         json: JSON.stringify(beneficioEventual)
     };
 
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: 'POST',
         url: '/cadastrosBasicos/beneficioEventual/save',
@@ -26,7 +28,7 @@ $('#beneficioEventualForm').submit(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/cadastrosBasicos/beneficioEventual');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

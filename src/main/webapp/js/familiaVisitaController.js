@@ -36,7 +36,7 @@ $(document).ready(function () {
                             id: event._id
                         },
                         success: function () {
-                            Msg.notify('Visita confirmada!', 'success', 2000, null, atualizaCalendario);
+                            Msg.notify('Visita confirmada!', 'success', 1000, null, atualizaCalendario);
                         }
                     });
                 };
@@ -51,7 +51,7 @@ $(document).ready(function () {
                             id: event._id
                         },
                         success: function () {
-                            Msg.notify('Visita desconfirmada!', 'success', 2000, null, atualizaCalendario);
+                            Msg.notify('Visita desconfirmada!', 'success', 1000, null, atualizaCalendario);
                         }
                     });
                 };
@@ -66,7 +66,7 @@ $(document).ready(function () {
                             id: event._id
                         },
                         success: function () {
-                            Msg.notify('Agendamento removido!', 'success', 2000, null, atualizaCalendario);
+                            Msg.notify('Agendamento removido!', 'success', 1000, null, atualizaCalendario);
                         }
                     });
                 };

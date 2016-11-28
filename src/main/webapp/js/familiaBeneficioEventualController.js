@@ -1,6 +1,6 @@
-$("#familiaBeneficioEventualForm").submit(function (e){
+$("#familiaBeneficioEventualForm").submit(function (e) {
     e.preventDefault();
-    
+
     var familiaBeneficioEventual = {
         familia: {
             id: $("#comboFamilia").val()
@@ -11,25 +11,27 @@ $("#familiaBeneficioEventualForm").submit(function (e){
         dataSolicitacao: $("#txtDataSolicitacao").val() === "" ? null : $("#txtDataSolicitacao").val(),
         dataConcessao: $("#txtDataConcessao").val() === "" ? null : $("#txtDataConcessao").val()
     };
-    
+
     var data = {
         json: JSON.stringify(familiaBeneficioEventual)
     };
-    
+
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: "POST",
         url: "/controleFamiliar/requisicaoBeneficio/save",
         data: data,
-        success: function (resp) {
-            if (resp !== null) {
-                var success = resp.success;
+        success: function (data) {
+            if (data !== null) {
+                var success = data.success;
                 if (success) {
                     var voltarListagem = function () {
                         document.location.assign('/controleFamiliar/requisicaoBeneficio');
                     };
-                    Msg.notify(resp.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
-                    Msg.notify(resp.msg, 'warning');
+                    Msg.notify(data.msg, 'warning');
                 }
             }
         },
@@ -37,7 +39,7 @@ $("#familiaBeneficioEventualForm").submit(function (e){
             Msg.notify('Erro inesperado. Contate o adminstrador do Sistema', 'warning');
         }
     });
-    
+
     return false;
 });
 

@@ -17,7 +17,6 @@
             <input id="txtCondicaoOcupacao" hidden="true" name="id" value="${familiaMembro.condicaoOcupacao.id}">
             <label for="comboCondicaoOcupacao">Condição de Ocupação</label>
             <select class="selectpicker" title="Selecione..." name="condicaoOcupacao" id="comboCondicaoOcupacao">
-                
             </select>
         </div>
     </div>
@@ -33,6 +32,7 @@
     <div class="row form-group p-l-15">
         <div class="col-md-12">
             <div class="fg-line">
+                <label for="txtDescricaoQualificacaoProfissional">Descrição da qualificação profissional</label>
                 <textarea class="form-control auto-size" id="txtDescricaoQualificacaoProfissional">${familiaMembro.descricaoQualificacaoProfissional}</textarea>
             </div>
         </div>

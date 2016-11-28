@@ -17,6 +17,6 @@ public interface FamiliaMembroService extends BaseService<FamiliaMembro> {
 
     public List<FamiliaMembro> readFamiliaMembroByFamilia(Long familiaId) throws Exception;
 
-    public void deleteByFamilia(Long familiaId) throws Exception;
-
+    public void deleteByFamiliaNotInList(Long familiaId, List<Long> listId) throws Exception;
+    
 }

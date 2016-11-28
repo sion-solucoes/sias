@@ -80,9 +80,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (usuario.getUnidadeAtendimento() == null || usuario.getUnidadeAtendimento().getId() == null) {
             throw new ValidateException("\"Unidade de Atendimento\" é um campo obrigatório");
         }
-        if (usuario.getTipo() == null || usuario.getTipo() == 0) {
-            throw new ValidateException("\"Tipo\" é um campo obrigatório");
-        }
         if (usuario.getEmail() == null || usuario.getEmail().trim().isEmpty()) {
             throw new ValidateException("\"E-mail\" é um campo obrigatório");
         }

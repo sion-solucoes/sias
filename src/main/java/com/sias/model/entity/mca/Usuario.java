@@ -14,15 +14,15 @@ import com.sias.model.base.entity.BaseEntity;
  */
 public class Usuario extends BaseEntity {
 
-    public static final Short TIPO_MASTER = 1;
+    public static final short TIPO_MASTER = 1;
 
-    public static final Short TIPO_TECNICO = 2;
+    public static final short TIPO_TECNICO = 2;
 
-    public static final Short TIPO_ADMINISTRATIVO = 3;
+    public static final short TIPO_ADMINISTRATIVO = 3;
 
     private UnidadeAtendimento unidadeAtendimento;
     
-    private Short tipo;
+    private short tipo;
     
     private String email;
 
@@ -44,11 +44,11 @@ public class Usuario extends BaseEntity {
         this.unidadeAtendimento = unidadeAtendimento;
     }
 
-    public Short getTipo() {
+    public short getTipo() {
         return tipo;
     }
 
-    public void setTipo(Short tipo) {
+    public void setTipo(short tipo) {
         this.tipo = tipo;
     }
 

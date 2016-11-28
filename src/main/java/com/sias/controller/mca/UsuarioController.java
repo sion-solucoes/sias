@@ -209,11 +209,12 @@ public class UsuarioController {
         return null;
     }
 
-    @RequestMapping(value = "/usuario/imprimirCodigos", method = RequestMethod.GET)
-    public void imprimirCodigos(@RequestParam("json") String json, HttpSession session, HttpServletResponse httpServletResponse) {
+    @RequestMapping(value = "/usuario/{id}/cartaoSeguranca.pdf", method = RequestMethod.GET)
+    public void imprimirCodigos(@PathVariable Long id, HttpSession session, HttpServletResponse httpServletResponse) {
 
         try {
-            Usuario usuario = (Usuario) GSONConverter.convert(json, Usuario.class);
+            Usuario usuario = usuarioService.readById(id);
+            usuario.setUsuarioSegurancaList(usuarioSegurancaService.readByUsuarioId(id));
             List<Usuario> usuarioList = new ArrayList<Usuario>();
             usuarioList.add(usuario);
             Map<String, Object> parametros = new HashMap<String, Object>();

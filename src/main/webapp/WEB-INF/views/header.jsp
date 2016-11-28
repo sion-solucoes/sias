@@ -83,6 +83,7 @@
                     <input type="text" id="buscaValor" placeholder="Pesquise famílias por seus membros aqui..."/>
                 </div>
             </div>
+
         </header>
 
         <section id="main">

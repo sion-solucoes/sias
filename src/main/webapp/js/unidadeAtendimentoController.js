@@ -5,7 +5,7 @@ $("#unidadeAtendimento").ready(function (){
     comboCEPEndereco.selectpicker("refresh");
 });
 
-$('#btnConfirmar').submit(function (event) {
+$('#unidadeAtendimentoForm').submit(function (event) {
 
     var id = $("#txtId").val();
 
@@ -29,6 +29,8 @@ $('#btnConfirmar').submit(function (event) {
     var data = {
         json: JSON.stringify(unidadeAtendimento)
     };
+    
+    Msg.bar('Salvando. Por favor, aguarde...', null);
 
     $.ajax({
         method: 'POST',
@@ -41,7 +43,7 @@ $('#btnConfirmar').submit(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/controleAmbiente/unidadeAtendimento');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

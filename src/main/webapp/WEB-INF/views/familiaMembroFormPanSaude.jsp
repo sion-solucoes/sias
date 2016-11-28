@@ -24,6 +24,7 @@
     <div class="row form-group p-l-15">
         <div class="col-md-12">
             <div class="fg-line">
+                <label for="txtDescricaoNecessidadeCuidadosConstantes">Descreva a necessidade de cuidados constantes aqui...</label>
                 <textarea class="form-control auto-size" id="txtDescricaoNecessidadeCuidadosConstantes">${familiaMembro.descricaoNecessidadeCuidadosConstantes}</textarea>
             </div>
         </div>

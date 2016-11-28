@@ -46,9 +46,6 @@
                     <a href="<c:url value="/controleFamiliar/familiaVisita"/>">Agendamento de Visitas</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/controleFamiliar/acompanhamento"/>">Acompanhamento</a>
-                </li>
-                <li>
                     <a href="<c:url value="/controleFamiliar/requisicaoBeneficio"/>">Requisição de Benefício Eventual</a>
                 </li>
             </ul>
@@ -94,17 +91,22 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="#"><i class="zmdi zmdi-print"></i>Relatórios</a>
-        </li>
         <li class="sub-menu">
-            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-settings"></i>Controle de Ambiente</a>
+            <a href="<c:url value=""/>" data-ma-action="submenu-toggle"><i class="zmdi zmdi-print"></i>Relatórios</a>
             <ul>
                 <li>
-                    <a class="${unidadeAtendimento}" href="<c:url value="/controleAmbiente/unidadeAtendimento"/>">Cadastro de Unidade de Atendimento</a>
+                    <a class="${relatorios}" href="<c:url value="/relatorios/mensal"/>">Relatório Mensal de Atendimento</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="<c:url value=""/>" data-ma-action="submenu-toggle"><i class="zmdi zmdi-settings"></i>Controle de Ambiente</a>
+            <ul>
+                <li>
+                    <a class="${unidadeAtendimento}" href="<c:url value="/controleAmbiente/unidadeAtendimento"/>">Unidade de Atendimento</a>
                 </li>
                 <li>
-                    <a class="${usuario}" href="<c:url value="/controleAmbiente/usuario"/>">Cadastro de Usuário</a>
+                    <a class="${usuario}" href="<c:url value="/controleAmbiente/usuario"/>">Usuário</a>
                 </li>
             </ul>
         </li>

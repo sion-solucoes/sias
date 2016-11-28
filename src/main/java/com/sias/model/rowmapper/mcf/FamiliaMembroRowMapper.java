@@ -57,6 +57,7 @@ public class FamiliaMembroRowMapper implements RowMapper<FamiliaMembro> {
         familiaMembro.setRgOrgaoExpedidor(rs.getString(FamiliaMembroConstants.RG_ORGAO_EXPEDIDOR));
         familiaMembro.setRgUFEmissao(rs.getString(FamiliaMembroConstants.RG_UF_EMISSAO));
         familiaMembro.setRgDataEmissao(rs.getDate(FamiliaMembroConstants.RG_DATA_EMISSAO));
+
         if (rs.getObject(FamiliaMembroConstants.ESCOLARIDADE_ID) != null) {
             Escolaridade escolaridade = new Escolaridade();
             escolaridade.setId(rs.getLong(FamiliaMembroConstants.ESCOLARIDADE_ID));
@@ -97,10 +98,28 @@ public class FamiliaMembroRowMapper implements RowMapper<FamiliaMembro> {
         familiaMembro.setUsuarioRemediosControlados(rs.getBoolean(FamiliaMembroConstants.USUARIO_REMEDIOS_CONTROLADOS));
         familiaMembro.setUsuarioBebidasAlcoolicas(rs.getBoolean(FamiliaMembroConstants.USUARIO_BEDIDAS_ALCOOLICAS));
         familiaMembro.setUsuarioEntorpecentes(rs.getBoolean(FamiliaMembroConstants.USUARIO_ENTORPECENTES));
-        
         familiaMembro.setGestante(rs.getBoolean(FamiliaMembroConstants.GESTANTE));
         familiaMembro.setMesesGestacao(rs.getShort(FamiliaMembroConstants.MESES_GESTACAO));
         familiaMembro.setIniciouPreNatal(rs.getBoolean(FamiliaMembroConstants.INICIOU_PRE_NATAL));
+
+        familiaMembro.setVitimaAmeacasDiscriminacao(rs.getBoolean(FamiliaMembroConstants.VITIMA_AMEACAS_DISCRIMINACAO));
+        familiaMembro.setParticipaGruposReligiosos(rs.getBoolean(FamiliaMembroConstants.PARTICIPA_GRUPOS_RELIOSOS));
+        familiaMembro.setParticipaMovimentosSociais(rs.getBoolean(FamiliaMembroConstants.PARTICIPA_MOVIMENTOS_SOCIAIS));
+        familiaMembro.setAcessoLazer(rs.getBoolean(FamiliaMembroConstants.ACESSO_LAZER));
+        familiaMembro.setCompanhiaAdulto(rs.getBoolean(FamiliaMembroConstants.COMPANHIA_ADULTO));
+
+        familiaMembro.setViolenciaFisica(rs.getBoolean(FamiliaMembroConstants.VIOLENCIA_FISICA));
+        familiaMembro.setViolenciaPsicologica(rs.getBoolean(FamiliaMembroConstants.VIOLENCIA_PSICOLOGICA));
+        familiaMembro.setExploracaoSexual(rs.getBoolean(FamiliaMembroConstants.EXPLORACAO_SEXUAL));
+        familiaMembro.setAbusoViolenciaSexual(rs.getBoolean(FamiliaMembroConstants.ABUSO_VIOLENCIA_SEXUAL));
+        familiaMembro.setNegligenciaAbandono(rs.getBoolean(FamiliaMembroConstants.NEGLIGENCIA_ABANDONO));
+        familiaMembro.setTrabalhoInfantil(rs.getBoolean(FamiliaMembroConstants.TRABALHO_INFANTIL));
+        familiaMembro.setTrajetoriaRua(rs.getBoolean(FamiliaMembroConstants.TRAJETORIA_RUA));
+        familiaMembro.setTraficoPessoas(rs.getBoolean(FamiliaMembroConstants.TRAFICO_PESSOAS));
+        familiaMembro.setDiscriminacaoOrientacaoSexual(rs.getBoolean(FamiliaMembroConstants.DISCRIMINACAO_ORIENTACAO_SEXUAL));
+        familiaMembro.setViolenciaIdosoPCD(rs.getBoolean(FamiliaMembroConstants.VIOLENCIA_IDOSO_PCD));
+
+        familiaMembro.setAcompanhamento(rs.getString(FamiliaMembroConstants.ACOMPANHAMENTO));
 
         return familiaMembro;
     }

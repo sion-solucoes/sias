@@ -1,4 +1,4 @@
-﻿INSERT INTO pais ( pais_sigla, pais_descricao, pais_codigo_bacen ) VALUES ( 'BRA', 'BRASIL', 1058 );
+INSERT INTO pais ( pais_sigla, pais_descricao, pais_codigo_bacen ) VALUES ( 'BRA', 'BRASIL', 1058 );
 INSERT INTO uf ( uf_sigla, uf_descricao, uf_codigo_ibge, uf_pais_id ) VALUES ( 'MG', 'MINAS GERAIS', 31, 1 );
 INSERT INTO municipio ( municipio_descricao, municipio_codigo_ibge, municipio_uf_id ) VALUES ( 'SANTA RITA DO SAPUCAÍ', 3159605, 1 );
 INSERT INTO cep ( cep_codigo, cep_logradouro, cep_bairro, cep_municipio_id ) VALUES ( '37540-000', 'ALAMEDA JOSÉ CLETO DUARTE', 'CENTRO', 1 );
@@ -169,7 +169,22 @@ familia_membro_necessita_cuidados_especiais,
 familia_membro_usuario_remedios_controlados,
 familia_membro_usuario_bebidas_alcoolicas,
 familia_membro_usuario_entorpecentes,
-familia_membro_gestante
+familia_membro_gestante,
+familia_membro_vitima_ameacas_discriminacao,
+familia_membro_participa_grupos_religiosos,
+familia_membro_participa_movimentos_sociais,
+familia_membro_acesso_lazer,
+familia_membro_companhia_adulto,
+familia_membro_violencia_fisica,
+familia_membro_violencia_psicologica,
+familia_membro_exploracao_sexual,
+familia_membro_abuso_violencia_sexual,
+familia_membro_negligencia_abandono,
+familia_membro_trabalho_infantil,
+familia_membro_trajetoria_rua,
+familia_membro_trafico_pessoas,
+familia_membro_discriminacao_orientacao_sexual,
+familia_membro_violencia_idoso_pcd
 )
 VALUES 
 (
@@ -197,8 +212,20 @@ false,
 false,
 false,
 false,
+false,
+false,
+false,
+false,
+true,
+true,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
 false
 );
-
-
-

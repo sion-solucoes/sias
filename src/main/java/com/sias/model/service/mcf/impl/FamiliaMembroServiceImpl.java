@@ -37,7 +37,7 @@ public class FamiliaMembroServiceImpl implements FamiliaMembroService {
         familiaMembroDAO.create(familiaMembro);
 
         familiaMembroDocumentoProvidenciavelService.deleteByFamiliaMembro(familiaMembro.getId());
-        if (familiaMembro.getFamiliaMembroDocumentoProvidenciavelList() != null) {
+            if (familiaMembro.getFamiliaMembroDocumentoProvidenciavelList() != null) {
             for (FamiliaMembroDocumentoProvidenciavel familiaMembroDocumentoProvidenciavel : familiaMembro.getFamiliaMembroDocumentoProvidenciavelList()) {
                 familiaMembroDocumentoProvidenciavel.setFamiliaMembro(familiaMembro);
                 familiaMembroDocumentoProvidenciavelService.create(familiaMembroDocumentoProvidenciavel);
@@ -137,8 +137,8 @@ public class FamiliaMembroServiceImpl implements FamiliaMembroService {
     }
 
     @Override
-    public void deleteByFamilia(Long familiaId) throws Exception {
-        familiaMembroDAO.deleteByFamilia(familiaId);
+    public void deleteByFamiliaNotInList(Long familiaId, List<Long> listId) throws Exception {
+        familiaMembroDAO.deleteByFamiliaNotInList(familiaId, listId);
     }
 
 }

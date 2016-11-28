@@ -14,6 +14,8 @@ $('#formaIngressoForm').submit(function (event) {
         json: JSON.stringify(formaIngresso)
     };
 
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: 'POST',
         url: '/cadastrosBasicos/formaIngresso/save',
@@ -25,7 +27,7 @@ $('#formaIngressoForm').submit(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/cadastrosBasicos/formaIngresso');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

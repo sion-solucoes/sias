@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="modal fade" id="familiaMembroModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="familiaMembroFormLabel">
+<div class="modal fade animated fadeInUp" id="familiaMembroModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="familiaMembroFormLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,37 +9,139 @@
             </div>
             <div class="modal-body">
                 <form class="form-wizard-basic fw-container form-horizontal" id="familiaMembroForm">
-                    <div id="tabs">
-                        <ul class="tab-nav">
-                            <li id="liTab4"><a href="#tab4" data-toggle="tab">Dados Básicos</a></li>
-                            <li id="liTab5"><a href="#tab5" data-toggle="tab">Documentos</a></li>
-                            <li id="liTab6"><a href="#tab6" data-toggle="tab">Educação</a></li>
-                            <li id="liTab7"><a href="#tab7" data-toggle="tab">Trabalho</a></li>
-                            <li id="liTab8"><a href="#tab8" data-toggle="tab">Saúde</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane animated fadeInUp" id="tab4">
-                                <jsp:include page="/WEB-INF/views/familiaMembroFormPanDadosBasicos.jsp"/>
+                    <div class="panel-group" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
+                                        Dados Básicos
+                                    </a>
+                                </h4>
                             </div>
-                            <div class="tab-pane animated fadeInUp" id="tab5">
-                                <jsp:include page="/WEB-INF/views/familiaMembroFormPanDocumentosProvidenciaveis.jsp"/>
+                            <div id="collapseOne" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanDadosBasicos.jsp"/>
+                                </div>
                             </div>
-                            <div class="tab-pane animated fadeInUp" id="tab6">
-                                <jsp:include page="/WEB-INF/views/familiaMembroFormPanCondicoesEducacionais.jsp"/>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Documentos Providenciáveis
+                                    </a>
+                                </h4>
                             </div>
-                            <div class="tab-pane animated fadeInUp" id="tab7">
-                                <jsp:include page="/WEB-INF/views/familiaMembroFormPanTrabalhoRendimentos.jsp"/>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanDocumentosProvidenciaveis.jsp"/>
+                                </div>
                             </div>
-                            <div class="tab-pane animated fadeInUp" id="tab8">
-                                <jsp:include page="/WEB-INF/views/familiaMembroFormPanSaude.jsp"/>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseThree" aria-expanded="false"
+                                       aria-controls="collapseThree">
+                                        Educação
+                                    </a>
+                                </h4>
                             </div>
-
-                            <ul class="fw-footer pagination wizard">
-                                <li class="previous first"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
-                                <li class="previous"><a class="a-prevent" href=""><i class="zmdi zmdi-chevron-left"></i></a></li>
-                                <li class="next"><a class="a-prevent" href=""><i class="zmdi zmdi-chevron-right"></i></a></li>
-                                <li class="next last"><a class="a-prevent" href=""><i class="zmdi zmdi-more-horiz"></i></a></li>
-                            </ul>
+                            <div id="collapseThree" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanCondicoesEducacionais.jsp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseFour" aria-expanded="false"
+                                       aria-controls="collapseFour">
+                                        Trabalho e Rendimentos
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanTrabalhoRendimentos.jsp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseFive" aria-expanded="false"
+                                       aria-controls="collapseFive">
+                                        Saúde
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanSaude.jsp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingSix">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseSix" aria-expanded="false"
+                                       aria-controls="collapseSix">
+                                        Convivência Familiar, Intrafamiliar e Comunitária
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanConvivencia.jsp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingSeven">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseSeven" aria-expanded="false"
+                                       aria-controls="collapseSeven">
+                                        Violência e Violações de Direitos
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSeven" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingSeven">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanViolenciaViolacaoDireitos.jsp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-collapse">
+                            <div class="panel-heading" role="tab" id="headingEight">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseEight" aria-expanded="false"
+                                       aria-controls="collapseEight">
+                                        Acompanhamento
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseEight" class="collapse" role="tabpanel"
+                                 aria-labelledby="headingEight">
+                                <div class="panel-body">
+                                    <jsp:include page="/WEB-INF/views/familiaMembroFormPanAcompanhamento.jsp"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row clearfix">

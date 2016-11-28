@@ -85,6 +85,38 @@ public class FamiliaMembro extends BaseEntity {
 
     private boolean iniciouPreNatal;
 
+    private boolean vitimaAmeacasDiscriminacao;
+
+    private boolean participaGruposReligiosos;
+
+    private boolean participaMovimentosSociais;
+
+    private boolean acessoLazer;
+
+    private boolean companhiaAdulto;
+
+    private boolean violenciaFisica;
+
+    private boolean violenciaPsicologica;
+
+    private boolean exploracaoSexual;
+
+    private boolean abusoViolenciaSexual;
+
+    private boolean negligenciaAbandono;
+
+    private boolean trabalhoInfantil;
+
+    private boolean trajetoriaRua;
+
+    private boolean traficoPessoas;
+
+    private boolean discriminacaoOrientacaoSexual;
+
+    private boolean violenciaIdosoPCD;
+
+    private String acompanhamento;
+
     private List<FamiliaMembroContato> familiaMembroContatoList;
 
     public Familia getFamilia() {
@@ -333,6 +365,134 @@ public class FamiliaMembro extends BaseEntity {
 
     public void setIniciouPreNatal(boolean iniciouPreNatal) {
         this.iniciouPreNatal = iniciouPreNatal;
+    }
+
+    public boolean isVitimaAmeacasDiscriminacao() {
+        return vitimaAmeacasDiscriminacao;
+    }
+
+    public void setVitimaAmeacasDiscriminacao(boolean vitimaAmeacasDiscriminacao) {
+        this.vitimaAmeacasDiscriminacao = vitimaAmeacasDiscriminacao;
+    }
+
+    public boolean isParticipaGruposReligiosos() {
+        return participaGruposReligiosos;
+    }
+
+    public void setParticipaGruposReligiosos(boolean participaGruposReligiosos) {
+        this.participaGruposReligiosos = participaGruposReligiosos;
+    }
+
+    public boolean isParticipaMovimentosSociais() {
+        return participaMovimentosSociais;
+    }
+
+    public void setParticipaMovimentosSociais(boolean participaMovimentosSociais) {
+        this.participaMovimentosSociais = participaMovimentosSociais;
+    }
+
+    public boolean isAcessoLazer() {
+        return acessoLazer;
+    }
+
+    public void setAcessoLazer(boolean acessoLazer) {
+        this.acessoLazer = acessoLazer;
+    }
+
+    public boolean isCompanhiaAdulto() {
+        return companhiaAdulto;
+    }
+
+    public void setCompanhiaAdulto(boolean companhiaAdulto) {
+        this.companhiaAdulto = companhiaAdulto;
+    }
+
+    public boolean isViolenciaFisica() {
+        return violenciaFisica;
+    }
+
+    public void setViolenciaFisica(boolean violenciaFisica) {
+        this.violenciaFisica = violenciaFisica;
+    }
+
+    public boolean isViolenciaPsicologica() {
+        return violenciaPsicologica;
+    }
+
+    public void setViolenciaPsicologica(boolean violenciaPsicologica) {
+        this.violenciaPsicologica = violenciaPsicologica;
+    }
+
+    public boolean isExploracaoSexual() {
+        return exploracaoSexual;
+    }
+
+    public void setExploracaoSexual(boolean exploracaoSexual) {
+        this.exploracaoSexual = exploracaoSexual;
+    }
+
+    public boolean isAbusoViolenciaSexual() {
+        return abusoViolenciaSexual;
+    }
+
+    public void setAbusoViolenciaSexual(boolean abusoViolenciaSexual) {
+        this.abusoViolenciaSexual = abusoViolenciaSexual;
+    }
+
+    public boolean isNegligenciaAbandono() {
+        return negligenciaAbandono;
+    }
+
+    public void setNegligenciaAbandono(boolean negligenciaAbandono) {
+        this.negligenciaAbandono = negligenciaAbandono;
+    }
+
+    public boolean isTrabalhoInfantil() {
+        return trabalhoInfantil;
+    }
+
+    public void setTrabalhoInfantil(boolean trabalhoInfantil) {
+        this.trabalhoInfantil = trabalhoInfantil;
+    }
+
+    public boolean isTrajetoriaRua() {
+        return trajetoriaRua;
+    }
+
+    public void setTrajetoriaRua(boolean trajetoriaRua) {
+        this.trajetoriaRua = trajetoriaRua;
+    }
+
+    public boolean isTraficoPessoas() {
+        return traficoPessoas;
+    }
+
+    public void setTraficoPessoas(boolean traficoPessoas) {
+        this.traficoPessoas = traficoPessoas;
+    }
+
+    public boolean isDiscriminacaoOrientacaoSexual() {
+        return discriminacaoOrientacaoSexual;
+    }
+
+    public void setDiscriminacaoOrientacaoSexual(boolean discriminacaoOrientacaoSexual) {
+        this.discriminacaoOrientacaoSexual = discriminacaoOrientacaoSexual;
+    }
+
+    public boolean isViolenciaIdosoPCD() {
+        return violenciaIdosoPCD;
+    }
+
+    public void setViolenciaIdosoPCD(boolean violenciaIdosoPCD) {
+        this.violenciaIdosoPCD = violenciaIdosoPCD;
+    }
+
+    public String getAcompanhamento() {
+        return acompanhamento;
+    }
+
+    public void setAcompanhamento(String acompanhamento) {
+        this.acompanhamento = acompanhamento;
     }
 
     public List<FamiliaMembroContato> getFamiliaMembroContatoList() {

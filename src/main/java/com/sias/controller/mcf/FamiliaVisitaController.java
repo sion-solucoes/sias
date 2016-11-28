@@ -123,17 +123,17 @@ public class FamiliaVisitaController {
         try {
             List<Criteria> criteriaList = new ArrayList<Criteria>();
 
-            Criteria criteriaDataInicio = new Criteria();
-            criteriaDataInicio.setAttribute(FamiliaVisitaConstants.INICIO);
-            criteriaDataInicio.setOperation(Criteria.BIGGER_OR_EQUALS_THEN);
-            criteriaDataInicio.setValue(inicio);
-            criteriaList.add(criteriaDataInicio);
-
-            Criteria criteriaDataFim = new Criteria();
-            criteriaDataFim.setAttribute(FamiliaVisitaConstants.FIM);
-            criteriaDataFim.setOperation(Criteria.LESS_OR_EQUALS_THEN);
-            criteriaDataFim.setValue(fim);
-            criteriaList.add(criteriaDataFim);
+//            Criteria criteriaDataInicio = new Criteria();
+//            criteriaDataInicio.setAttribute(FamiliaVisitaConstants.INICIO);
+//            criteriaDataInicio.setOperation(Criteria.BIGGER_OR_EQUALS_THEN);
+//            criteriaDataInicio.setValue(inicio);
+//            criteriaList.add(criteriaDataInicio);
+//
+//            Criteria criteriaDataFim = new Criteria();
+//            criteriaDataFim.setAttribute(FamiliaVisitaConstants.FIM);
+//            criteriaDataFim.setOperation(Criteria.LESS_OR_EQUALS_THEN);
+//            criteriaDataFim.setValue(fim);
+//            criteriaList.add(criteriaDataFim);
 
             UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
             Criteria criteriaUnidadeAtendimento = new Criteria();
@@ -179,7 +179,7 @@ public class FamiliaVisitaController {
         Map<String, Object> response = new HashMap<String, Object>();
 
         try {
-            familiaVisitaService.confirm(id);
+            familiaVisitaService.disconfirm(id);
             response.put("success", true);
         } catch (Exception e) {
             Logger.getLogger(FamiliaVisitaController.class.getName()).log(Level.SEVERE, null, e);

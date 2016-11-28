@@ -33,13 +33,13 @@
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane animated fadeInUp" id="tab1">
+                        <div class="tab-pane" id="tab1">
                             <jsp:include page="/WEB-INF/views/familiaFormPanDadosBasicos.jsp"/>
                         </div>
-                        <div class="tab-pane animated fadeInUp" id="tab2">
+                        <div class="tab-pane" id="tab2">
                             <jsp:include page="/WEB-INF/views/familiaFormPanComposicaoFamiliar.jsp"/>
                         </div>
-                        <div class="tab-pane animated fadeInUp" id="tab3">
+                        <div class="tab-pane" id="tab3">
                             <jsp:include page="/WEB-INF/views/familiaFormPanCondicoesHabitacionais.jsp"/>
                         </div>
 

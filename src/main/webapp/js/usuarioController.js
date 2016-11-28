@@ -1,5 +1,5 @@
 $(document).ready(function (event) {
-    
+
     var usuarioUnidadeAtendimento = document.getElementById("txtUsuarioUnidadeAtendimento").value;
     var comboUnidadeAtendimento = $("#unidadeAtendimento");
     comboUnidadeAtendimento.val(usuarioUnidadeAtendimento);
@@ -80,63 +80,6 @@ $('#btnGerarCodigos').click(function (event) {
     });
 });
 
-$('#btnImprimirCodigos').click(function (event) {
-
-    var txtEmail = document.getElementById('txtEmail');
-
-    var usuarioSegurancaList = new Array();
-    var tabelaCodigosSeguranca1 = document.getElementById('tabelaCodigosSeguranca1-5');
-    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca1.rows.length; tabelaUsuarioSeguranca++) {
-        var row = tabelaCodigosSeguranca1.rows[tabelaUsuarioSeguranca];
-        var data = row.cells[1];
-        var codigo = data.innerText;
-        if (codigo != null && codigo != '') {
-            var usuarioSeguranca = {
-                codigo: codigo
-            };
-            usuarioSegurancaList.push(usuarioSeguranca);
-        }
-    }
-    var tabelaCodigosSeguranca2 = document.getElementById('tabelaCodigosSeguranca6-10');
-    for (var tabelaUsuarioSeguranca = 1; tabelaUsuarioSeguranca < tabelaCodigosSeguranca2.rows.length; tabelaUsuarioSeguranca++) {
-        var row = tabelaCodigosSeguranca2.rows[tabelaUsuarioSeguranca];
-        var data = row.cells[1];
-        var codigo = data.innerText;
-        if (codigo != null && codigo != '') {
-            var usuarioSeguranca = {
-                codigo: codigo
-            };
-            usuarioSegurancaList.push(usuarioSeguranca);
-        }
-    }
-
-    var id = null;
-    if (txtId.value != null && txtId.value != '') {
-        id = txtId.value;
-    }
-
-    var usuario = {
-        id: id,
-        email: txtEmail.value,
-        usuarioSegurancaList: usuarioSegurancaList
-    };
-
-    var data = {
-        json: JSON.stringify(usuario)
-    };
-
-    $.ajax({
-        method: 'GET',
-        url: '/controleAmbiente/usuario/imprimirCodigos',
-        data: data,
-        success: function (data, response) {
-            if (data != null) {
-                window.open('data:application/pdf,' + escape(data), '_blank');
-            }
-        }
-    });
-});
-
 $('#btnConfirmar').click(function (event) {
 
     var txtId = $('#txtId');
@@ -175,9 +118,9 @@ $('#btnConfirmar').click(function (event) {
         }
     }
 
-    var id = null;
-    if (txtId.value != null && txtId.value != '') {
-        id = txtId.value;
+    var id = txtId.val();
+    if (id === '') {
+        id = null;
     }
 
     var usuario = {
@@ -198,6 +141,8 @@ $('#btnConfirmar').click(function (event) {
         json: JSON.stringify(usuario)
     };
 
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: 'POST',
         url: '/controleAmbiente/usuario/save',
@@ -209,7 +154,7 @@ $('#btnConfirmar').click(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/controleAmbiente/usuario');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

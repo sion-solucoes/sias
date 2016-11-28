@@ -18,6 +18,8 @@ $('#unidadeFederativaForm').submit(function (event) {
     var data = {
         json: JSON.stringify(unidadeFederacao)
     };
+    
+    Msg.bar('Salvando. Por favor, aguarde...', null);
 
     $.ajax({
         method: 'POST',
@@ -30,7 +32,7 @@ $('#unidadeFederativaForm').submit(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/cadastrosBasicos/unidadeFederacao');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

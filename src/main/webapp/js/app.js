@@ -1,5 +1,15 @@
 $(document).ready(function () {
+
+    if (!$('html').hasClass('ismobile')) {
+        if ($('.page-loader')[0]) {
+            setTimeout(function () {
+                $('.page-loader').fadeIn();
+            }, 500);
+        }
+    }
+
     $('body').on('click', '[data-ma-action]', function (e) {
+
         e.preventDefault();
 
         var $this = $(this);
@@ -96,7 +106,7 @@ $(document).ready(function () {
                 }, (z * 150) + 200);
 
                 break;
-                
+
                 /*-------------------------------------------
                  Login Window Switch
                  ---------------------------------------------*/
@@ -161,6 +171,7 @@ $(document).ready(function () {
         }
     });
 });
+
 $(document).ready(function () {
     /*-------------------------------------------
      Sparkline
@@ -233,8 +244,6 @@ $(document).ready(function () {
         sparklineLine('dash-widget-visits', [9, 4, 6, 5, 6, 4, 5, 7, 9, 3, 6, 5], '100%', '70px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, '#fff', '#fff', '#fff', 5, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.1)');
     }
 
-
-
     /*-------------------------------------------
      Easy Pie Charts
      ---------------------------------------------*/
@@ -263,6 +272,7 @@ $(document).ready(function () {
         easyPieChart('sub-pie-2', 'rgba(255,255,255,0.2)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 2, 'butt', 90);
     }
 });
+
 $(window).load(function () {
 
     if (!document.URL.endsWith('home'))
@@ -299,55 +309,57 @@ $(window).load(function () {
             notify('Bem-vindo ' + usuario, 'inverse');
         }
     }, 1000);
+
 });
+
 $(document).ready(function () {
     var now = new Date();
     var mesAtual = now.getMonth() + 1;
-    
+
     $.ajax({
         method: 'POST',
         url: '/home/loadFamiliaVisitaDataChart',
         data: {
             mesAtual: mesAtual
         },
-        success: function (dados){
+        success: function (dados) {
             var i = 1;
             /*----------------------------------------------
-            Make some random data for Flot Line Chart
-            ----------------------------------------------*/
-           var data = [
-                [1, dados[i++]], 
-                [2, dados[i++]], 
+             Make some random data for Flot Line Chart
+             ----------------------------------------------*/
+            var data = [
+                [1, dados[i++]],
+                [2, dados[i++]],
                 [3, dados[i++]],
-                [4, dados[i++]], 
-                [5, dados[i++]], 
-                [6, dados[i++]], 
+                [4, dados[i++]],
+                [5, dados[i++]],
+                [6, dados[i++]],
                 [7, dados[i++]],
-                [8, dados[i++]], 
-                [9, dados[i++]], 
+                [8, dados[i++]],
+                [9, dados[i++]],
                 [10, dados[i++]],
-                [11, dados[i++]], 
-                [12, dados[i++]], 
-                [13, dados[i++]], 
+                [11, dados[i++]],
+                [12, dados[i++]],
+                [13, dados[i++]],
                 [14, dados[i++]],
-                [15, dados[i++]], 
-                [16, dados[i++]], 
+                [15, dados[i++]],
+                [16, dados[i++]],
                 [17, dados[i++]],
-                [18, dados[i++]], 
-                [19, dados[i++]], 
-                [20, dados[i++]], 
+                [18, dados[i++]],
+                [19, dados[i++]],
+                [20, dados[i++]],
                 [21, dados[i++]],
-                [22, dados[i++]], 
-                [23, dados[i++]], 
+                [22, dados[i++]],
+                [23, dados[i++]],
                 [24, dados[i++]],
-                [25, dados[i++]], 
-                [26, dados[i++]], 
-                [27, dados[i++]], 
+                [25, dados[i++]],
+                [26, dados[i++]],
+                [27, dados[i++]],
                 [28, dados[i++]],
-                [29, dados[i++]], 
+                [29, dados[i++]],
                 [30, dados[i++]]
-               ];
-               
+            ];
+
             /* Create an Array push the data + Draw the bars*/
 
             var barData = new Array();
@@ -362,384 +374,63 @@ $(document).ready(function () {
                     fillColor: '#8BC34A'
                 }
             });
-            
+
             /*---------------------------------
-            Let's create the chart
-            ---------------------------------*/
-           if ($('#bar-chart')[0]) {
-               $.plot($("#bar-chart"), barData, {
-                   grid: {
-                       borderWidth: 1,
-                       borderColor: '#eee',
-                       show: true,
-                       hoverable: true,
-                       clickable: true
-                   },
-                   yaxis: {
-                       tickColor: '#eee',
-                       tickDecimals: 0,
-                       font: {
-                           lineHeight: 13,
-                           style: "normal",
-                           color: "#9f9f9f",
-                       },
-                       shadowSize: 0
-                   },
-                   xaxis: {
-                       tickColor: '#fff',
-                       tickDecimals: 0,
-                       font: {
-                           lineHeight: 13,
-                           style: "normal",
-                           color: "#9f9f9f"
-                       },
-                       shadowSize: 0,
-                   },
-                   legend: {
-                       container: '.flc-bar',
-                       backgroundOpacity: 0.5,
-                       noColumns: 0,
-                       backgroundColor: "white",
-                       lineWidth: 0
-                   }
-               });
-           }
+             Let's create the chart
+             ---------------------------------*/
+            if ($('#bar-chart')[0]) {
+                $.plot($("#bar-chart"), barData, {
+                    grid: {
+                        borderWidth: 1,
+                        borderColor: '#eee',
+                        show: true,
+                        hoverable: true,
+                        clickable: true
+                    },
+                    yaxis: {
+                        tickColor: '#eee',
+                        tickDecimals: 0,
+                        font: {
+                            lineHeight: 13,
+                            style: "normal",
+                            color: "#9f9f9f",
+                        },
+                        shadowSize: 0
+                    },
+                    xaxis: {
+                        tickColor: '#fff',
+                        tickDecimals: 0,
+                        font: {
+                            lineHeight: 13,
+                            style: "normal",
+                            color: "#9f9f9f"
+                        },
+                        shadowSize: 0,
+                    },
+                    legend: {
+                        container: '.flc-bar',
+                        backgroundOpacity: 0.5,
+                        noColumns: 0,
+                        backgroundColor: "white",
+                        lineWidth: 0
+                    }
+                });
+            }
         }
     });
 
-//    /*---------------------------------
-//     Tooltips for Flot Charts
-//     ---------------------------------*/
-//    if ($(".flot-chart")[0]) {
-//        $(".flot-chart").bind("plothover", function (event, pos, item) {
-//            if (item) {
-//                var x = item.datapoint[0].toFixed(2),
-//                        y = item.datapoint[1].toFixed(2);
-//                $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY + 5, left: item.pageX + 5}).show();
-//            }
-//            else {
-//                $(".flot-tooltip").hide();
-//            }
-//        });
-//
-//        $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
-//    }
 });
+
 $(document).ready(function () {
 
-    /*-----------------------------------------
-     Make some random data for the Chart
-     -----------------------------------------*/
-    var d1 = [];
-    for (var i = 0; i <= 10; i += 1) {
-        d1.push([i, parseInt(Math.random() * 30)]);
-    }
-    var d2 = [];
-    for (var i = 0; i <= 20; i += 1) {
-        d2.push([i, parseInt(Math.random() * 30)]);
-    }
-    var d3 = [];
-    for (var i = 0; i <= 10; i += 1) {
-        d3.push([i, parseInt(Math.random() * 30)]);
-    }
-
-    /*---------------------------------
-     Chart Options
-     ---------------------------------*/
-    var options = {
-        series: {
-            shadowSize: 0,
-            curvedLines: {//This is a third party plugin to make curved lines
-                apply: true,
-                active: true,
-                monotonicFit: true
-            },
-            lines: {
-                show: false,
-                lineWidth: 0,
-            },
-        },
-        grid: {
-            borderWidth: 0,
-            labelMargin: 10,
-            hoverable: true,
-            clickable: true,
-            mouseActiveRadius: 6,
-        },
-        xaxis: {
-            tickDecimals: 0,
-            ticks: false
-        },
-        yaxis: {
-            tickDecimals: 0,
-            ticks: false
-        },
-        legend: {
-            show: false
-        }
-    };
-
-    /*---------------------------------
-     Let's create the chart
-     ---------------------------------*/
-    if ($("#curved-line-chart")[0]) {
-        $.plot($("#curved-line-chart"), [
-            {data: d1, lines: {show: true, fill: 0.98}, label: 'Product 1', stack: true, color: '#e3e3e3'},
-            {data: d3, lines: {show: true, fill: 0.98}, label: 'Product 2', stack: true, color: '#f1dd2c'}
-        ], options);
-    }
-
-    /*---------------------------------
-     Tooltips for Flot Charts
-     ---------------------------------*/
-    if ($(".flot-chart")[0]) {
-        $(".flot-chart").bind("plothover", function (event, pos, item) {
-            if (item) {
-                var x = item.datapoint[0].toFixed(2),
-                        y = item.datapoint[1].toFixed(2);
-                $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY + 5, left: item.pageX + 5}).show();
-            }
-            else {
-                $(".flot-tooltip").hide();
-            }
-        });
-
-        $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
-    }
-});
-$(document).ready(function () {
-
-    /*---------------------------------
-     Make some random data
-     ---------------------------------*/
-    var data = [];
-    var totalPoints = 300;
-    var updateInterval = 30;
-
-    function getRandomData() {
-        if (data.length > 0)
-            data = data.slice(1);
-
-        while (data.length < totalPoints) {
-
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                    y = prev + Math.random() * 10 - 5;
-            if (y < 0) {
-                y = 0;
-            } else if (y > 90) {
-                y = 90;
-            }
-
-            data.push(y);
-        }
-
-        var res = [];
-        for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]])
-        }
-
-        return res;
-    }
-
-    /*---------------------------------
-     Create Chart
-     ---------------------------------*/
-    if ($('#dynamic-chart')[0]) {
-        var plot = $.plot("#dynamic-chart", [getRandomData()], {
-            series: {
-                label: "Server Process Data",
-                lines: {
-                    show: true,
-                    lineWidth: 0.2,
-                    fill: 0.6
-                },
-                color: '#00BCD4',
-                shadowSize: 0,
-            },
-            yaxis: {
-                min: 0,
-                max: 100,
-                tickColor: '#eee',
-                font: {
-                    lineHeight: 13,
-                    style: "normal",
-                    color: "#9f9f9f",
-                },
-                shadowSize: 0,
-            },
-            xaxis: {
-                tickColor: '#eee',
-                show: true,
-                font: {
-                    lineHeight: 13,
-                    style: "normal",
-                    color: "#9f9f9f",
-                },
-                shadowSize: 0,
-                min: 0,
-                max: 250
-            },
-            grid: {
-                borderWidth: 1,
-                borderColor: '#eee',
-                labelMargin: 10,
-                hoverable: true,
-                clickable: true,
-                mouseActiveRadius: 6,
-            },
-            legend: {
-                container: '.flc-dynamic',
-                backgroundOpacity: 0.5,
-                noColumns: 0,
-                backgroundColor: "white",
-                lineWidth: 0
-            }
-        });
-
-        /*---------------------------------
-         Update
-         ---------------------------------*/
-        function update() {
-            plot.setData([getRandomData()]);
-            // Since the axes don't change, we don't need to call plot.setupGrid()
-
-            plot.draw();
-            setTimeout(update, updateInterval);
-        }
-        update();
-    }
-});
-$(document).ready(function () {
-
-    /*---------------------------------------------------
-     Make some random data for Recent Items chart
-     ---------------------------------------------------*/
-    var data = [];
-    var totalPoints = 100;
-    var updateInterval = 30;
-
-    function getRandomData() {
-        if (data.length > 0)
-            data = data.slice(1);
-
-        while (data.length < totalPoints) {
-
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                    y = prev + Math.random() * 10 - 5;
-            if (y < 0) {
-                y = 0;
-            } else if (y > 90) {
-                y = 90;
-            }
-
-            data.push(y);
-        }
-
-        var res = [];
-        for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]])
-        }
-
-        return res;
-    }
-
-    /*---------------------------------------------------
-     Make some random data for Flot Line Chart
-     ---------------------------------------------------*/
-
-    var d1 = [];
-    for (var i = 0; i <= 10; i += 1) {
-        d1.push([i, parseInt(Math.random() * 30)]);
-    }
-    var d2 = [];
-    for (var i = 0; i <= 20; i += 1) {
-        d2.push([i, parseInt(Math.random() * 30)]);
-    }
-    var d3 = [];
-    for (var i = 0; i <= 10; i += 1) {
-        d3.push([i, parseInt(Math.random() * 30)]);
-    }
-
-    /*---------------------------------
-     Chart Options
-     ---------------------------------*/
-    var options = {
-        series: {
-            shadowSize: 0,
-            lines: {
-                show: false,
-                lineWidth: 0,
-            },
-        },
-        grid: {
-            borderWidth: 0,
-            labelMargin: 10,
-            hoverable: true,
-            clickable: true,
-            mouseActiveRadius: 6,
-        },
-        xaxis: {
-            tickDecimals: 0,
-            ticks: false
-        },
-        yaxis: {
-            tickDecimals: 0,
-            ticks: false
-        },
-        legend: {
-            show: false
-        }
-    };
-
-    /*---------------------------------
-     Regular Line Chart
-     ---------------------------------*/
-    if ($("#line-chart")[0]) {
-        $.plot($("#line-chart"), [
-            {data: d1, lines: {show: true, fill: 0.98}, label: 'Product 1', stack: true, color: '#e3e3e3'},
-            {data: d3, lines: {show: true, fill: 0.98}, label: 'Product 2', stack: true, color: '#FFC107'}
-        ], options);
-    }
-
-
-    /*---------------------------------
-     Recent Items Table Chart
-     ---------------------------------*/
-    if ($("#recent-items-chart")[0]) {
-        $.plot($("#recent-items-chart"), [
-            {data: getRandomData(), lines: {show: true, fill: 0.8}, label: 'Items', stack: true, color: '#00BCD4'},
-        ], options);
-    }
-
-
-    /*---------------------------------
-     Tooltips for Flot Charts
-     ---------------------------------*/
-    if ($(".flot-chart")[0]) {
-        $(".flot-chart").bind("plothover", function (event, pos, item) {
-            if (item) {
-                var x = item.datapoint[0].toFixed(2),
-                        y = item.datapoint[1].toFixed(2);
-                $(".flot-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY + 5, left: item.pageX + 5}).show();
-            }
-            else {
-                $(".flot-tooltip").hide();
-            }
-        });
-
-        $("<div class='flot-tooltip' class='chart-tooltip'></div>").appendTo("body");
-    }
-});
-$(document).ready(function () {
-    
     var now = new Date();
     var mes = now.getMonth() + 1;
-    
+
     $.ajax({
         method: 'POST',
         url: '/home/loadBeneficioEventualDataChart',
         data: {mesAtual: mes},
-        success: function (dados){
+        success: function (dados) {
             var pieData = [
                 {data: dados.auxilioNatalidade, color: '#F44336', label: 'Auxílio Natalidade'},
                 {data: dados.auxilioFuneral, color: '#03A9F4', label: 'Auxílio Funeral'},
@@ -836,9 +527,6 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 $(window).load(function () {
-    /*----------------------------------------------------------
-     Page Loader
-     -----------------------------------------------------------*/
     if (!$('html').hasClass('ismobile')) {
         if ($('.page-loader')[0]) {
             setTimeout(function () {
@@ -847,7 +535,7 @@ $(window).load(function () {
 
         }
     }
-})
+});
 
 $(document).ready(function () {
 
@@ -920,79 +608,6 @@ $(document).ready(function () {
         });
     }
 
-    /*----------------------------------------------------------
-     Calendar Widget
-     -----------------------------------------------------------*/
-    if ($('#calendar-widget')[0]) {
-
-        (function () {
-            $('#cw-body').fullCalendar({
-                contentHeight: 'auto',
-                theme: true,
-                header: {
-                    right: 'next',
-                    center: 'title, ',
-                    left: 'prev'
-                },
-                defaultDate: '2014-06-12',
-                editable: true,
-                events: [
-                    {
-                        title: 'All Day',
-                        start: '2014-06-01',
-                        className: 'bgm-cyan'
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2014-06-07',
-                        end: '2014-06-10',
-                        className: 'bgm-orange'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-09',
-                        className: 'bgm-lightgreen'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeat',
-                        start: '2014-06-16',
-                        className: 'bgm-lightblue'
-                    },
-                    {
-                        title: 'Meet',
-                        start: '2014-06-12',
-                        end: '2014-06-12',
-                        className: 'bgm-green'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2014-06-12',
-                        className: 'bgm-cyan'
-                    },
-                    {
-                        title: 'Birthday',
-                        start: '2014-06-13',
-                        className: 'bgm-amber'
-                    },
-                    {
-                        title: 'Google',
-                        url: 'http://google.com/',
-                        start: '2014-06-28',
-                        className: 'bgm-amber'
-                    }
-                ]
-            });
-        })();
-
-        //Display Current Date as Calendar widget header
-        var mYear = moment().format('YYYY');
-        var mDay = moment().format('dddd, MMM D');
-        $('#calendar-widget .cwh-year').html(mYear);
-        $('#calendar-widget .cwh-day').html(mDay);
-
-    }
 
     /*----------------------------------------------------------
      Auto Size Textare
@@ -1000,7 +615,6 @@ $(document).ready(function () {
     if ($('.auto-size')[0]) {
         autosize($('.auto-size'));
     }
-
 
     /*----------------------------------------------------------
      Text Field
@@ -1066,6 +680,23 @@ $(document).ready(function () {
     $('body').on('click', '.a-prevent', function (e) {
         e.preventDefault();
     });
+
+    if ($('.collapse')[0]) {
+
+        //Add active class for opened items
+        $('.collapse').on('show.bs.collapse', function (e) {
+            $(this).closest('.panel').find('.panel-heading').addClass('active');
+        });
+
+        $('.collapse').on('hide.bs.collapse', function (e) {
+            $(this).closest('.panel').find('.panel-heading').removeClass('active');
+        });
+
+        //Add active class for pre opened items
+        $('.collapse.in').each(function () {
+            $(this).closest('.panel').find('.panel-heading').addClass('active');
+        });
+    }
 
     /*-----------------------------------------------------------
      IE 9 Placeholder

@@ -15,6 +15,8 @@ import com.sias.model.service.mcf.interfaces.FamiliaMembroService;
 import com.sias.model.service.mcf.interfaces.FamiliaService;
 import com.sias.util.Criteria;
 import com.sias.util.ValidateException;
+import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -30,13 +32,13 @@ public class FamiliaServiceImpl implements FamiliaService {
     private FamiliaMembroService familiaMembroService;
 
     @Override
+    @Transactional(value = "transactionManager", rollbackFor = Exception.class)
     public void create(Familia familia) throws Exception {
-        
+
         validate(familia);
-        
+
         familiaDAO.create(familia);
 
-        familiaMembroService.deleteByFamilia(familia.getId());
         if (familia.getFamiliaMembroList() != null) {
             for (FamiliaMembro familiaMembro : familia.getFamiliaMembroList()) {
                 familiaMembro.setFamilia(familia);
@@ -62,24 +64,32 @@ public class FamiliaServiceImpl implements FamiliaService {
     }
 
     @Override
+    @Transactional(value = "transactionManager", rollbackFor = Exception.class)
     public void update(Familia familia) throws Exception {
-        
+
         validate(familia);
-        
+
         familiaDAO.update(familia);
-        
-        familiaMembroService.deleteByFamilia(familia.getId());
+
+        List<Long> listId = new ArrayList<Long>();
         if (familia.getFamiliaMembroList() != null) {
             for (FamiliaMembro familiaMembro : familia.getFamiliaMembroList()) {
                 familiaMembro.setFamilia(familia);
-                familiaMembroService.create(familiaMembro);
+                if (familiaMembro.getId() == null) {
+                    familiaMembroService.create(familiaMembro);
+                } else {
+                    familiaMembroService.update(familiaMembro);
+                }
+                listId.add(familiaMembro.getId());
             }
         }
+        familiaMembroService.deleteByFamiliaNotInList(familia.getId(), listId);
+
     }
 
     @Override
     public void delete(Long id) throws Exception {
-        familiaMembroService.deleteByFamilia(id);
+        familiaMembroService.deleteByFamiliaNotInList(id, null);
         familiaDAO.delete(id);
     }
 
@@ -98,10 +108,10 @@ public class FamiliaServiceImpl implements FamiliaService {
             throw new ValidateException("\"Observação da Forma de Ingresso\" é um campo obrigatório!");
         }
 
-        if ( familia.getFamiliaMembroList() == null || familia.getFamiliaMembroList().isEmpty() ){
+        if (familia.getFamiliaMembroList() == null || familia.getFamiliaMembroList().isEmpty()) {
             throw new ValidateException("É obrigatório que a família seja composta de pelo menos um membro!");
         }
-        
+
         if (familia.getCepEndereco() == null || familia.getCepEndereco().getId() == null) {
             throw new ValidateException("\"CEP do Endereço\" é um campo obrigatório!");
         }

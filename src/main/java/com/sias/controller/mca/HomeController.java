@@ -5,6 +5,7 @@
  */
 package com.sias.controller.mca;
 
+import com.sias.model.constants.mcf.FamiliaBeneficioEventualConstants;
 import com.sias.model.constants.mcf.FamiliaConstants;
 import com.sias.model.constants.mcf.FamiliaVisitaConstants;
 import com.sias.model.entity.mca.UnidadeAtendimento;
@@ -31,6 +32,7 @@ import com.sias.model.service.mcf.interfaces.FamiliaVisitaService;
 import com.sias.util.Criteria;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,10 +48,10 @@ public class HomeController {
 
     @Autowired
     private UsuarioSegurancaService usuarioSegurancaService;
-    
+
     @Autowired
     private FamiliaBeneficioEventualService familiaBeneficioEventualService;
-    
+
     @Autowired
     private FamiliaVisitaService familiaVisitaService;
 
@@ -142,20 +144,21 @@ public class HomeController {
         modelAndView.setViewName("authError");
         return modelAndView;
     }
-    
+
     @RequestMapping(value = "/home/loadBeneficioEventualDataChart", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, Long> carregaFamiliaBeneficioEventualGrafico (HttpSession session, Long mesAtual) {
+    Map<String, Long> carregaFamiliaBeneficioEventualGrafico(HttpSession session, Long mesAtual) {
+
         Map<String, Long> dados = new HashMap<String, Long>();
-        Calendar c = Calendar.getInstance();
         UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) session.getAttribute("unidadeAtendimentoSessao");
+
         long qtdeAuxilioNatalidade = 0;
         long qtdeAuxilioFuneral = 0;
         long qtdeSituacoesEmergencia = 0;
         long qtdeCestaBasica = 0;
         long qtdeAluguel = 0;
         long qtdeOutros = 0;
-        
+
         try {
             List<Criteria> familiaCriteriaList = new ArrayList<>();
             Criteria unidadeAtendimentoFamilia = new Criteria();
@@ -163,54 +166,66 @@ public class HomeController {
             unidadeAtendimentoFamilia.setOperation(Criteria.EQUALS);
             unidadeAtendimentoFamilia.setValue(unidadeAtendimento.getId());
             familiaCriteriaList.add(unidadeAtendimentoFamilia);
-            
+
+            Criteria dataConcessaoInicial = new Criteria();
+            dataConcessaoInicial.setAttribute(FamiliaBeneficioEventualConstants.DATA_CONCESSAO);
+            dataConcessaoInicial.setOperation(Criteria.BIGGER_OR_EQUALS_THEN);
+            Calendar dataInicial = Calendar.getInstance();
+            dataInicial.set(Calendar.DAY_OF_MONTH, 1);
+            dataConcessaoInicial.setValue(dataInicial.getTime());
+            familiaCriteriaList.add(dataConcessaoInicial);
+
+            Criteria dataConcessaoFinal = new Criteria();
+            dataConcessaoFinal.setAttribute(FamiliaBeneficioEventualConstants.DATA_CONCESSAO);
+            dataConcessaoFinal.setOperation(Criteria.LESS_OR_EQUALS_THEN);
+            Calendar dataFinal = Calendar.getInstance();
+            dataFinal.set(Calendar.DAY_OF_MONTH, dataFinal.getActualMaximum(Calendar.DAY_OF_MONTH));
+            dataConcessaoFinal.setValue(dataFinal.getTime());
+            familiaCriteriaList.add(dataConcessaoFinal);
+
             List<FamiliaBeneficioEventual> beneficioEventualList = familiaBeneficioEventualService.readByCriteria(familiaCriteriaList);
             for (FamiliaBeneficioEventual familiaBeneficioEventual : beneficioEventualList) {
-                c.setTime(familiaBeneficioEventual.getDataConcessao());
-                int mes = c.get(Calendar.MONTH) + 1;
-                if(mesAtual == mes){
-                    if(familiaBeneficioEventual.getId() == 1){
-                        qtdeAuxilioNatalidade++;
-                    }else if(familiaBeneficioEventual.getId() == 2){
-                        qtdeAuxilioFuneral++;
-                    }else if(familiaBeneficioEventual.getId() == 3){
-                        qtdeSituacoesEmergencia++;
-                    }else if(familiaBeneficioEventual.getId() == 4){
-                        qtdeCestaBasica++;
-                    }else if(familiaBeneficioEventual.getId() == 5){        
-                        qtdeAluguel++;
-                    }else if(familiaBeneficioEventual.getId() == 6){
-                        qtdeOutros++;
-                    }
+                if (familiaBeneficioEventual.getBeneficioEventual().getId() == 1) {
+                    qtdeAuxilioNatalidade++;
+                } else if (familiaBeneficioEventual.getBeneficioEventual().getId() == 2) {
+                    qtdeAuxilioFuneral++;
+                } else if (familiaBeneficioEventual.getBeneficioEventual().getId() == 3) {
+                    qtdeSituacoesEmergencia++;
+                } else if (familiaBeneficioEventual.getBeneficioEventual().getId() == 4) {
+                    qtdeCestaBasica++;
+                } else if (familiaBeneficioEventual.getBeneficioEventual().getId() == 5) {
+                    qtdeAluguel++;
+                } else if (familiaBeneficioEventual.getBeneficioEventual().getId() == 6) {
+                    qtdeOutros++;
                 }
             }
-        
+            
+            dados.put("auxilioNatalidade", qtdeAuxilioNatalidade);
+            dados.put("auxilioFuneral", qtdeAuxilioFuneral);
+            dados.put("situacoesEmergencia", qtdeSituacoesEmergencia);
+            dados.put("cestaBasica", qtdeCestaBasica);
+            dados.put("aluguel", qtdeAluguel);
+            dados.put("outros", qtdeOutros);
+
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        dados.put("auxilioNatalidade", qtdeAuxilioNatalidade);
-        dados.put("auxilioFuneral", qtdeAuxilioFuneral);
-        dados.put("situacoesEmergencia", qtdeSituacoesEmergencia);
-        dados.put("cestaBasica", qtdeCestaBasica);
-        dados.put("aluguel", qtdeAluguel);
-        dados.put("outros", qtdeOutros);
-        
+
         return dados;
     }
 
     @RequestMapping(value = "/home/loadFamiliaVisitaDataChart", method = RequestMethod.POST)
     public @ResponseBody
-    Integer[] carregaDadosFamiliaVisita (HttpSession session, Long mesAtual) {
-        Integer [] visitas = {0, 0, 0, 0, 0, 0, 
-                              0, 0, 0, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0, 
-                              0, 0, 0, 0, 0, 0, 
-                              0, 0, 0, 0, 0, 0, 0, 0};
+    Integer[] carregaDadosFamiliaVisita(HttpSession session, Long mesAtual) {
+        Integer[] visitas = {0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0};
         UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) session.getAttribute("unidadeAtendimentoSessao");
         Calendar c = Calendar.getInstance();
         List<FamiliaVisita> familiaVisitaList = new ArrayList<FamiliaVisita>();
-        
+
         try {
             List<Criteria> criteriaList = new ArrayList<Criteria>();
             Criteria criteriaUnidadeAtendimento = new Criteria();
@@ -223,12 +238,12 @@ public class HomeController {
             for (FamiliaVisita familiaVisita : familiaVisitaList) {
                 c.setTime(familiaVisita.getInicio());
                 int mes = c.get(Calendar.MONTH) + 1;
-                if(mesAtual == mes){
+                if (mesAtual == mes) {
                     visitas[c.get(Calendar.DAY_OF_MONTH)] = visitas[c.get(Calendar.DAY_OF_MONTH)] + 1;
                 }
             }
         } catch (Exception e) {
         }
         return visitas;
-    } 
+    }
 }

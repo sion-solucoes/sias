@@ -152,7 +152,7 @@
                                 <button id="btnGerarCodigos" type="button" class="btn bgm-blue">Gerar Códigos</button>
                             </div>
                             <div class="col-md-3">
-                                <button type="button" id="btnImprimirCodigos" target="_blank" class="btn bgm-blue">Imprimir</button>
+                                <a type="button" href="<c:url value = "/controleAmbiente/usuario/${usuario.id}/cartaoSeguranca.pdf"/>" href="" target="_blank" class="btn bgm-blue">Imprimir</a>
                             </div>
                         </div>
 

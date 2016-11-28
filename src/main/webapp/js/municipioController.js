@@ -18,6 +18,8 @@ $('#municipioForm').submit(function (event) {
         json: JSON.stringify(municipio)
     };
 
+    Msg.bar('Salvando. Por favor, aguarde...', null);
+
     $.ajax({
         method: 'POST',
         url: '/cadastrosBasicos/municipio/save',
@@ -29,7 +31,7 @@ $('#municipioForm').submit(function (event) {
                     var voltarListagem = function () {
                         document.location.assign('/cadastrosBasicos/municipio');
                     };
-                    Msg.notify(data.msg, 'success', 2000, null, voltarListagem);
+                    Msg.notify(data.msg, 'success', 1000, null, voltarListagem);
                 } else {
                     Msg.notify(data.msg, 'warning');
                 }

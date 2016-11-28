@@ -19,9 +19,9 @@ public class Criteria {
 
     public static final String BIGGER_OR_EQUALS_THEN = ">=";
 
-    public static final String LESS_THEN = ">";
+    public static final String LESS_THEN = "<";
 
-    public static final String LESS_OR_EQUALS_THEN = ">";
+    public static final String LESS_OR_EQUALS_THEN = "<=";
 
     private String attribute;
 

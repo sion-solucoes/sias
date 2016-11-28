@@ -32,8 +32,6 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         String query = "INSERT INTO " + FamiliaConstants.TABELA;
         query += "(";
         {
-            query += FamiliaConstants.DATA_ULTIMA_ALTERACAO + ", ";
-            query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + ", ";
             query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + ", ";
             query += FamiliaConstants.FORMA_INGRESSO_ID + ", ";
             query += FamiliaConstants.DETALHE_FORMA_INGRESSO_ENCAMINHAMENTO + ", ";
@@ -66,7 +64,7 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         query += " RETURNING " + FamiliaConstants.ID;
 
         Object args[] = {
-            new Date(), familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
+            familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
             familia.getFormaIngresso() != null ? familia.getFormaIngresso().getId() : null,
             familia.getDetalheFormaIngressoEncaminhamento(),
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),
@@ -140,8 +138,8 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
 
         String query = "UPDATE " + FamiliaConstants.TABELA;
         query += " SET ";
-        query += FamiliaConstants.DATA_ULTIMA_ALTERACAO + "=?, ";
         query += FamiliaConstants.UNIDADE_ATENDIMENTO_ID + "=?, ";
+        query += FamiliaConstants.DATA_ULTIMA_ALTERACAO + "=?, ";
         query += FamiliaConstants.FORMA_INGRESSO_ID + "=?, ";
         query += FamiliaConstants.DETALHE_FORMA_INGRESSO_ENCAMINHAMENTO + "=?, ";
         query += FamiliaConstants.OBSERVACAO_FORMA_INGRESSO + "=?, ";
@@ -170,7 +168,8 @@ public class FamiliaDAOImpl extends JDBCBaseDAO implements FamiliaDAO {
         query += " WHERE " + FamiliaConstants.ID + "=? ";
 
         Object args[] = {
-            new Date(), familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
+            familia.getUnidadeAtendimento() != null ? familia.getUnidadeAtendimento().getId() : null,
+            new Date(),
             familia.getFormaIngresso() != null ? familia.getFormaIngresso().getId() : null,
             familia.getDetalheFormaIngressoEncaminhamento(),
             familia.getObservacaoFormaIngresso(), familia.getLocalizacaoEndereco(), familia.getEnderecoAbrigo(),

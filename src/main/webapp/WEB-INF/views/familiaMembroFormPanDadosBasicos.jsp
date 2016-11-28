@@ -83,8 +83,8 @@
         </div>
         <div class="col-md-3">
             <label for="txtRGDataEmissao">Data Emissão(RG)</label>
-            <div class="dtp-container">
-                <input type="text" placeholder="Data Emissão(RG)" name="rgDataEmissao" class="form-control date-picker" id="txtRGDataEmissao" value="${familiaMembro.rgDataEmissao}"/>    
+            <div class="fg-line">
+                <input type="text" placeholder="Data Emissão(RG)" name="rgDataEmissao" class="form-control" id="txtRGDataEmissao" value="${familiaMembro.rgDataEmissao}"/>    
             </div>
         </div>
     </div>
