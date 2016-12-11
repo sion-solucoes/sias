@@ -6,6 +6,7 @@
 package com.sias.controller.relatorios;
 
 import com.sias.model.entity.mca.UnidadeAtendimento;
+import com.sias.model.entity.relatorios.RelatorioMensalAtendimento;
 import com.sias.model.service.mca.interfaces.UnidadeAtendimentoService;
 import com.sias.model.service.relatorios.interfaces.RelatorioMensalAtendimentoService;
 import java.util.Calendar;
@@ -45,7 +46,13 @@ public class RelatorioMensalAtendimentoController {
             dataInicial.set(Calendar.DAY_OF_MONTH, 1);
             Calendar dataFinal = Calendar.getInstance();
             dataFinal.set(Calendar.DAY_OF_MONTH, dataFinal.getMaximum(Calendar.DAY_OF_MONTH));
-            modelAndView.addObject("relatorioMensalAtendimento", relatorioMensalAtendimentoService.getRelatorioMensalAtendimento(unidadeAtendimento, dataInicial.getTime(), dataFinal.getTime()));
+            
+            RelatorioMensalAtendimento relatorioMensalAtendimento = relatorioMensalAtendimentoService.getRelatorioMensalAtendimento(unidadeAtendimento, dataInicial.getTime(), dataFinal.getTime());
+            relatorioMensalAtendimento.setUnidadeAtendimento(unidadeAtendimento);
+            relatorioMensalAtendimento.setDataInicial(dataInicial.getTime());
+            relatorioMensalAtendimento.setDataFinal(dataFinal.getTime());
+            
+            modelAndView.addObject("relatorioMensalAtendimento", relatorioMensalAtendimento);
         } catch (Exception ex) {
             Logger.getLogger(RelatorioMensalAtendimentoController.class.getName()).log(Level.SEVERE, null, ex);
         }

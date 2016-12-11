@@ -4,6 +4,11 @@ $(document).ready(function () {
             format: 'DD/MM/YYYY'
         });
     }
+    if ($('.month-picker')[0]) {
+        $('.month-picker').datetimepicker({
+            format: 'MMMM, YYYY'
+        });
+    }
     if ($('.date-time-picker')[0]) {
         $('.date-time-picker').datetimepicker();
     }

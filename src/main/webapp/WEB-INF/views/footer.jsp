@@ -22,6 +22,7 @@
 <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/FullCalendarConfig.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Searcher.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/Notificator.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/Formatter.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery.price-format.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/PriceFormatConfig.js"/>"></script>

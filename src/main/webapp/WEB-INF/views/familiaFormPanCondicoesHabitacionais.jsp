@@ -18,7 +18,7 @@
                 <i class="input-helper"></i>
                 Urbana
             </label>
-                    
+
             <label class="radio radio-inline m-r-20 m-t-5" for="radioLocalizacaoEnderecoRural">
                 <c:if test="${familia.localizacaoEndereco == 1}">
                     <input type="radio" name="localizacaoEndereco" id="radioLocalizacaoEnderecoRural" value="1" checked>
@@ -31,7 +31,7 @@
             </label>
         </div>
     </div>
-                    
+
     <div class="form-group">
         <label class="control-label col-sm-2" for="checkEnderecoAbrigo">Abrigo</label>
         <div class="col-md-6">
@@ -46,16 +46,16 @@
             </label>
         </div>
     </div>
-    
+
     <div class="form-group">
         <label for="comboCEPEndereco" class="control-label col-sm-2">CEP</label>
         <div class="col-md-6">
             <select class="selectpicker" title="Selecione..." name="cep.id" id="comboCEPEndereco">
-                
+
             </select>
         </div>
     </div>
-    
+
     <div class="form-group">
         <label for="txtMunicipioEndereco" class="control-label col-sm-2">Município</label>
         <div class="col-md-6">
@@ -200,7 +200,12 @@
         <label for="txtNumeroComodos" class="control-label col-sm-2">Número de cômodos</label>
         <div class="col-md-4">
             <div class="fg-line">
-                <input type="number" class="form-control input-sm" min="0" name="txtNumeroComodos" id="txtNumeroComodos" value="${familia.numeroComodos}">
+                <c:if test="${empty familia.numeroComodos}">
+                    <input type="number" class="form-control input-sm" min="0" name="txtNumeroComodos" id="txtNumeroComodos" value="0">
+                </c:if>
+                <c:if test="${not empty familia.numeroComodos}">
+                    <input type="number" class="form-control input-sm" min="0" name="txtNumeroComodos" id="txtNumeroComodos" value="${familia.numeroComodos}">
+                </c:if>
             </div>
         </div>
     </div>
@@ -208,7 +213,12 @@
         <label for="txtNumeroDormitorios" class="control-label col-sm-2">Número de dormitórios</label>
         <div class="col-md-4">
             <div class="fg-line">
-                <input type="number" class="form-control input-sm" min="0" name="txtNumeroDormitorios" id="txtNumeroDormitorios" value="${familia.numeroDormitorios}">
+                <c:if test="${empty familia.numeroDormitorios}">
+                    <input type="number" class="form-control input-sm" min="0" name="txtNumeroDormitorios" id="txtNumeroDormitorios" value="0">
+                </c:if>
+                <c:if test="${empty familia.numeroDormitorios}">
+                    <input type="number" class="form-control input-sm" min="0" name="txtNumeroDormitorios" id="txtNumeroDormitorios" value="${familia.numeroDormitorios}">
+                </c:if>
             </div>
         </div>
     </div>
@@ -262,5 +272,4 @@
         </div>
     </div>
 </div>
-        
-    
+

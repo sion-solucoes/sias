@@ -4,6 +4,7 @@
     Author     : Fernando Laranjo
 --%>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -70,6 +71,28 @@
                     <ul class="hi-menu">
                         <li data-ma-action="search-open">
                             <a href=""><i class="him-icon zmdi zmdi-search"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="" aria-expanded="false">
+                                <i class="him-icon zmdi zmdi-notifications"></i>
+                                <i class="him-counts"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg pull-right">
+                                <div class="list-group him-notification">
+                                    <div class="lg-header">
+                                        Notificações
+                                        <ul class="actions">
+                                            <li class="dropdown">
+                                                <a href="" data-ma-action="clear-notification">
+                                                    <i class="zmdi zmdi-check-all"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lg-body">
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </li>

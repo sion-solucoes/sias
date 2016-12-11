@@ -5,10 +5,12 @@
  */
 package com.sias.model.service.relatorios.impl;
 
+import com.sias.model.dao.relatorios.interfaces.RelatorioMensalAtendimentoDAO;
 import com.sias.model.entity.mca.UnidadeAtendimento;
 import com.sias.model.entity.relatorios.RelatorioMensalAtendimento;
 import com.sias.model.service.relatorios.interfaces.RelatorioMensalAtendimentoService;
 import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,15 +20,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RelatorioMensalAtendimentoServiceImpl implements RelatorioMensalAtendimentoService {
 
+    @Autowired
+    private RelatorioMensalAtendimentoDAO relatorioMensalAtendimentoDAO;
+
     @Override
     public RelatorioMensalAtendimento getRelatorioMensalAtendimento(UnidadeAtendimento unidadeAtendimento, Date dataInicial, Date dataFinal) throws Exception {
-
-        RelatorioMensalAtendimento relatorioMensalAtendimento = new RelatorioMensalAtendimento();
-        relatorioMensalAtendimento.setUnidadeAtendimento(unidadeAtendimento);
-        relatorioMensalAtendimento.setDataInicial(dataInicial);
-        relatorioMensalAtendimento.setDataFinal(dataFinal);
-        
-        return relatorioMensalAtendimento;
+        return relatorioMensalAtendimentoDAO.getRelatorioMensalAtendimento(unidadeAtendimento, dataInicial, dataFinal);
     }
 
 }

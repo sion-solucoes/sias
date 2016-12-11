@@ -7,6 +7,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
+<style>
+    .table > tbody > tr > td {
+        border: 0.5px solid #CDC5BF !important;
+    } 
+
+    .table > thead > tr > th:first-child,
+    .table > tbody > tr > th:first-child,
+    .table > tfoot > tr > th:first-child,
+    .table > thead > tr > td:first-child,
+    .table > tbody > tr > td:first-child,
+    .table > tfoot > tr > td:first-child {
+        padding-left: 10px !important;
+    }
+
+</style>
+
 <section id="content">
     <div class="container">
         <div class="card">
@@ -21,7 +37,7 @@
                     <div class="col-md-3">
                         <label for="txtDataInicial">Mês de Referência</label>
                         <div class="fg-line">
-                            <input type="date" disabled="true" pattern="mm/yyyy" class="form-control input-sm" id="txtDataInicial" value="${relatorioMensalAtendimento.dataInicial}"/>    
+                            <input type="text" class="form-control input-sm month-picker" id="txtDataInicial" value="${relatorioMensalAtendimento.dataInicial}"/>    
                         </div>
                     </div>
                 </div>
@@ -57,7 +73,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -68,11 +84,11 @@
                                 <tbody>
                                     <tr>
                                         <td>A.1.  Total de casos (famílias ou indivíduos) em acompanhamento pelo PAEFI</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeTotalFamilias} / ${relatorioMensalAtendimento.quantidadeTotalIndividuos}</td>
                                     </tr>
                                     <tr>
                                         <td>A.2.  Novos casos (famílias ou indivíduos) inseridos no acompanhamento do PAEFI, durante o mês de referência</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasFamilias} / ${relatorioMensalAtendimento.quantidadeNovosIndividuos}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -84,17 +100,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>B.1.  Famílias beneficiárias do Programa Bolsa Família</td><td></td></tr>
-                                    <tr><td>B.2.  Famílias com membros beneficiários do BPC</td><td></td></tr>
-                                    <tr><td>B.3.  Famílias com crianças ou adolescentes em situação de trabalho infantil</td><td></td></tr>
-                                    <tr><td>B.4.  Famílias com crianças ou adolescentes em Serviços de Acolhimento</td><td></td></tr>
-                                    <tr><td>B.5.  Famílias cuja situação de violência/ violação esteja associada ao uso abusivo de substâncias psicoativas</td><td></td></tr>
+                                    <tr>
+                                        <td>B.1.  Famílias beneficiárias do Programa Bolsa Família</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeFamiliasBolsaFamilia}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.2.  Famílias com membros beneficiários do BPC</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeFamiliasBPC}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.3.  Famílias com crianças ou adolescentes em situação de trabalho infantil</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeFamiliasTrabalhoInfantil}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.4.  Famílias com crianças ou adolescentes em Serviços de Acolhimento</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeFamiliasServicoAcolhimento}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.5.  Famílias cuja situação de violência/violação esteja associada ao uso abusivo de substâncias psicoativas</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeFamiliasViolenciaUsoSubstanciasPsicoativas}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <br>
                             <p class="c-red">* Atenção! Os itens B1 a B5 buscam identificar apenas alguns "perfis" de famílias, portanto é normal que algumas famílias contadas
-                             no item A2 não se enquadrem em nenhuma das condições acima, enquanto outras podem se enquadrar simultaneamente em mais de uma condição;
-                            portanto a soma de B1 a B5 não terá, necessariamente, o mesmo valor relatado em A2.</p>
+                                no item A2 não se enquadrem em nenhuma das condições acima, enquanto outras podem se enquadrar simultaneamente em mais de uma condição;
+                                portanto a soma de B1 a B5 não terá, necessariamente, o mesmo valor relatado em A2.</p>
                             <br>
                             <table class="table table-bordered table-condensed">
                                 <thead>
@@ -113,19 +144,19 @@
                                         <td>60 anos ou mais</td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadas}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasMasculino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasFeminino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasFeminino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimadasFeminino60AnosOuMais}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -150,7 +181,7 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -164,51 +195,51 @@
                                 <tbody>
                                     <tr>
                                         <td rowspan="2">C.1. Crianças ou adolescentes vítimas de violência intrafamiliar (física ou psicológica)</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasViolenciaIntrafamiliar}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasViolenciaIntrafamiliarMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasViolenciaIntrafamiliarMasculino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasViolenciaIntrafamiliarFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasViolenciaIntrafamiliarFeminino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">C.2. Crianças ou adolescentes vítimas de abuso sexual</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasAbusoSexual}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasAbusoSexualMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasAbusoSexualMasculino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasAbusoSexualFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasAbusoSexualFeminino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">C.3. Crianças ou adolescentes vítimas de exploração sexual</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasExploracaoSexual}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasExploracaoSexualMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasExploracaoSexualMasculino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasExploracaoSexualFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasExploracaoSexualFeminino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">C.4. Crianças ou adolescentes vítimas de negligência ou abandono</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasNegligenciaAbandono}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasNegligenciaAbandonoMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasNegligenciaAbandonoMasculino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasNegligenciaAbandonoFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasNegligenciaAbandonoFeminino13A17Anos}</td>
                                     </tr>
                                     <tr>
                                         <td class="bgm-blue c-white">Crianças ou adolescentes em situação de Trabalho Infantil, que ingressaram no PAEFI durante o mês de referência</td>
@@ -219,21 +250,21 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="2">C.5. Crianças ou adolescentes em situação de trabalho infantil (até 15 anos)</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasTrabalhoInfantil}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasTrabalhoInfantilMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasTrabalhoInfantilMasculino13A15Anos}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasTrabalhoInfantilFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasCriancasVitimasTrabalhoInfantilFeminino13A15Anos}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -246,33 +277,33 @@
                                 <tbody>
                                     <tr>
                                         <td rowspan="2">D.1.  Pessoas idosas vítimas de violência intrafamiliar (física, psicológica ou sexual)</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovosIdososVitimasViolenciaIntrafamiliar}</td>
                                         <td>Masculino</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosIdososVitimasViolenciaIntraFamiliarMasculino}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosIdososVitimasViolenciaIntraFamiliarFeminino}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">D.2.  Pessoas idosas vítimas de negligência ou abandono</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovosIdososVitimasNegligenciaAbandono}</td>
                                         <td>Masculino</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosIdososVitimasNegligenciaAbandonoMasculino}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosIdososVitimasNegligenciaAbandonoFeminino}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th class="bgm-blue c-white">E.	Pessoas com deficiência em situações de violência ou violações que ingressara no PAEFI durante o mês</th>
+                                        <th class="bgm-blue c-white">E.	Pessoas com deficiência em situações de violência ou violações que ingressaram no PAEFI durante o mês</th>
                                         <th class="bgm-lightblue c-white">Total</th>
                                         <th class="bgm-lightblue c-white">Sexo</th>
                                         <th class="bgm-lightblue c-white">0 a 12 anos</th>
@@ -284,62 +315,66 @@
                                 <tbody>
                                     <tr>
                                         <td rowspan="2">E.1. Pessoas com deficiência vítimas de violência intrafamiliar (física, psicológica ou sexual)</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliar}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarMasculino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarFeminino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarFeminino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasViolenciaIntrafamiliarFeminino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">E.2. Pessoas com deficiência vítimas de negligência ou abandono</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandono}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoMasculino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoFeminino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoFeminino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosDeficientesVitimasNegligenciaAbandonoFeminino60AnosOuMais}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th class="bgm-blue c-white">F. Mulheres adultas vítimas de violência intrafamiliar que ingressara no PAEFI durante o mês de referência</th>
+                                        <th class="bgm-blue c-white">F. Adultos vítimas de violência intrafamiliar que ingressaram no PAEFI durante o mês de referência</th>
                                         <th class="bgm-lightblue c-white">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>F.1.   Mulheres adultas (18 a 59 anos) vítimas de violência intrafamiliar (física, psicológica ou sexual)</td>
-                                        <td></td>
+                                        <td>F.1.   Homens adultos (18 a 59 anos) vítimas de violência intrafamiliar (física, psicológica ou sexual)</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosAdultosVitimasViolenciaIntrafamiliarMasculino}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F.2.   Mulheres adultas (18 a 59 anos) vítimas de violência intrafamiliar (física, psicológica ou sexual)</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovosAdultosVitimasViolenciaIntrafamiliarFeminino}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th class="bgm-blue c-white">G. Pessoas vítimas de tráficos de seres humanos que ingressara no PAEFI durante o mês de referência</th>
+                                        <th class="bgm-blue c-white">G. Pessoas vítimas de tráficos de seres humanos que ingressaram no PAEFI durante o mês de referência</th>
                                         <th class="bgm-lightblue c-white">Total</th>
                                         <th class="bgm-lightblue c-white">Sexo</th>
                                         <th class="bgm-lightblue c-white">0 a 12 anos</th>
@@ -351,46 +386,46 @@
                                 <tbody>
                                     <tr>
                                         <td rowspan="2">G.1.  Pessoas vítimas de tráficos de seres humanos</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTrafico}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoMasculino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoFeminino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoFeminino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoFeminino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasTraficoFeminino60AnosOuMais}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th class="bgm-blue c-white">H. Pessoas vítimas de discriminação por orientação sexual que ingressara no PAEFI durante o mês de referência</th>
+                                        <th class="bgm-blue c-white">H. Pessoas vítimas de discriminação por orientação sexual que ingressaram no PAEFI durante o mês de referência</th>
                                         <th class="bgm-lightblue c-white">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>H.1. Pessoas vítimas de discriminação por orientação sexual</td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasDiscriminacaoOrientacaoSexual}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th class="bgm-blue c-white">I. Pessoas em situação de rua que ingressara no PAEFI durante o mês de referência</th>
+                                        <th class="bgm-blue c-white">I. Pessoas em situação de rua que ingressaram no PAEFI durante o mês de referência</th>
                                         <th class="bgm-lightblue c-white">Total</th>
                                         <th class="bgm-lightblue c-white">Sexo</th>
                                         <th class="bgm-lightblue c-white">0 a 12 anos</th>
@@ -402,19 +437,19 @@
                                 <tbody>
                                     <tr>
                                         <td rowspan="2">I.1. Pessoas em situação de rua</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRua}</td>
                                         <td>Masculino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino60AnosOuMais}</td>
                                     </tr>
                                     <tr>
                                         <td>Feminino</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino0A12Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino13A17Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino18A59Anos}</td>
+                                        <td>${relatorioMensalAtendimento.quantidadeNovasPessoasVitimasSituacaoRuaMasculino60AnosOuMais}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -441,7 +476,7 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -471,7 +506,7 @@
                             entretanto a soma de J2 e J3 nunca pode ser menor que J1. O mesmo raciocínio vale para o quadro abaixo (J4. J5 e J6).
                         </p>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -536,7 +571,7 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
@@ -574,7 +609,7 @@
                             mesmo que tenha sido abordada várias vezes no durante este mesmo mês.
                         </p>
                         <br>
-                        <div class="table-responsive" style="border: 1px solid #F5F5F5;">
+                        <div class="table-responsive">
                             <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>

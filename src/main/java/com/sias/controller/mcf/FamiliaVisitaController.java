@@ -134,7 +134,6 @@ public class FamiliaVisitaController {
 //            criteriaDataFim.setOperation(Criteria.LESS_OR_EQUALS_THEN);
 //            criteriaDataFim.setValue(fim);
 //            criteriaList.add(criteriaDataFim);
-
             UnidadeAtendimento unidadeAtendimento = (UnidadeAtendimento) httpSession.getAttribute("unidadeAtendimentoSessao");
             Criteria criteriaUnidadeAtendimento = new Criteria();
             criteriaUnidadeAtendimento.setAttribute(FamiliaVisitaConstants.UNIDADE_ATENDIMENTO_ID);
@@ -142,6 +141,17 @@ public class FamiliaVisitaController {
             criteriaUnidadeAtendimento.setValue(fim);
             criteriaUnidadeAtendimento.setValue(unidadeAtendimento.getId());
             criteriaList.add(criteriaUnidadeAtendimento);
+
+            Usuario usuarioSessao = (Usuario) httpSession.getAttribute("usuarioSessao");
+            if (usuarioSessao != null) {
+                if (usuarioSessao.getTipo() == Usuario.TIPO_TECNICO) {
+                    Criteria criteriaTecnico = new Criteria();
+                    criteriaTecnico.setAttribute(FamiliaVisitaConstants.USUARIO_ID);
+                    criteriaTecnico.setOperation(" = ");
+                    criteriaTecnico.setValue(usuarioSessao.getId());
+                    criteriaList.add(criteriaTecnico);
+                }
+            }
 
             response.put("familiaVisitaList", familiaVisitaService.readByCriteria(criteriaList));
             response.put("success", true);

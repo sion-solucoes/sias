@@ -8,6 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import com.sias.model.entity.mca.Usuario;
 import com.sias.model.service.mca.interfaces.UsuarioService;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 public class Interceptor implements HandlerInterceptor {
 
@@ -22,7 +23,7 @@ public class Interceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest req, HttpServletResponse res, Object arg2, ModelAndView modelAndView) throws Exception {
 
         String url = req.getRequestURL().toString();
-        
+
         url = url.replace("/sias", "");
 
         if (url.endsWith("/home")) {
@@ -41,7 +42,7 @@ public class Interceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object arg2) throws Exception {
 
         String url = req.getRequestURL().toString();
-        
+
         url = url.replace("/sias", "");
 
         System.out.println(url);
@@ -54,22 +55,15 @@ public class Interceptor implements HandlerInterceptor {
             return true;
         }
 
-        if (url.endsWith("/")) {
-            if (req.getSession().getAttribute("usuarioSessao") == null) {
-                res.sendRedirect("/home");
-                return false;
-            }
+        if ((url.endsWith("/home") || url.endsWith("/home/verificaSeguranca")) && req.getMethod().equals("POST")) {
+            return true;
         }
 
-        if (!url.endsWith("/home") && !url.endsWith("/home/verificaSeguranca")) {
-            if (req.getSession().getAttribute("usuarioSessao") == null) {
-                req.getSession().setAttribute("urlDesejada", url);
-                res.sendRedirect("/");
-                return false;
-            }
-        }
-
-        if (req.getSession().getAttribute("usuarioSessao") != null) {
+        if (req.getSession().getAttribute("usuarioSessao") == null) {
+            req.getSession().setAttribute("urlDesejada", url);
+            res.sendRedirect("/");
+            return false;
+        } else {
             Usuario usuario = (Usuario) req.getSession().getAttribute("usuarioSessao");
             usuario = usuarioService.readById(usuario.getId());
             req.getSession().setAttribute("usuarioSessao", usuario);
